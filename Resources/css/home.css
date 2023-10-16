@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:ital,wght@0,300;1,300&display=swap');
+
+.cartier {
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+}
+.has-link {
+    color: #1d1c1c;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.header {
+    
+}
+.header-notice{
+    text-align: center;
+}
+.return-link {
+    color: #1d1c1c;
+    text-decoration: underline;
+}
+.main-header {
+    display: flex;
+    justify-content: space-between;
+}
+.nav-left {
+    display: flex;
+    padding-left: 0;
+    justify-content: center;
+}   
+.nav-left--item{ 
+    padding: 10px 20px;
+    list-style: none;
+    font-size: 20px;
+    position: relative;
+    text-align: center;
+}
+.nav-hover {
+    color: black;
+}
+.nav-hover:hover {
+    color: rgb(78, 75, 75);
+     
+}
+.nav-left--item::after {
+    content: '';
+    width: 1%;
+    height: 2px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform-origin: bottom right;
+    transition: width 1s;
+}
+.nav-left--item:hover::after {
+    content: '';
+    width: 100%;
+    background-color: #1d1c1c;
+}
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10%;
+}
+.logo-img {
+    max-height: 50px;
+}
+.nav-right {
+    display: flex;
+    width: 14%;
+}
+.nav-right--item {
+    padding: 10px 20px;
+
+}
+.nav-right--item .fa {
+    outline-color: #1d1c1c;
+    cursor: pointer;
+}
+.nav-right--item .fa:hover  {
+    color: red;
+}
+
+.sub-navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+.watch-collection--item {
+    padding: 10px 20px;
+    position: relative;
+}
+.watch-collection--item:hover {
+    font-weight: 700;
+    cursor: pointer;
+}
+.watch-collection--item::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 4px;
+    transition: width .5s;
+    left: 0;
+    bottom: 0;
+
+}
+.watch-collection--item:hover::after { 
+    content: '';
+    background-color: red;
+    width: 80%;
+}
+
+/* banner */
+.banner {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    background-color: #F2F2F2;
+    margin: 0 0;
+}
+.banner-img-link {
+    max-width: 750px;
+}
+.banner-introduction {
+    background-color: #F2F2F2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.intro-text {
+    margin-left: 20%;
+    max-width: 68%;
+    text-align: left;
+    line-height: 25px;
+    letter-spacing: 0.6px;
+}
+
+/* main-content */
+.main-content {
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.filter-sort{
+    width: 23%;
+    padding-left: 25px;
+    position: relative;
+}
+.filter-sort::before {
+    content: '';
+    width: 50%;
+    height: 1px;
+    top: 0;
+    margin-left: 10px;
+    background-color: #423f3f;
+    position: absolute;
+}
+.filter-sort h4 {
+    margin-left: 10px;
+}
+.radio-check-container {
+    display: flex;
+    font-size: 14px;
+    flex-direction: column;
+
+}
+.check-label {
+    padding: 10px 0;
+}
+.check-js {
+    padding: 20px;
+    margin-right: 10px;
+}
+.products-container {
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+.product-object {
+    max-height: fit-content;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 12px 12px;
+    margin: 10px 5px;
+    position: relative;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+.product-object:hover{
+    border: 1px solid rgb(148, 142, 142);
+}
+
+
+.object-img {
+    width: 300px;
+}
+.object-section {
+    padding-top: 10px;
+}
+.object-section-info {
+    padding: 10px 0;
+}
+.object-info {
+   
+}
+.info-name {
+    font-weight: 600;
+    font-size: 17px;
+}
+.buy-btn {
+    display: block;
+    margin: 0 10px;
+    padding: 10px 0;
+    background-color:transparent;
+    border: 1px solid transparent;
+}
+.object-img:hover ~.buy-btn, .object-section:hover ~ .buy-btn{
+    width: 100%;
+    margin: 0 0px;
+    padding: 10px 0;
+    background-color: #1d1c1c;
+    opacity: 1;
+}
+.buy-btn:hover {
+    background-color: #2e2e2e;
+    width: 100%;
+    margin: 0 0px;
+    padding: 10px 0;
+}
+.discover {
+    color: white;
+}
+.discover:hover {
+    color: #c9c5c5;
+}
+.pagination {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100px);
+}
+.pagination-item {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    margin: 0 10px;
+    cursor: pointer;
+}
+.pagination-item.active {
+    background-color: #c26565;
+    color: white;
+}
