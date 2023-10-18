@@ -34,11 +34,20 @@
 }
 .texting {
     width: 450px;
-    line-height: 24px;
+
     height: 300px;
-    overflow: hidden;
 }
+.text-box {
+    line-height: 24px;
+    overflow: hidden;
+    height: 100px;
+}
+/* .text-box.less {
+    height: 100px;
+
+} */
 .show {
+    cursor: pointer;
     text-decoration: underline;
 }
 
@@ -96,4 +105,113 @@
 }
 .contact-item .fa {
     padding-right:  10px;
+}
+
+.care {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 40px;
+}
+.care-left {
+    margin-left: 80px;
+
+}
+.care-left p {
+    font-size: 25px;
+    width: 400px;
+}
+.discover-more {
+    text-decoration: underline;
+    color: #484848;
+}
+
+.care-right {
+    max-width: 60%;
+}
+.display-img {
+    max-width: 100%;
+}
+
+.delivery-section {
+    display: flex;
+    margin: 0 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.delivery-gift {
+    display: flex;
+    justify-content: center;
+    background-color: #F2F2F2;
+    width: 60%;
+    padding-right: 20px;
+}
+.gift-img {
+    padding: 0;
+    margin: 0;
+    width: 510px;
+    height: 400px;
+}
+.gift-infor {
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content: center;
+    padding-left: 20px;
+    font-size: 19px;
+}
+.gift-infor h4 {
+    font-size: 24px;
+}
+.read-more {
+    text-decoration: underline;
+}
+
+.delivery-shipping {
+    background-color: #F2F2F2;
+    margin: 0 10px;
+    width: 48%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.delivery-detail {
+    display: flex;
+    flex-direction: column;
+}
+.delivery-detail h4 {
+    font-size: 24px;
+    font-weight: 700;
+}
+.delivery-detail p {
+    width: 500px;
+    font-size: 19px;
+    padding: 5px 0;
+}
+.view-more {
+    font-size: 19px;
+}
+.view-more-btn {
+    cursor: pointer;
+    padding-right: 30px;
+}
+
+.recommend-list {
+    display: flex;
+    justify-content: center;
+}
+.list-grid {
+    display: flex;
+}
+.hover-img {
+    cursor: pointer;
+}
+.pagination-image-product {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
 }
