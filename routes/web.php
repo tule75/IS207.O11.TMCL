@@ -32,7 +32,8 @@ Route::get("/test", function () {
     dd($result);
 });
 
-Route::get("/product/create", [ProductsController::class, 'create'])->middleware('guest')->name('product.store');
+Route::get("/product/create", [ProductsController::class, 'create'])->middleware('guest');
+Route::post("/product/create", [ProductsController::class, 'store'])->middleware('guest')->name('product.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

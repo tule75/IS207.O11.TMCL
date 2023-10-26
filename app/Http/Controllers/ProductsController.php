@@ -32,7 +32,11 @@ class ProductsController extends Controller
     public function store(StoreProductsRequest $request)
     {
         //
-        Storage::put('public', $request->image);
+        // dd($request->all());
+        $request->file('image')->store("products", 'public');
+
+        return back()->with('message', 'Successfully create');
+        
     }
 
     /**
