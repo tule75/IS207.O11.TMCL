@@ -3,15 +3,16 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use PhpParser\Node\Expr\AssignOp\Minus;
 
-class UpdateWatch_imgRequest extends FormRequest
+class UpdateOrder_iteamsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +24,9 @@ class UpdateWatch_imgRequest extends FormRequest
     {
         return [
             //
-            'img' => ['image'],
-            'watch_id' => ['required'],
+            'quantity' => 'required|integer|min:1',
+            'order_id' => 'required',
+            'product_id' => 'required'
         ];
     }
 }

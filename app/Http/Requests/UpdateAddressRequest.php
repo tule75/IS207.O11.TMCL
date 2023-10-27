@@ -23,6 +23,12 @@ class UpdateAddressRequest extends FormRequest
     {
         return [
             //
+            'province' => ['string', 'required'],
+            'district' => ['string', 'required'],
+            'ward' => ['string', 'required'],
+            'phone_number' => ['string', 'required', 'max_length:11'],
+            'address' => ['string', 'required'],
+            'user_id' => ["required"],
         ];
     }
 }

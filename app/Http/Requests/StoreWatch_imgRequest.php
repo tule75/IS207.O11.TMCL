@@ -27,6 +27,7 @@ class StoreWatch_imgRequest extends FormRequest
         return [
             //
             'img' => ['image'],
+            'watch_id' => ['required'],
         ];
     }
 }

@@ -26,6 +26,9 @@ class UpdateCartsRequest extends FormRequest
     {
         return [
             //
+            'watch_id' => ['required'],
+            'user_id' => ['required'],
+            'quantity' => ['integer','required','min:1'],
         ];
     }
 }

@@ -23,6 +23,9 @@ class UpdateOdersRequest extends FormRequest
     {
         return [
             //
+            'user_id' => ['required'],
+            'address_id' => ['required'],
+            'total_prices' => ['required'],
         ];
     }
 }

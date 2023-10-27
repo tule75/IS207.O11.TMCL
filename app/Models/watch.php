@@ -14,6 +14,7 @@ class Watch extends Model
         'price',
         'storage',
         'brand_id',
+        'slug',
         'category_id',
         'description',
     ];

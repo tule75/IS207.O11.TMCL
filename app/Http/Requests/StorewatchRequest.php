@@ -23,6 +23,10 @@ class StorewatchRequest extends FormRequest
     {
         return [
             //
+            'name' => ['string', 'required'],
+            'price' => ['integer', 'required', 'min: 1'],
+            'storage' => ['integer', 'required', 'min: 0'],
+            'brand_id' => ['required'],
         ];
     }
 }
