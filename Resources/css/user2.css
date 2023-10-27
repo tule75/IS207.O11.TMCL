@@ -113,6 +113,14 @@
     bottom: 0;
 
 }
+.watch-collection--item-display{
+    font-weight: 700;
+    padding: 10px 20px;;
+    border-bottom: 4px solid red;
+    width: 155px;
+    position: relative;
+
+}
 
 .watch-collection--item:hover::after {
     content: '';
