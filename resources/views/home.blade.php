@@ -42,7 +42,7 @@
                         <div class="nav-right--item"><i class="fa fa-heart"></i></div>
                         @if (Route::has('login'))
                             @auth
-                                <a href="{{ url('/dashboard') }}"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
+                                <a href="{{ url('/profile') }}"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
                             @else
                                 <a href="{{ url('/login') }}"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
                             @endauth
