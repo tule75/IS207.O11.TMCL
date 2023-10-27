@@ -4,14 +4,17 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorewatchRequest extends FormRequest
+class StoreWatch_imgRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        if ($this->user()->role = 'manager') {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -23,6 +26,7 @@ class StorewatchRequest extends FormRequest
     {
         return [
             //
+            'img' => ['image'],
         ];
     }
 }

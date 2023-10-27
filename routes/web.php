@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WatchController;
 
 
 /*
@@ -28,8 +29,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get("/test", function () {
-    $result = User::get();
-    dd($result);
+    return view('test');
 });
 
 Route::get("/product/create", [ProductsController::class, 'create'])->middleware('guest');
@@ -40,5 +40,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::post("/watch", [WatchController::class, 'store'])->middleware('auth')->name('watch.store');
 
 require __DIR__.'/auth.php';
