@@ -51,7 +51,7 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 ### How to run
 1. clone
-2. run "composer install" to install all package
+2. run "composer install" to install all package of php, and "npm install" to install all package of nodejs 
 3. copy .env.example and rename to .env and write db_password
 4. run "php artisan migrate" to create database
 5. run "php artisan serve" to run project
