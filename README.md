@@ -49,6 +49,14 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 - **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
 - **[Lendio](https://lendio.com)**
 
+### How to run
+1. clone
+2. run "composer install" to install all package
+3. copy .env.example and rename to .env and write db_password
+4. run "php artisan migrate" to create database
+5. run "php artisan serve" to run project
+   Project run in port 8000
+
 ## Contributing
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
