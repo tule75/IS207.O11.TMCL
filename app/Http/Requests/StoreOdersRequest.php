@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdatewatchRequest extends FormRequest
+class StoreOdersRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,10 +23,9 @@ class UpdatewatchRequest extends FormRequest
     {
         return [
             //
-            'name' => ['string', 'required'],
-            'price' => ['integer', 'required', 'min: 1'],
-            'storage' => ['integer', 'required', 'min: 0'],
-            'brand_id' => ['required'],
+            'user_id' => ['required'],
+            'address_id' => ['required'],
+            'total_prices' => ['required'],
         ];
     }
 }

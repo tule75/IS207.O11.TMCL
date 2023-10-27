@@ -5,18 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Watch extends Model
+class Brand extends Model
 {
-    use HasFactory;
     use HasFactory;
     protected $fillable = [
         'name',
-        'price',
-        'storage',
-        'brand_id',
-        'slug',
-        'category_id',
-        'description',
     ];
-    protected $table = 'watches';
+    protected $table = 'brands';
 }

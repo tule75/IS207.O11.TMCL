@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\watch;
-use App\Http\Requests\StorewatchRequest;
-use App\Http\Requests\UpdatewatchRequest;
+use App\Models\Brand;
+use App\Http\Requests\StoreBrandRequest;
+use App\Http\Requests\UpdateBrandRequest;
 
-class WatchController extends Controller
+class BrandController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,6 @@ class WatchController extends Controller
     public function index()
     {
         //
-        return "hello";
     }
 
     /**
@@ -28,19 +27,15 @@ class WatchController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorewatchRequest $request)
+    public function store(StoreBrandRequest $request)
     {
         //
-        if ($request) {
-            redirect('/');
-        }
-        redirect('/');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(watch $watch)
+    public function show(Brand $brand)
     {
         //
     }
@@ -48,7 +43,7 @@ class WatchController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(watch $watch)
+    public function edit(Brand $brand)
     {
         //
     }
@@ -56,7 +51,7 @@ class WatchController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatewatchRequest $request, watch $watch)
+    public function update(UpdateBrandRequest $request, Brand $brand)
     {
         //
     }
@@ -64,7 +59,7 @@ class WatchController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(watch $watch)
+    public function destroy(Brand $brand)
     {
         //
     }

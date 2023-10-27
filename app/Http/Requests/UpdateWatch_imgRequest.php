@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdatewatchRequest extends FormRequest
+class UpdateWatch_imgRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +23,8 @@ class UpdatewatchRequest extends FormRequest
     {
         return [
             //
-            'name' => ['string', 'required'],
-            'price' => ['integer', 'required', 'min: 1'],
-            'storage' => ['integer', 'required', 'min: 0'],
-            'brand_id' => ['required'],
+            'img' => ['image'],
+            'watch_id' => ['required'],
         ];
     }
 }

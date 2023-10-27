@@ -11,7 +11,7 @@ class StorewatchRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,10 @@ class StorewatchRequest extends FormRequest
     {
         return [
             //
+            'name' => ['string', 'required'],
+            'price' => ['integer', 'required', 'min: 1'],
+            'storage' => ['integer', 'required', 'min: 0'],
+            'brand_id' => ['required'],
         ];
     }
 }
