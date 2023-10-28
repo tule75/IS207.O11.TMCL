@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\watch;
+use App\Models\Watch;
 use App\Http\Requests\StorewatchRequest;
 use App\Http\Requests\UpdatewatchRequest;
 
@@ -40,15 +40,16 @@ class WatchController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(watch $watch)
+    public function show(Watch $watch)
     {
         //
+        return view('products.watch');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(watch $watch)
+    public function edit(Watch $watch)
     {
         //
     }
@@ -56,7 +57,7 @@ class WatchController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatewatchRequest $request, watch $watch)
+    public function update(UpdatewatchRequest $request, Watch $watch)
     {
         //
     }
@@ -64,7 +65,7 @@ class WatchController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(watch $watch)
+    public function destroy(Watch $watch)
     {
         //
     }
