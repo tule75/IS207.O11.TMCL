@@ -126,6 +126,14 @@
     width: 80%;
 }
 
+.watch-collection--item-stand {
+    width: 155px;
+    font-weight: 700;
+    padding: 10px 20px;
+    position: relative;
+    border-bottom: 4px red solid;
+}
+
 /*banner*/
 .banner {
     display: block;
@@ -137,10 +145,13 @@
 }
 
 .banner-introduction {
+    font-size: 18px;
     background-color: #F2F2F2;
-    display: flex;
-    flex-direction: column;
+    padding: 10px 500px;
+    height: 100px;
+    display: inline-block;
     justify-content: center;
+    text-align: center;
 }
 
 .intro-text {
@@ -156,6 +167,16 @@
     justify-content: center;
     align-items: center;
 }
+
+.pagination-img {
+    display: block;
+    width: 130px;
+    height: 120px;
+    object-fit: scale-down;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 /*body*/
 
@@ -213,16 +234,6 @@
 
 /* footer */
 
-.cartier {
-    font-family: 'Roboto', sans-serif;
-    overflow: hidden;
-}
-
-.has-link {
-    color: #1d1c1c;
-    text-decoration: none;
-    cursor: pointer;
-}
 
 .footer {
     display: flex;
