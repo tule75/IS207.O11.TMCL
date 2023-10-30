@@ -15,7 +15,7 @@
     </style>
 
     <link rel="stylesheet" href="{{ asset('/icon/fontawesome-free-6.4.2-web/css/regular.min.css')}}">
-    <link rel="stylesheet" href="{{asset('/css/home.css')}}">
+    <link rel="stylesheet" href="{{ asset('/css/home.css') }}">
 </head>
 
 <body>
@@ -35,19 +35,22 @@
                     </ul>
 
                     <div class="logo">
-                        <img class="logo-img" src="{{ asset('/img/Screenshot_2023-10-16_121457-removebg.png')}}" alt="">
+                        <a href="/"><img class="logo-img" src="{{ asset('/img/Screenshot_2023-10-16_121457-removebg.png')}}" alt=""></a>
                     </div>
 
                     <div class="nav-right">
                         <div class="nav-right--item"><i class="fa fa-heart"></i></div>
                         @if (Route::has('login'))
                             @auth
-                                <a href="{{ url('/profile') }}"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
+                                <a href="{{ url('/profile') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
+                                <a href="{{Route('cart.index')}}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
                             @else
-                                <a href="{{ url('/login') }}"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
+                                <a href="{{ url('/login') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
+                                <a href="{{ url('/login') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
                             @endauth
                         @endif
-                        <div class="nav-right--item"><a href="{{Route('cart.index')}}"><i class="fa fa-cart-plus"></i></a></div>
+
+                        
                     </div>
                 </div>
 
@@ -105,7 +108,7 @@
                         <p>*Count item here</p>
                     </div>
                     <div class="grid-choice">
-                        <button class="grid">Grid <i class="fa fa-windows"></i></button>
+                        <button class="">Grid <i class="fa fa-windows"></i></button>
                         <button class="feed">Feed <i class="fa fa-window-restore"></i></button>
                     </div>
                 </div>
@@ -276,7 +279,7 @@
             <div class="complimentary">
                 <div class="complimentary-img-container">
 
-                    <img class="complimentary-img " src="{{ asset('/img/Screenshot_2023-10-16_211957-removebg-preview.png')}}"
+                    <img class="complimentary-img " src="{{ asset('/img/Screenshot_2023-10-16_211957-removebg-preview.png') }}"
                         alt="">
 
                 </div>
@@ -290,7 +293,7 @@
             </div>
             <div class="complimentary">
                 <div class="complimentary-img-container">
-                    <img class="complimentary-img " src="{{ asset('/img/wrap.png')}}" alt="">
+                    <img class="complimentary-img " src="{{ asset('/img/wrap.png') }}" alt="">
                 </div>
                 <a href="" class="has-link complimentary-text">FREE GIFT WRAPPING</a>
             </div>
@@ -343,7 +346,7 @@
     </div>
 </body>
 
-<script src="{{ asset('../js/home.js')}}"></script>
+<script src="{{ asset('js/home.js')}}"></script>
 
 
 </html>
