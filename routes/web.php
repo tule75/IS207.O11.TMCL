@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WatchController;
 use App\Http\Controllers\CartsController;
+use App\Http\Controllers\AddressController;
 
 
 /*
@@ -34,6 +35,13 @@ Route::get('/dashboard', function () {
 Route::get("/test", function () {
     return view('test');
 });
+// Lấy danh sách tỉnh
+Route::post("/api/get/provinces", [AddressController::class, 'get_provinces']);
+// lấy danh sách huyện
+Route::post("/api/get/districts", [AddressController::class, 'get_districts']);
+//lấy danh sách xã
+Route::post("/api/get/wards", [AddressController::class, 'get_wards']);
+
 // test product routes
 Route::get("/product/create", [ProductsController::class, 'create'])->middleware('guest');
 Route::post("/product/create", [ProductsController::class, 'store'])->middleware('guest')->name('product.store');
