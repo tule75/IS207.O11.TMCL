@@ -73,6 +73,17 @@
     background-color: #1d1c1c;
 }
 
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10%;
+}
+
+.logo-img {
+    max-height: 50px;
+}
+
 .nav-right {
     display: flex;
     width: 14%;
@@ -136,7 +147,7 @@
 
 /*banner*/
 .banner {
-    display: block;
+    display: flex;
     overflow: hidden;
     width: 100%;
     background-color: #F2F2F2;
@@ -155,17 +166,12 @@
 }
 
 .intro-text {
-    margin-top: 4%;
-    margin-right: 35%;
+    margin-top: 12%;
     margin-left: 35%;
     max-width: 68%;
     text-align: center;
     line-height: 25px;
     letter-spacing: 0.6px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .pagination-img {
@@ -185,7 +191,6 @@
 .body {
     width: 92%;
     margin-bottom: 20px;
-    display: flex;
 }
 
 .slidebar {
@@ -215,7 +220,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 18px;
-    margin-left: 10%;
+    margin-left: 430px;
     padding-bottom: 8%;
 }
 
@@ -285,22 +290,3 @@
 .subcr {
     display: flex;
 }
-
-/* #address {
-    display: none;
-}
-#order {
-    display: none;
-}
-#password {
-    display: none;
-}
-#profile {
-    display: none;
-}
-#subcription {
-    display: none;
-}
-#wishlist {
-    display: none;
-} */

@@ -73,6 +73,17 @@
     background-color: #1d1c1c;
 }
 
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10%;
+}
+
+.logo-img {
+    max-height: 50px;
+}
+
 .nav-right {
     display: flex;
     width: 14%;
@@ -208,13 +219,12 @@
     outline: none;
 }
 
-.bd-content {
+/* .bd-content {
     margin-left: 420px;
-}
+} */
 
 .bd-content-field {
     padding-bottom: 120px;
-    margin-left: 10%;
 }
 
 .bd-content-header {
