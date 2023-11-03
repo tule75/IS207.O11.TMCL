@@ -5,16 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Watch;
 use App\Http\Requests\StorewatchRequest;
 use App\Http\Requests\UpdatewatchRequest;
+use Illuminate\Support\Str;
 
 class WatchController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public static function index()
     {
         //
-        return "hello";
+        $watches = Watch::all();
+        return $watches;
     }
 
     /**
@@ -31,10 +33,25 @@ class WatchController extends Controller
     public function store(StorewatchRequest $request)
     {
         //
-        if ($request) {
-            redirect('/');
+        try {
+            $slug = Str::slug($request->name, '-');
+            $watches = Watch::create([
+                'name' => $request->name,
+                'price' => $request->price,
+                'storage' => $request->input('storage'),
+                'category_id' => $request->category_id,
+                'brand_id' => $request->brand_id,
+                'description' => $request->description,
+                'gender' => $request->gender,
+                'slug' => $slug
+            ]);
+        } catch (\Exception $e) { 
+            echo("error");
+            dd($e);
         }
-        redirect('/');
+        
+
+        dd($watches);
     }
 
     /**

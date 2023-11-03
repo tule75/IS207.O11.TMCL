@@ -6,6 +6,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -23,6 +26,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -48,6 +52,21 @@ class User extends Authenticatable
     protected function password():Attribute
     {
         return Attribute::make();
+    }
+
+    public function address():HasMany
+    {
+        return $this->hasMany(Address::class);
+    }
+
+    public function cartProducts():BelongsToMany
+    {
+        return $this->belongsToMany(Watch::class, 'Carts', 'user_id', 'watch_id');
+    }
+
+    public function defaultAddress():HasOne
+    {
+        return $this->hasOne(default_address::class);
     }
 
 }

@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Oders extends Model
+class Orders extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -16,5 +17,11 @@ class Oders extends Model
         'total_prices',
         'discount',
     ];
+
+    public function orders(): BelongsToMany
+    {
+        return $this->belongsToMany(Orders::class, 'Orders_items', 'order_id', 'watch_id');
+    }
+
     protected $table = 'Orders';
 }

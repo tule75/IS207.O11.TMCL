@@ -6,18 +6,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Watch_img extends Model
+class Order_items extends Model
 {
     use HasFactory;
+    //có thể điền vào
     protected $fillable = [
-        'img',
-        'watch_id'
+        'order_id',
+        'product_id',
+        'quantity',
     ];
 
-    public function watch():BelongsTo
+    private function watches(): BelongsTo
     {
-        return $this->belongsTo(Watch::class);
+        return $this->belongsTo(Products::class);
     }
 
-    protected $table = 'watch_img';
+    protected $table = 'order_items';
 }

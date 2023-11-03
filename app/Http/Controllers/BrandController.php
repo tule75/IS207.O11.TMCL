@@ -30,6 +30,8 @@ class BrandController extends Controller
     public function store(StoreBrandRequest $request)
     {
         //
+        $brand = Brand::create(['name' => $request->name]);
+        dd($brand);
     }
 
     /**

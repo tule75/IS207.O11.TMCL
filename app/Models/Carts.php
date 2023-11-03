@@ -13,5 +13,6 @@ class Carts extends Model
         'user_id',
         'quantity'
     ];
+
     protected $table = 'Carts';
 }
