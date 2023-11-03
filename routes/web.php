@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WatchController;
 use App\Http\Controllers\CartsController;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\HomeController;
 
 
 /*
@@ -22,9 +23,7 @@ use App\Http\Controllers\AddressController;
 |
 */
 // HOME route
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [HomeController::class, 'show']);
 
 // này là của framework route
 Route::get('/dashboard', function () {
@@ -41,6 +40,8 @@ Route::post("/api/get/provinces", [AddressController::class, 'get_provinces']);
 Route::post("/api/get/districts", [AddressController::class, 'get_districts']);
 //lấy danh sách xã
 Route::post("/api/get/wards", [AddressController::class, 'get_wards']);
+// thêm address 
+Route::post("/add/address", [AddressController::class, 'store'])->middleware('auth')->name('store.address');
 
 // test product routes
 Route::get("/product/create", [ProductsController::class, 'create'])->middleware('guest');
@@ -56,6 +57,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // Watch routes
 Route::post("/watch", [WatchController::class, 'store'])->middleware('auth')->name('watch.store');
 Route::get("/watch/{id}", [WatchController::class, 'show'])->name('watch.show');
+
+// Brand routes
+Route::post("/brand", [BrandController::class, 'store'])->name('brand');
 
 // cart routes
 Route::middleware(['auth'])->group(function () {
