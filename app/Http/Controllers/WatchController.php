@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Watch;
 use App\Http\Requests\StorewatchRequest;
 use App\Http\Requests\UpdatewatchRequest;
+use Exception;
 use Illuminate\Support\Str;
 
 class WatchController extends Controller
@@ -25,6 +26,7 @@ class WatchController extends Controller
     public function create()
     {
         //
+        return view('watch.create');
     }
 
     /**
@@ -62,6 +64,7 @@ class WatchController extends Controller
     {
         //
         // return view('products.watch');
+        return view('watch.show', [$watch]);
     }
 
     /**
@@ -70,6 +73,7 @@ class WatchController extends Controller
     public function edit(Watch $watch)
     {
         //
+        return view('watch.edit', $watch);
     }
 
     /**
@@ -78,6 +82,12 @@ class WatchController extends Controller
     public function update(UpdatewatchRequest $request, Watch $watch)
     {
         //
+        try {
+            $watch->fill($request->all())->save();
+            return back()->withInput(['message' => 'successfully updated']);
+        } catch (Exception $e) {
+            dd($e);
+        }
     }
 
     /**
@@ -86,5 +96,26 @@ class WatchController extends Controller
     public function destroy(Watch $watch)
     {
         //
+        try {
+            $watch->delete();
+            return back()->withInput(['message' => 'Xóa thành công']);
+        } catch (\Exception $e) { 
+            dd($e);
+        }
+    }
+
+    // Show all deleted watch
+    public function destroyed() {
+        return Watch::withTrashed()->get();
+    }
+
+    // restore deleted watch
+    public function restore($watch) {
+        try {
+            Watch::withTrashed()->find($watch)->restore();
+            return back()->withInput(['message' => 'Xóa thành công']);
+        } catch (\Exception $e) {
+            dd($e);
+        }
     }
 }

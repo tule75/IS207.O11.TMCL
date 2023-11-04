@@ -11,6 +11,9 @@ class UpdatewatchRequest extends FormRequest
      */
     public function authorize(): bool
     {
+        if ($this->user()->role == 'manager') {
+            return true;
+        }
         return false;
     }
 
@@ -26,7 +29,6 @@ class UpdatewatchRequest extends FormRequest
             'name' => ['string', 'required'],
             'price' => ['integer', 'required', 'min: 1'],
             'storage' => ['integer', 'required', 'min: 0'],
-            'brand_id' => ['required'],
         ];
     }
 }

@@ -42,9 +42,6 @@ Route::post('/tokens/create', function (Request $request) {
 
 Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
-// Tạo sản phẩm đồng hồ
-Route::post('/watch/store', [WatchController::class, 'store'])->middleware('auth:sanctum');
-
 // Tạo address cho user
 Route::post('/address/store', [AddressController::class, 'store'])->middleware('auth:sanctum');
 
@@ -55,4 +52,16 @@ Route::post('order/create', [OrderController::class, 'store'])->middleware('auth
     // Get Order
 Route::post('order/{user_id}/get', [OrderController::class, 'showForUser'])->middleware('auth:sanctum');
     // Delete order
-Route::delete('order/delete/{order}', [OrderController::class, 'destroy'])->middleware('auth:sanctum');
+Route::delete('order/{order}/delete', [OrderController::class, 'destroy'])->middleware('auth:sanctum');
+
+// Watch
+    // Tạo sản phẩm đồng hồ
+Route::post('/watch/store', [WatchController::class, 'store'])->middleware('auth:sanctum');
+    //update
+Route::post('/watch/{watch}/update', [WatchController::class, 'update'])->middleware('auth:sanctum');
+    //delete
+Route::delete('/watch/{watch}/delete', [WatchController::class, 'destroy'])->middleware('auth:sanctum');
+    //all deleted
+Route::post('/watch/deleted/all', [WatchController::class, 'destroyed'])->middleware('auth:sanctum');
+    //restore deleted
+Route::post('/watch/{watch}/restore', [WatchController::class, 'restore'])->middleware('auth:sanctum');

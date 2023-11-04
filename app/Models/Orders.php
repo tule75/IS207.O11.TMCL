@@ -12,7 +12,6 @@ class Orders extends Model
     protected $fillable = [
         'user_id',
         'status',
-        'quantity',
         'address_id',
         'total_prices',
         'discount',
@@ -20,7 +19,7 @@ class Orders extends Model
 
     public function orders(): BelongsToMany
     {
-        return $this->belongsToMany(Orders::class, 'Orders_items', 'order_id', 'watch_id');
+        return $this->belongsToMany(Watch::class, 'Order_items', 'order_id', 'watch_id')->withTrashed();
     }
 
     protected $table = 'Orders';
