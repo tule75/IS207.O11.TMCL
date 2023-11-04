@@ -72,6 +72,8 @@ class OrderController extends Controller
     public function showForUser($user_id) 
     {
         return response()->json(Orders::where('user_id', $user_id)->get());
+        // $order = Orders::where('user_id', $user_id)->first();
+        // return response()->json($order->orders);
     }
 
     /**
