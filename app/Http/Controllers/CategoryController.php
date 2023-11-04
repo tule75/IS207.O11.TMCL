@@ -5,15 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use Exception;
 
 class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public static function index()
     {
         //
+        return Category::all();
     }
 
     /**
@@ -30,8 +32,14 @@ class CategoryController extends Controller
     public function store(StoreCategoryRequest $request)
     {
         //
-        $cate = Category::create(['name' => $request->name, 'description' => $request->description]);
-        return ['category' => $cate];
+        try {
+            Category::create(['name' => $request->name, 'description' => $request->description]);
+            return back()->withInput(['message' => 'Tạo thành công']);
+        } catch (Exception $e) {
+            return back()->withInput(['message' => $e->getMessage()]);
+        }
+        
+        // dd($cate);
     }
 
     /**

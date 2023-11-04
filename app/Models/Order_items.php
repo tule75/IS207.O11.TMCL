@@ -12,9 +12,11 @@ class Order_items extends Model
     //có thể điền vào
     protected $fillable = [
         'order_id',
-        'product_id',
+        'watch_id',
         'quantity',
     ];
+
+    public $timestamps = false;
 
     private function watches(): BelongsTo
     {

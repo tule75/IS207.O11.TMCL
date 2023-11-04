@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Address extends Model
 {
@@ -23,5 +24,12 @@ class Address extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function default()
+    {
+        if ($this->hasOne(User::class) == null) {
+            return false;
+        }
+        return true;
+    }
     protected $table='address';
 }

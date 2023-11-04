@@ -35,7 +35,8 @@ class WatchController extends Controller
         //
         try {
             $slug = Str::slug($request->name, '-');
-            $watches = Watch::create([
+            // $watches = 
+            Watch::create([
                 'name' => $request->name,
                 'price' => $request->price,
                 'storage' => $request->input('storage'),
@@ -45,13 +46,13 @@ class WatchController extends Controller
                 'gender' => $request->gender,
                 'slug' => $slug
             ]);
+            // dd($watches);
+            return back()->withInput(['message' => 'Successfully created']);
         } catch (\Exception $e) { 
             echo("error");
             dd($e);
         }
         
-
-        dd($watches);
     }
 
     /**
@@ -60,7 +61,7 @@ class WatchController extends Controller
     public function show(Watch $watch)
     {
         //
-        return view('products.watch');
+        // return view('products.watch');
     }
 
     /**

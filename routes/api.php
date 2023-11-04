@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\WatchController;
 use App\Models\User;
 
@@ -46,3 +47,12 @@ Route::post('/watch/store', [WatchController::class, 'store'])->middleware('auth
 
 // Tạo address cho user
 Route::post('/address/store', [AddressController::class, 'store'])->middleware('auth:sanctum');
+
+// Order
+    // Tạo order
+Route::post('order/create', [OrderController::class, 'store'])->middleware('auth:sanctum');
+// Route::post('order/create', function () {dd(1);});
+    // Get Order
+Route::post('order/{user_id}/get', [OrderController::class, 'showForUser'])->middleware('auth:sanctum');
+    // Delete order
+Route::delete('order/delete/{order}', [OrderController::class, 'destroy'])->middleware('auth:sanctum');
