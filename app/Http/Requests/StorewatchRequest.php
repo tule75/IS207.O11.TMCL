@@ -11,7 +11,10 @@ class StorewatchRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        if ($this->user()->role = 'manager') {
+            return true;
+        }
+        return false;
     }
 
     /**

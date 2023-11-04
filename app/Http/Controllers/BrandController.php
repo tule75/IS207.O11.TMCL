@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Http\Requests\StoreBrandRequest;
 use App\Http\Requests\UpdateBrandRequest;
+use Exception;
 
 class BrandController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public static function index()
     {
         //
+        $brand = Brand::all();
+        return $brand;
     }
 
     /**
@@ -30,8 +33,14 @@ class BrandController extends Controller
     public function store(StoreBrandRequest $request)
     {
         //
-        $brand = Brand::create(['name' => $request->name]);
-        dd($brand);
+        try {
+            Brand::create(['name' => $request->name]);
+            // dd($brand);
+            return back()->withInput(['message' => 'Tạo thành công']);
+        } catch (Exception $e) {
+            return back()->withInput(['message' => $e->getMessage()]);
+        }
+       
     }
 
     /**

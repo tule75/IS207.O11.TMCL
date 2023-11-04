@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Order_iteams;
 use App\Http\Requests\StoreOrder_iteamsRequest;
 use App\Http\Requests\UpdateOrder_iteamsRequest;
+use App\Models\Order_items;
+use App\Models\Watch;
 
 class OrderIteamsController extends Controller
 {
@@ -27,15 +29,49 @@ class OrderIteamsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreOrder_iteamsRequest $request)
+    public static function store($request)
     {
         //
+        // $validated = $request->validate([
+        //     //
+        //     'quantity' => 'required|integer|min:1',
+        //     'order_id' => 'required',
+        //     'product_id' => 'required'
+        // ]);
+        try {
+            $order_id = $request['order_id'];
+            $price = 0;
+            $watches_id = $request['watches_id'];
+            $quantity = $request['quantity'];
+            foreach ($watches_id as $i => $watch_id) {
+
+                $watch = Watch::find($watch_id);
+                $price += $watch->price;
+
+                //Kiểm tra còn hàng trong kho hong, ko còn thì trả về -1 rồi báo lỗi
+                if ($quantity[$i] > $watch->storage)
+                {
+                    return -1;
+                }
+                else {
+                    $watch->storage -= $quantity[$i];
+                    $watch->save();
+                }
+                Order_items::create(['order_id' => $order_id, 'watch_id' => $watch_id, 'quantity' => $quantity[$i]]);
+            }
+
+            return $price;
+        } catch (\Exception $e) {
+            dd($e);
+        }
+
+        
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Order_iteams $order_iteams)
+    public function show()
     {
         //
     }
@@ -43,7 +79,7 @@ class OrderIteamsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Order_iteams $order_iteams)
+    public function edit()
     {
         //
     }
@@ -51,7 +87,7 @@ class OrderIteamsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateOrder_iteamsRequest $request, Order_iteams $order_iteams)
+    public function update()
     {
         //
     }
@@ -59,8 +95,9 @@ class OrderIteamsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Order_iteams $order_iteams)
+    public static function destroy($order_id)
     {
         //
+        Order_items::where('order_id', $order_id)->get()->each->delete();
     }
 }
