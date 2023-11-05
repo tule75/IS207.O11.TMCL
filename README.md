@@ -50,11 +50,13 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 - **[Lendio](https://lendio.com)**
 
 ### How to run
-1. clone
-2. run "composer install" to install all package of php, and "npm install" to install all package of nodejs 
-3. copy .env.example and rename to .env and write db_password
-4. run "php artisan migrate" to create database
-5. run "php artisan serve" to run project and use another terminal to run "npm run dev"
+1. Install Composer (https://getcomposer.org/Composer-Setup.exe for windows)
+2. clone repo
+3. run "composer install" to install all package of php, and "npm install" to install all package of nodejs 
+4. copy .env.example and rename to .env and write db_password
+5. add gogle client id and secret id for login with google
+6. run "php artisan migrate" to create database
+7. run "php artisan serve" to run project and use another terminal to run "npm run dev"
    Project run in port 8000
 
 ## Contributing
