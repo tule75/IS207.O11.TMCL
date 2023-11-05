@@ -68,8 +68,7 @@
         <div class="banner">
             <div class="banner-img">
 
-                <img class="banner-img-link" src="{{ asset('/img/CARTIER_HAUTEJO_1920x800_HEADER_ALL-WATCHES_V2.webp')}}"
-                    alt="">
+                <img class="banner-img-link" src="{{ asset('/img/CARTIER_HAUTEJO_1920x800_HEADER_ALL-WATCHES_V2.webp')}}"alt="">
 
             </div>
             <div class="banner-introduction">
@@ -107,10 +106,19 @@
                     <div class="counter">
                         <p>*Count item here</p>
                     </div>
-                    <div class="grid-choice">
-                        <button class="">Grid <i class="fa fa-windows"></i></button>
-                        <button class="feed">Feed <i class="fa fa-window-restore"></i></button>
+                    <div class="flex justify-center align-middle w-200">
+                        <button id="grid" style="margin-right: 10px;">
+                            <p class="mr-10px">
+                                Grid <i class="fa fa-windows mr-10"></i>
+                            </p>
+                        </button>
+                        <button id="feed" class="">
+                           <p>
+                             Feed <i class="fa fa-window-restore"></i>
+                           </p>
+                        </button>
                     </div>
+                    
                 </div>
                 <div class="products-container">
                     <!-- item -->
@@ -277,22 +285,19 @@
         <!-- extra infomation start -->
         <div class="extra-information">
             <div class="complimentary">
-                <div class="complimentary-img-container">
-
-                    <img class="complimentary-img " src="{{ asset('/img/Screenshot_2023-10-16_211957-removebg-preview.png') }}"
-                        alt="">
-
+                <div class="flex justify-center">
+                    <img class="complimentary-img " src="{{ asset('/img/Screenshot_2023-10-16_211957-removebg-preview.png') }}" alt="">
                 </div>
                 <a href="" class="has-link complimentary-text">COMPLIMENTARY DELIVERY</a>
             </div>
             <div class="complimentary">
-                <div class="complimentary-img-container">
+                <div class="flex justify-center">
                     <img class="complimentary-img " src="{{ asset('/img/return.png')}}" alt="">
                 </div>
                 <a href="" class="has-link complimentary-text">EASY RETURN OR EXCHANGE</a>
             </div>
             <div class="complimentary">
-                <div class="complimentary-img-container">
+                <div class="flex justify-center">
                     <img class="complimentary-img " src="{{ asset('/img/wrap.png') }}" alt="">
                 </div>
                 <a href="" class="has-link complimentary-text">FREE GIFT WRAPPING</a>

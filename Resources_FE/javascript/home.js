@@ -43,22 +43,22 @@ function changePage(i) {
 const grid_list = document.querySelector('.grid-choice');
 const objectIMGs = document.querySelectorAll('.object-img');
 const productObjects = document.querySelectorAll('.product-object');
-const grid = document.querySelector('.grid');
+const grid = document.querySelector('#grid');
 const feed = document.querySelector('.feed');
 
 const counter= document.querySelector('.counter');
 counter.innerHTML = productObjects.length +" "+ "items";
 console.log(productObjects.length)
 
-grid.addEventListener("click", () => {
-    productObjects.forEach((product,index) => {
-        product.style.width = "250px";
-    })
-    objectIMGs.forEach((objectIMG,index) => {
-        objectIMG.style.width = "250px";
-    })
+// grid.addEventListener("click", () => {
+//     productObjects.forEach((product,index) => {
+//         product.style.width = "250px";
+//     })
+//     objectIMGs.forEach((objectIMG,index) => {
+//         objectIMG.style.width = "250px";
+//     })
    
-})
+// })
 
 feed.addEventListener("click", () => {
     productObjects.forEach((product,index) => {

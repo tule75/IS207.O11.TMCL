@@ -43,8 +43,8 @@ function changePage(i) {
 const grid_list = document.querySelector('.grid-choice');
 const objectIMGs = document.querySelectorAll('.object-img');
 const productObjects = document.querySelectorAll('.product-object');
-const grid = document.querySelector('.grid');
-const feed = document.querySelector('.feed');
+const grid = document.querySelector('#grid');
+const feed = document.querySelector('#feed');
 
 const counter= document.querySelector('.counter');
 counter.innerHTML = productObjects.length +" "+ "items";
