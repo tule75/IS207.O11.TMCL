@@ -69,3 +69,5 @@ feed.addEventListener("click", () => {
     })
    
 })
+
+// modal

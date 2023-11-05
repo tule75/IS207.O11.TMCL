@@ -69,3 +69,7 @@ feed.addEventListener("click", () => {
     })
    
 })
+
+function toggleModal() {
+    document.getElementById('cd_modal').classList.toggle('hidden');
+}
