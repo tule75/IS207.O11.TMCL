@@ -10,7 +10,7 @@ use App\Http\Controllers\WatchController;
 use App\Http\Controllers\CartsController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\Manager;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,4 +65,10 @@ Route::post("/brand", [BrandController::class, 'store'])->name('brand');
 Route::middleware(['auth'])->group(function () {
     Route::get('/cart', [CartsController::class, 'index'])->name('cart.index');
 });
+
+// manager routes
+Route::get("manager", function () {
+    return view('manager');
+} );
+
 require __DIR__.'/auth.php';
