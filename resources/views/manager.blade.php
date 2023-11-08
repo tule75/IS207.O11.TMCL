@@ -62,11 +62,22 @@
                     <div class="select-click">Setting</div>
                 </div>
             </div>
-            <div class="main-right flex items-center justify-center ">
+            <div class="main-right">
                <div class="main-right-content">
                     <div class="select-container active">
-                           Dashboard
-
+                           <div class="row">
+                                <div id="chart" class="col">
+                                <h3>Total Monthly <select id="monthSelect">
+                                    <option value=""></option>
+                                </select></h3>
+                                </div>
+                                <div class="col ">
+                                    <div class="spark-1">heelo</div>
+                                </div>
+                                <div class="col">
+                                    <div class="spark-1">heelo</div>
+                                </div>
+                           </div>
                     </div>
                     <div class="select-container click">
                         <div class="subpage-product-container">
@@ -228,5 +239,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.44.0/apexcharts.min.js"></script>
 <!-- end chart -->
 <script src="{{asset('js/manager.js')}}"></script>
+<script src="{{asset('js/dashboard.js')}}"></script>
+
 
 </html>

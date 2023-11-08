@@ -104,8 +104,11 @@
     background-color: #ddd;
 }
 .main-right {
-    width: 800px;
+    width: 100%;
     display: flex;
+}
+.main-right-content {
+    width: 100%;
 }
 .select-container{
     display: none;
@@ -233,4 +236,15 @@
 .submit-container {
     border: 1px solid #ddd;
     padding: 5px 15px;
+}
+
+.row {
+    margin: 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.col {
+    width: 30%;
+    background-color: #ddd;
 }
