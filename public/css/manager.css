@@ -246,5 +246,21 @@
 }
 .col {
     width: 30%;
-    background-color: #ddd;
+    border-left: 7px solid black;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+#monthRevenue {
+    padding: 10px 10px;
+    height: 10%;
+}
+.RevenueResults {
+    font-size: 25px;
+    font-weight: bolder;
+}
+.no-data {
+    font-size: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

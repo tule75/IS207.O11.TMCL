@@ -31,13 +31,12 @@ for (var i = 0; i < data.dates.length; i++) {
 }
 
 
-// Calculate and display monthly averages
-for (var key in monthlyAverages) {
-    console.log(monthlyAverages[key].count);
-    var average = monthlyAverages[key].sum / monthlyAverages[key].count;
-    // giu lai 2 so 0 sau dau ,
-    console.log(key + " - Average Price: " + average);
-}
+// // Calculate and display monthly averages
+// for (var key in monthlyAverages) {
+//     var average = monthlyAverages[key].sum / monthlyAverages[key].count;
+//     // giu lai 2 so 0 sau dau ,
+//     console.log(key + " - Average Price: " + average);
+// }
 // draw dasboard
 
 var chartData = Object.keys(monthlyAverages).map(function(key) {
@@ -46,21 +45,48 @@ var chartData = Object.keys(monthlyAverages).map(function(key) {
         average: monthlyAverages[key].sum / monthlyAverages[key].count
     };
 });
-console.log(chartData)
+
+
+// total monthly
+const monthSelected = document.querySelector('#monthSelect');
+chartData.forEach((month, index) => {
+    const optionSelects = document.createElement('option');
+    optionSelects.name = month.monthYear.split(" ")[0];
+    optionSelects.setAttribute("class", "month");
+    optionSelects.innerHTML = month.monthYear.split(" ")[0];
+    optionSelects.value = month.average;
+    monthSelected.appendChild(optionSelects);
+})
+//  display revenue result
+monthSelected.addEventListener("change", function(event) {
+    // Get the selected value
+    const selectedValue = event.target.options[event.target.selectedIndex].value;
+    const selectedName= event.target.options[event.target.selectedIndex].name;
+
+    // Check if a monthRevenue element already exists and update its value, or create a new one
+    let monthRevenue = document.querySelector('.RevenueResults');
+    let showMonth = document.querySelector('.mResult');
+
+    if (!monthRevenue && !showMonth) {
+        showMonth = document.createElement('p');
+        monthRevenue = document.createElement('span');
+        monthRevenue.setAttribute("class", "RevenueResults");
+        showMonth.setAttribute("class", "mResult");
+        document.querySelector('.rev-result').appendChild(monthRevenue);
+        document.querySelector('.rev-result').appendChild(showMonth);
+    }
+        showMonth.textContent = "Select :" + " " + selectedName;
+        monthRevenue.innerHTML = selectedValue;
+        document.querySelector('.no-data').style.display = 'none'
+
+});
 const chartContainer = document.querySelector('#chart');
 
-console.log( chartData.map(function(item) { return item.monthYear;  }))
-console.log( chartData.map(function(item) { return item.average;  }))
-// total monthly
-const monthSelect = document.querySelector('#monthSelect');
 
-for(var key in monthlyAverages) {
-    var optionElement = document.createElement('option');
-    optionElement.value = key;
-}
+// bar chart
 var options = {
     series: [{
-        name: 'Average Price',
+        name: 'Average Month',
         data: chartData.map(function(item) {
             return item.average;
         })
@@ -83,6 +109,32 @@ var options = {
         })
     } 
 }
-
 var chartElement = new ApexCharts(chartContainer, options)
+
 chartElement.render();
+// stacked chart
+const stackChart = document.querySelector('#stackChart')
+ var options = {
+          series: [44, 55, 13, 43, 22],
+          chart: {
+          width: 380,
+          type: 'pie',
+        },
+        labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+        };
+
+
+var stackElement = new ApexCharts(stackChart, options)
+
+stackElement.render();

@@ -66,10 +66,13 @@
                <div class="main-right-content">
                     <div class="select-container active">
                            <div class="row">
-                                <div id="chart" class="col">
-                                <h3>Total Monthly <select id="monthSelect">
-                                    <option value=""></option>
-                                </select></h3>
+                                <div id="monthRevenue" class="col ">
+                                    <h3> Monthly Revenue : 
+                                        <span><select id="monthSelect" class="">
+                                        </select></span>
+                                    </h3> 
+                                    <p class="no-data">Chưa chọn tháng</p>
+                                    <div class="rev-result flex justify-between items-center flex-row-reverse"></div>
                                 </div>
                                 <div class="col ">
                                     <div class="spark-1">heelo</div>
@@ -77,6 +80,11 @@
                                 <div class="col">
                                     <div class="spark-1">heelo</div>
                                 </div>
+                           </div>
+
+                           <div class="charts flex justify-evenly" id="">
+                                <div class="bar-chart" id="chart"></div>
+                                <div class="stacked-chart" id="stackChart"></div>
                            </div>
                     </div>
                     <div class="select-container click">
