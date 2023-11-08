@@ -34,3 +34,32 @@ selects.forEach((item,index) => {
         content.classList.add("active");
     }
 })
+
+// click subpage 
+const subpage_Clicks = document.querySelectorAll('.subpage-product-item-click');
+const subpage_Containers = document.querySelectorAll('.subpage-product-container');
+subpage_Clicks.forEach((product,index) => {
+    const content = subpage_Containers[index];
+    product.onclick = () => {
+        // Xóa lớp 'active' khỏi tất cả các phần tử .select-click
+        document.querySelectorAll('.subpage-product-item-click.click').forEach((element) => {
+            element.classList.remove('click');
+        });
+        // Xóa lớp 'active' khỏi tất cả các phần tử .select-container
+        document.querySelectorAll('.subpage-product-container.click').forEach((element) => {
+            element.classList.remove('click');
+        });
+        product.classList.add("click");
+        content.classList.add("click");
+        console.log(content,product);
+    }
+})
+
+// get item option
+const dropItems = document.querySelectorAll('.cate-dropdown-content-item');
+
+dropItems.forEach(dropItem => {
+    dropItem.addEventListener('click', function() {
+        console.log(this.value);
+    })
+});
