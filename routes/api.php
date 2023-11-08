@@ -8,6 +8,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\CartsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MomoPayment;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\WatchController;
 use App\Models\User;
@@ -76,3 +77,6 @@ Route::post('/cart/{user}/show', [CartsController::class, 'show'])->middleware('
 Route::post('/cart/{carts}/{status}', [CartsController::class, 'update'])->middleware('auth:sanctum');
     // Xóa giỏ hàng
 Route::delete('/cart/{carts}', [CartsController::class, 'destroy'])->middleware('auth:sanctum');
+
+//test api 
+Route::post('/payment/momo', [MomoPayment::class, 'send'])->middleware('auth:sanctum');
