@@ -6,7 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\CartsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MomoPayment;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\WatchController;
 use App\Models\User;
@@ -35,7 +37,7 @@ Route::post("/register", [RegisteredUserController::class, 'store'])->name('regi
 Route::post("/register/admin", [RegisteredUserController::class, 'storeAdmin']);
 
 Route::post('/tokens/create', function (Request $request) {
-    $token = User::find(6)->createToken($request->token_name);
+    $token = User::find(1)->createToken($request->token_name);
  
     return ['token' => $token->plainTextToken];
 });
@@ -65,3 +67,16 @@ Route::delete('/watch/{watch}/delete', [WatchController::class, 'destroy'])->mid
 Route::post('/watch/deleted/all', [WatchController::class, 'destroyed'])->middleware('auth:sanctum');
     //restore deleted
 Route::post('/watch/{watch}/restore', [WatchController::class, 'restore'])->middleware('auth:sanctum');
+
+// Cart
+    // Thêm vào giỏ hàng
+Route::post('/cart/store', [CartsController::class, 'store'])->middleware('auth:sanctum');
+    // Show giỏ hàng
+Route::post('/cart/{user}/show', [CartsController::class, 'show'])->middleware('auth:sanctum');
+    // Cập nhật giỏ hàng
+Route::post('/cart/{carts}/{status}', [CartsController::class, 'update'])->middleware('auth:sanctum');
+    // Xóa giỏ hàng
+Route::delete('/cart/{carts}', [CartsController::class, 'destroy'])->middleware('auth:sanctum');
+
+//test api 
+Route::post('/payment/momo', [MomoPayment::class, 'send'])->middleware('auth:sanctum');
