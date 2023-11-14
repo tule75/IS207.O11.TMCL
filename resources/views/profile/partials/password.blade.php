@@ -1,8 +1,4 @@
 
-<div class="intro-text">
-                        <h5>MY PASSWORD</h5>
-                        <div>Manage your password and security preferences.</div>
-                    </div>
     <div class="bd-content-field">
         <div class="password">
             <input type="password" id="cpasswordField" minlength="8" placeholder="Current Password">
@@ -22,5 +18,8 @@
         <div class="password">
             <input type="password" id="cpasswordField" placeholder="Confirm Password">
         </div>
+        <div class="save">
+                        <button class="menu-bt">SAVE</button>
+                    </div>
     </div>
 

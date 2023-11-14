@@ -1,5 +1,4 @@
-
-            <div class="content">
+<div class="bd-content-field">
                 <div class="subcr">
                     <h3>MY SUBSCRIPTIONS & INTERESTS</h3>
                     <p>To receive the most relevant information in your inbox, we invite you to fill out the following information.</p>
@@ -140,5 +139,4 @@
                     <button style="margin-left: 350px;"  class="menu-bt">SAVE</button>
                 </div>
             </div>
-        </div>
         
