@@ -6,7 +6,7 @@
     <title>For Manager</title>
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Logo_UIT_updated.svg/1200px-Logo_UIT_updated.svg.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/merchant.css">
+    <link rel="stylesheet" href="../css/manager.css">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     <!-- Styles -->
@@ -72,24 +72,30 @@
                                         </select></span>
                                     </h3> 
                                     <p class="no-data">Chưa chọn tháng</p>
-                                    <div class="rev-result flex justify-between items-center flex-row-reverse"></div>
+                                    <div class="rev-result"></div>
                                 </div>
                                 <div class="col ">
-                                    <div class="spark-1">heelo</div>
+                                    <div class="spark-1">total order </div>
                                 </div>
                                 <div class="col">
-                                    <div class="spark-1">heelo</div>
+                                    <div class="spark-1">product sell</div>
                                 </div>
                            </div>
 
-                           <div class="charts flex justify-evenly" id="">
-                                <div class="bar-chart" id="chart"></div>
-                                <div class="stacked-chart" id="stackChart"></div>
+                           <div class="charts" id="">
+                                <div class="charts-card">
+                                    <p class="chart-title">Top 5 Products</p>
+                                    <div id="bar-chart"></div>
+                                </div>
+                                <div class="charts-card">
+                                    <p class="chart-title">Purchase and Sale Orders</p>
+                                    <div id="area-chart"></div>
+                                </div>
                            </div>
                     </div>
                     <div class="select-container click">
                         <div class="subpage-product-container">
-                        <h2 class="font-bold text-xl flex items-center justify-center">Add Product Form</h2>
+                         <h2 class="font-bold text-xl flex items-center justify-center">Add Product Form</h2>
                             <form action="GET">
                                 <div class="add-product-container flex">
                                    <div class="add-product-left">
@@ -157,75 +163,79 @@
                             </form>
                         </div>
                         <div class="subpage-product-container">
-                            <h2 class="font-bold text-xl flex items-center justify-center">Modify Product Form</h2>
-                            <form action="GET">
-                                <div class="add-product-container flex">
-                                   <div class="add-product-left">
-                                    <div class="product-input-show flex items-center justify-between">
-                                            <label for="pName" class="form-label"> Product Name:  </label>
-                                            <input
-                                            type="text"
-                                            name="pName"
-                                            id="pName"
-                                            placeholder="Product Name"
-                                            class="product-input-area"
-                                            />
-                                        </div>
-                                        <div class="product-input-show flex items-center justify-between">
-                                            <label for="pPrice" class="form-label"> Product Price: </label>
-                                            <input
-                                            type="number"
-                                            name="pPrice"
-                                            id="pPrice"
-                                            placeholder="Product Price"
-                                            class="pPrice"
-                                            />
-                                        </div>
-                                        <div class="product-input-show flex items-center justify-between ">
-                                            <label for="pGender" class="form-label"> Product Gender: </label>
-                                            <input
-                                            type="text"
-                                            name="pGender"
-                                            id="pGender"
-                                            placeholder="Product Gender"
-                                            class="product-input-area"
-                                            />
-                                        </div>
-                                        <div class="product-input-show flex items-center justify-between">
-                                            <label for="pUpload" class="form-label"> Product Image: </label>
-                                            <div class=" translate-x-24">
-                                                <input class="" type="file" name="pUpload" id="pUpload">
+                           <div class="form-container">
+                                <h2 class="font-bold text-xl flex items-center justify-center">Modify Product Form</h2>
+                                <form action="GET">
+                                    <div class="add-product-container">
+                                        <div class="add-product-left">
+                                            <div class="product-input-show flex items-center justify-between">
+                                                <label for="pName" class="form-label"> Product Name:  </label>
+                                                <input
+                                                type="text"
+                                                name="pName"
+                                                id="pName"
+                                                placeholder="Product Name"
+                                                class="product-input-area"
+                                                />
+                                            </div>
+                                            <div class="product-input-show flex items-center justify-between">
+                                                <label for="pPrice" class="form-label"> Product Price: </label>
+                                                <input
+                                                type="number"
+                                                name="pPrice"
+                                                id="pPrice"
+                                                placeholder="Product Price"
+                                                class="pPrice"
+                                                />
+                                            </div>
+                                            <div class="product-input-show flex items-center justify-between ">
+                                                <label for="pGender" class="form-label"> Product Gender: </label>
+                                                <input
+                                                type="text"
+                                                name="pGender"
+                                                id="pGender"
+                                                placeholder="Product Gender"
+                                                class="product-input-area"
+                                                />
+                                            </div>
+                                            <div class="product-input-show flex items-center justify-between">
+                                                <label for="pUpload" class="form-label"> Product Image: </label>
+                                                <div class=" translate-x-24">
+                                                    <input class="" type="file" name="pUpload" id="pUpload">
+                                                </div>
                                             </div>
                                         </div>
-                                   </div>
-                                   <div class="add-product-right mt-4">
-                                        <div class="description_field relative p-4 mt-10">
-                                            <input type="input" class="pDescription outline-none w-40 " placeholder="Typing description in here...." name="pDescription" id='pDescription' required />
-                                            <label for="pDescription" class="form-label-des">Description</label>
+                                        <div class="add-product-right mt-4">
+                                                <div class="description_field relative p-4 mt-10">
+                                                    <input type="input" class="pDescription outline-none w-40 " placeholder="Typing description in here...." name="pDescription" id='pDescription' required />
+                                                    <label for="pDescription" class="form-label-des">Description</label>
+                                                </div>
+                                                <div class="product-cate-drop">
+                                                    <div class="dropdownbtn">
+                                                        Choose Product Category 
+                                                    </div>
+                                                    <section class="cate-dropdown-content" id="pCate">
+                                                        <option class="cate-dropdown-content-item" id="" value="vlue">cat</option >
+                                                        <option class="cate-dropdown-content-item" id="" value="cod">dog</option >
+                                                        <option class="cate-dropdown-content-item" id="" value="d" >horse</option >
+                                                        <option class="cate-dropdown-content-item" id="" value="s">cow</option >
+                                                        <option class="cate-dropdown-content-item" id="" value="s">pig</option >
+                                                    </section>
+                                                </div>
+                                                
                                         </div>
-                                        <div class="product-cate-drop">
-                                            <div class="dropdownbtn">
-                                                   Choose Product Category 
-                                            </div>
-                                            <section class="cate-dropdown-content" id="pCate">
-                                                <option class="cate-dropdown-content-item" id="" value="vlue">cat</option >
-                                                <option class="cate-dropdown-content-item" id="" value="cod">dog</option >
-                                                <option class="cate-dropdown-content-item" id="" value="d" >horse</option >
-                                                <option class="cate-dropdown-content-item" id="" value="s">cow</option >
-                                                <option class="cate-dropdown-content-item" id="" value="s">pig</option >
-                                            </section>
-                                        </div>
-                                        
-                                   </div>
-                                </div>
-                                   
-                                <div class="flex justify-center items-center border-solid m-10">
-                                    <button class="add-product-btn submit-container">Submit</button>
-                                </div>
-                            </form>
+                                    </div>
+                                    
+                                    <div class="flex justify-center items-center border-solid m-10">
+                                        <button class="add-product-btn submit-container">Submit</button>
+                                    </div>
+                                </form>
+                           </div>
                         </div>
                         <div class="subpage-product-container">
-                            <h3>Delete</h3>
+                            <div class="delete-container">
+                                <h2>List product</h2>
+                            </div>
                         </div>
                     </div>
                     <div class="select-container">
