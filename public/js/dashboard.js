@@ -1,13 +1,12 @@
 
 
 var data = {
+    "products" : [20,17,20,5,40],
+    "orders": [15 ,13, 19, 1 ,30],
     "prices": [7114.25, 7126.6, 3330.2 , 434.333, 493.93],
     "dates": ["02 Jun 2023", "05 Jun 2023","05 July 2023","15 May 2023" ,"25 May 2023" /* ... */]
 };
-var staff = {
-    "name": [7114.25, 7126.6, 3330.2 , 434.333, 493.93],
-    "countOder": ["02 Jun 2023", "05 Jun 2023","05 July 2023","15 May 2023" ,"25 May 2023" /* ... */]
-};
+
 
 // Create an object to store monthly averages
 var monthlyAverages = {};
@@ -20,26 +19,34 @@ for (var i = 0; i < data.dates.length; i++) {
     // dataPart 2 : year
     var monthOfYear = dateParts[1] + " " + dateParts[2];
     var price = data.prices[i];
+    var orders = data.orders[i];
+    var products = data.products[i]
 
     // if monthOfYear in monthyAverage object is not exists, set sum and count : 0 
     if (!monthlyAverages[monthOfYear]) {
         monthlyAverages[monthOfYear] = {
             sum: 0,
-            count: 0
+            count: 0,
+            orderCount : 0,
+            productCount:0,
         };
     }
     // else, total  index value of (dates[] = monthOfYear) in monthlyAverages
     monthlyAverages[monthOfYear].sum += price;
     //  total index of monthOfYear in monthAverages
     monthlyAverages[monthOfYear].count++;
+    monthlyAverages[monthOfYear].orderCount += orders;
+    monthlyAverages[monthOfYear].productCount += products;
 }
 var chartData = Object.keys(monthlyAverages).map(function(key) {
     return { 
         monthYear: key, 
-        average: monthlyAverages[key].sum
+        total: monthlyAverages[key].sum,
+        orderCount: monthlyAverages[key].orderCount,
+        productCount : monthlyAverages[key].productCount
     };
-});
 
+});
 
 // total monthly
 const monthSelected = document.querySelector('#monthSelect');
@@ -48,31 +55,45 @@ chartData.forEach((month, index) => {
     optionSelects.name = month.monthYear.split(" ")[0];
     optionSelects.setAttribute("class", "month");
     optionSelects.innerHTML = month.monthYear.split(" ")[0];
-    optionSelects.value = month.average;
+    optionSelects.value = month.total;
+    optionSelects.setAttribute("data-order", month.orderCount);
+    optionSelects.setAttribute("data-product", month.productCount);
+
     monthSelected.appendChild(optionSelects);
 })
 //  display revenue result
 monthSelected.addEventListener("change", function(event) {
     // Get the selected value
+    const selectedProduct = event.target.options[event.target.selectedIndex].getAttribute("data-product");
+    const selectedOrder = event.target.options[event.target.selectedIndex].getAttribute("data-order");
     const selectedValue = event.target.options[event.target.selectedIndex].value;
     const selectedName= event.target.options[event.target.selectedIndex].name;
 
     // Check if a monthRevenue element already exists and update its value, or create a new one
     let monthRevenue = document.querySelector('.RevenueResults');
-    let showMonth = document.querySelector('.mResult');
+    let orderCounts = document.querySelector('.OrderResults');
+    let productCount = document.querySelector('.ProductResults');
 
-    if (!monthRevenue && !showMonth) {
-        showMonth = document.createElement('p');
+    if (!monthRevenue && !orderCounts && !productCount) {
         monthRevenue = document.createElement('span');
-        monthRevenue.setAttribute("class", "RevenueResults");
-        showMonth.setAttribute("class", "mResult");
-        document.querySelector('.rev-result').appendChild(monthRevenue);
-        document.querySelector('.rev-result').appendChild(showMonth);
-    }
-        showMonth.textContent = "Select :" + " " + selectedName;
-        monthRevenue.innerHTML = selectedValue;
-        document.querySelector('.no-data').style.display = 'none'
+        orderCounts = document.createElement('p');
+        productCount = document.createElement('p');
 
+        monthRevenue.setAttribute("class", "RevenueResults");
+        orderCounts.setAttribute("class", "OrderResults");
+        productCount.setAttribute('class', "ProductResults");
+
+        document.querySelector('.rev-result').appendChild(monthRevenue);
+        document.querySelector('.order-result').appendChild(orderCounts);
+        document.querySelector('.product-result').appendChild(productCount);
+
+        document.querySelectorAll('.no-data').forEach(element => {
+          element.style.display = 'none';
+      });
+    }
+        monthRevenue.innerHTML = "Total Revenue: " + selectedValue;
+        orderCounts.innerHTML = "Order Count: " + selectedOrder;
+        productCount.innerHTML = "Product Sell: " + selectedProduct; 
 });
 
 // bar chart
@@ -81,7 +102,9 @@ const barContainer = document.querySelector('#bar-chart');
 const barChartOptions = {
     series: [
       {
-        data: [10, 8, 6, 4, 2],
+        data: chartData.map(function(item) {
+            return item.orderCount;
+        }),
       },
     ],
     chart: {
@@ -101,17 +124,22 @@ const barChartOptions = {
       },
     },
     dataLabels: {
-      enabled: false,
+      enabled: true,
     },
     legend: {
       show: false,
     },
     xaxis: {
-      categories: ['Laptop', 'Phone', 'Monitor', 'Headphones', 'Camera'],
+        categories: chartData.map(function(item) {
+          return item.monthYear;
+      }),
+      title: {
+        text: 'Month',
+      },
     },
     yaxis: {
       title: {
-        text: 'Count',
+        text: 'Order Count',
       },
     },
   };

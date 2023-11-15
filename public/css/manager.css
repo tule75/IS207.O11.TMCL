@@ -112,7 +112,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #e6e8ed;
+    background-color: #F2F2F2;
     color: #666666;
 }
 .select-container{
@@ -265,17 +265,38 @@
 .col {
     width: 30%;
     padding: 15px;
+    height: 10%;
     background-color: #ffffff;
     border-left: 7px solid black;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
 #monthRevenue {
-    padding: 10px 10px;
+    width: 30%;
+    padding: 17px;
     height: 10%;
+    background-color: #ffffff;
+    border-left: 7px solid black;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 .RevenueResults {
-    font-size: 25px;
+    padding-top: 5px;
+    font-size: 23px;
+    font-weight: bolder;
+}
+.OrderResults {
+    padding-top: 5px;
+    font-size: 22px;
+    font-weight: bolder;
+}
+.RevenueResults {
+    padding-top: 5px;
+    font-size: 23px;
+    font-weight: bolder;
+}
+.ProductResults {
+    padding-top: 5px;
+    font-size: 22px;
     font-weight: bolder;
 }
 .no-data {

@@ -65,26 +65,32 @@
             <div class="main-right">
                <div class="main-right-content">
                     <div class="select-container active">
+                            <div class="flex items-center justify-center mt-5">
+                                <select id="monthSelect" class="monthSelected"></select>
+                            </div>
                            <div class="row">
                                 <div id="monthRevenue" class="col ">
-                                    <h3> Monthly Revenue : 
-                                        <span><select id="monthSelect" class="">
-                                        </select></span>
+                                    <h3> 
+                                        Monthly Revenue :
                                     </h3> 
                                     <p class="no-data">Chưa chọn tháng</p>
                                     <div class="rev-result"></div>
                                 </div>
                                 <div class="col ">
-                                    <div class="spark-1">total order </div>
+                                    <h3 class="">Total Orders </h3>
+                                        <p class="no-data">Chưa chọn tháng</p>
+                                    <div class="order-result"></div>
                                 </div>
-                                <div class="col">
-                                    <div class="spark-1">product sell</div>
+                                <div class="col ">
+                                    <h3 class="">Product Orders </h3>
+                                        <p class="no-data">Chưa chọn tháng</p>
+                                    <div class="product-result"></div>
                                 </div>
                            </div>
 
                            <div class="charts" id="">
                                 <div class="charts-card">
-                                    <p class="chart-title">Top 5 Products</p>
+                                    <p class="chart-title">Monthly Orders</p>
                                     <div id="bar-chart"></div>
                                 </div>
                                 <div class="charts-card">
