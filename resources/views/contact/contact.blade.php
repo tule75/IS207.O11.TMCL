@@ -22,11 +22,7 @@
             </ul>
 
             <div class="logo">
-<<<<<<<< HEAD:resources/views/contact/contact.blade.php
                 <img class="logo-img" src="{{asset('/img/Screenshot_2023-10-16_121457-removebg.png')}}" alt="">
-========
-                <img class="logo-img" src="/Public_FE/img/Screenshot_2023-10-16_121457-removebg.png" alt="">
->>>>>>>> 392252dbf9c3b7204b8f46e320c97ad07361891a:Resources_FE/views/contact.html
             </div>
 
             <div class="nav-right">
@@ -49,11 +45,7 @@
     <!-- banner start -->
     <div class="banner">
         <div class="banner-img">
-<<<<<<<< HEAD:resources/views/contact/contact.blade.php
             <img class="banner-img-link" src="{{asset('/img/contact-us-hero.webp')}}" alt="">
-========
-            <img class="banner-img-link" src="/Public_FE/img/contact-us-hero.webp" alt="">
->>>>>>>> 392252dbf9c3b7204b8f46e320c97ad07361891a:Resources_FE/views/contact.html
         </div>
         <div class="banner-introduction">
             <div class="intro-text">
@@ -217,10 +209,7 @@
         </div>
     </div>
 
-<<<<<<<< HEAD:resources/views/contact/contact.blade.php
     <script src="{{asset('/js/contact.js')}}"></script>
-========
-    <script src="/Resources_FE/javascript/contact.js"></script>
->>>>>>>> 392252dbf9c3b7204b8f46e320c97ad07361891a:Resources_FE/views/contact.html
+
 </body>
 </html>
