@@ -61,5 +61,37 @@ const dropItems = document.querySelectorAll('.cate-dropdown-content-item');
 dropItems.forEach(dropItem => {
     dropItem.addEventListener('click', function() {
         console.log(this.value);
+        
     })
 });
+
+
+// modify action
+const productItems = document.querySelectorAll('.product-item');
+const modifyActions = document.querySelectorAll('.product-actions');
+const modifyForm = document.querySelector('.modify-form');
+modifyActions.forEach((ItemClick) => {
+    ItemClick.addEventListener('click', function() {
+        modifyForm.style.display = 'block';
+    })
+})
+
+// delete action btn
+const deleteActions = document.querySelectorAll('.del-product-btn');
+
+const modalConfirm = document.querySelector('.modal-container');
+const cancel = document.querySelector('.cancel');
+
+window.onclick = function(event) {
+    if (event.target == modalConfirm) {
+        modalConfirm.style.display = "none";
+    }
+}
+function toggleModal() {
+    
+    if (modalConfirm.style.display === 'none' || modalConfirm.style.display === '') {
+        modalConfirm.style.display = 'flex';
+    } else {
+        modalConfirm.style.display = 'none';
+    }
+}
