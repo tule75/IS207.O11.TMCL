@@ -30,6 +30,12 @@ class StorewatchRequest extends FormRequest
             'price' => ['integer', 'required', 'min: 1'],
             'storage' => ['integer', 'required', 'min: 0'],
             'brand_id' => ['required'],
+            'category_id' => ['required'],
+            'description' => ['string', 'required'],
+            'gender' => ['string', 'required'],
+            'img1' => ['required', 'image'],
+            'img2' => [ 'image'],
+            'img3' => [ 'image'],
         ];
     }
 }

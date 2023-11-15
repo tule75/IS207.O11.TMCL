@@ -65,4 +65,11 @@ Route::post("/brand", [BrandController::class, 'store'])->name('brand');
 Route::middleware(['auth'])->group(function () {
     Route::get('/cart', [CartsController::class, 'index'])->name('cart.index');
 });
+
+// Test add img to watch
+Route::get('/test/img', function () {
+    return view('test_img');
+})->middleware('auth');
+Route::post('/test/img', [WatchController::class, 'store'])->middleware('auth');
+
 require __DIR__.'/auth.php';

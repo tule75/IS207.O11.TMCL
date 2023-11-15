@@ -26,9 +26,12 @@ class UpdatewatchRequest extends FormRequest
     {
         return [
             //
-            'name' => ['string', 'required'],
-            'price' => ['integer', 'required', 'min: 1'],
-            'storage' => ['integer', 'required', 'min: 0'],
+            'name' => ['string'],
+            'price' => ['integer', 'min: 1'],
+            'storage' => ['integer', 'min: 0'],
+            'img1' => ['image'],
+            'img2' => ['image'],
+            'img3' => ['image'],
         ];
     }
 }
