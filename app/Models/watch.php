@@ -27,6 +27,9 @@ class Watch extends Model
         'slug',
         'category_id',
         'description',
+        'img1',
+        'img2',
+        'img3',
     ];
 
     public function orders(): BelongsToMany
