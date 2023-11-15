@@ -101,75 +101,157 @@
                     </div>
                     <div class="select-container click">
                         <div class="subpage-product-container">
-                         <h2 class="font-bold text-xl flex items-center justify-center">Add Product Form</h2>
-                            <form action="GET">
-                                <div class="add-product-container flex">
-                                   <div class="add-product-left">
-                                    <div class="product-input-show flex items-center justify-between">
-                                            <label for="pName" class="form-label"> Product Name:  </label>
-                                            <input
-                                            type="text"
-                                            name="pName"
-                                            id="pName"
-                                            placeholder="Product Name"
-                                            class="product-input-area"
-                                            />
-                                        </div>
-                                        <div class="product-input-show flex items-center justify-between">
-                                            <label for="pPrice" class="form-label"> Product Price: </label>
-                                            <input
-                                            type="number"
-                                            name="pPrice"
-                                            id="pPrice"
-                                            placeholder="Product Price"
-                                            class="pPrice"
-                                            />
-                                        </div>
-                                        <div class="product-input-show flex items-center justify-between ">
-                                            <label for="pGender" class="form-label"> Product Gender: </label>
-                                            <input
-                                            type="text"
-                                            name="pGender"
-                                            id="pGender"
-                                            placeholder="Product Gender"
-                                            class="product-input-area"
-                                            />
-                                        </div>
-                                        <div class="product-input-show flex items-center justify-between">
-                                            <label for="pUpload" class="form-label"> Product Image: </label>
-                                            <div class=" translate-x-24">
-                                                <input class="" type="file" name="pUpload" id="pUpload">
+                            <!-- form -->
+                            <div class="form-container">
+                                    <h2 class="font-bold text-xl flex items-center justify-center">Add Product Form</h2>
+                                    <form action="GET">
+                                        <div class="add-product-container">
+                                            <div class="add-product-left">
+                                                <div class="product-input-show flex items-center justify-between">
+                                                    <label for="pName" class="form-label"> Product Name:  </label>
+                                                    <input
+                                                    type="text"
+                                                    name="pName"
+                                                    id="pName"
+                                                    placeholder="Product Name"
+                                                    class="product-input-area"
+                                                    />
+                                                </div>
+                                                <div class="product-input-show flex items-center justify-between">
+                                                    <label for="pPrice" class="form-label"> Product Price: </label>
+                                                    <input
+                                                    type="number"
+                                                    name="pPrice"
+                                                    id="pPrice"
+                                                    placeholder="Product Price"
+                                                    class="pPrice"
+                                                    />
+                                                </div>
+                                                <div class="product-input-show flex items-center justify-between ">
+                                                    <label for="pGender" class="form-label"> Product Gender: </label>
+                                                    <input
+                                                    type="text"
+                                                    name="pGender"
+                                                    id="pGender"
+                                                    placeholder="Product Gender"
+                                                    class="product-input-area"
+                                                    />
+                                                </div>
+                                                <div class="product-input-show flex items-center justify-between">
+                                                    <label for="pUpload" class="form-label"> Product Image: </label>
+                                                    <div class=" translate-x-24">
+                                                        <input class="" type="file" name="pUpload" id="pUpload">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="add-product-right mt-4">
+                                                    <div class="description_field relative p-4 mt-10">
+                                                        <input type="input" class="pDescription outline-none w-40 " placeholder="Typing description in here...." name="pDescription" id='pDescription' required />
+                                                        <label for="pDescription" class="form-label-des">Description</label>
+                                                    </div>
+                                                    <div class="product-cate-drop">
+                                                        <div class="dropdownbtn">
+                                                            Choose Product Category 
+                                                        </div>
+                                                        <div class="">Category selected</div>
+                                                        <section class="cate-dropdown-content" id="pCate">
+                                                            <option class="cate-dropdown-content-item" id="" value="vlue">cat</option >
+                                                            <option class="cate-dropdown-content-item" id="" value="cod">dog</option >
+                                                            <option class="cate-dropdown-content-item" id="" value="d" >horse</option >
+                                                            <option class="cate-dropdown-content-item" id="" value="s">cow</option >
+                                                            <option class="cate-dropdown-content-item" id="" value="s">pig</option >
+                                                        </section>
+                                                    </div>
                                             </div>
                                         </div>
-                                   </div>
-                                   <div class="add-product-right mt-4">
-                                        <div class="description_field relative p-4 mt-10">
-                                            <input type="input" class="pDescription outline-none w-40 " placeholder="Typing description in here...." name="pDescription" id='pDescription' required />
-                                            <label for="pDescription" class="form-label-des">Description</label>
+                                        <div class="flex justify-center items-center border-solid m-10">
+                                            <button class="add-product-btn submit-container">Submit</button>
                                         </div>
-                                        <div class="product-cate-drop">
-                                            <div class="dropdownbtn">
-                                                   Choose Product Category 
-                                            </div>
-                                            <section class="cate-dropdown-content" id="pCate" >
-                                                <option class="cate-dropdown-content-item" id="" name="pCate" value="vlue" >cat</option >
-                                                <option class="cate-dropdown-content-item" id="" name="pCate" value="cod">dog</option >
-                                                <option class="cate-dropdown-content-item" id="" name="pCate" value="d" >horse</option >
-                                                <option class="cate-dropdown-content-item" id="" name="pCate" value="s">cow</option >
-                                                <option class="cate-dropdown-content-item" id="" name="pCate" value="s">pig</option >
-                                            </section>
-                                        </div>
-                                        
-                                   </div>
-                                </div>
-                                   
-                                <div class="flex justify-center items-center border-solid m-10">
-                                    <button class="add-product-btn submit-container">Submit</button>
-                                </div>
-                            </form>
+                                    </form>
+                            </div>
+                            <!-- end form -->
+                            <!-- list close product -->
+                            <div class="closed-product-list">
+                                <h2 class="font-bold text-xl flex items-center justify-center">Closed Products List</h2>
+                                <table class="closed-item-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Product Name</th>
+                                            <th>Product Price</th>
+                                            <th>Product Gender</th>
+                                            <th>Product Description</th>
+                                            <th>Product Category</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="closed-product-item">
+                                            <td class="product-name">Product 1</td>
+                                            <td class="product-price">$100</td>
+                                            <td class="product-gender">Male</td>
+                                            <td class="product-description">Lorem ipsum...</td>
+                                            <td class="product-category">Category 1</td>
+                                            <td class="product-actions">
+                                                <!-- Add buttons or actions related to closed products -->
+                                                <button class="reopen-product-btn">Undo</button>
+                                            </td>
+                                        </tr>
+                                        <tr class="closed-product-item">
+                                            <td class="product-name">Product 1</td>
+                                            <td class="product-price">$100</td>
+                                            <td class="product-gender">Male</td>
+                                            <td class="product-description">Lorem ipsum...</td>
+                                            <td class="product-category">Category 1</td>
+                                            <td class="product-actions">
+                                                <!-- Add buttons or actions related to closed products -->
+                                                <button class="reopen-product-btn">Reopen</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
                         </div>
                         <div class="subpage-product-container">
-                           <div class="form-container">
+                            <!-- modify -->
+                            <div class="product-list">
+                                <h2 class="font-bold text-xl flex items-center justify-center">Products List</h2>
+                                <table class="item-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Product Name</th>
+                                            <th>Product Price</th>
+                                            <th>Product Gender</th>
+                                            <th>Product Description</th>
+                                            <th>Product Category</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="product-item">
+                                            <td class="product-name">Product 1</td>
+                                            <td class="product-price">$100</td>
+                                            <td class="product-gender">Male</td>
+                                            <td class="product-description">Lorem ipsum...</td>
+                                            <td class="product-category">Category 1</td>
+                                            <td class="product-actions">
+                                                <button class="modify-product-btn">Modify</button>
+                                            </td>
+                                        </tr>
+                                        <tr class="product-item">
+                                            <td class="product-name">Product 2</td>
+                                            <td class="product-price">$100</td>
+                                            <td class="product-gender">Male</td>
+                                            <td class="product-description">Lorem ipsum...</td>
+                                            <td class="product-category">Category 1</td>
+                                            <td class="product-actions">
+                                                <button class="modify-product-btn">Modify</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                           <div class="form-container modify-form">
                                 <h2 class="font-bold text-xl flex items-center justify-center">Modify Product Form</h2>
                                 <form action="GET">
                                     <div class="add-product-container">
@@ -233,14 +315,67 @@
                                     </div>
                                     
                                     <div class="flex justify-center items-center border-solid m-10">
-                                        <button class="add-product-btn submit-container">Submit</button>
+                                        <button class="add-product-btn submit-container">Modify</button>
                                     </div>
                                 </form>
                            </div>
                         </div>
                         <div class="subpage-product-container">
-                            <div class="delete-container">
-                                <h2>List product</h2>
+                            <!-- delete -->
+                            <div class="product-list">
+                                <h2 class="font-bold text-xl flex items-center justify-center">Products List</h2>
+                                <table class="item-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Product Name</th>
+                                            <th>Product Price</th>
+                                            <th>Product Gender</th>
+                                            <th>Product Description</th>
+                                            <th>Product Category</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="product-item">
+                                            <td class="product-name">Product 1</td>
+                                            <td class="product-price">$100</td>
+                                            <td class="product-gender">Male</td>
+                                            <td class="product-description">Lorem ipsum...</td>
+                                            <td class="product-category">Category 1</td>
+                                            <td class="product-actions">
+                                                <button class="del-product-btn" onclick="toggleModal()">Del</button>
+                                            </td>
+                                        </tr>
+                                        <tr class="product-item">
+                                            <td class="product-name">Product 1</td>
+                                            <td class="product-price">$100</td>
+                                            <td class="product-gender">Male</td>
+                                            <td class="product-description">Lorem ipsum...</td>
+                                            <td class="product-category">Category 1</td>
+                                            <td class="product-actions">
+                                                <button class="del-product-btn" onclick="toggleModal()">Del</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="modal-container">
+                                    <div class="modal-delete">
+                                        <form class="modal-content" action="">
+                                            <!-- <div class="trash-icon">
+                                                <svg class="" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                                            </div> -->
+                                            <p class="attention">Are you sure you want to delete this item?</p>
+                                            <div class="btn-wrapper">
+                                                <button class="cancel" onclick="toggleModal()">
+                                                    No, cancel
+                                                </button>
+                                                <button class="deleted">
+                                                    Yes, I'm sure
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
