@@ -4,13 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UITERs</title>
-<<<<<<<< HEAD:resources/views/contact/contact.blade.php
     <link rel="stylesheet" href="{{asset('/css/contact.css')}}">
     <link rel="stylesheet" href="{{ asset('/icon/fontawesome-free-6.4.2-web/css/regular.min.css')}}">
-========
-    <link rel="stylesheet" href="/Resources_FE/css/contact.css">
-    <link rel="stylesheet" href="/Public_FE/icon/fontawesome-free-6.4.2-web/css/all.css">
->>>>>>>> 392252dbf9c3b7204b8f46e320c97ad07361891a:Resources_FE/views/contact.html
 </head>
 <body>
     <!-- header start -->
