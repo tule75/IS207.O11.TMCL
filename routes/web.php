@@ -10,7 +10,7 @@ use App\Http\Controllers\WatchController;
 use App\Http\Controllers\CartsController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\Manager;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,5 +71,9 @@ Route::get('/test/img', function () {
     return view('test_img');
 })->middleware('auth');
 Route::post('/test/img', [WatchController::class, 'store'])->middleware('auth');
+// manager routes
+Route::get("manager", function () {
+    return view('manager');
+} );
 
 require __DIR__.'/auth.php';
