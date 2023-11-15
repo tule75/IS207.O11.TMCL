@@ -94,7 +94,7 @@
                                     <div id="bar-chart"></div>
                                 </div>
                                 <div class="charts-card">
-                                    <p class="chart-title">Purchase and Sale Orders</p>
+                                    <p class="chart-title">Product Total and Sale Orders</p>
                                     <div id="area-chart"></div>
                                 </div>
                            </div>
@@ -172,7 +172,7 @@
                             <!-- end form -->
                             <!-- list close product -->
                             <div class="closed-product-list">
-                                <h2 class="font-bold text-xl flex items-center justify-center">Closed Products List</h2>
+                                <h2 class="font-bold text-xl flex items-center justify-center">Closed Products Add</h2>
                                 <table class="closed-item-table">
                                     <thead>
                                         <tr>

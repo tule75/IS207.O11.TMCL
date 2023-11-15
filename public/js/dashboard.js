@@ -152,12 +152,16 @@ const areaContainer = document.querySelector('#area-chart');
 const areaChartOptions = {
     series: [
       {
-        name: 'Purchase Orders',
-        data: [31, 40, 28, 51, 42, 109, 100],
+        name: 'Product Total ',
+        data: chartData.map(function(item) {
+           return item.productCount;
+        }),
       },
       {
         name: 'Sales Orders',
-        data: [11, 32, 45, 32, 34, 52, 41],
+        data: chartData.map(function(item) {
+          return item.orderCount;
+        }),
       },
     ],
     chart: {
@@ -174,14 +178,16 @@ const areaChartOptions = {
     stroke: {
       curve: 'smooth',
     },
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+    labels: chartData.map(function(item) {
+        return item.monthYear;
+    }),
     markers: {
       size: 0,
     },
     yaxis: [
       {
         title: {
-          text: 'Purchase Orders',
+          text: 'Product Total',
         },
       },
       {
