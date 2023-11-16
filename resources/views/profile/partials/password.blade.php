@@ -3,6 +3,10 @@
         <div class="password">
             <input type="password" id="cpasswordField" minlength="8" placeholder="Current Password">
         </div>
+        <div class="password">
+            <input type="password" id="npasswordField" placeholder="Newpassword">
+
+        </div>
         <ul>
             <li>No repetition of more than two characters</li>
             <li>One number</li>
@@ -11,10 +15,6 @@
             <li>One uppercase character</li>
             <li>8 characters minimum</li>
         </ul>
-        <div class="password">
-            <input type="password" id="npasswordField" placeholder="Newpassword">
-
-        </div>
         <div class="password">
             <input type="password" id="cpasswordField" placeholder="Confirm Password">
         </div>

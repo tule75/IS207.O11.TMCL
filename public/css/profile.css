@@ -186,21 +186,19 @@
 
 /*body*/
 * {
-    position: relative;
+    box-sizing: border-box;
 }
 
 .body {
     margin: 0;
-    height: 100%;
+    width: 100%;
 }
 
 .slidebar {
-    height: 100%;
-    width: 200px;
+    width: 250px;
     z-index: 1;
     top: 0;
-    left: 0;
-    overflow-x: hidden;
+    padding-left: 20px;
 }
 
 .menu {
@@ -220,18 +218,15 @@
 }
 
 .bd-choose {
-
     padding-top: 24px;
     padding-bottom: 15px;
     outline: none;
 }
 
 .bd-content {
-    position: absolute;
-
+    position: relative;
     top: 0%;
-    left: 20%;
-
+    margin-left: 20%;
 }
 
 /*.bd-content {
@@ -255,8 +250,8 @@
 .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    margin-right: 40px;
     grid-gap: 18px;
-    margin-left: 80px;
     padding-bottom: 8%;
     text-align: left;
 }
@@ -323,6 +318,7 @@
 .password {
     padding-top: 2px;
     border-bottom: 1px solid black;
+    margin-right: 60%;
 }
 
 /* footer */
