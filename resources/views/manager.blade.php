@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <div class="select-click subpage-human">
-                        Human account Management
+                        Account Management
                         <div class="subpage-human-appear">
                           <div class="subpage-human-item-click click">Add account</div>  
                           <div class="subpage-human-item-click">Modify account</div>
@@ -181,12 +181,11 @@
                                             <button class="add-product-btn submit-container">Submit</button>
                                         </div>
                                 </form>
-                            </div>
-                            <!-- end form -->
 
-                            <!-- list close product -->
+                                <!-- end-form -->
+                                <!-- list close product -->
                             <div class="closed-product-list">
-                                <h2 class="font-bold text-xl flex items-center justify-center">Closed Products Add</h2>
+                                <h2 class="font-bold text-xl flex items-center justify-center"> Products Add Recently</h2>
                                 <table class="closed-item-table">
                                     <thead>
                                         <tr>
@@ -220,6 +219,7 @@
                                 </table>
                             </div>
                             <!-- end list product -->
+                            </div>
                         </div>
                         <div class="subpage-product-container">
                             <!-- modify -->
@@ -387,111 +387,136 @@
                             </div>
                         </div>
                     </div>
+                    <!-- staff account section -->
                     <div class="select-container">
                         <div class="subpage-human-container">
-                            <!-- form -->
-                            <div class="form-container">
-                                <h2 class=" heading-add font-bold text-xl flex items-center justify-center">Add Product Form</h2>
-                                
-                            </div>
-                            <!-- end form -->
-                            <!-- list close product -->
-                            <div class="closed-product-list">
-                                <h2 class="font-bold text-xl flex items-center justify-center">Closed Products Add</h2>
-                                <table class="closed-item-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Product Name</th>
-                                            <th>Product Price</th>
-                                            <th>Product Gender</th>
-                                            <th>Product Description</th>
-                                            <th>Product Category</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="closed-product-item">
-                                            <td class="product-name">Product 1</td>
-                                            <td class="product-price">$100</td>
-                                            <td class="product-gender">Male</td>
-                                            <td class="product-description">Lorem ipsum...</td>
-                                            <td class="product-category">Category 1</td>
-                                            <td class="product-time-add">15/11/2023</td>
+                                <!-- form -->
+                            <div class="add-container">
+                                <h2 class=" heading-add font-bold text-xl flex items-center justify-center">Add Account Form</h2>
+                                <form action="GET">
+                                    <div class="add-product-container">
+                                        <div class="add-product-left">
+                                            <div class="product-input-show flex items-center justify-between">
+                                                <label for="pUserName" class="form-label"> Set Username:  </label>
+                                                <input
+                                                        type="text"
+                                                        name="pUserName"
+                                                        id="pUserName"
+                                                        placeholder="Enter Username"
+                                                        class="product-input-area"
+                                                />
+                                            </div>
+                                          
+                                            <div class="product-input-show flex items-center justify-between ">
+                                                <label for="pPassword" class="form-label"> Set Password: </label>
+                                                <input
+                                                        type="password"
+                                                        name="pPassword"
+                                                        id="pPassword"
+                                                        placeholder="Enter password"
+                                                        class="product-input-area"
+                                                />
+                                            </div>
+                                            <div class="product-input-show flex items-center justify-between ">
+                                                <label for="pEmail" class="form-label"> Email: </label>
+                                                <input
+                                                        type="email"
+                                                        name="pEmail"
+                                                        id="pEmail"
+                                                        placeholder="Enter email"
+                                                        class="product-input-area"
+                                                />
+                                            </div>
+                                        </div>
+                                     
+                                        </div>
+                                            <!-- submit -->
+                                        <div class="flex justify-center items-center border-solid m-10">
+                                            <button class="add-product-btn submit-container">Submit</button>
+                                        </div>
+                                </form>
 
-                                        </tr>
-                                        <tr class="closed-product-item">
-                                            <td class="product-name">Product 1</td>
-                                            <td class="product-price">$100</td>
-                                            <td class="product-gender">Male</td>
-                                            <td class="product-description">Lorem ipsum...</td>
-                                            <td class="product-category">Category 1</td>
-                                            <td class="product-time-add">15/11/2023</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <!-- list close product -->
+                                <div class="closed-product-list">
+                                    <h2 class="font-bold text-xl flex items-center justify-center">Account recently</h2>
+                                    <table class="closed-item-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Username</th>
+                                                <th>Email</th>
+                                                <th>Password</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="closed-product-item">
+                                                <td class="product-name">aaaa</td>
+                                                <td class="product-email">as@gmail.com</td>
+                                                <td class="product-price">asd</td>
+                                            </tr>
+                                            <tr class="closed-product-item">
+                                                <td class="product-name">as</td>
+                                                <td class="product-email">as@gmail.com</td>
+                                                <td class="product-price">passb</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>  
+                             <!-- end list product -->
                             </div>
                             
                         </div>
                         <div class="subpage-human-container">
                             <!-- modify -->
-                            
+                            <div class="closed-product-list">
+                                    <h2 class="font-bold text-xl flex items-center justify-center">Account recently</h2>
+                                    <table class="closed-item-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Username</th>
+                                                <th>Email</th>
+                                                <th>Password</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="closed-product-item">
+                                                <td class="product-name">aaaa</td>
+                                                <td class="product-email">as@gmail.com</td>
+                                                <td class="product-price">asd</td>
+                                            </tr>
+                                            <tr class="closed-product-item">
+                                                <td class="product-name">as</td>
+                                                <td class="product-email">as@gmail.com</td>
+                                                <td class="product-price">passb</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                            </div>  
                         </div>
                         <div class="subpage-human-container">
                             <!-- delete -->
-                            <div class="product-list">
-                                <h2 class="font-bold text-xl flex items-center justify-center">Products List</h2>
-                                <table class="item-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Product Name</th>
-                                            <th>Product Price</th>
-                                            <th>Product Gender</th>
-                                            <th>Product Description</th>
-                                            <th>Product Category</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="product-item">
-                                            <td class="product-name">Product 1</td>
-                                            <td class="product-price">$100</td>
-                                            <td class="product-gender">Male</td>
-                                            <td class="product-description">Lorem ipsum...</td>
-                                            <td class="product-category">Category 1</td>
-                                            <td class="product-actions">
-                                                <button class="del-product-btn" onclick="toggleModal()">Del</button>
-                                            </td>
-                                        </tr>
-                                        <tr class="product-item">
-                                            <td class="product-name">Product 1</td>
-                                            <td class="product-price">$100</td>
-                                            <td class="product-gender">Male</td>
-                                            <td class="product-description">Lorem ipsum...</td>
-                                            <td class="product-category">Category 1</td>
-                                            <td class="product-actions">
-                                                <button class="del-product-btn" onclick="toggleModal()">Del</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="modal-container">
-                                    <div class="modal-delete">
-                                        <form class="modal-content" action="">
-                                            <!-- <div class="trash-icon">
-                                                <svg class="" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
-                                            </div> -->
-                                            <p class="attention">Are you sure you want to delete this item?</p>
-                                            <div class="btn-wrapper">
-                                                <button class="cancel" onclick="toggleModal()">
-                                                    No, cancel
-                                                </button>
-                                                <button class="deleted">
-                                                    Yes, I'm sure
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+                            <div class="closed-product-list">
+                                    <h2 class="font-bold text-xl flex items-center justify-center">Account recently</h2>
+                                    <table class="closed-item-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Username</th>
+                                                <th>Email</th>
+                                                <th>Password</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="closed-product-item">
+                                                <td class="product-name">aaaa</td>
+                                                <td class="product-email">as@gmail.com</td>
+                                                <td class="product-price">asd</td>
+                                            </tr>
+                                            <tr class="closed-product-item">
+                                                <td class="product-name">as</td>
+                                                <td class="product-email">as@gmail.com</td>
+                                                <td class="product-price">passb</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                             </div>
                         </div>
                     </div>

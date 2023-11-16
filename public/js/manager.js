@@ -53,44 +53,70 @@ subpageHuman.addEventListener('mouseenter', () => {
 })
 // end mouse 
 // click subpage product
-const subpage_Clicks = document.querySelectorAll('.subpage-product-item-click');
-const subpage_Containers = document.querySelectorAll('.subpage-product-container');
-subpage_Clicks.forEach((product,index) => {
-    const content = subpage_Containers[index];
-    product.onclick = () => {
-        // Xóa lớp 'active' khỏi tất cả các phần tử .select-click
-        document.querySelectorAll('.subpage-product-item-click.click').forEach((element) => {
-            element.classList.remove('click');
-        });
-        // Xóa lớp 'active' khỏi tất cả các phần tử .select-container
-        document.querySelectorAll('.subpage-product-container.click').forEach((element) => {
-            element.classList.remove('click');
-        });
-        product.classList.add("click");
-        content.classList.add("click");
-        console.log(content,product);
-    }
-})
-// click subpage human
-const subpage_humans = document.querySelectorAll('.subpage-human-item-click click')
-const subpage_Human_Containers = document.querySelectorAll('.subpage-human-container');
-subpage_humans.forEach((human,index) => {
-    const contentHuman = subpage_Human_Containers[index];
-    human.onclick = () => {
-        // Xóa lớp 'active' khỏi tất cả các phần tử .select-click
-        document.querySelectorAll('.subpage-product-item-click.click').forEach((element) => {
-            element.classList.remove('click');
-        });
-        // Xóa lớp 'active' khỏi tất cả các phần tử .select-container
-        document.querySelectorAll('.subpage-product-container.click').forEach((element) => {
-            element.classList.remove('click');
-        });
-        contentHuman.classList.add("click");
-        content.classList.add("click");
-        console.log(content,product);
-    }
-})
+const subpage_products = document.querySelectorAll('.subpage-product-item-click');
+const subpage_Product_Containers = document.querySelectorAll('.subpage-product-container');
 
+subpage_products.forEach((product, index) => {
+    const contentProduct = subpage_Product_Containers[index];
+
+    product.onclick = () => {
+        // Xóa lớp 'click' khỏi tất cả các phần tử .subpage-human-item-click
+        document.querySelectorAll('.subpage-product-item-click.click').forEach((element) => {
+            element.classList.remove('click');
+        });
+        
+        // Xóa lớp 'click' khỏi tất cả các phần tử .subpage-human-container
+        document.querySelectorAll('.subpage-product-container.click').forEach((element) => {
+            element.classList.remove('click');
+        });
+        // Xóa lớp 'click' khỏi tất cả các phần tử .subpage-human-item-click
+        document.querySelectorAll('.subpage-human-item-click.click').forEach((element) => {
+            element.classList.remove('click');
+        });
+
+        // Xóa lớp 'click' khỏi tất cả các phần tử .subpage-human-container
+        document.querySelectorAll('.subpage-human-container.click').forEach((element) => {
+            element.classList.remove('click');
+        });
+
+
+        // Thêm lớp 'click' vào phần tử được nhấp
+        product.classList.add('click');
+        contentProduct.classList.add('click');
+    };
+});
+
+// click subpage human
+const subpage_humans = document.querySelectorAll('.subpage-human-item-click');
+const subpage_Human_Containers = document.querySelectorAll('.subpage-human-container');
+
+subpage_humans.forEach((human, index) => {
+    const contentHuman = subpage_Human_Containers[index];
+
+    human.onclick = () => {
+        document.querySelectorAll('.subpage-product-item-click.click').forEach((element) => {
+            element.classList.remove('click');
+        });
+        
+        // Xóa lớp 'click' khỏi tất cả các phần tử .subpage-human-container
+        document.querySelectorAll('.subpage-product-container.click').forEach((element) => {
+            element.classList.remove('click');
+        });
+        // Xóa lớp 'click' khỏi tất cả các phần tử .subpage-human-item-click
+        document.querySelectorAll('.subpage-human-item-click.click').forEach((element) => {
+            element.classList.remove('click');
+        });
+
+        // Xóa lớp 'click' khỏi tất cả các phần tử .subpage-human-container
+        document.querySelectorAll('.subpage-human-container.click').forEach((element) => {
+            element.classList.remove('click');
+        });
+
+        // Thêm lớp 'click' vào phần tử được nhấp
+        human.classList.add('click');
+        contentHuman.classList.add('click');
+    };
+});
 // get item option
 const dropItems = document.querySelectorAll('.cate-dropdown-content-item');
 
