@@ -141,19 +141,36 @@ modifyActions.forEach((ItemClick) => {
 // delete action btn
 const deleteActions = document.querySelectorAll('.del-product-btn');
 
-const modalConfirm = document.querySelector('.modal-container');
-const cancel = document.querySelector('.cancel');
+const modalConfirmProduct = document.querySelector('.modal-container');
+const cancelProduct = document.querySelector('.cancel');
 
 window.onclick = function(event) {
-    if (event.target == modalConfirm) {
-        modalConfirm.style.display = "none";
+    if (event.target == modalConfirmProduct) {
+        modalConfirmProduct.style.display = "none";
     }
 }
 function toggleModal() {
     
-    if (modalConfirm.style.display === 'none' || modalConfirm.style.display === '') {
-        modalConfirm.style.display = 'flex';
+    if (modalConfirmProduct.style.display === 'none' || modalConfirmProduct.style.display === '') {
+        modalConfirmProduct.style.display = 'flex';
     } else {
-        modalConfirm.style.display = 'none';
+        modalConfirmProduct.style.display = 'none';
+    }
+}
+
+// modal of staff
+const modalStaff = document.querySelector('.modal-container-human');
+
+window.onclick = function(event) {
+    if (event.target == modalStaff) {
+        modalStaff.style.display = "none";
+    }
+}
+function toggleModalStaff() {
+    
+    if (modalStaff.style.display === 'none' || modalStaff.style.display === '') {
+        modalStaff.style.display = 'flex';
+    } else {
+        modalStaff.style.display = 'none';
     }
 }

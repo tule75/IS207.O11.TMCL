@@ -427,6 +427,16 @@
                                                         class="product-input-area"
                                                 />
                                             </div>
+                                            <div class="product-input-show flex items-center justify-between ">
+                                                <label for="pNamePassword" class="form-label"> Staff's Name: </label>
+                                                <input
+                                                        type="text"
+                                                        name="pNamePassword"
+                                                        id="pNamePassword"
+                                                        placeholder="Enter password"
+                                                        class="product-input-area"
+                                                />
+                                            </div>
                                         </div>
                                      
                                         </div>
@@ -438,10 +448,11 @@
 
                                 <!-- list close product -->
                                 <div class="closed-product-list">
-                                    <h2 class="font-bold text-xl flex items-center justify-center">Account recently</h2>
+                                    <h2 class="font-bold text-xl flex items-center justify-center">Staff Account recently</h2>
                                     <table class="closed-item-table">
                                         <thead>
                                             <tr>
+                                                <th>Staff's Name</th>
                                                 <th>Username</th>
                                                 <th>Email</th>
                                                 <th>Password</th>
@@ -449,11 +460,13 @@
                                         </thead>
                                         <tbody>
                                             <tr class="closed-product-item">
+                                                <td class="product-name">Nguyen Van A</td>  
                                                 <td class="product-name">aaaa</td>
                                                 <td class="product-email">as@gmail.com</td>
                                                 <td class="product-price">asd</td>
                                             </tr>
                                             <tr class="closed-product-item">
+                                                <td class="product-name">Nguyen Van B</td>  
                                                 <td class="product-name">as</td>
                                                 <td class="product-email">as@gmail.com</td>
                                                 <td class="product-price">passb</td>
@@ -468,28 +481,34 @@
                         <div class="subpage-human-container">
                             <!-- modify -->
                             <div class="closed-product-list">
-                                    <h2 class="font-bold text-xl flex items-center justify-center">Account recently</h2>
-                                    <table class="closed-item-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Username</th>
-                                                <th>Email</th>
-                                                <th>Password</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="closed-product-item">
-                                                <td class="product-name">aaaa</td>
-                                                <td class="product-email">as@gmail.com</td>
-                                                <td class="product-price">asd</td>
-                                            </tr>
-                                            <tr class="closed-product-item">
-                                                <td class="product-name">as</td>
-                                                <td class="product-email">as@gmail.com</td>
-                                                <td class="product-price">passb</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                <h2 class="font-bold text-xl flex items-center justify-center">Staff Account recently</h2>
+                                <table class="closed-item-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Staff's Name</th>
+                                            <th>Username</th>
+                                            <th>Email</th>
+                                            <th>Password</th>
+                                            <th>Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="closed-product-item">
+                                            <td class="product-name">Nguyen Van A</td>  
+                                            <td class="product-name">aaaa</td>
+                                            <td class="product-email">as@gmail.com</td>
+                                            <td class="product-price">asd</td>
+                                            
+                                        </tr>
+                                        <tr class="closed-product-item">
+                                            <td class="product-name">Nguyen Van B</td>  
+                                            <td class="product-name">as</td>
+                                            <td class="product-email">as@gmail.com</td>
+                                            <td class="product-price">passb</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>  
                         </div>
                         <div class="subpage-human-container">
@@ -498,10 +517,11 @@
                                     <h2 class="font-bold text-xl flex items-center justify-center">Account recently</h2>
                                     <table class="closed-item-table">
                                         <thead>
-                                            <tr>
+                                            <tr class=" text-center">
                                                 <th>Username</th>
                                                 <th>Email</th>
                                                 <th>Password</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -509,19 +529,41 @@
                                                 <td class="product-name">aaaa</td>
                                                 <td class="product-email">as@gmail.com</td>
                                                 <td class="product-price">asd</td>
+                                                <td class="product-actions">
+                                                    <button class="del-human-btn" onclick="toggleModalStaff()">Del</button>
+                                                </td>
                                             </tr>
                                             <tr class="closed-product-item">
                                                 <td class="product-name">as</td>
                                                 <td class="product-email">as@gmail.com</td>
                                                 <td class="product-price">passb</td>
+                                                <td class="product-actions">
+                                                    <button class="del-human-btn" onclick="toggleModalStaff()">Del</button>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
+                                    <div class="modal-container-human">
+                                    <div class="modal-delete">
+                                        <form class="modal-content" action="">
+                                       
+                                            <p class="attention">Are you sure you want to delete this person?</p>
+                                            <div class="btn-wrapper">
+                                                <button class="cancel" onclick="toggleModalStaff()">
+                                                    No, cancel
+                                                </button>
+                                                <button class="deleted">
+                                                    Yes, I'm sure
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="select-container">
-                        <h3>Human</h3>
+                        <h3>Something</h3>
                     </div>
                     <div class="select-container">
                         <h3>Setting</h3>
