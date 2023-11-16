@@ -35,7 +35,24 @@ selects.forEach((item,index) => {
     }
 })
 
-// click subpage 
+// start mouse move over/seeter
+const subpageProduct = document.querySelector('.subpage-click');
+subpageProduct.addEventListener('mouseleave', () => {
+    document.querySelector('.subpage-product-appear').style.display = 'none';
+});
+subpageProduct.addEventListener('mouseenter', () => {
+    document.querySelector('.subpage-product-appear').style.display = 'block';
+})
+
+const subpageHuman = document.querySelector('.subpage-human');
+subpageHuman.addEventListener('mouseleave', () => {
+    document.querySelector('.subpage-human-appear').style.display = 'none';
+});
+subpageHuman.addEventListener('mouseenter', () => {
+    document.querySelector('.subpage-human-appear').style.display = 'block';
+})
+// end mouse 
+// click subpage product
 const subpage_Clicks = document.querySelectorAll('.subpage-product-item-click');
 const subpage_Containers = document.querySelectorAll('.subpage-product-container');
 subpage_Clicks.forEach((product,index) => {
@@ -50,6 +67,25 @@ subpage_Clicks.forEach((product,index) => {
             element.classList.remove('click');
         });
         product.classList.add("click");
+        content.classList.add("click");
+        console.log(content,product);
+    }
+})
+// click subpage human
+const subpage_humans = document.querySelectorAll('.subpage-human-item-click click')
+const subpage_Human_Containers = document.querySelectorAll('.subpage-human-container');
+subpage_humans.forEach((human,index) => {
+    const contentHuman = subpage_Human_Containers[index];
+    human.onclick = () => {
+        // Xóa lớp 'active' khỏi tất cả các phần tử .select-click
+        document.querySelectorAll('.subpage-product-item-click.click').forEach((element) => {
+            element.classList.remove('click');
+        });
+        // Xóa lớp 'active' khỏi tất cả các phần tử .select-container
+        document.querySelectorAll('.subpage-product-container.click').forEach((element) => {
+            element.classList.remove('click');
+        });
+        contentHuman.classList.add("click");
         content.classList.add("click");
         console.log(content,product);
     }
