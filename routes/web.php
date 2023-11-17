@@ -66,6 +66,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cart', [CartsController::class, 'index'])->name('cart.index');
 });
 
+// Test add img to watch
+Route::get('/test/img', function () {
+    return view('test_img');
+})->middleware('auth');
+Route::post('/test/img', [WatchController::class, 'store'])->middleware('auth');
 // manager routes
 Route::get("manager", function () {
     return view('manager');
