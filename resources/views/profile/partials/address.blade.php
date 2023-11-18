@@ -1,9 +1,3 @@
-
-<div class="content">
-    <div class="address">
-        <h3>MY ADDRESSES</h3>
-        <p>Save all your shipping addresses to complete the order process quickly. Save your preferred address as default and it will automatically appear in your Shopping Bag.</p>
-    </div>
     <div class="address-wrap">
         <h3>YOU HAVE 1 SAVED ADDRESS</h3>
         <p class="add-address"><a href="" class="has-link"><i class="fa fa-plus"></i>  ADD NEW ADDRESS</a></p>
