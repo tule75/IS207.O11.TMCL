@@ -76,4 +76,8 @@ Route::get("manager", function () {
     return view('manager');
 } );
 
+
+//testquery
+Route::get('/test/query', [WatchController::class, 'search'])->middleware('auth');
+
 require __DIR__.'/auth.php';
