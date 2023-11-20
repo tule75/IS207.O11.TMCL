@@ -18,7 +18,9 @@ class CartsController extends Controller
     public function index()
     {
         //
-        $carts = Carts::all();
+        $carts = Carts::with(['watches' => function ($query) {
+            $query->select('watches.id', 'watches.name', 'watches.img1', 'watches.img2', 'watches.img3');}
+        ]);
         return view('carts.index', [$carts]);
     }
 

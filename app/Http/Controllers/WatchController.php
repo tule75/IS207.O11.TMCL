@@ -16,9 +16,19 @@ class WatchController extends Controller
      */
     public static function index()
     {
-        //
-        $watches = Watch::all();
+        // eager loading with pagination
+        $watches = Watch::select('id', 'name', 'discount', 'storage', 'slug', 'description', 'gender', 'img1', 'img2', 'img3', 'brand_id', 'category_id')->with(['brand', 'category'])->paginate('15');
         return $watches;
+    }
+
+    public function indexCategory(Request $request)
+    {
+        return Watch::where('category_id', $request->id)->select('id', 'name', 'discount', 'storage', 'slug', 'description', 'gender', 'img1', 'img2', 'img3', 'brand_id', 'category_id')->with(['brand', 'category'])->paginate('15');
+    }
+
+    public function indexBrand(Request $request)
+    {
+        return Watch::where('brand_id', $request->id)->select('id', 'name', 'discount', 'storage', 'slug', 'description', 'gender', 'img1', 'img2', 'img3', 'brand_id', 'category_id')->with(['brand', 'category'])->paginate('15');
     }
 
     /**
@@ -81,13 +91,13 @@ class WatchController extends Controller
     // Search product
     public function typeSearch(Request $request) {
         // q là query 
-        return Watch::search($request->q)->get();
+        return Watch::search($request->q)->simplePaginate(10);
     }
 
     // render ra trang tìm kiếm sản phẩm query
     public function search(Request $request) {
         // dd($request->query('q'));
-        return view('products/search', Watch::search($request->q)->get());
+        return view('products/search', Watch::search($request->q)->paginate(15));
     }
 
     /**

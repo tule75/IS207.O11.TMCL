@@ -11,6 +11,7 @@ use App\Http\Controllers\CartsController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Manager;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,8 +56,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 // Watch routes
-Route::post("/watch", [WatchController::class, 'store'])->middleware('auth')->name('watch.store');
-Route::get("/watch/{id}", [WatchController::class, 'show'])->name('watch.show');
+    // Lưu sản phẩm
+    Route::post("/watch", [WatchController::class, 'store'])->middleware('auth')->name('watch.store');
+    // Hiển thị đơn sản phẩm
+    Route::get("/watch/{id}", [WatchController::class, 'show'])->name('watch.show');
+    // Lấy danh sách sản phẩm
+    Route::get('/watch', [WatchController::class, 'index'])->middleware('auth');
+
+// Order
+    //test thôi này phải xóa
+    // Route::get('/order', [OrderController::class, 'showForUser'])->middleware('auth');
 
 // Brand routes
 Route::post("/brand", [BrandController::class, 'store'])->name('brand');
