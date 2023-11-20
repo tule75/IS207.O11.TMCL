@@ -21,7 +21,6 @@ return new class extends Migration
             $table->enum('status', array('Pending', 'Shipping', 'Success'))->default('Pending');
             $table->date('date')->default(date("Y-m-d H:i:s"));
             $table->bigInteger('total_prices');
-            $table->float('discount', 4, 2)->nullable;
             $table->timestamps();
             //foreign key
             $table->foreign('address_id')

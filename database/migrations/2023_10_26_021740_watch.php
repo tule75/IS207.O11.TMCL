@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('price');
+            $table->decimal('discount');
             $table->integer('storage')->default(0);
             $table->string('slug')->unique();
             $table->unsignedBigInteger('category_id');

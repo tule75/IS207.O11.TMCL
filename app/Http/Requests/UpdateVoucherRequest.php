@@ -4,13 +4,16 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreOrder_iteamsRequest extends FormRequest
+class UpdateVoucherRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
+        if ($this->user()->role == 'manager') { 
+            return true;
+        }
         return false;
     }
 
@@ -23,9 +26,6 @@ class StoreOrder_iteamsRequest extends FormRequest
     {
         return [
             //
-            'quantity' => 'required|integer|min:1',
-            'order_id' => 'required',
-            'product_id' => 'required',
         ];
     }
 }

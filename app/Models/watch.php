@@ -22,6 +22,7 @@ class Watch extends Model
     protected $fillable = [
         'name',
         'price',
+        'discount',
         'storage',
         'brand_id',
         'slug',

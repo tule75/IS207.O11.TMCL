@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Order_items extends Model
 {
@@ -14,13 +15,19 @@ class Order_items extends Model
         'order_id',
         'watch_id',
         'quantity',
+        'price',
     ];
 
     public $timestamps = false;
 
-    private function watches(): BelongsTo
+    public function watches(): BelongsTo
     {
         return $this->belongsTo(Products::class);
+    }
+
+    public function voucher(): BelongsTo
+    {
+        return $this->belongsTo(Voucher::class);
     }
 
     protected $table = 'order_items';
