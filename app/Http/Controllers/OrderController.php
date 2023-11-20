@@ -46,6 +46,8 @@ class OrderController extends Controller
             $order = Orders::create([
                 'address_id' => $request->address_id,
                 'user_id' => auth()->user()->id,
+                'gift' => $request->has('gift') ? true : false,
+                'description' => $request->has('description') ? $request->description : null,
                 'total_prices' => 0,
             ]);
             $price = OrderIteamsController::store([
