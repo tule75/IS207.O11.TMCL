@@ -22,7 +22,7 @@ for (var i = 0; i < data.dates.length; i++) {
     var orders = data.orders[i];
     var products = data.products[i]
 
-    // if monthOfYear in monthyAverage object is not exists, set sum and count : 0 
+    // if monthOfYear in monthyAverage object is not exists, set : 0 
     if (!monthlyAverages[monthOfYear]) {
         monthlyAverages[monthOfYear] = {
             sum: 0,

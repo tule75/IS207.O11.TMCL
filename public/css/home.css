@@ -165,8 +165,12 @@
     background-color: #423f3f;
     position: absolute;
 }
-.filter-sort h4 {
+.soft-heading{
     margin-left: 10px;
+    padding-top: 15px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    transform: translateX(50px);
 }
 .radio-check-container {
     display: flex;
@@ -175,7 +179,17 @@
 
 }
 .check-label {
-    padding: 10px 0;
+    padding: 0px 0;
+}
+.ratio-btn {
+    padding: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    position: relative;
+}
+.ratio-btn:checked {
+    background-color: #2e2e2e;
+    outline: none;
 }
 .check-js {
     padding: 20px;

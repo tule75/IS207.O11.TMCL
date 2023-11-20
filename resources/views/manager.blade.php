@@ -49,15 +49,22 @@
                 </div>
                 <div class="selection">
                     <div class="select-click active">Dashboard</div>
-                    <div class="select-click subpage-click">
+                    <div class="select-click subpage-click " >
                         Product Management
-                        <ul class="subpage-product-appear">
-                          <li class="subpage-product-item-click click">Add product</li>  
-                          <li class="subpage-product-item-click">Modify product</li>
-                          <li class="subpage-product-item-click">Delete product</li>  
-                        </ul>
+                        <div class="subpage-product-appear">
+                          <div class="subpage-product-item-click click">Add product</div>  
+                          <div class="subpage-product-item-click">Modify product</div>
+                          <div class="subpage-product-item-click">Delete product</div>  
+                        </div>
                     </div>
-                    <div class="select-click">Human Management</div>
+                    <div class="select-click subpage-human">
+                        Account Management
+                        <div class="subpage-human-appear">
+                          <div class="subpage-human-item-click click">Add account</div>  
+                          <div class="subpage-human-item-click">Modify account</div>
+                          <div class="subpage-human-item-click">Delete account</div>  
+                        </div>
+                    </div>
                     <div class="select-click">Change payment method</div>
                     <div class="select-click">Setting</div>
                 </div>
@@ -65,95 +72,99 @@
             <div class="main-right">
                <div class="main-right-content">
                     <div class="select-container active">
-                            <div class="flex items-center justify-center mt-5">
-                                <select id="monthSelect" class="monthSelected"></select>
-                            </div>
-                           <div class="row">
-                                <div id="monthRevenue" class="col ">
-                                    <h3> 
-                                        Monthly Revenue :
-                                    </h3> 
-                                    <p class="no-data">Chưa chọn tháng</p>
-                                    <div class="rev-result"></div>
-                                </div>
-                                <div class="col ">
-                                    <h3 class="">Total Orders </h3>
-                                        <p class="no-data">Chưa chọn tháng</p>
-                                    <div class="order-result"></div>
-                                </div>
-                                <div class="col ">
-                                    <h3 class="">Product Orders </h3>
-                                        <p class="no-data">Chưa chọn tháng</p>
-                                    <div class="product-result"></div>
-                                </div>
-                           </div>
+                        <div class="flex items-center justify-center mt-5">
+                            <select id="monthSelect" class="monthSelected"></select>
+                        </div>
 
-                           <div class="charts" id="">
-                                <div class="charts-card">
-                                    <p class="chart-title">Monthly Orders</p>
-                                    <div id="bar-chart"></div>
-                                </div>
-                                <div class="charts-card">
-                                    <p class="chart-title">Product Total and Sale Orders</p>
-                                    <div id="area-chart"></div>
-                                </div>
-                           </div>
+                        <div class="row">
+                            <div id="monthRevenue" class="col ">
+                                <h3>  Monthly Revenue : </h3> 
+                                <p class="no-data">Chưa chọn tháng</p>
+                                <div class="rev-result"></div>
+                            </div>
+
+                            <div class="col ">
+                                <h3 class="">Total Orders : </h3>
+                                <p class="no-data">Chưa chọn tháng</p>
+                                <div class="order-result"></div>
+                            </div>
+
+                            <div class="col ">
+                                <h3 class="">Product Orders : </h3>
+                                <p class="no-data">Chưa chọn tháng</p>
+                                <div class="product-result"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="charts" id="">
+                            <div class="charts-card">
+                                <p class="chart-title">Monthly Orders</p>
+                                <div id="bar-chart"></div>
+                            </div>
+                            <div class="charts-card">
+                                <p class="chart-title">Product Total and Sale Orders</p>
+                                <div id="area-chart"></div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="select-container click">
                         <div class="subpage-product-container">
                             <!-- form -->
                             <div class="form-container">
-                                    <h2 class="font-bold text-xl flex items-center justify-center">Add Product Form</h2>
-                                    <form action="GET">
-                                        <div class="add-product-container">
-                                            <div class="add-product-left">
-                                                <div class="product-input-show flex items-center justify-between">
-                                                    <label for="pName" class="form-label"> Product Name:  </label>
-                                                    <input
+                                <h2 class=" heading-add font-bold text-xl flex items-center justify-center">Add Product Form</h2>
+                                <form action="GET">
+                                    <div class="add-product-container">
+                                        <div class="add-product-left">
+                                            <div class="product-input-show flex items-center justify-between">
+                                                <label for="pName" class="form-label"> Product Name:  </label>
+                                                <input
                                                     type="text"
                                                     name="pName"
                                                     id="pName"
                                                     placeholder="Product Name"
                                                     class="product-input-area"
-                                                    />
-                                                </div>
-                                                <div class="product-input-show flex items-center justify-between">
-                                                    <label for="pPrice" class="form-label"> Product Price: </label>
-                                                    <input
+                                                />
+                                            </div>
+                                            <div class="product-input-show flex items-center justify-between">
+                                                <label for="pPrice" class="form-label"> Product Price: </label>
+                                                <input
                                                     type="number"
                                                     name="pPrice"
                                                     id="pPrice"
                                                     placeholder="Product Price"
                                                     class="pPrice"
-                                                    />
-                                                </div>
-                                                <div class="product-input-show flex items-center justify-between ">
-                                                    <label for="pGender" class="form-label"> Product Gender: </label>
-                                                    <input
+                                                />
+                                            </div>
+                                            <div class="product-input-show flex items-center justify-between ">
+                                                <label for="pGender" class="form-label"> Product Gender: </label>
+                                                <input
                                                     type="text"
                                                     name="pGender"
                                                     id="pGender"
                                                     placeholder="Product Gender"
                                                     class="product-input-area"
-                                                    />
-                                                </div>
-                                                <div class="product-input-show flex items-center justify-between">
-                                                    <label for="pUpload" class="form-label"> Product Image: </label>
-                                                    <div class=" translate-x-24">
-                                                        <input class="" type="file" name="pUpload" id="pUpload">
-                                                    </div>
+                                                />
+                                            </div>
+                                            <div class="product-input-show flex items-center justify-between">
+                                                <label for="pUpload" class="form-label"> Product Image: </label>
+
+                                                <div class=" translate-x-24">
+                                                    <input class="" type="file" name="pUpload" id="pUpload">
                                                 </div>
                                             </div>
-                                            <div class="add-product-right mt-4">
-                                                    <div class="description_field relative p-4 mt-10">
-                                                        <input type="input" class="pDescription outline-none w-40 " placeholder="Typing description in here...." name="pDescription" id='pDescription' required />
-                                                        <label for="pDescription" class="form-label-des">Description</label>
-                                                    </div>
-                                                    <div class="product-cate-drop">
-                                                        <div class="dropdownbtn">
-                                                            Choose Product Category 
-                                                        </div>
-                                                        <div class="">Category selected</div>
+
+                                        </div>
+                                        <div class="add-product-right mt-4">
+                                            <div class="description_field relative p-4 mt-10">
+                                                <input type="input" class="pDescription outline-none w-40 " placeholder="Typing description in here...." name="pDescription" id='pDescription' required />
+                                                <label for="pDescription" class="form-label-des">Description</label>
+                                            </div>
+
+                                            <div class="product-cate-drop">
+                                                    <div class="dropdownbtn">Choose Product Category</div>
+                                                    <div class="">Category selected</div>
                                                         <section class="cate-dropdown-content" id="pCate">
                                                             <option class="cate-dropdown-content-item" id="" value="vlue">cat</option >
                                                             <option class="cate-dropdown-content-item" id="" value="cod">dog</option >
@@ -163,16 +174,18 @@
                                                         </section>
                                                     </div>
                                             </div>
-                                        </div>
+                                        </div>   
+                                    </div>
+                                        <!-- submit -->
                                         <div class="flex justify-center items-center border-solid m-10">
                                             <button class="add-product-btn submit-container">Submit</button>
                                         </div>
-                                    </form>
-                            </div>
-                            <!-- end form -->
-                            <!-- list close product -->
+                                </form>
+
+                                <!-- end-form -->
+                                <!-- list close product -->
                             <div class="closed-product-list">
-                                <h2 class="font-bold text-xl flex items-center justify-center">Closed Products Add</h2>
+                                <h2 class="font-bold text-xl flex items-center justify-center"> Products Add Recently</h2>
                                 <table class="closed-item-table">
                                     <thead>
                                         <tr>
@@ -191,10 +204,8 @@
                                             <td class="product-gender">Male</td>
                                             <td class="product-description">Lorem ipsum...</td>
                                             <td class="product-category">Category 1</td>
-                                            <td class="product-actions">
-                                                <!-- Add buttons or actions related to closed products -->
-                                                <button class="reopen-product-btn">Undo</button>
-                                            </td>
+                                            <td class="product-time-add">15/11/2023</td>
+
                                         </tr>
                                         <tr class="closed-product-item">
                                             <td class="product-name">Product 1</td>
@@ -202,15 +213,13 @@
                                             <td class="product-gender">Male</td>
                                             <td class="product-description">Lorem ipsum...</td>
                                             <td class="product-category">Category 1</td>
-                                            <td class="product-actions">
-                                                <!-- Add buttons or actions related to closed products -->
-                                                <button class="reopen-product-btn">Reopen</button>
-                                            </td>
+                                            <td class="product-time-add">15/11/2023</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-                            
+                            <!-- end list product -->
+                            </div>
                         </div>
                         <div class="subpage-product-container">
                             <!-- modify -->
@@ -251,7 +260,8 @@
                                     </tbody>
                                 </table>
                             </div>
-                           <div class="form-container modify-form">
+
+                            <div class="form-container modify-form">
                                 <h2 class="font-bold text-xl flex items-center justify-center">Modify Product Form</h2>
                                 <form action="GET">
                                     <div class="add-product-container">
@@ -294,22 +304,22 @@
                                             </div>
                                         </div>
                                         <div class="add-product-right mt-4">
-                                                <div class="description_field relative p-4 mt-10">
-                                                    <input type="input" class="pDescription outline-none w-40 " placeholder="Typing description in here...." name="pDescription" id='pDescription' required />
-                                                    <label for="pDescription" class="form-label-des">Description</label>
+                                            <div class="description_field relative p-4 mt-10">
+                                                <input type="input" class="pDescription outline-none w-40 " placeholder="Typing description in here...." name="pDescription" id='pDescription' required />
+                                                <label for="pDescription" class="form-label-des">Description</label>
+                                            </div>
+                                            <div class="product-cate-drop">
+                                                <div class="dropdownbtn">
+                                                     Choose Product Category 
                                                 </div>
-                                                <div class="product-cate-drop">
-                                                    <div class="dropdownbtn">
-                                                        Choose Product Category 
-                                                    </div>
-                                                    <section class="cate-dropdown-content" id="pCate">
-                                                        <option class="cate-dropdown-content-item" id="" value="vlue">cat</option >
-                                                        <option class="cate-dropdown-content-item" id="" value="cod">dog</option >
-                                                        <option class="cate-dropdown-content-item" id="" value="d" >horse</option >
-                                                        <option class="cate-dropdown-content-item" id="" value="s">cow</option >
-                                                        <option class="cate-dropdown-content-item" id="" value="s">pig</option >
-                                                    </section>
-                                                </div>
+                                                <section class="cate-dropdown-content" id="pCate">
+                                                    <option class="cate-dropdown-content-item" id="" value="vlue">cat</option >
+                                                    <option class="cate-dropdown-content-item" id="" value="cod">dog</option >
+                                                    <option class="cate-dropdown-content-item" id="" value="d" >horse</option >
+                                                    <option class="cate-dropdown-content-item" id="" value="s">cow</option >
+                                                    <option class="cate-dropdown-content-item" id="" value="s">pig</option >
+                                                </section>
+                                            </div>
                                                 
                                         </div>
                                     </div>
@@ -318,7 +328,7 @@
                                         <button class="add-product-btn submit-container">Modify</button>
                                     </div>
                                 </form>
-                           </div>
+                            </div>
                         </div>
                         <div class="subpage-product-container">
                             <!-- delete -->
@@ -361,9 +371,7 @@
                                 <div class="modal-container">
                                     <div class="modal-delete">
                                         <form class="modal-content" action="">
-                                            <!-- <div class="trash-icon">
-                                                <svg class="" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
-                                            </div> -->
+                                       
                                             <p class="attention">Are you sure you want to delete this item?</p>
                                             <div class="btn-wrapper">
                                                 <button class="cancel" onclick="toggleModal()">
@@ -379,11 +387,183 @@
                             </div>
                         </div>
                     </div>
+                    <!-- staff account section -->
                     <div class="select-container">
-                        <h3>Product</h3>
+                        <div class="subpage-human-container">
+                                <!-- form -->
+                            <div class="add-container">
+                                <h2 class=" heading-add font-bold text-xl flex items-center justify-center">Add Account Form</h2>
+                                <form action="GET">
+                                    <div class="add-product-container">
+                                        <div class="add-product-left">
+                                            <div class="product-input-show flex items-center justify-between">
+                                                <label for="pUserName" class="form-label"> Set Username:  </label>
+                                                <input
+                                                        type="text"
+                                                        name="pUserName"
+                                                        id="pUserName"
+                                                        placeholder="Enter Username"
+                                                        class="product-input-area"
+                                                />
+                                            </div>
+                                          
+                                            <div class="product-input-show flex items-center justify-between ">
+                                                <label for="pPassword" class="form-label"> Set Password: </label>
+                                                <input
+                                                        type="password"
+                                                        name="pPassword"
+                                                        id="pPassword"
+                                                        placeholder="Enter password"
+                                                        class="product-input-area"
+                                                />
+                                            </div>
+                                            <div class="product-input-show flex items-center justify-between ">
+                                                <label for="pEmail" class="form-label"> Email: </label>
+                                                <input
+                                                        type="email"
+                                                        name="pEmail"
+                                                        id="pEmail"
+                                                        placeholder="Enter email"
+                                                        class="product-input-area"
+                                                />
+                                            </div>
+                                            <div class="product-input-show flex items-center justify-between ">
+                                                <label for="pNamePassword" class="form-label"> Staff's Name: </label>
+                                                <input
+                                                        type="text"
+                                                        name="pNamePassword"
+                                                        id="pNamePassword"
+                                                        placeholder="Enter password"
+                                                        class="product-input-area"
+                                                />
+                                            </div>
+                                        </div>
+                                     
+                                        </div>
+                                            <!-- submit -->
+                                        <div class="flex justify-center items-center border-solid m-10">
+                                            <button class="add-product-btn submit-container">Submit</button>
+                                        </div>
+                                </form>
+
+                                <!-- list close product -->
+                                <div class="closed-product-list">
+                                    <h2 class="font-bold text-xl flex items-center justify-center">Staff Account recently</h2>
+                                    <table class="closed-item-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Staff's Name</th>
+                                                <th>Username</th>
+                                                <th>Email</th>
+                                                <th>Password</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="closed-product-item">
+                                                <td class="product-name">Nguyen Van A</td>  
+                                                <td class="product-name">aaaa</td>
+                                                <td class="product-email">as@gmail.com</td>
+                                                <td class="product-price">asd</td>
+                                            </tr>
+                                            <tr class="closed-product-item">
+                                                <td class="product-name">Nguyen Van B</td>  
+                                                <td class="product-name">as</td>
+                                                <td class="product-email">as@gmail.com</td>
+                                                <td class="product-price">passb</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>  
+                             <!-- end list product -->
+                            </div>
+                            
+                        </div>
+                        <div class="subpage-human-container">
+                            <!-- modify -->
+                            <div class="closed-product-list">
+                                <h2 class="font-bold text-xl flex items-center justify-center">Staff Account recently</h2>
+                                <table class="closed-item-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Staff's Name</th>
+                                            <th>Username</th>
+                                            <th>Email</th>
+                                            <th>Password</th>
+                                            <th>Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="closed-product-item">
+                                            <td class="product-name">Nguyen Van A</td>  
+                                            <td class="product-name">aaaa</td>
+                                            <td class="product-email">as@gmail.com</td>
+                                            <td class="product-price">asd</td>
+                                            
+                                        </tr>
+                                        <tr class="closed-product-item">
+                                            <td class="product-name">Nguyen Van B</td>  
+                                            <td class="product-name">as</td>
+                                            <td class="product-email">as@gmail.com</td>
+                                            <td class="product-price">passb</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>  
+                        </div>
+                        <div class="subpage-human-container">
+                            <!-- delete -->
+                            <div class="closed-product-list">
+                                    <h2 class="font-bold text-xl flex items-center justify-center">Account recently</h2>
+                                    <table class="closed-item-table">
+                                        <thead>
+                                            <tr class=" text-center">
+                                                <th>Username</th>
+                                                <th>Email</th>
+                                                <th>Password</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="closed-product-item">
+                                                <td class="product-name">aaaa</td>
+                                                <td class="product-email">as@gmail.com</td>
+                                                <td class="product-price">asd</td>
+                                                <td class="product-actions">
+                                                    <button class="del-human-btn" onclick="toggleModalStaff()">Del</button>
+                                                </td>
+                                            </tr>
+                                            <tr class="closed-product-item">
+                                                <td class="product-name">as</td>
+                                                <td class="product-email">as@gmail.com</td>
+                                                <td class="product-price">passb</td>
+                                                <td class="product-actions">
+                                                    <button class="del-human-btn" onclick="toggleModalStaff()">Del</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="modal-container-human">
+                                    <div class="modal-delete">
+                                        <form class="modal-content" action="">
+                                       
+                                            <p class="attention">Are you sure you want to delete this person?</p>
+                                            <div class="btn-wrapper">
+                                                <button class="cancel" onclick="toggleModalStaff()">
+                                                    No, cancel
+                                                </button>
+                                                <button class="deleted">
+                                                    Yes, I'm sure
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="select-container">
-                        <h3>Human</h3>
+                        <h3>Something</h3>
                     </div>
                     <div class="select-container">
                         <h3>Setting</h3>

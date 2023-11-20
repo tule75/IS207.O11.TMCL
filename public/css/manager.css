@@ -95,7 +95,7 @@
 .select-click {
     padding: 30px 30px;
     cursor: pointer;
-    margin: 10px 0;
+    margin: 5px 0;
 }
 .select-click.active { 
     background-color: #ddd ;
@@ -105,14 +105,14 @@
 }
 .main-right {
     width: 100%;
-    display: flex;
+    
+    background-color: #F2F2F2;
 }
 .main-right-content {
     width: 100%;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #F2F2F2;
     color: #666666;
 }
 .select-container{
@@ -122,52 +122,64 @@
 .select-container.active {
     display: block;
 }
+
+/* subpage */
 .subpage-click {
-    position: relative;
-    
+    position: relative; 
 }
-.subpage-product-appear {
-    position: absolute;
-    opacity: 0;
-    padding: 0;
-    transform: translateX(75%);
-    right: -25px;
-    top: 5px;
-    list-style: none;
-    transform: opacity 0.5 ease,right 0.5s ease;
+.subpage-product-appear, .subpage-human-appear{
+    display: none;
+    cursor: pointer;
+    margin:0;
+    line-height: 20px;
+    transform: translateY(10px);
 }
-.subpage-product-item-click {
-    padding: 10px 18px;
+.subpage-product-item-click, .subpage-human-item-click  {
+    padding: 5px ;
+    text-align: center;
+    background-color: white;
     border-bottom: 1px solid #161414;
 }
-.subpage-product-item-click:hover ~ .subpage-product-appear{
-    right: -35px;
 
-}
-.subpage-product-item-click:hover{
+.subpage-product-item-click:hover , .subpage-human-item-click:hover{
     background-color: rgb(99, 93, 91);
 
 }
-.subpage-product-item-click:last-child {
+.subpage-product-item-click:last-child , .subpage-human-item-click:last-child  {
     border: none;
-}
-.subpage-click:hover .subpage-product-appear{
-    opacity: 1;
 }
 .subpage-product-container {
     display: none;
 }
+.subpage-human-container {
+    display: none;
+}
+
 .subpage-product-container.click {
     display: block;
     z-index: 1;
 }
+
+.subpage-human-container.click {
+    display: block;
+    z-index: 1;
+}
+
+/* account */
+.add-account-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*  */
 .product-input-show {
     padding: 10px 10px;
 }
 .form-container {
     background-color: white;
     /* height: ; */
-    margin-top: 20px;
+    margin: 20px;
     padding: 30px 40px;
 }
 .add-product-container {
@@ -177,6 +189,9 @@
 }
 .add-product-right {
 
+}
+.heading-add {
+    
 }
 .product-cate-drop {
     position: relative;
@@ -254,9 +269,19 @@
 }
 .submit-container {
     border: 1px solid #ddd;
-    padding: 5px 15px;
+    padding: 7px 17px;
+    font-size: 14px;
+    font-weight: 700;
+    opacity: 1;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
 }
-
+.submit-container:hover {
+    background-color: #333;
+    color: rgb(168, 164, 164);
+}
 .row {
     margin: 20px 10px;
     display: flex;
@@ -337,7 +362,7 @@
   .closed-product-list {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    margin: 20px;
     background-color: white;
     padding: 20px;
   }
@@ -390,6 +415,15 @@ table,tr,td,th {
     color: white;
     font-weight: 700;
 }
+.del-human-btn {
+    padding: 0 15px;
+    border-radius: 999px;
+    border: 1px solid #ddd;
+    margin: 5px 0;
+    background: red;
+    color: white;
+    font-weight: 700;
+}
 
 /* delete modal */
 .modal-container {
@@ -405,7 +439,19 @@ table,tr,td,th {
     align-items: center;
     position: relative;
 }
-
+.modal-container-human {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
 .modal-delete {
     position: absolute;
     background-color: #fff;

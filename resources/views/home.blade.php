@@ -87,16 +87,13 @@
         <!-- main start -->
         <div class="main-content">
             <div class="filter-sort">
-                <h4>Sort By</h4>
+                <h4 class="soft-heading">Sort By</h4>
                 <div class="radio-check-container">
-                    <label class="check-label" for="price">
-                        <input class="check-js" type="radio" value="low-to-high" name="price" id="">PRICE LOW TO HIGH
+                    <label class="check-label check-soft-price" for="price">
+                        <input class="ratio-btn" type="radio" value="low-to-high" name="price" id="">PRICE LOW TO HIGH
                     </label>
-                    <label class="check-label" for="price">
-                        <input class="check-js" type="radio" value="high-to-low" name="price" id="">PRICE HIGH TO LOW
-                    </label>
-                    <label class="check-label" for="price">
-                        <input class="check-js" type="radio" value="recommended" name="price" id="">RECOMMENDED
+                    <label class="check-label check-soft-price" for="price">
+                        <input class="ratio-btn" type="radio" value="high-to-low" name="price" id="">PRICE HIGH TO LOW
                     </label>
                 </div>
             </div>
@@ -132,7 +129,7 @@
                                 <div class="object-section-info">
                                     <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
                                         leather</a>
-                                    <h3>$7,199,00</h3>
+                                    <h3 class="item-price">$7,199,00</h3>
                                 </div>
                             </div>
                             <div class="buy-btn">
@@ -152,7 +149,7 @@
                                 <div class="object-section-info">
                                     <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
                                         leather</a>
-                                    <h3>$7,199,00</h3>
+                                    <h3 class="item-price">$199,00</h3>
                                 </div>
                             </div>
                             <div class="buy-btn">
@@ -170,7 +167,7 @@
                                 <div class="object-section-info">
                                     <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
                                         leather</a>
-                                    <h3>$7,199,00</h3>
+                                    <h3 class="item-price">$5,199,00</h3>
                                 </div>
                             </div>
                             <div class="buy-btn">
@@ -188,7 +185,7 @@
                                 <div class="object-section-info">
                                     <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
                                         leather</a>
-                                    <h3>$7,199,00</h3>
+                                    <h3 class="item-price">$1,199,00</h3>
                                 </div>
                             </div>
                             <div class="buy-btn">
@@ -206,7 +203,7 @@
                                 <div class="object-section-info">
                                     <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
                                         leather</a>
-                                    <h3>$7,199,00</h3>
+                                    <h3 class="item-price">$3,199,00</h3>
                                 </div>
                             </div>
                             <div class="buy-btn">
@@ -224,7 +221,7 @@
                                 <div class="object-section-info">
                                     <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
                                         leather</a>
-                                    <h3>$7,199,00</h3>
+                                    <h3 class="item-price">$1,199,00</h3>
                                 </div>
                             </div>
                             <div class="buy-btn">
@@ -242,7 +239,7 @@
                                 <div class="object-section-info">
                                     <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
                                         leather</a>
-                                    <h3>$7,199,00</h3>
+                                    <h3 class="item-price">$199,00</h3>
                                 </div>
                             </div>
                             <div class="buy-btn">
@@ -260,7 +257,25 @@
                                 <div class="object-section-info">
                                     <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
                                         leather</a>
-                                    <h3>$7,199,00</h3>
+                                    <h3 class="item-price">$299,00</h3>
+                                </div>
+                            </div>
+                            <div class="buy-btn">
+                                <a href="" class="discover has-link">Discover</a>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/watch/1" style="text-decoration:underline">
+                        <div class="product-object">
+                            <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
+                            <div class="object-section">
+                                <div class="object-section-info">
+                                    <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
+                                </div>
+                                <div class="object-section-info">
+                                    <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
+                                        leather</a>
+                                    <h3 class="item-price">$9,00</h3>
                                 </div>
                             </div>
                             <div class="buy-btn">
