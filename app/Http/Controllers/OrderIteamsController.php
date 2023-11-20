@@ -46,7 +46,7 @@ class OrderIteamsController extends Controller
             foreach ($watches_id as $i => $watch_id) {
 
                 $watch = Watch::find($watch_id);
-                $price += $watch->price;
+                $price += $watch->price * (1 - $watch->discount);
 
                 //Kiểm tra còn hàng trong kho hong, ko còn thì trả về -1 rồi báo lỗi
                 if ($quantity[$i] > $watch->storage)
@@ -57,7 +57,7 @@ class OrderIteamsController extends Controller
                     $watch->storage -= $quantity[$i];
                     $watch->save();
                 }
-                Order_items::create(['order_id' => $order_id, 'watch_id' => $watch_id, 'quantity' => $quantity[$i]]);
+                Order_items::create(['order_id' => $order_id, 'watch_id' => $watch_id, 'quantity' => $quantity[$i], 'price' => $watch->price * (1 - $watch->discount)]);
             }
 
             return $price;

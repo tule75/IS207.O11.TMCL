@@ -6,9 +6,11 @@ use App\Models\Orders;
 use App\Http\Requests\StoreOrdersRequest;
 use App\Http\Requests\UpdateOrdersRequest;
 use App\Models\Order_items;
+use App\Models\Voucher;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -37,11 +39,14 @@ class OrderController extends Controller
     {
         //
         try {
+            if ($request->has('voucher_code')) {
+                $voucher = Voucher::where('code', $request->get('voucher_code'))->first();
+            }
+
             $order = Orders::create([
                 'address_id' => $request->address_id,
                 'user_id' => auth()->user()->id,
-                'total_prices' => $request->total_price || 0,
-                'discount' => $request->discount || 0
+                'total_prices' => 0,
             ]);
             $price = OrderIteamsController::store([
                 'order_id' => $order->id,
@@ -49,15 +54,44 @@ class OrderController extends Controller
                 'quantity' => $request->quantity
             ]);
             if ($price == -1) {
+                $order->delete();
                 return back()->withErrors(['message' => 'Lỗi hết hàng']);
             }
-            $order->total_prices = $price;
-            $order->save();
-
+            if ($voucher->status == 'active') { 
+                $order->total_prices = $this->getTotalPrices($price, $voucher);
+                $order->voucher_id = $voucher->id;
+                $order->save();
+            } else {
+                $order->total_prices = $price;
+                $order->voucher_id = null;
+                $order->save();
+            }
             return back()->withInput(['message'=> 'Mua thành công']);
         } catch (Exception $e) {
+            dd($e);
             return back()->withErrors(['message'=> $e->getMessage()]);
         }
+    }
+
+    public function getTotalPrices($price, $voucher) {
+        if ($voucher->rule == 'vip' && $voucher->minimum <= auth()->user()->score)
+        {
+            if ($voucher->type == 'percent') {
+                return $price * (1- $voucher->discount);
+            }
+            else {
+                return $price - $voucher->discount;
+            }
+        } else if ($voucher->rule == 'money' && $voucher->minimum <= $price) 
+        {
+            if ($voucher->type == 'percent') {
+                return $price * (1 - $voucher->discount);
+            }
+            else {
+                return $price - $voucher->discount;
+            }
+        }
+        return $price;
     }
 
     /**
