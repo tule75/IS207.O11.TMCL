@@ -69,6 +69,8 @@ Route::delete('/watch/{watch}/delete', [WatchController::class, 'destroy'])->mid
 Route::post('/watch/deleted/all', [WatchController::class, 'destroyed'])->middleware('auth:sanctum');
     //restore deleted
 Route::post('/watch/{watch}/restore', [WatchController::class, 'restore'])->middleware('auth:sanctum');
+    // search
+Route::post('/watch/search', [WatchController::class, 'typeSearch'])->middleware('auth:sanctum');
 
 // Cart
     // Thêm vào giỏ hàng

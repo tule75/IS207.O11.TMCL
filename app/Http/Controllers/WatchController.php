@@ -78,6 +78,18 @@ class WatchController extends Controller
         
     }
 
+    // Search product
+    public function typeSearch(Request $request) {
+        // q là query 
+        return Watch::search($request->q)->get();
+    }
+
+    // render ra trang tìm kiếm sản phẩm query
+    public function search(Request $request) {
+        // dd($request->query('q'));
+        return view('products/search', Watch::search($request->q)->get());
+    }
+
     /**
      * Display the specified resource.
      */
