@@ -19,8 +19,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
-        return Orders::all();
+        return Orders::with(['watches' => function ($query) {
+            $query->select('watches.id', 'watches.name', 'watches.img1', 'watches.img2', 'watches.img3');
+        }, 'voucher' => function ($query) {
+            $query->select('id', 'code', 'discount');
+        }])->get();
     }
 
     /**
@@ -105,9 +108,14 @@ class OrderController extends Controller
         
     }
 
-    public function showForUser($user_id) 
+    public function showForUser() 
     {
-        return response()->json(Orders::where('user_id', $user_id)->get());
+        $user_id = auth()->user()->id;
+        return response()->json(Orders::where('user_id', $user_id)->with(['watches' => function ($query) {
+            $query->select('watches.id', 'watches.name', 'watches.img1', 'watches.img2', 'watches.img3');
+        }, 'voucher' => function ($query) {
+            $query->select('id', 'code', 'discount');
+        }])->get());
         // $order = Orders::where('user_id', $user_id)->first();
         // return response()->json($order->orders);
     }
