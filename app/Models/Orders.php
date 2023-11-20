@@ -17,6 +17,8 @@ class Orders extends Model
         'total_prices',
         'discount',
         'voucher_id',
+        'gift',
+        'description',
     ];
 
     public function watches(): BelongsToMany
