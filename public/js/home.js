@@ -120,7 +120,7 @@ function sortProductsByPriceL2H() {
     const sortedProductElements = productElements.sort((a, b) => {
         const priceAElement = a.querySelector('.item-price');
         const priceBElement = b.querySelector('.item-price');
-        // Check if not null or undefined
+        // Check 
         const priceA = priceAElement ? parseFloat(priceAElement.textContent.replace(/[^\d.]/g, '')) : 0;
         const priceB = priceBElement ? parseFloat(priceBElement.textContent.replace(/[^\d.]/g, '')) : 0;
 
@@ -130,4 +130,44 @@ function sortProductsByPriceL2H() {
     productElements.forEach(element => container.removeChild(element));
     // sau đó sắp xếp lại, container sẽ chứa các phần tử được sắp xếp
     sortedProductElements.forEach(element => container.appendChild(element));
+}
+
+// soft from az - za
+const sortNameButtons = document.querySelectorAll('.az-item');
+
+sortNameButtons.forEach((buttonName) => {
+    buttonName.addEventListener('click', (e) => {
+        const sortType = buttonName.getAttribute('data-sort-type');
+        sortProductsByName(sortType);
+    })
+})
+
+function sortProductsByName(sortType) {
+    const container = document.querySelector('.products-container');
+    const productElements = Array.from(container.children);
+
+    const sortedProductElements = productElements.sort((a, b) => {
+        const firstLetterA = getFirstLetterFromName(a);
+        const firstLetterB = getFirstLetterFromName(b);
+
+        if (sortType == 'az') {
+            return firstLetterA.localeCompare(firstLetterB);
+        } else if (sortType == 'za') {
+            return firstLetterB.localeCompare(firstLetterA);
+        }
+
+        return 0;
+    });
+
+    productElements.forEach(element => container.removeChild(element));
+    sortedProductElements.forEach(element => container.appendChild(element));
+}
+function getFirstLetterFromName(element) {
+    const nameElement = element.querySelector('.info-name');
+    if (nameElement) {
+        const name = nameElement.textContent.trim();
+        return name.charAt(0).toUpperCase();
+    } else {
+        return ''; 
+    }
 }

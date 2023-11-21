@@ -385,3 +385,45 @@
     font-size: 26px;
     padding: 10px 10px;
 }
+
+/* az */
+.fromaz, .fromza {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    cursor: pointer;
+    position: relative;
+}
+.az {
+    margin-left: 10px;
+    width: 9%;
+}
+.za {
+    margin-left: 10px;
+    width: 8%;
+}
+.fromaz::after , .fromza::after {
+   content: '';
+   position: absolute;
+   width: 5%;
+   /* background-color: #1d1c1c; */
+   height: 2px;
+   bottom: 10px;
+   left: 0px;
+   transition: left 0.5s ease;
+}
+.fromaz:hover , .fromza:hover {
+   color: #4f4d4d;
+   font-weight: 600;
+ }
+.fromaz:hover::after , .fromza:hover::after {
+    content: '';
+    position: absolute;
+    width: 5%;
+    background-color: #1d1c1c;
+    height: 2px;
+    bottom: 10px;
+    left: 15px;
+    transition: left 0.5s ease;
+}
+ 
