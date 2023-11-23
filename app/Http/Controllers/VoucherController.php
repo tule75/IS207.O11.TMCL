@@ -25,6 +25,7 @@ class VoucherController extends Controller
     public function create()
     {
         //
+        return view('voucher.create');
     }
 
     /**
@@ -47,8 +48,8 @@ class VoucherController extends Controller
             
             // $this->store_pv($request->get('watch_id'), $voucher->id);
 
-            // return back()->withInput(['message' => 'Tạo voucher thành công']);
-            return $voucher;
+            return back()->withInput(['message' => 'Tạo voucher thành công']);
+            // return $voucher;
         } catch (Exception $e) {
             dd($e);
         }

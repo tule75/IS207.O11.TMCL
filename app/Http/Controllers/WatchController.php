@@ -37,7 +37,7 @@ class WatchController extends Controller
     public function create()
     {
         //
-        return view('watch.create');
+        return view('products.create');
     }
 
     /**
@@ -97,17 +97,18 @@ class WatchController extends Controller
     // render ra trang tìm kiếm sản phẩm query
     public function search(Request $request) {
         // dd($request->query('q'));
-        return view('products/search', Watch::search($request->q)->paginate(15));
+        return view('products.search', Watch::search($request->q)->paginate(15));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Watch $watch)
+    public function show($watch_slug)
     {
         //
         // return view('products.watch');
-        return view('watch.show', [$watch]);
+        // Lấy sản phẩm
+        return view('products.watch', [Watch::where('slug', $watch_slug)->first()]);
     }
 
     /**
@@ -116,7 +117,7 @@ class WatchController extends Controller
     public function edit(Watch $watch)
     {
         //
-        return view('watch.edit', $watch);
+        return view('product.edit', $watch);
     }
 
     /**
