@@ -165,7 +165,7 @@
     background-color: #423f3f;
     position: absolute;
 }
-.soft-heading{
+.sort-heading{
     margin-left: 10px;
     padding-top: 15px;
     font-weight: bolder;
@@ -387,6 +387,9 @@
 }
 
 /* az */
+.btn-sort-name {
+    margin-top: 15px;
+}
 .fromaz, .fromza {
     display: flex;
     align-items: center;
@@ -426,4 +429,13 @@
     left: 15px;
     transition: left 0.5s ease;
 }
- 
+
+/* search */
+.search-space {
+    margin-top: 50px;
+}
+.input-box::-webkit-outer-spin-button { 
+    display: none;
+}
+.input-box {
+}

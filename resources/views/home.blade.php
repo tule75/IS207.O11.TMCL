@@ -49,8 +49,6 @@
                                 <a href="{{ url('/login') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
                             @endauth
                         @endif
-
-                        
                     </div>
                 </div>
 
@@ -87,8 +85,11 @@
         <!-- main start -->
         <div class="main-content">
             <div class="filter-sort">
+                <div class="search-space">
+                    <input class="input-box" type="text" placeholder="Typing here ....">
+                </div>
                 <div class="sort-item">
-                    <h4 class="soft-heading">By Price</h4>
+                    <h4 class="sort-heading">By Price</h4>
                     <div class="radio-check-container">
                         <label class="check-label check-soft-price" for="price">
                             <input class="ratio-btn" type="radio" value="low-to-high" name="price" id="">PRICE LOW TO HIGH
@@ -99,14 +100,17 @@
                     </div>
                 </div>
                 <div class="sort-item">
-                    <button class="fromaz az-item" data-sort-type="az">
-                        <p>Sort name by </p> 
-                        <img class="az" src="{{asset('/img/3682482.png')}}" alt="">
-                    </button>
-                    <button class="fromza az-item" data-sort-type="za">
-                        <p>Sort name by </p> 
-                        <img class="za" src="{{asset('/img/59372.png')}}" alt="">
-                    </button>
+                    <h4 class="sort-heading">By Name</h4>
+                    <div class="btn-sort-name">
+                        <button class="fromaz az-item" data-sort-type="az">
+                            <p>Sort name by </p> 
+                            <img class="az" src="{{asset('/img/3682482.png')}}" alt="">
+                        </button>
+                        <button class="fromza az-item" data-sort-type="za">
+                            <p>Sort name by </p> 
+                            <img class="za" src="{{asset('/img/59372.png')}}" alt="">
+                        </button>
+                    </div>
                 </div>
             </div>
             <!-- item-container -->
