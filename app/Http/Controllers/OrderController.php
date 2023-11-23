@@ -17,13 +17,31 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    // Hiển thị toàn bộ order trong một khoảng thời gian
+    public function getAll(Request $request)
     {
-        return Orders::with(['watches' => function ($query) {
-            $query->select('watches.id', 'watches.name', 'watches.img1', 'watches.img2', 'watches.img3');
-        }, 'voucher' => function ($query) {
-            $query->select('id', 'code', 'discount');
-        }])->get();
+        if ($request->has('all') && $request->get('all') == true) {
+            return view('order.index', Orders::with(['watches' => 
+                function ($query) {
+                    $query->select('watches.id', 'watches.name', 'watches.img1', 'watches.img2', 'watches.img3');
+                }, 'voucher' => function ($query) {
+                    $query->select('id', 'code', 'discount');
+                }])->paginate(20)
+            ); 
+        } else if ($request->has('start_date') && $request->has('end_date')){
+            return view('order.index', Orders::where('created_at', '>=', 'start_date')->where('created_at', '<=', 'end_date')->with(['watches' => 
+                function ($query) {
+                    $query->select('watches.id', 'watches.name', 'watches.img1', 'watches.img2', 'watches.img3');
+                }, 'voucher' => function ($query) {
+                    $query->select('id', 'code', 'discount');
+                }])->paginate(20)
+            ); 
+        }        
+    }
+
+    public function getPending() 
+    {
+        return Orders::where('status', '=', 'Pending')->get();
     }
 
     /**
@@ -71,7 +89,7 @@ class OrderController extends Controller
                 $order->voucher_id = null;
                 $order->save();
             }
-            return back()->withInput(['message'=> 'Mua thành công']);
+            return redirect('/')->withInput(['message'=> 'Mua thành công']);
         } catch (Exception $e) {
             dd($e);
             return back()->withErrors(['message'=> $e->getMessage()]);
@@ -111,7 +129,7 @@ class OrderController extends Controller
     public function showForUser() 
     {
         $user_id = auth()->user()->id;
-        return response()->json(Orders::where('user_id', $user_id)->with(['watches' => function ($query) {
+        return view('order.showForUser', Orders::where('user_id', $user_id)->with(['watches' => function ($query) {
             $query->select('watches.id', 'watches.name', 'watches.img1', 'watches.img2', 'watches.img3');
         }, 'voucher' => function ($query) {
             $query->select('id', 'code', 'discount');
@@ -157,13 +175,12 @@ class OrderController extends Controller
      */
 
     // $order = order_id 
-    // /order/delete/{order} ghi vậy cho gọn :))
     public function destroy(Orders $order)
     {
         //
         try {
-            Order_items::destroy($order);
-            Orders::find($order)->each->delete();
+            Order_items::destroy($order->id);
+            $order->delete();
             return back()->withInput(['message' => 'Xóa thành công']);
         } catch (Exception $e) {
             dd($e);

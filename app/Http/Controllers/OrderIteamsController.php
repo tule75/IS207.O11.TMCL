@@ -6,16 +6,18 @@ use App\Models\Order_iteams;
 use App\Http\Requests\StoreOrder_iteamsRequest;
 use App\Http\Requests\UpdateOrder_iteamsRequest;
 use App\Models\Order_items;
+use App\Models\Voucher;
 use App\Models\Watch;
+use Illuminate\Http\Client\Request as ClientRequest;
+use Illuminate\Http\Request;
 
 class OrderIteamsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
     }
 
     /**

@@ -12,6 +12,7 @@ use App\Http\Controllers\AddressController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Manager;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\VoucherController;
 
 /*
@@ -58,11 +59,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 // Watch routes
 Route::middleware('auth')->group(function () {
-    
-    
     // Lấy danh sách sản phẩm
     // Route::get('/watch', [WatchController::class, 'index'])->middleware('auth');
-    
+
     // Hiển thị trang thêm sản phẩm
     Route::get('/watch/create', [WatchController::class, 'create'])->middleware('manager');
     // Thêm sản phẩm
@@ -102,6 +101,26 @@ Route::middleware('auth')->group(function () {
     // Xóa voucher
     Route::delete('/voucher/{code}', [VoucherController::class, 'deleteVoucher'])->middleware('manager');
 });
+
+// Order
+Route::middleware('auth')->group(function () {
+    // Lấy danh sách các order
+    Route::get('/order/getall', [OrderController::class, 'getAll'])->middleware('manager');
+    // Trang tạo order
+    Route::get('/order/buy', [OrderController::class, 'create']);
+    // Tạo đơn hàng
+    Route::post('/order/buy', [OrderController::class, 'store']);
+    // Lấy danh sách order đang chờ xác nhận
+    Route::post('/order/pending', [OrderController::class, 'getPending'])->middleware('manager');
+    // Chuyển từ Pending sang Shipping
+    Route::patch('/order/{order}', [OrderController::class, 'update'])->middleware('manager');
+    // Khách hàng xem các order của mình
+    Route::get('/order/{user_id}', [OrderController::class, 'showForUser']);
+    // Xóa order
+    Route::delete('/order/{order}', [OrderController::class, 'destroy'])->middleware('manager');
+    // Chuyển đến trang thanh toán momo
+    Route::post('/payment/momo', [PaymentsController::class, 'send']);
+});
     
 
 // Order
@@ -129,5 +148,8 @@ Route::get("manager", function () {
 
 //testquery
 Route::get('/test/query', [WatchController::class, 'search'])->middleware('auth');
+
+//test
+Route::get('/test/order', [OrderController::class, 'getAll']);
 
 require __DIR__.'/auth.php';
