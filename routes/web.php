@@ -12,6 +12,7 @@ use App\Http\Controllers\AddressController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Manager;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\VoucherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,12 +57,52 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 // Watch routes
-    // Lưu sản phẩm
-    Route::post("/watch", [WatchController::class, 'store'])->middleware('auth')->name('watch.store');
-    // Hiển thị đơn sản phẩm
-    Route::get("/watch/{id}", [WatchController::class, 'show'])->name('watch.show');
+Route::middleware('auth')->group(function () {
+    
+    
     // Lấy danh sách sản phẩm
-    Route::get('/watch', [WatchController::class, 'index'])->middleware('auth');
+    // Route::get('/watch', [WatchController::class, 'index'])->middleware('auth');
+    
+    // Hiển thị trang thêm sản phẩm
+    Route::get('/watch/create', [WatchController::class, 'create'])->middleware('manager');
+    // Thêm sản phẩm
+    Route::post("/watch/create", [WatchController::class, 'store'])->middleware('manager')->name('watch.store');
+    // Hiển thị trang sửa sản phẩm
+    Route::get('/watch/{id}/edit', [WatchController::class, 'edit'])->middleware('manager');
+    // Sửa sản phẩm
+    Route::put("/watch/{id}/edit", [WatchController::class, 'store'])->middleware('manager')->name('watch.store');
+    // Xóa mềm sản phẩm
+    Route::delete("/watch/{id}", [WatchController::class, 'destroy'])->middleware('manager');
+    // Hiển thị các sản phẩm đã xóa mềm
+    Route::get("/watch/destroyed", [WatchController::class, 'destroyed'])->middleware('manager');
+    // Khôi phục sản phẩm đã xóa mềm
+    Route::put("/watch/{id}/restore", [WatchController::class, 'restore'])->middleware('manager');
+    // Gợi ý search
+    Route::post("/watch/search", [WatchController::class, 'typeSearch']);
+    // Search
+    Route::get("/watch/search", [WatchController::class, 'search']);
+    // Hiển thị đơn sản phẩm
+    Route::get("/watch/{slug}", [WatchController::class, 'show'])->name('watch.show');
+    // Collection
+    Route::get("/collection", function () {
+        return view('collection');
+    });
+});
+
+// Voucher Routes
+Route::middleware('auth')->group(function () {
+    // Mở trang tạo voucher
+    Route::get('/voucher/create', [VoucherController::class, 'create'])->middleware('manager');
+    // Tạo voucher
+    Route::post('/voucher/create', [VoucherController::class, 'store'])->middleware('manager');
+    // check status
+    Route::post('/voucher/{code}/status', [VoucherController::class, 'checkStatus']);
+    // Get voucher
+    Route::post('/voucher/{code}/get', [VoucherController::class, 'getVoucher']);
+    // Xóa voucher
+    Route::delete('/voucher/{code}', [VoucherController::class, 'deleteVoucher'])->middleware('manager');
+});
+    
 
 // Order
     //test thôi này phải xóa
