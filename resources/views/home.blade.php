@@ -50,8 +50,6 @@
                                 <a href="{{ url('/login') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
                             @endauth
                         @endif
-
-                        
                     </div>
                 </div>
 
@@ -88,14 +86,32 @@
         <!-- main start -->
         <div class="main-content">
             <div class="filter-sort">
-                <h4 class="soft-heading">Sort By</h4>
-                <div class="radio-check-container">
-                    <label class="check-label check-soft-price" for="price">
-                        <input class="ratio-btn" type="radio" value="low-to-high" name="price" id="">PRICE LOW TO HIGH
-                    </label>
-                    <label class="check-label check-soft-price" for="price">
-                        <input class="ratio-btn" type="radio" value="high-to-low" name="price" id="">PRICE HIGH TO LOW
-                    </label>
+                <div class="search-space">
+                    <input class="input-box" type="text" placeholder="Typing here ....">
+                </div>
+                <div class="sort-item">
+                    <h4 class="sort-heading">By Price</h4>
+                    <div class="radio-check-container">
+                        <label class="check-label check-soft-price" for="price">
+                            <input class="ratio-btn" type="radio" value="low-to-high" name="price" id="">PRICE LOW TO HIGH
+                        </label>
+                        <label class="check-label check-soft-price" for="price">
+                            <input class="ratio-btn" type="radio" value="high-to-low" name="price" id="">PRICE HIGH TO LOW
+                        </label>
+                    </div>
+                </div>
+                <div class="sort-item">
+                    <h4 class="sort-heading">By Name</h4>
+                    <div class="btn-sort-name">
+                        <button class="fromaz az-item" data-sort-type="az">
+                            <p>Sort name by </p> 
+                            <img class="az" src="{{asset('/img/3682482.png')}}" alt="">
+                        </button>
+                        <button class="fromza az-item" data-sort-type="za">
+                            <p>Sort name by </p> 
+                            <img class="za" src="{{asset('/img/59372.png')}}" alt="">
+                        </button>
+                    </div>
                 </div>
             </div>
             <!-- item-container -->
@@ -128,7 +144,7 @@
                                     <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
                                 </div>
                                 <div class="object-section-info">
-                                    <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
+                                    <a href="" class=" has-link object-info">5mm, automatic movement, rose gold,
                                         leather</a>
                                     <h3 class="item-price">$7,199,00</h3>
                                 </div>
@@ -145,7 +161,7 @@
                             <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
                             <div class="object-section">
                                 <div class="object-section-info">
-                                    <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
+                                    <a href="" class=" has-link object-info  info-name"> Aonde Must de Cartier watch</a>
                                 </div>
                                 <div class="object-section-info">
                                     <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
@@ -163,7 +179,7 @@
                             <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
                             <div class="object-section">
                                 <div class="object-section-info">
-                                    <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
+                                    <a href="" class=" has-link object-info  info-name"> Bonde Must de Cartier watch</a>
                                 </div>
                                 <div class="object-section-info">
                                     <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
@@ -181,7 +197,7 @@
                             <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
                             <div class="object-section">
                                 <div class="object-section-info">
-                                    <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
+                                    <a href="" class=" has-link object-info  info-name"> Conde Must de Cartier watch</a>
                                 </div>
                                 <div class="object-section-info">
                                     <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
