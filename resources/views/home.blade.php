@@ -175,6 +175,10 @@
                     </a>
                     <a href="/watch/1" style="text-decoration:underline">
                         <div class="product-object">
+                            
+                            <div class="wishlist-add">
+                                <button class=""><i class="fa fa-heart"></i></button>
+                            </div>
                             <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
                             <div class="object-section">
                                 <div class="object-section-info">
@@ -186,6 +190,7 @@
                                     <h3 class="item-price">$5,199,00</h3>
                                 </div>
                             </div>
+
                             <div class="buy-btn">
                                 <a href="" class="discover has-link">Discover</a>
                             </div>
