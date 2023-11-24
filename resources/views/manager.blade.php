@@ -6,7 +6,7 @@
     <title>For Manager</title>
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Logo_UIT_updated.svg/1200px-Logo_UIT_updated.svg.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/merchant.css">
+    <link rel="stylesheet" href="../css/manager.css">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     <!-- Styles -->
@@ -49,15 +49,22 @@
                 </div>
                 <div class="selection">
                     <div class="select-click active">Dashboard</div>
-                    <div class="select-click subpage-click">
+                    <div class="select-click subpage-click " >
                         Product Management
-                        <ul class="subpage-product-appear">
-                          <li class="subpage-product-item-click click">Add product</li>  
-                          <li class="subpage-product-item-click">Modify product</li>
-                          <li class="subpage-product-item-click">Delete product</li>  
-                        </ul>
+                        <div class="subpage-product-appear">
+                          <div class="subpage-product-item-click click">Add product</div>  
+                          <div class="subpage-product-item-click">Modify product</div>
+                          <div class="subpage-product-item-click">Delete product</div>  
+                        </div>
                     </div>
-                    <div class="select-click">Human Management</div>
+                    <div class="select-click subpage-human">
+                        Account Management
+                        <div class="subpage-human-appear">
+                          <div class="subpage-human-item-click click">Add account</div>  
+                          <div class="subpage-human-item-click">Modify account</div>
+                          <div class="subpage-human-item-click">Delete account</div>  
+                        </div>
+                    </div>
                     <div class="select-click">Change payment method</div>
                     <div class="select-click">Setting</div>
                 </div>
@@ -65,174 +72,498 @@
             <div class="main-right">
                <div class="main-right-content">
                     <div class="select-container active">
-                           <div class="row">
-                                <div id="monthRevenue" class="col ">
-                                    <h3> Monthly Revenue : 
-                                        <span><select id="monthSelect" class="">
-                                        </select></span>
-                                    </h3> 
-                                    <p class="no-data">Chưa chọn tháng</p>
-                                    <div class="rev-result flex justify-between items-center flex-row-reverse"></div>
-                                </div>
-                                <div class="col ">
-                                    <div class="spark-1">heelo</div>
-                                </div>
-                                <div class="col">
-                                    <div class="spark-1">heelo</div>
-                                </div>
-                           </div>
+                        <div class="flex items-center justify-center mt-5">
+                            <select id="monthSelect" class="monthSelected"></select>
+                        </div>
 
-                           <div class="charts flex justify-evenly" id="">
-                                <div class="bar-chart" id="chart"></div>
-                                <div class="stacked-chart" id="stackChart"></div>
-                           </div>
+                        <div class="row">
+                            <div id="monthRevenue" class="col ">
+                                <h3>  Monthly Revenue : </h3> 
+                                <p class="no-data">Chưa chọn tháng</p>
+                                <div class="rev-result"></div>
+                            </div>
+
+                            <div class="col ">
+                                <h3 class="">Total Orders : </h3>
+                                <p class="no-data">Chưa chọn tháng</p>
+                                <div class="order-result"></div>
+                            </div>
+
+                            <div class="col ">
+                                <h3 class="">Product Orders : </h3>
+                                <p class="no-data">Chưa chọn tháng</p>
+                                <div class="product-result"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="charts" id="">
+                            <div class="charts-card">
+                                <p class="chart-title">Monthly Orders</p>
+                                <div id="bar-chart"></div>
+                            </div>
+                            <div class="charts-card">
+                                <p class="chart-title">Product Total and Sale Orders</p>
+                                <div id="area-chart"></div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="select-container click">
                         <div class="subpage-product-container">
-                        <h2 class="font-bold text-xl flex items-center justify-center">Add Product Form</h2>
-                            <form action="GET">
-                                <div class="add-product-container flex">
-                                   <div class="add-product-left">
-                                    <div class="product-input-show flex items-center justify-between">
-                                            <label for="pName" class="form-label"> Product Name:  </label>
-                                            <input
-                                            type="text"
-                                            name="pName"
-                                            id="pName"
-                                            placeholder="Product Name"
-                                            class="product-input-area"
-                                            />
-                                        </div>
-                                        <div class="product-input-show flex items-center justify-between">
-                                            <label for="pPrice" class="form-label"> Product Price: </label>
-                                            <input
-                                            type="number"
-                                            name="pPrice"
-                                            id="pPrice"
-                                            placeholder="Product Price"
-                                            class="pPrice"
-                                            />
-                                        </div>
-                                        <div class="product-input-show flex items-center justify-between ">
-                                            <label for="pGender" class="form-label"> Product Gender: </label>
-                                            <input
-                                            type="text"
-                                            name="pGender"
-                                            id="pGender"
-                                            placeholder="Product Gender"
-                                            class="product-input-area"
-                                            />
-                                        </div>
-                                        <div class="product-input-show flex items-center justify-between">
-                                            <label for="pUpload" class="form-label"> Product Image: </label>
-                                            <div class=" translate-x-24">
-                                                <input class="" type="file" name="pUpload" id="pUpload">
+                            <!-- form -->
+                            <div class="form-container">
+                                <h2 class=" heading-add font-bold text-xl flex items-center justify-center">Add Product Form</h2>
+                                <form action="GET">
+                                    <div class="add-product-container">
+                                        <div class="add-product-left">
+                                            <div class="product-input-show flex items-center justify-between">
+                                                <label for="pName" class="form-label"> Product Name:  </label>
+                                                <input
+                                                    type="text"
+                                                    name="pName"
+                                                    id="pName"
+                                                    placeholder="Product Name"
+                                                    class="product-input-area"
+                                                />
                                             </div>
-                                        </div>
-                                   </div>
-                                   <div class="add-product-right mt-4">
-                                        <div class="description_field relative p-4 mt-10">
-                                            <input type="input" class="pDescription outline-none w-40 " placeholder="Typing description in here...." name="pDescription" id='pDescription' required />
-                                            <label for="pDescription" class="form-label-des">Description</label>
-                                        </div>
-                                        <div class="product-cate-drop">
-                                            <div class="dropdownbtn">
-                                                   Choose Product Category 
+                                            <div class="product-input-show flex items-center justify-between">
+                                                <label for="pPrice" class="form-label"> Product Price: </label>
+                                                <input
+                                                    type="number"
+                                                    name="pPrice"
+                                                    id="pPrice"
+                                                    placeholder="Product Price"
+                                                    class="pPrice"
+                                                />
                                             </div>
-                                            <section class="cate-dropdown-content" id="pCate" >
-                                                <option class="cate-dropdown-content-item" id="" name="pCate" value="vlue" >cat</option >
-                                                <option class="cate-dropdown-content-item" id="" name="pCate" value="cod">dog</option >
-                                                <option class="cate-dropdown-content-item" id="" name="pCate" value="d" >horse</option >
-                                                <option class="cate-dropdown-content-item" id="" name="pCate" value="s">cow</option >
-                                                <option class="cate-dropdown-content-item" id="" name="pCate" value="s">pig</option >
-                                            </section>
+                                            <div class="product-input-show flex items-center justify-between ">
+                                                <label for="pGender" class="form-label"> Product Gender: </label>
+                                                <input
+                                                    type="text"
+                                                    name="pGender"
+                                                    id="pGender"
+                                                    placeholder="Product Gender"
+                                                    class="product-input-area"
+                                                />
+                                            </div>
+                                            <div class="product-input-show flex items-center justify-between">
+                                                <label for="pUpload" class="form-label"> Product Image: </label>
+
+                                                <div class=" translate-x-24">
+                                                    <input class="" type="file" name="pUpload" id="pUpload">
+                                                </div>
+                                            </div>
+
                                         </div>
-                                        
-                                   </div>
-                                </div>
-                                   
-                                <div class="flex justify-center items-center border-solid m-10">
-                                    <button class="add-product-btn submit-container">Submit</button>
-                                </div>
-                            </form>
+                                        <div class="add-product-right mt-4">
+                                            <div class="description_field relative p-4 mt-10">
+                                                <input type="input" class="pDescription outline-none w-40 " placeholder="Typing description in here...." name="pDescription" id='pDescription' required />
+                                                <label for="pDescription" class="form-label-des">Description</label>
+                                            </div>
+
+                                            <div class="product-cate-drop">
+                                                    <div class="dropdownbtn">Choose Product Category</div>
+                                                    <div class="">Category selected</div>
+                                                        <section class="cate-dropdown-content" id="pCate">
+                                                            <option class="cate-dropdown-content-item" id="" value="vlue">cat</option >
+                                                            <option class="cate-dropdown-content-item" id="" value="cod">dog</option >
+                                                            <option class="cate-dropdown-content-item" id="" value="d" >horse</option >
+                                                            <option class="cate-dropdown-content-item" id="" value="s">cow</option >
+                                                            <option class="cate-dropdown-content-item" id="" value="s">pig</option >
+                                                        </section>
+                                                    </div>
+                                            </div>
+                                        </div>   
+                                    </div>
+                                        <!-- submit -->
+                                        <div class="flex justify-center items-center border-solid m-10">
+                                            <button class="add-product-btn submit-container">Submit</button>
+                                        </div>
+                                </form>
+
+                                <!-- end-form -->
+                                <!-- list close product -->
+                            <div class="closed-product-list">
+                                <h2 class="font-bold text-xl flex items-center justify-center"> Products Add Recently</h2>
+                                <table class="closed-item-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Product Name</th>
+                                            <th>Product Price</th>
+                                            <th>Product Gender</th>
+                                            <th>Product Description</th>
+                                            <th>Product Category</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="closed-product-item">
+                                            <td class="product-name">Product 1</td>
+                                            <td class="product-price">$100</td>
+                                            <td class="product-gender">Male</td>
+                                            <td class="product-description">Lorem ipsum...</td>
+                                            <td class="product-category">Category 1</td>
+                                            <td class="product-time-add">15/11/2023</td>
+
+                                        </tr>
+                                        <tr class="closed-product-item">
+                                            <td class="product-name">Product 1</td>
+                                            <td class="product-price">$100</td>
+                                            <td class="product-gender">Male</td>
+                                            <td class="product-description">Lorem ipsum...</td>
+                                            <td class="product-category">Category 1</td>
+                                            <td class="product-time-add">15/11/2023</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- end list product -->
+                            </div>
                         </div>
                         <div class="subpage-product-container">
-                            <h2 class="font-bold text-xl flex items-center justify-center">Modify Product Form</h2>
-                            <form action="GET">
-                                <div class="add-product-container flex">
-                                   <div class="add-product-left">
-                                    <div class="product-input-show flex items-center justify-between">
-                                            <label for="pName" class="form-label"> Product Name:  </label>
-                                            <input
-                                            type="text"
-                                            name="pName"
-                                            id="pName"
-                                            placeholder="Product Name"
-                                            class="product-input-area"
-                                            />
-                                        </div>
-                                        <div class="product-input-show flex items-center justify-between">
-                                            <label for="pPrice" class="form-label"> Product Price: </label>
-                                            <input
-                                            type="number"
-                                            name="pPrice"
-                                            id="pPrice"
-                                            placeholder="Product Price"
-                                            class="pPrice"
-                                            />
-                                        </div>
-                                        <div class="product-input-show flex items-center justify-between ">
-                                            <label for="pGender" class="form-label"> Product Gender: </label>
-                                            <input
-                                            type="text"
-                                            name="pGender"
-                                            id="pGender"
-                                            placeholder="Product Gender"
-                                            class="product-input-area"
-                                            />
-                                        </div>
-                                        <div class="product-input-show flex items-center justify-between">
-                                            <label for="pUpload" class="form-label"> Product Image: </label>
-                                            <div class=" translate-x-24">
-                                                <input class="" type="file" name="pUpload" id="pUpload">
+                            <!-- modify -->
+                            <div class="product-list">
+                                <h2 class="font-bold text-xl flex items-center justify-center">Products List</h2>
+                                <table class="item-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Product Name</th>
+                                            <th>Product Price</th>
+                                            <th>Product Gender</th>
+                                            <th>Product Description</th>
+                                            <th>Product Category</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="product-item">
+                                            <td class="product-name">Product 1</td>
+                                            <td class="product-price">$100</td>
+                                            <td class="product-gender">Male</td>
+                                            <td class="product-description">Lorem ipsum...</td>
+                                            <td class="product-category">Category 1</td>
+                                            <td class="product-actions">
+                                                <button class="modify-product-btn">Modify</button>
+                                            </td>
+                                        </tr>
+                                        <tr class="product-item">
+                                            <td class="product-name">Product 2</td>
+                                            <td class="product-price">$100</td>
+                                            <td class="product-gender">Male</td>
+                                            <td class="product-description">Lorem ipsum...</td>
+                                            <td class="product-category">Category 1</td>
+                                            <td class="product-actions">
+                                                <button class="modify-product-btn">Modify</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="form-container modify-form">
+                                <h2 class="font-bold text-xl flex items-center justify-center">Modify Product Form</h2>
+                                <form action="GET">
+                                    <div class="add-product-container">
+                                        <div class="add-product-left">
+                                            <div class="product-input-show flex items-center justify-between">
+                                                <label for="pName" class="form-label"> Product Name:  </label>
+                                                <input
+                                                type="text"
+                                                name="pName"
+                                                id="pName"
+                                                placeholder="Product Name"
+                                                class="product-input-area"
+                                                />
+                                            </div>
+                                            <div class="product-input-show flex items-center justify-between">
+                                                <label for="pPrice" class="form-label"> Product Price: </label>
+                                                <input
+                                                type="number"
+                                                name="pPrice"
+                                                id="pPrice"
+                                                placeholder="Product Price"
+                                                class="pPrice"
+                                                />
+                                            </div>
+                                            <div class="product-input-show flex items-center justify-between ">
+                                                <label for="pGender" class="form-label"> Product Gender: </label>
+                                                <input
+                                                type="text"
+                                                name="pGender"
+                                                id="pGender"
+                                                placeholder="Product Gender"
+                                                class="product-input-area"
+                                                />
+                                            </div>
+                                            <div class="product-input-show flex items-center justify-between">
+                                                <label for="pUpload" class="form-label"> Product Image: </label>
+                                                <div class=" translate-x-24">
+                                                    <input class="" type="file" name="pUpload" id="pUpload">
+                                                </div>
                                             </div>
                                         </div>
-                                   </div>
-                                   <div class="add-product-right mt-4">
-                                        <div class="description_field relative p-4 mt-10">
-                                            <input type="input" class="pDescription outline-none w-40 " placeholder="Typing description in here...." name="pDescription" id='pDescription' required />
-                                            <label for="pDescription" class="form-label-des">Description</label>
-                                        </div>
-                                        <div class="product-cate-drop">
-                                            <div class="dropdownbtn">
-                                                   Choose Product Category 
+                                        <div class="add-product-right mt-4">
+                                            <div class="description_field relative p-4 mt-10">
+                                                <input type="input" class="pDescription outline-none w-40 " placeholder="Typing description in here...." name="pDescription" id='pDescription' required />
+                                                <label for="pDescription" class="form-label-des">Description</label>
                                             </div>
-                                            <section class="cate-dropdown-content" id="pCate">
-                                                <option class="cate-dropdown-content-item" id="" value="vlue">cat</option >
-                                                <option class="cate-dropdown-content-item" id="" value="cod">dog</option >
-                                                <option class="cate-dropdown-content-item" id="" value="d" >horse</option >
-                                                <option class="cate-dropdown-content-item" id="" value="s">cow</option >
-                                                <option class="cate-dropdown-content-item" id="" value="s">pig</option >
-                                            </section>
+                                            <div class="product-cate-drop">
+                                                <div class="dropdownbtn">
+                                                     Choose Product Category 
+                                                </div>
+                                                <section class="cate-dropdown-content" id="pCate">
+                                                    <option class="cate-dropdown-content-item" id="" value="vlue">cat</option >
+                                                    <option class="cate-dropdown-content-item" id="" value="cod">dog</option >
+                                                    <option class="cate-dropdown-content-item" id="" value="d" >horse</option >
+                                                    <option class="cate-dropdown-content-item" id="" value="s">cow</option >
+                                                    <option class="cate-dropdown-content-item" id="" value="s">pig</option >
+                                                </section>
+                                            </div>
+                                                
                                         </div>
-                                        
-                                   </div>
-                                </div>
-                                   
-                                <div class="flex justify-center items-center border-solid m-10">
-                                    <button class="add-product-btn submit-container">Submit</button>
-                                </div>
-                            </form>
+                                    </div>
+                                    
+                                    <div class="flex justify-center items-center border-solid m-10">
+                                        <button class="add-product-btn submit-container">Modify</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                         <div class="subpage-product-container">
-                            <h3>Delete</h3>
+                            <!-- delete -->
+                            <div class="product-list">
+                                <h2 class="font-bold text-xl flex items-center justify-center">Products List</h2>
+                                <table class="item-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Product Name</th>
+                                            <th>Product Price</th>
+                                            <th>Product Gender</th>
+                                            <th>Product Description</th>
+                                            <th>Product Category</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="product-item">
+                                            <td class="product-name">Product 1</td>
+                                            <td class="product-price">$100</td>
+                                            <td class="product-gender">Male</td>
+                                            <td class="product-description">Lorem ipsum...</td>
+                                            <td class="product-category">Category 1</td>
+                                            <td class="product-actions">
+                                                <button class="del-product-btn" onclick="toggleModal()">Del</button>
+                                            </td>
+                                        </tr>
+                                        <tr class="product-item">
+                                            <td class="product-name">Product 1</td>
+                                            <td class="product-price">$100</td>
+                                            <td class="product-gender">Male</td>
+                                            <td class="product-description">Lorem ipsum...</td>
+                                            <td class="product-category">Category 1</td>
+                                            <td class="product-actions">
+                                                <button class="del-product-btn" onclick="toggleModal()">Del</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="modal-container">
+                                    <div class="modal-delete">
+                                        <form class="modal-content" action="">
+                                       
+                                            <p class="attention">Are you sure you want to delete this item?</p>
+                                            <div class="btn-wrapper">
+                                                <button class="cancel" onclick="toggleModal()">
+                                                    No, cancel
+                                                </button>
+                                                <button class="deleted">
+                                                    Yes, I'm sure
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- staff account section -->
+                    <div class="select-container">
+                        <div class="subpage-human-container">
+                                <!-- form -->
+                            <div class="add-container">
+                                <h2 class=" heading-add font-bold text-xl flex items-center justify-center">Add Account Form</h2>
+                                <form action="GET">
+                                    <div class="add-product-container">
+                                        <div class="add-product-left">
+                                            <div class="product-input-show flex items-center justify-between">
+                                                <label for="pUserName" class="form-label"> Set Username:  </label>
+                                                <input
+                                                        type="text"
+                                                        name="pUserName"
+                                                        id="pUserName"
+                                                        placeholder="Enter Username"
+                                                        class="product-input-area"
+                                                />
+                                            </div>
+                                          
+                                            <div class="product-input-show flex items-center justify-between ">
+                                                <label for="pPassword" class="form-label"> Set Password: </label>
+                                                <input
+                                                        type="password"
+                                                        name="pPassword"
+                                                        id="pPassword"
+                                                        placeholder="Enter password"
+                                                        class="product-input-area"
+                                                />
+                                            </div>
+                                            <div class="product-input-show flex items-center justify-between ">
+                                                <label for="pEmail" class="form-label"> Email: </label>
+                                                <input
+                                                        type="email"
+                                                        name="pEmail"
+                                                        id="pEmail"
+                                                        placeholder="Enter email"
+                                                        class="product-input-area"
+                                                />
+                                            </div>
+                                            <div class="product-input-show flex items-center justify-between ">
+                                                <label for="pNamePassword" class="form-label"> Staff's Name: </label>
+                                                <input
+                                                        type="text"
+                                                        name="pNamePassword"
+                                                        id="pNamePassword"
+                                                        placeholder="Enter password"
+                                                        class="product-input-area"
+                                                />
+                                            </div>
+                                        </div>
+                                     
+                                        </div>
+                                            <!-- submit -->
+                                        <div class="flex justify-center items-center border-solid m-10">
+                                            <button class="add-product-btn submit-container">Submit</button>
+                                        </div>
+                                </form>
+
+                                <!-- list close product -->
+                                <div class="closed-product-list">
+                                    <h2 class="font-bold text-xl flex items-center justify-center">Staff Account recently</h2>
+                                    <table class="closed-item-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Staff's Name</th>
+                                                <th>Username</th>
+                                                <th>Email</th>
+                                                <th>Password</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="closed-product-item">
+                                                <td class="product-name">Nguyen Van A</td>  
+                                                <td class="product-name">aaaa</td>
+                                                <td class="product-email">as@gmail.com</td>
+                                                <td class="product-price">asd</td>
+                                            </tr>
+                                            <tr class="closed-product-item">
+                                                <td class="product-name">Nguyen Van B</td>  
+                                                <td class="product-name">as</td>
+                                                <td class="product-email">as@gmail.com</td>
+                                                <td class="product-price">passb</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>  
+                             <!-- end list product -->
+                            </div>
+                            
+                        </div>
+                        <div class="subpage-human-container">
+                            <!-- modify -->
+                            <div class="closed-product-list">
+                                <h2 class="font-bold text-xl flex items-center justify-center">Staff Account recently</h2>
+                                <table class="closed-item-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Staff's Name</th>
+                                            <th>Username</th>
+                                            <th>Email</th>
+                                            <th>Password</th>
+                                            <th>Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="closed-product-item">
+                                            <td class="product-name">Nguyen Van A</td>  
+                                            <td class="product-name">aaaa</td>
+                                            <td class="product-email">as@gmail.com</td>
+                                            <td class="product-price">asd</td>
+                                            
+                                        </tr>
+                                        <tr class="closed-product-item">
+                                            <td class="product-name">Nguyen Van B</td>  
+                                            <td class="product-name">as</td>
+                                            <td class="product-email">as@gmail.com</td>
+                                            <td class="product-price">passb</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>  
+                        </div>
+                        <div class="subpage-human-container">
+                            <!-- delete -->
+                            <div class="closed-product-list">
+                                    <h2 class="font-bold text-xl flex items-center justify-center">Account recently</h2>
+                                    <table class="closed-item-table">
+                                        <thead>
+                                            <tr class=" text-center">
+                                                <th>Username</th>
+                                                <th>Email</th>
+                                                <th>Password</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="closed-product-item">
+                                                <td class="product-name">aaaa</td>
+                                                <td class="product-email">as@gmail.com</td>
+                                                <td class="product-price">asd</td>
+                                                <td class="product-actions">
+                                                    <button class="del-human-btn" onclick="toggleModalStaff()">Del</button>
+                                                </td>
+                                            </tr>
+                                            <tr class="closed-product-item">
+                                                <td class="product-name">as</td>
+                                                <td class="product-email">as@gmail.com</td>
+                                                <td class="product-price">passb</td>
+                                                <td class="product-actions">
+                                                    <button class="del-human-btn" onclick="toggleModalStaff()">Del</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="modal-container-human">
+                                    <div class="modal-delete">
+                                        <form class="modal-content" action="">
+                                       
+                                            <p class="attention">Are you sure you want to delete this person?</p>
+                                            <div class="btn-wrapper">
+                                                <button class="cancel" onclick="toggleModalStaff()">
+                                                    No, cancel
+                                                </button>
+                                                <button class="deleted">
+                                                    Yes, I'm sure
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="select-container">
-                        <h3>Product</h3>
-                    </div>
-                    <div class="select-container">
-                        <h3>Human</h3>
+                        <h3>Something</h3>
                     </div>
                     <div class="select-container">
                         <h3>Setting</h3>

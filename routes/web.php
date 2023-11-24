@@ -145,6 +145,10 @@ Route::get("manager", function () {
     return view('manager');
 } );
 
+//chatbox
+Route::get('/chatbox', function () {
+    return view('chatbox/chatbox');
+});
 
 //testquery
 Route::get('/test/query', [WatchController::class, 'search'])->middleware('auth');

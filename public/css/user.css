@@ -291,3 +291,16 @@
 .subcr {
     display: flex;
 }
+.delete{
+    transform: translate(-50%,-50%);
+    top: 0%;
+    left: 100%;
+    font-size: 20px;
+    border-radius: 9999px;
+    padding: 0px 11px;
+    font-weight: 100;
+    border: 1px solid #ddd;
+    background-color: white;
+    cursor: pointer;
+    position: absolute;
+}

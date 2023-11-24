@@ -156,6 +156,7 @@
 }
 
 .banner-introduction {
+    margin: auto;
     font-size: 18px;
     background-color: #F2F2F2;
     padding: 10px 215px;
@@ -184,16 +185,20 @@
 }
 
 /*body*/
-.body {
-    width: 92%;
+* {
+    box-sizing: border-box;
+}
 
+.body {
+    margin: 0;
+    width: 100%;
 }
 
 .slidebar {
-    font-size: 13px;
-    width: 280px;
-    padding-left: 12%;
-    height: 100%;
+    width: 250px;
+    z-index: 1;
+    top: 0;
+    padding-left: 20px;
 }
 
 .menu {
@@ -213,28 +218,50 @@
 }
 
 .bd-choose {
-
     padding-top: 24px;
     padding-bottom: 15px;
     outline: none;
 }
 
-/* .bd-content {
+.bd-content {
+    position: relative;
+    top: 0%;
+    margin-left: 20%;
+}
+
+/*.bd-content {
     margin-left: 420px;
+}
+*/
+/* .bd-content-field {
+    padding-bottom: 120px;
 } */
 
-.bd-content-field {
-    padding-bottom: 120px;
-}
-
-.bd-content-header {
+/* .bd-content-header {
     padding-left: 28%;
-}
+} */
 
 .bd-checkbox {
     margin-right: 52px;
     padding-left: 5px;
     width: 40%;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-right: 40px;
+    grid-gap: 18px;
+    padding-bottom: 8%;
+    text-align: left;
+}
+
+.grid-item {
+    border: #EBEBEB solid 1px;
+    color: black;
+    padding: 36px 40px 40px 30px;
+    margin: 0px;
+    text-align: left;
 }
 
 .input {
@@ -291,7 +318,7 @@
 .password {
     padding-top: 2px;
     border-bottom: 1px solid black;
-    width: 35%;
+    margin-right: 60%;
 }
 
 /* footer */
@@ -341,4 +368,38 @@
 .icon-link-item .fa {
     font-size: 26px;
     padding: 10px 10px;
+}
+
+.delete{
+    transform: translate(-50%,-50%);
+    top: 0%;
+    left: 100%;
+    font-size: 20px;
+    border-radius: 9999px;
+    padding: 0px 11px;
+    font-weight: 100;
+    border: 1px solid #ddd;
+    background-color: white;
+    cursor: pointer;
+    position: absolute;
+}
+
+.product-object {
+    max-height: fit-content;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 12px 12px;
+    margin: 10px 5px;
+    position: relative;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
 }
