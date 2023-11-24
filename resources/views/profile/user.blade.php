@@ -101,7 +101,11 @@
                     </div>
                     <div class="grid-item">
                         <h3 class="content">MY WISH LIST</h3>
-                        <div class="content">Your Wish List is empty.</div>
+                        <div class="content">
+                            <div class="count">
+                            <p>*Count item here</p>
+                        </div>
+                        </div>
                     </div>
                     <div class="grid-item">
                         <h3 class="content">MY ADDRESSES</h3>
@@ -162,6 +166,21 @@
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    const deleteitems = document.querySelectorAll(".delete");
+    const cartitems = document.querySelectorAll(".product-container");
+
+    deleteitems.forEach(deleteitem => {
+        deleteitem.addEventListener('click', () => {
+            confirm('Bạn có chắc chắn xóa hay không ?');
+        })
+    })
+
+    const productObjects = document.querySelectorAll('.product-object');
+    const counter= document.querySelector('.count');
+    counter.innerHTML = productObjects.length +" "+ "items";
+    console.log(productObjects.length)
+</script>
 
 <script>
     $(document).ready(function() {
