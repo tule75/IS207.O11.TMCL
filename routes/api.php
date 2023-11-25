@@ -39,7 +39,7 @@ Route::post("/register", [RegisteredUserController::class, 'store'])->name('regi
 Route::post("/register/admin", [RegisteredUserController::class, 'storeAdmin']);
 
 Route::post('/tokens/create', function (Request $request) {
-    $token = User::find(1)->createToken($request->token_name);
+    $token = User::find(2)->createToken($request->token_name);
  
     return ['token' => $token->plainTextToken];
 });
@@ -57,6 +57,8 @@ Route::post('order/create', [OrderController::class, 'store'])->middleware('auth
 Route::post('order/{user_id}/get', [OrderController::class, 'showForUser'])->middleware('auth:sanctum');
     // Delete order
 Route::delete('order/{order}/delete', [OrderController::class, 'destroy'])->middleware('auth:sanctum');
+    //peding sang shipping
+    Route::patch('/order/{order}', [OrderController::class, 'update'])->middleware('auth:sanctum');
 
 // Watch
     // Tạo sản phẩm đồng hồ

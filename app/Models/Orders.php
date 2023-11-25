@@ -31,5 +31,15 @@ class Orders extends Model
         return $this->belongsTo(Voucher::class);
     }
 
+    public function payment(): BelongsTo
+    {
+        return $this->belongsTo(Payments::class);
+    }
+
+    public function address(): BelongsTo
+    {
+        return $this->belongsTo(Address::class);
+    }
+
     protected $table = 'Orders';
 }
