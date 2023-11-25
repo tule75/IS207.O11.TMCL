@@ -58,7 +58,7 @@ Route::post('order/{user_id}/get', [OrderController::class, 'showForUser'])->mid
     // Delete order
 Route::delete('order/{order}/delete', [OrderController::class, 'destroy'])->middleware('auth:sanctum');
     //peding sang shipping
-    Route::patch('/order/{order}', [OrderController::class, 'update'])->middleware('auth:sanctum');
+Route::put('/order/{order}', [OrderController::class, 'update'])->middleware('auth:sanctum');
 
 // Watch
     // Tạo sản phẩm đồng hồ

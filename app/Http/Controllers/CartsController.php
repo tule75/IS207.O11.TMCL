@@ -113,4 +113,20 @@ class CartsController extends Controller
             dd($e);
         }
     }
+
+    public static function minusAfterBuy($watch_id, $quantity, $uid) 
+    {
+        try {
+            $cart = Carts::where('watch_id', $watch_id)->where('user_id', $uid)->first();
+            if ($cart->quantity > $quantity) {
+                $cart->quantity -= $quantity;
+                $cart->save();
+            } else {
+                $cart->delete();
+            }
+        } catch(Exception $e) {
+
+        }
+        
+    }
 }
