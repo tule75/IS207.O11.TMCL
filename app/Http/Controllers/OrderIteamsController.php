@@ -46,7 +46,6 @@ class OrderIteamsController extends Controller
             $watches_id = $request['watches_id'];
             $quantity = $request['quantity'];
             foreach ($watches_id as $i => $watch_id) {
-
                 $watch = Watch::find($watch_id);
                 $price += $watch->price * (1 - $watch->discount);
 

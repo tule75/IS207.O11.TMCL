@@ -9,40 +9,7 @@
 
 </head>
 <body>
-    <div class="cartier">
-        <div class="header">
-            <div class="header-notice">
-                <p>Enjoy wrap-gift standard shipping. <span class=""><a class="has-link return-link">Click here to learn more about returns and exchanges.</a></span></p>
-            </div>
-
-            <div class="main-header">
-                <ul class="nav-left">
-                    <li class="nav-left--item"><a href="" class="has-link nav-hover">Home</a></li>
-                    <li class="nav-left--item"><a href="" class="has-link nav-hover">Contact Us</a></li>
-                    <li class="nav-left--item"><a href="" class="has-link nav-hover">Services</a></li>
-                </ul>
-
-                <div class="logo">
-                    <img class="logo-img" src="{{asset('img/Screenshot_2023-10-16_121457-removebg.png')}}" alt="">
-                </div>
-
-                <div class="nav-right">
-                    <div class="nav-right--item">USER  <i class="fa fa-user"></i></div>
-                    <div class="nav-right--item"><i class="fa fa-heart"></i></div>
-                    <div class="nav-right--item"><i class="fa fa-cart-plus"></i></div>
-                </div>
-            </div>
-
-            <div class="sub-navbar">
-                <div class="watch-collection--item">Colect</div>
-                <div class="watch-collection--item">Colect</div>
-                <div class="watch-collection--item">Colect</div>
-                <div class="watch-collection--item">Colect</div>
-                <div class="watch-collection--item">Colect</div>
-            </div>
-        </div>
-        <div class="line"></div>
-        <!-- header--end -->
+    
             <button class="chatbot-toggler" style="z-index: 1;">
                 <img src="https://d3tnn7lar6ozas.cloudfront.net/48f101c0-0f8c-401a-93a8-e1a3e477fa57.svg">
             </button>
@@ -71,42 +38,7 @@
                   <span id="send-btn" class="material-symbols-rounded"></span>
                 </div>
             </div>
-        <!-- footer start -->
-        <div class="footer">
-            <ul class="footer-list">
-                <li class="footer-list--item"><h3>CUSTOMER CARE</h3></li>
-                <li class="footer-list--item">Contact Us</li>
-                <li class="footer-list--item">Call Now : 800 227 8437</li>
-                <li class="footer-list--item">FAQ</li>
-                <li class="footer-list--item"> TRACK YOUR ORDER</li>
-            </ul>
-            <ul class="footer-list">
-                <li class="footer-list--item"><h3>CUSTOMER CARE</h3></li>
-                <li class="footer-list--item">Contact Us</li>
-                <li class="footer-list--item">Call Now : 800 227 8437</li>
-                <li class="footer-list--item">FAQ</li>
-                <li class="footer-list--item"> TRACK YOUR ORDER</li>
-            </ul>
-            <ul class="footer-list">
-                <li class="footer-list--item"><h3>CUSTOMER CARE</h3></li>
-                <li class="footer-list--item">Contact Us</li>
-                <li class="footer-list--item">Call Now : 800 227 8437</li>
-                <li class="footer-list--item">FAQ</li>
-                <li class="footer-list--item"> TRACK YOUR ORDER</li>
-            </ul>
-            <div class="footer-list hasnt-flex">
-                <h3 class="footer-list--item">FOLLOW US</h3>
-                <div class="icon-link">
-                    <a href="" class="footer-list--item icon-link-item"><i class="fa fa-facebook-f"></i></a>
-                    <a href="" class="footer-list--item icon-link-item"><i class="fa fa-youtube-play"></i></a>
-                    <a href="" class="footer-list--item icon-link-item"><i class="fa fa-instagram"></i></a>
-                    <a href="" class="footer-list--item icon-link-item"><i class="fa fa-twitter"></i></a>
-
-                </div>
-            </div>
-        </div>
-        <!-- footer end -->
-    </div>
+        
 </body>
     <script src="{{asset('js/chatbox.js')}}"></script>
 </html>

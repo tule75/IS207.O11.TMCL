@@ -36,5 +36,10 @@ class Orders extends Model
         return $this->belongsTo(Payments::class);
     }
 
+    public function address(): BelongsTo
+    {
+        return $this->belongsTo(Address::class);
+    }
+
     protected $table = 'Orders';
 }

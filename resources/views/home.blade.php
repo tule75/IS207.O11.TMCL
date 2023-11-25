@@ -358,6 +358,7 @@
         </div>
         <!-- end modal -->
         <div class="space"></div>
+        @include('chatbox.chatbox');
         <!-- footer start -->
         <div class="footer">
             <ul class="footer-list">

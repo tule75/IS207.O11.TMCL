@@ -63,6 +63,10 @@ class OrderController extends Controller
             if ($request->has('voucher_code')) {
                 $voucher = Voucher::where('code', $request->get('voucher_code'))->first();
             }
+            else {
+                $voucher = new Voucher;
+                $voucher->status = 'await';
+            }
 
             $order = Orders::create([
                 'address_id' => $request->address_id,
@@ -129,13 +133,20 @@ class OrderController extends Controller
     public function showForUser() 
     {
         $user_id = auth()->user()->id;
-        return view('order.showForUser', Orders::where('user_id', $user_id)->with(['watches' => function ($query) {
+        // return view('order.showForUser', Orders::where('user_id', $user_id)->with(['watches' => function ($query) {
+        //     $query->select('watches.id', 'watches.name', 'watches.img1', 'watches.img2', 'watches.img3');
+        // }, 'voucher' => function ($query) {
+        //     $query->select('id', 'code', 'discount');
+        // }])->get());
+        return Orders::where('user_id', $user_id)->with(['watches' => function ($query) {
             $query->select('watches.id', 'watches.name', 'watches.img1', 'watches.img2', 'watches.img3');
         }, 'voucher' => function ($query) {
             $query->select('id', 'code', 'discount');
-        }])->get());
+        }, 'address' => function ($query) {
+        
+        }])->get();
         // $order = Orders::where('user_id', $user_id)->first();
-        // return response()->json($order->orders);
+        
     }
 
     /**
@@ -163,7 +174,7 @@ class OrderController extends Controller
                 $order->status = $request->status;
             }
             $order->save();
-            // dd($order);
+            dd($order);
             return back()->withInput(['message' => 'Order updated successfully']);
         } catch(Exception $e) {
             return back()->withErrors(['message' => $e->getMessage()]);
