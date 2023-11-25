@@ -16,6 +16,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('/icon/fontawesome-free-6.4.2-web/css/regular.min.css')}}">
     <link rel="stylesheet" href="{{ asset('/css/home.css') }}">
+    <link rel="stylesheet" href="chatbox.css">
 </head>
 
 <body>
@@ -307,7 +308,7 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="pagination-image">
             <img class="pagination-img" src="{{ asset('/img/leather.png')}}" alt="">
         </div>
@@ -315,7 +316,6 @@
         <ul class="pagination">
         </ul>
         <!-- pagination end -->
-
         <!-- main end -->
         <div class="space"></div>
         <!-- extra infomation start -->
@@ -408,6 +408,7 @@
 </body>
 
 <script src="{{ asset('js/home.js')}}"></script>
+
 
 
 
