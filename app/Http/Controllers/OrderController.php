@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Orders;
 use App\Http\Requests\StoreOrdersRequest;
 use App\Http\Requests\UpdateOrdersRequest;
+use App\Models\Carts;
 use App\Models\Order_items;
 use App\Models\Voucher;
+use App\Models\Watch;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -47,10 +49,16 @@ class OrderController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
+        $watch = [];
+        foreach ($request->watch_id as $index => $id) {
+            $watch[$index] = Watch::with(['brand' => function ($query) {}, 'category' => function ($query) {}])->find($id); 
+            $watch[$index]->quantity = $request->quantity[$index];
+        }
         // return về view/order/create.blade.php
-        return view('order.create');
+        return $watch;
+        return view('order.create', ['watch' => $watch]);
     }
 
     /**
@@ -93,6 +101,7 @@ class OrderController extends Controller
                 $order->voucher_id = null;
                 $order->save();
             }
+
             return redirect('/')->withInput(['message'=> 'Mua thành công']);
         } catch (Exception $e) {
             dd($e);
@@ -162,7 +171,7 @@ class OrderController extends Controller
      */
 
     // /order/update/{order}
-    public function update(UpdateOrdersRequest $request, Orders $order)
+    public function update(Request $request, Orders $order)
     {
         //
         try {
@@ -170,8 +179,8 @@ class OrderController extends Controller
                 if (auth()->user()->id === $order->user_id) {
                     $order->status = $request->status;
                 }
-            } else if ($request->status == 'Shipping') {
-                $order->status = $request->status;
+            } else {
+                $order->status = "Shipping";
             }
             $order->save();
             dd($order);

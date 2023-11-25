@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order_iteams;
 use App\Http\Requests\StoreOrder_iteamsRequest;
 use App\Http\Requests\UpdateOrder_iteamsRequest;
+use App\Models\Carts;
 use App\Models\Order_items;
 use App\Models\Voucher;
 use App\Models\Watch;
@@ -59,6 +60,7 @@ class OrderIteamsController extends Controller
                     $watch->save();
                 }
                 Order_items::create(['order_id' => $order_id, 'watch_id' => $watch_id, 'quantity' => $quantity[$i], 'price' => $watch->price * (1 - $watch->discount)]);
+                Carts::minusAfterBuy($watch_id, $quantity, auth()->user()->id);
             }
 
             return $price;
@@ -72,10 +74,11 @@ class OrderIteamsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
-    {
-        //
-    }
+    // public static function show()
+    // {
+    //     //
+    //     dd(auth()->user()->id);
+    // }
 
     /**
      * Show the form for editing the specified resource.
