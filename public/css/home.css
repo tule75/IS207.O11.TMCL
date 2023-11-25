@@ -265,6 +265,16 @@
     font-weight: 600;
     font-size: 17px;
 }
+.wishlist-add {
+    position: absolute;
+    top: -10px;
+    right: 5px;
+    display: block;
+    background-color: #423f3f;
+}
+.wishlist-add:hover {
+    color:rgb(41, 38, 38);
+}
 .buy-btn {
     display: block;
     margin: 0 10px;
@@ -272,7 +282,12 @@
     background-color:transparent;
     border: 1px solid transparent;
 }
-.object-img:hover ~.buy-btn, .object-section:hover ~ .buy-btn{
+
+.object-section:hover ~ .wishlist-add{
+   display: block;
+   opacity: 1;
+}
+.object-section:hover ~ .buy-btn{
     width: 100%;
     margin: 0 0px;
     padding: 10px 0;
