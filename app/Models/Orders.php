@@ -21,6 +21,11 @@ class Orders extends Model
         'description',
     ];
 
+    public function user() : BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function watches(): BelongsToMany
     {
         return $this->belongsToMany(Watch::class, 'Order_items', 'order_id', 'watch_id')->withPivot('price')->withTrashed();

@@ -11,6 +11,7 @@ use App\Http\Controllers\CartsController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Manager;
+use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\VoucherController;
@@ -55,6 +56,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+// manager routes
+Route::middleware(['auth','manager'])->group(function () {
+    Route::post('/manager/staff/getall', [ManagerController::class, 'allStaff']);
+    Route::post('/manager/staff/search', [ManagerController::class, 'searchStaff']);
+    Route::post('/manager/staff/create', [ManagerController::class, 'createStaff']);
+    Route::post('/manager/revenue', [ManagerController::class, 'getRevenue']);
+    Route::get('/manager', [ManagerController::class, 'index']);
 });
 
 // Watch routes
@@ -140,10 +150,6 @@ Route::get('/test/img', function () {
     return view('test_img');
 })->middleware('auth');
 Route::post('/test/img', [WatchController::class, 'store'])->middleware('auth');
-// manager routes
-Route::get("manager", function () {
-    return view('manager');
-} );
 
 //chatbox
 Route::get('/chatbox', function () {
