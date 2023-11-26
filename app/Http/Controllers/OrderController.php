@@ -31,7 +31,8 @@ class OrderController extends Controller
                 }])->paginate(20)
             ); 
         } else if ($request->has('start_date') && $request->has('end_date')){
-            return view('order.index', Orders::where('created_at', '>=', 'start_date')->where('created_at', '<=', 'end_date')->with(['watches' => 
+            return view('order.index', Orders::whereDate('created_at', '>=', $request->start_date)
+            ->whereDate('created_at', '<=', $request->end_date)->with(['watches' => 
                 function ($query) {
                     $query->select('watches.id', 'watches.name', 'watches.img1', 'watches.img2', 'watches.img3');
                 }, 'voucher' => function ($query) {
@@ -40,6 +41,7 @@ class OrderController extends Controller
             ); 
         }        
     }
+    
 
     public function getPending() 
     {
@@ -57,7 +59,7 @@ class OrderController extends Controller
             $watch[$index]->quantity = $request->quantity[$index];
         }
         // return về view/order/create.blade.php
-        return $watch;
+        // return $watch;
         return view('order.create', ['watch' => $watch]);
     }
 
