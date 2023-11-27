@@ -11,6 +11,9 @@ class StorewatchRequest extends FormRequest
      */
     public function authorize(): bool
     {
+        if ($this->user()->role = 'manager') {
+            return true;
+        }
         return false;
     }
 
@@ -23,6 +26,17 @@ class StorewatchRequest extends FormRequest
     {
         return [
             //
+            'name' => ['string', 'required'],
+            'price' => ['integer', 'required', 'min: 1'],
+            'dícount' => ['decimal'],
+            'storage' => ['integer', 'required', 'min: 0'],
+            'brand_id' => ['required'],
+            'category_id' => ['required'],
+            'description' => ['string', 'required'],
+            'gender' => ['string', 'required'],
+            'img1' => ['required', 'image'],
+            'img2' => [ 'image'],
+            'img3' => [ 'image'],
         ];
     }
 }

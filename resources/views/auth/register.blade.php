@@ -1,6 +1,8 @@
 <x-guest-layout>
+    <!-- gửi tới route có tên là register nhma có thể ghi đường link, vd /register -->
     <form method="POST" action="{{ route('register') }}">
-        @csrf
+        <!-- sử dụng csrf trong post để gửi token xác nhận người dùng -->
+        @csrf 
 
         <!-- Name -->
         <div>

@@ -210,5 +210,6 @@
     </div>
 
     <script src="{{asset('/js/contact.js')}}"></script>
+
 </body>
 </html>
