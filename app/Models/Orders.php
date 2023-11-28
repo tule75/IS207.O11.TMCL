@@ -21,6 +21,11 @@ class Orders extends Model
         'description',
     ];
 
+    public function user() : BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function watches(): BelongsToMany
     {
         return $this->belongsToMany(Watch::class, 'Order_items', 'order_id', 'watch_id')->withPivot('price')->withTrashed();
@@ -29,6 +34,16 @@ class Orders extends Model
     public function voucher(): BelongsTo
     {
         return $this->belongsTo(Voucher::class);
+    }
+
+    public function payment(): BelongsTo
+    {
+        return $this->belongsTo(Payments::class);
+    }
+
+    public function address(): BelongsTo
+    {
+        return $this->belongsTo(Address::class);
     }
 
     protected $table = 'Orders';

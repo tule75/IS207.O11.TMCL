@@ -36,6 +36,9 @@
                     <span>Email for assistance : 
                         <strong>theuitersmerchant@gmail.com</strong>
                     </span>
+                    <span>Manager's name: 
+                        <strong>{{auth()->user()->name}}</strong>
+                    </span>
                </p>
             </div>
         </div>
@@ -430,46 +433,49 @@
                                 <!-- form -->
                             <div class="add-container">
                                 <h2 class=" heading-add font-bold text-xl flex items-center justify-center">Add Account Form</h2>
-                                <form action="GET">
+                                <form action="/manager/staff/create" method="POST">
+                                    @csrf;
                                     <div class="add-product-container">
                                         <div class="add-product-left">
-                                            <div class="product-input-show flex items-center justify-between">
-                                                <label for="pUserName" class="form-label"> Set Username:  </label>
-                                                <input
-                                                        type="text"
-                                                        name="pUserName"
-                                                        id="pUserName"
-                                                        placeholder="Enter Username"
-                                                        class="product-input-area"
-                                                />
-                                            </div>
-                                          
-                                            <div class="product-input-show flex items-center justify-between ">
-                                                <label for="pPassword" class="form-label"> Set Password: </label>
-                                                <input
-                                                        type="password"
-                                                        name="pPassword"
-                                                        id="pPassword"
-                                                        placeholder="Enter password"
-                                                        class="product-input-area"
-                                                />
-                                            </div>
                                             <div class="product-input-show flex items-center justify-between ">
                                                 <label for="pEmail" class="form-label"> Email: </label>
                                                 <input
                                                         type="email"
-                                                        name="pEmail"
+                                                        name="email"
                                                         id="pEmail"
                                                         placeholder="Enter email"
                                                         class="product-input-area"
                                                 />
                                             </div>
+
                                             <div class="product-input-show flex items-center justify-between ">
-                                                <label for="pNamePassword" class="form-label"> Staff's Name: </label>
+                                                <label for="Name" class="form-label"> Staff's Name: </label>
                                                 <input
                                                         type="text"
-                                                        name="pNamePassword"
+                                                        name="name"
                                                         id="pNamePassword"
+                                                        placeholder="Enter password"
+                                                        class="product-input-area"
+                                                />
+                                            </div>
+                                          
+                                            <div class="product-input-show flex items-center justify-between ">
+                                                <label for="password" class="form-label"> Set Password: </label>
+                                                <input
+                                                        type="password"
+                                                        name="password"
+                                                        id="pPassword"
+                                                        placeholder="Enter password"
+                                                        class="product-input-area"
+                                                />
+                                            </div>
+
+                                            <div class="product-input-show flex items-center justify-between ">
+                                                <label for="password" class="form-label"> Confirm Password: </label>
+                                                <input
+                                                        type="password"
+                                                        name="password_confirmation"
+                                                        id="pPassword"
                                                         placeholder="Enter password"
                                                         class="product-input-area"
                                                 />

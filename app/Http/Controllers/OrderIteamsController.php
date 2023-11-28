@@ -5,17 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\Order_iteams;
 use App\Http\Requests\StoreOrder_iteamsRequest;
 use App\Http\Requests\UpdateOrder_iteamsRequest;
+use App\Models\Carts;
 use App\Models\Order_items;
+use App\Models\Voucher;
 use App\Models\Watch;
+use Illuminate\Http\Client\Request as ClientRequest;
+use Illuminate\Http\Request;
 
 class OrderIteamsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
     }
 
     /**
@@ -44,7 +47,6 @@ class OrderIteamsController extends Controller
             $watches_id = $request['watches_id'];
             $quantity = $request['quantity'];
             foreach ($watches_id as $i => $watch_id) {
-
                 $watch = Watch::find($watch_id);
                 $price += $watch->price * (1 - $watch->discount);
 
@@ -58,6 +60,7 @@ class OrderIteamsController extends Controller
                     $watch->save();
                 }
                 Order_items::create(['order_id' => $order_id, 'watch_id' => $watch_id, 'quantity' => $quantity[$i], 'price' => $watch->price * (1 - $watch->discount)]);
+                Carts::minusAfterBuy($watch_id, $quantity, auth()->user()->id);
             }
 
             return $price;
@@ -71,10 +74,11 @@ class OrderIteamsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
-    {
-        //
-    }
+    // public static function show()
+    // {
+    //     //
+    //     dd(auth()->user()->id);
+    // }
 
     /**
      * Show the form for editing the specified resource.

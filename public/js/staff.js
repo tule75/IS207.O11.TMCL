@@ -34,3 +34,90 @@ selects.forEach((item,index) => {
         content.classList.add("active");
     }
 })
+
+// ==========================Chăm sóc khách hàng============================
+
+const auto = document.querySelector('.chat-assist_auto');
+const quick = document.querySelector('.chat-assist_quick');
+const autoContent = document.querySelector('.chat-assist_auto-content');
+const quickContent = document.querySelector('.chat-assist_quick-content');
+
+function showAutoContent () {
+    autoContent.classList.add('open');
+    quickContent.classList.remove('open');
+}
+
+function showQuickContent () {
+    quickContent.classList.add('open');
+    autoContent.classList.remove('open');
+}
+
+auto.addEventListener('click', showAutoContent);
+
+quick.addEventListener('click', showQuickContent);
+
+const workTimeBtns = document.getElementById('word-day_btn');
+
+// =========================Hiển thị nội dung phần dashboard==============================
+
+const over = document.querySelector('.chat-dashboard_auto');
+const list =document.querySelector('.chat-dashboard_quick');
+const overContent = document.querySelector('.chat-dashboard_overview');
+const listContent = document.querySelector('.chat-dashboard_list');
+
+function showOverContent () {
+    overContent.classList.add('open');
+    listContent.classList.remove('open');
+}
+
+function showListContent () {
+    listContent.classList.add('open');
+    overContent.classList.remove('open');
+}
+
+over.addEventListener('click', showOverContent);
+
+list.addEventListener('click', showListContent);
+
+// =========================Chọn thời gian làm việc================================
+const workDays = document.querySelectorAll('.js-work-day');
+const workTimes = document.querySelectorAll('.work-time');
+
+function showWorkDay () {
+    for(const workTime of workTimes) {
+        workTime.classList.add('open');
+        break;
+    }
+}
+
+for (const workDay of workDays) {
+    workDay.addEventListener('click', showWorkDay);
+}
+
+// =======================modal=============================
+const addBtn = document.querySelector('.quick-head-btn');
+        const modal = document.querySelector('.quick-modal');
+        const modalContainer = document.querySelector('.quick-modal_container')
+        const modalClose = document.querySelector('.modal_close');
+        const modalAddBtn = document.querySelector('.fix-btn')
+
+        function showQuickForm() {
+            modal.classList.add('modal_show')
+        }
+
+        function hideQuickForm() {
+            modal.classList.remove('modal_show')
+        }
+
+
+        addBtn.addEventListener('click', showQuickForm)
+
+        modalAddBtn.addEventListener('click', showQuickForm)
+
+        modalClose.addEventListener('click', hideQuickForm)
+
+        modal.addEventListener('click',  hideQuickForm)
+
+        modalContainer.addEventListener('click', function(event) {
+            event.stopPropagation()
+        })
