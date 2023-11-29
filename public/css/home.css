@@ -358,14 +358,20 @@
     font-weight: 600;
     color: #616161fb;
     font-size: 16px;
-}
+    padding-top: 10px;
 
+}
+.closetag:hover {
+    color: red;
+    font-weight: bolder;
+}
 /* footer */
 
 .footer {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    background-color: #F2F2F2;
 }
 .footer-list {
     width: 25%;
