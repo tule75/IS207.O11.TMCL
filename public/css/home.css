@@ -207,7 +207,7 @@
     background-color: #423f3f;
     position: absolute;
 }
-.soft-heading{
+.sort-heading{
     margin-left: 10px;
     padding-top: 15px;
     font-weight: bolder;
@@ -307,6 +307,16 @@
     font-weight: 600;
     font-size: 17px;
 }
+.wishlist-add {
+    position: absolute;
+    top: -10px;
+    right: 5px;
+    display: block;
+    background-color: #423f3f;
+}
+.wishlist-add:hover {
+    color:rgb(41, 38, 38);
+}
 .buy-btn {
     display: block;
     margin: 0 10px;
@@ -314,7 +324,12 @@
     background-color:transparent;
     border: 1px solid transparent;
 }
-.object-img:hover ~.buy-btn, .object-section:hover ~ .buy-btn{
+
+.object-section:hover ~ .wishlist-add{
+   display: block;
+   opacity: 1;
+}
+.object-section:hover ~ .buy-btn{
     width: 100%;
     margin: 0 0px;
     padding: 10px 0;
@@ -385,14 +400,20 @@
     font-weight: 600;
     color: #616161fb;
     font-size: 16px;
-}
+    padding-top: 10px;
 
+}
+.closetag:hover {
+    color: red;
+    font-weight: bolder;
+}
 /* footer */
 
 .footer {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    background-color: #F2F2F2;
 }
 .footer-list {
     width: 25%;
@@ -426,4 +447,58 @@
 .icon-link-item .fa {
     font-size: 26px;
     padding: 10px 10px;
+}
+
+/* az */
+.btn-sort-name {
+    margin-top: 15px;
+}
+.fromaz, .fromza {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    cursor: pointer;
+    position: relative;
+}
+.az {
+    margin-left: 10px;
+    width: 9%;
+}
+.za {
+    margin-left: 10px;
+    width: 8%;
+}
+.fromaz::after , .fromza::after {
+   content: '';
+   position: absolute;
+   width: 5%;
+   /* background-color: #1d1c1c; */
+   height: 2px;
+   bottom: 10px;
+   left: 0px;
+   transition: left 0.5s ease;
+}
+.fromaz:hover , .fromza:hover {
+   color: #4f4d4d;
+   font-weight: 600;
+ }
+.fromaz:hover::after , .fromza:hover::after {
+    content: '';
+    position: absolute;
+    width: 5%;
+    background-color: #1d1c1c;
+    height: 2px;
+    bottom: 10px;
+    left: 15px;
+    transition: left 0.5s ease;
+}
+
+/* search */
+.search-space {
+    margin-top: 50px;
+}
+.input-box::-webkit-outer-spin-button { 
+    display: none;
+}
+.input-box {
 }
