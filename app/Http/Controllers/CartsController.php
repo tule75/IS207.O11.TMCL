@@ -68,13 +68,13 @@ class CartsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
-    {
-        //
-        $cart = Carts::where('user_id', auth()->user()->id)->get();
-        dd($cart);
-        return view('', ['carts' => $cart]);
-    }
+    // public function show()
+    // {
+    //     //
+    //     $cart = Carts::where('user_id', auth()->user()->id)->get();
+    //     dd($cart);
+    //     return view('', ['carts' => $cart]);
+    // }
 
     /**
      * update value of the cart
@@ -85,10 +85,14 @@ class CartsController extends Controller
         if ($status == 'plus') {
             $carts->quantity++;
             $carts->save();
-        } else if ($status == 'mirror') 
+        } else if ($status == 'minus') 
         {
             $carts->quantity--;
-            $carts->save();
+            if ($carts->quantity == 0) {
+                $carts->delete();
+            } else {
+                $carts->save();
+            }
         }
         return response()->noContent();
     }

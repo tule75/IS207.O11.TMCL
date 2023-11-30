@@ -17,6 +17,7 @@ use App\Http\Controllers\Manager;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentsController;
+use App\Http\Controllers\ShipController;
 use App\Http\Controllers\VoucherController;
 
 /*
@@ -167,6 +168,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cart', [CartsController::class, 'index'])->name('cart.index');
     // Lưu vào giỏ hàng
     Route::post('/cart', [CartsController::class, 'store']);
+    // Tăng giảm số lượng giỏ hàng
+    Route::put('/cart', [CartsController::class, 'update']);
+    // Xóa sản phẩm trong giỏ hàng
+    Route::delete('/cart', [CartsController::class, 'destroy']);
+});
+
+//Shipment route
+Route::middleware('auth')->group(function () {
+    // Tính giá ship
+    Route::post('/ship/cal', [ShipController::class, 'CalShipFee']);
 });
 
 // Test add img to watch

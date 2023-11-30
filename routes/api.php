@@ -10,6 +10,7 @@ use App\Http\Controllers\CartsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MomoPayment;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ShipController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\WatchController;
 use App\Models\User;
@@ -94,3 +95,6 @@ Route::post('/voucher/store', [VoucherController::class, 'store'])->middleware('
 Route::post('/voucher/status/{code}', [VoucherController::class, 'checkStatus'])->middleware('auth:sanctum');
     // Get voucher
 Route::post('/voucher/get/{code}', [VoucherController::class, 'getVoucher'])->middleware('auth:sanctum');
+
+// Tính ship
+Route::post('/ship/cal', [ShipController::class, 'CalShipFee']);
