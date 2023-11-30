@@ -18,10 +18,11 @@ class CartsController extends Controller
     public function index()
     {
         //
-        $carts = Carts::with(['watches' => function ($query) {
+        $carts = Carts::where('user_id', auth()->user()->id)->with(['watches' => function ($query) {
             $query->select('watches.id', 'watches.name', 'watches.img1', 'watches.img2', 'watches.img3');}
-        ]);
-        return view('carts.index', [$carts]);
+        ])->get();
+        
+        return view('carts.index', ['carts' => $carts]);
     }
 
     /**
@@ -58,7 +59,7 @@ class CartsController extends Controller
             return response()->noContent();  
         }
         catch (Exception $e) {
-            dd($e);
+            return $e->getMessage();
         }
         
 
@@ -72,7 +73,7 @@ class CartsController extends Controller
         //
         $cart = Carts::where('user_id', auth()->user()->id)->get();
         dd($cart);
-        return view('', $cart);
+        return view('', ['carts' => $cart]);
     }
 
     /**
@@ -110,7 +111,7 @@ class CartsController extends Controller
             $carts->delete();
             return back()->withInput(['message' => "success"]);
         } catch (\Exception $e) { 
-            dd($e);
+            return $e->getMessage();
         }
     }
 
