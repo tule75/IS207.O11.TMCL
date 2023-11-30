@@ -69,8 +69,14 @@ feed.addEventListener("click", () => {
    
 })
 
-function toggleModal() {
-    document.getElementById('cd_modal').classList.toggle('hidden');
+function toggleModalComplimentary() {
+    document.getElementById('cd_modal-complimentary').classList.toggle('hidden');
+}
+function toggleModalReturning() {
+    document.getElementById('cd_modal-return').classList.toggle('hidden');
+}
+function toggleModalGift() {
+    document.getElementById('cd_modal-gift').classList.toggle('hidden');
 }
 
 // filter section

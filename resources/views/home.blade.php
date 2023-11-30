@@ -16,7 +16,6 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('/icon/fontawesome-free-6.4.2-web/css/regular.min.css')}}">
     <link rel="stylesheet" href="{{ asset('/css/home.css') }}">
-    <link rel="stylesheet" href="chatbox.css">
 </head>
 
 <body>
@@ -31,8 +30,17 @@
                 <div class="main-header">
                     <ul class="nav-left">
                         <li class="nav-left--item"><a href="" class="has-link nav-hover">Home</a></li>
-                        <li class="nav-left--item"><a href="" class="has-link nav-hover">Contact Us</a></li>
-                        <li class="nav-left--item"><a href="" class="has-link nav-hover">Merchant</a></li>
+                        <li class="nav-left--item">
+                            <a href="" class="has-link nav-hover">Policies</a>
+                            <div class="policy-list">
+                                <div class="policy-item">
+                                    <div class="Returning">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-left--item"><a href="/manager" class="has-link nav-hover">Merchant</a></li>
                     </ul>
 
                     <div class="logo">
@@ -308,7 +316,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="pagination-image">
             <img class="pagination-img" src="{{ asset('/img/leather.png')}}" alt="">
         </div>
@@ -316,47 +324,117 @@
         <ul class="pagination">
         </ul>
         <!-- pagination end -->
+
         <!-- main end -->
         <div class="space"></div>
         <!-- extra infomation start -->
         <div class="extra-information">
-            <div class="complimentary cursor-pointer" onclick="toggleModal()">
+            <div class="complimentary cursor-pointer" onclick="toggleModalComplimentary()">
                 <div class="flex justify-center">
                     <img class="complimentary-img " src="{{ asset('/img/Screenshot_2023-10-16_211957-removebg-preview.png') }}" alt="">
                 </div>
-                <a href="" class="has-link complimentary-text">COMPLIMENTARY DELIVERY</a>
+                <p href="" class="has-link complimentary-text">COMPLIMENTARY DELIVERY</p>
             </div>
-            <div class="complimentary cursor-pointer"  onclick="toggleModal()">
+            <div class="complimentary cursor-pointer"  onclick="toggleModalReturning()">
                 <div class="flex justify-center">
                     <img class="complimentary-img " src="{{ asset('/img/return.png')}}" alt="">
                 </div>
-                <a href="" class="has-link complimentary-text">EASY RETURN OR EXCHANGE</a>
+                <p href="" class="has-link complimentary-text">EASY RETURN OR EXCHANGE</p>
             </div>
-            <div class="complimentary cursor-pointer"  onclick="toggleModal()">
+            <div class="complimentary cursor-pointer"  onclick="toggleModalGift()">
                 <div class="flex justify-center">
                     <img class="complimentary-img " src="{{ asset('/img/wrap.png') }}" alt="">
                 </div>
-                <a href="" class="has-link complimentary-text">FREE GIFT WRAPPING</a>
+                <p href="" class="has-link complimentary-text">FREE GIFT WRAPPING</p>
             </div>
         </div>
         <!-- extra infomation start -->
         <!-- The Modal - COMPLIMENTARY DELIVERY -->
-        <div id="cd_modal" tabindex="-1" aria-hidden="true" class="hidden fixed flex items-center top-0 right-0 left-0 bottom-0  align-middle justify-center" style="z-index: 0;">
+        <div id="cd_modal-complimentary" tabindex="-1" aria-hidden="true" class="hidden fixed flex items-center top-0 right-0 left-0 bottom-0  align-middle justify-center" style="z-index: 0;">
             <div class="relative w-full max-w-2xl max-h-full">
                 <div class="relative opacity-100 w-600 h-fit bg-white " style="z-index:2">
                     <div class="h-1.5 bg-red-600 m-0"></div>
 
                     <div class="modal-header text-center relative">
                         <h3 class=" font-bold text-2xl tracking-widest py-5">COMPLIMENTARY DELIVERY</h3>
-                        <div class="absolute right-6 top-0" onclick="toggleModal()">
-                                <button class="">close</button>
+                        <div class="absolute right-6 top-0" onclick="toggleModalComplimentary()">
+                                <button class="closetag">close</button>
+                        </div>
+                    </div>
+                    <div class="flex mx-2 align-middle h-0.5 bg-slate-700"></div>
+                    <div class="modal-body flex flex-col justify-center px-20 py-10">
+                        <!-- <h1 class="font-bold text-lg">RETURN & EXCHANGE POLICY</h1> -->
+                            <i class="w-90 py-5">Cartier offers you 2 delivery options: </i>
+                            
+                            <p>Standard Delivery: </p>
+                            <p>
+                                2 to 3 business days.  Complimentary with all your orders.
+                            </p>
+                            <br>
+                            <p>Express Delivery: </p>
+                            <p>
+                            1 to 2 business days; $35 per order; Complimentary with all your orders over <i style="color: red;">$500</i>. (Based on availability.)
+                            </p>
+                            <br>
+                            <p>
+                            Please note that in exceptional cases, express delivery may be delayed if you have requested bracelet adjustment or engraving. In such cases, the Client Relations Center will contact you to propose other arrangements.
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal - RETURN DELIVERY -->
+        <div id="cd_modal-return" tabindex="-1" aria-hidden="true" class="hidden fixed flex items-center top-0 right-0 left-0 bottom-0  align-middle justify-center" style="z-index: 0;">
+            <div class="relative w-full max-w-2xl max-h-full">
+                <div class="relative opacity-100 w-600 h-fit bg-white " style="z-index:2">
+                    <div class="h-1.5 bg-red-600 m-0"></div>
+
+                    <div class="modal-header text-center relative">
+                        <h3 class=" font-bold text-2xl tracking-widest py-5">COMPLIMENTARY DELIVERY</h3>
+                        <div class="absolute right-6 top-0" onclick="toggleModalReturning()">
+                                <button class="closetag">close</button>
                         </div>
                     </div>
                     <div class="flex mx-2 align-middle h-0.5 bg-slate-700"></div>
                     <div class="modal-body flex flex-col justify-center px-20 py-10">
                         <h1 class="font-bold text-lg">RETURN & EXCHANGE POLICY</h1>
-                        <p class="w-90 py-5">You can request a return or exchange of your items within 30 days by contacting Cartier Client Relations Centre.</p>
-                        <p>For more information please visit the section <u>Delivery & Returns Exchange Policy</u>.</p>
+                            
+                            <br>
+                            <p>
+                            You can request a return or exchange of your items within 30 days by contacting  Client Relations Centre.
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end modal -->
+         <!-- The Modal - GIFT WRAPPING -->
+         <div id="cd_modal-gift" tabindex="-1" aria-hidden="true" class="hidden fixed flex items-center top-0 right-0 left-0 bottom-0  align-middle justify-center" style="z-index: 0;">
+            <div class="relative w-full max-w-2xl max-h-full">
+                <div class="relative opacity-100 w-600 h-fit bg-white " style="z-index:2">
+                    <div class="h-1.5 bg-red-600 m-0"></div>
+
+                    <div class="modal-header text-center relative">
+                        <h3 class=" font-bold text-2xl tracking-widest py-5">COMPLIMENTARY DELIVERY</h3>
+                        <div class="absolute right-6 top-0" onclick="toggleModalGift()">
+                                <button class="closetag">close</button>
+                        </div>
+                    </div>
+                    <div class="flex mx-2 align-middle h-0.5 bg-slate-700"></div>
+                    <div class="modal-body flex flex-col justify-center px-20 py-10">
+                        <h1 class="font-bold text-lg">GIFT WRAPPING</h1>
+                            <br>
+                        <p>
+                            All our designs are beautifully wrapped in signature packaging.
+                        </p>
+                        <br>
+                        <p>
+                            Gift wrapping is not available for select items including refills and watch straps. Visit your local boutique or contact the Client Relations Center to learn more.                        
+                        </p>
+                        <br>
+                        <p>
+                            You can accompany your purchase with a personalised message on a signature Cartier card.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -409,7 +487,6 @@
 </body>
 
 <script src="{{ asset('js/home.js')}}"></script>
-
 
 
 
