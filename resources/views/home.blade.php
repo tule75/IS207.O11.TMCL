@@ -19,57 +19,91 @@
 </head>
 
 <body>
-    <div class="cartier">
-        <!-- header start -->
-            <div class="header">
-                <div class="header-notice">
-                    <p>Enjoy wrap-gift standard shipping. <span class=""><a class="has-link return-link">Click here to learn
-                                more about returns and exchanges.</a></span></p>
-                </div>
+<div class="cartier">
+    <!-- header start -->
+    <div class="header">
+        <div class="header-notice">
+            <p>Enjoy wrap-gift standard shipping. <span class=""><a class="has-link return-link">Click here to learn
+                        more about returns and exchanges.</a></span></p>
+        </div>
 
-                <div class="main-header">
-                    <ul class="nav-left">
-                        <li class="nav-left--item"><a href="" class="has-link nav-hover">Home</a></li>
-                        <li class="nav-left--item">
-                            <a href="" class="has-link nav-hover">Policies</a>
-                            <div class="policy-list">
-                                <div class="policy-item">
-                                    <div class="Returning">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-left--item"><a href="/manager" class="has-link nav-hover">Merchant</a></li>
-                    </ul>
 
-                    <div class="logo">
-                        <a href="/"><img class="logo-img" src="{{ asset('/img/Screenshot_2023-10-16_121457-removebg.png')}}" alt=""></a>
-                    </div>
+        <div class="main-header">
+            <ul class="nav-left">
+                <li class="nav-left--item"><a href="" class="has-link nav-hover">Home</a></li>
+                <li class="nav-left--item"><a href="" class="has-link nav-hover">Contact Us</a></li>
+                <li class="nav-left--item"><a href="" class="has-link nav-hover">Merchant</a></li>
+            </ul>
 
-                    <div class="nav-right">
-                        <div class="nav-right--item"><i class="fa fa-heart"></i></div>
-                        @if (Route::has('login'))
-                            @auth
-                                <a href="{{ url('/profile') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
-                                <a href="{{Route('cart.index')}}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
-                            @else
-                                <a href="{{ url('/login') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
-                                <a href="{{ url('/login') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
-                            @endauth
-                        @endif
-                    </div>
-                </div>
-
-                <div class="sub-navbar">
-                    <div class="watch-collection--item">Colect</div>
-                    <div class="watch-collection--item">Colect</div>
-                    <div class="watch-collection--item">Colect</div>
-                    <div class="watch-collection--item">Colect</div>
-                    <div class="watch-collection--item">Colect</div>
-                </div>
+            <div class="logo">
+                <a href="/"><img class="logo-img" src="{{ asset('/img/Screenshot_2023-10-16_121457-removebg.png')}}" alt=""></a>
             </div>
-        
+
+            <div class="nav-right">
+                <div class="nav-right--item"><i class="fa fa-heart"></i></div>
+                @if (Route::has('login'))
+                    @auth
+                        <a href="{{ url('/profile') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
+                        <a href="{{Route('cart.index')}}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
+                    @else
+                        <a href="{{ url('/login') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
+                        <a href="{{ url('/login') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
+                    @endauth
+                @endif
+            </div>
+        </div>
+    </div>
+    <!-- header end -->
+</div>
+
+   <div class="sub-navbar">
+      <div class="dropdown">
+        <button class="dropbtn">FESTIVE SEASON</button>
+        <div class="dropdown-content">
+          <a href="#">WINTERK</a>
+          <a href="#">SUMMER</a>
+          <a href="#">AKALUNA</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">WATCHES</button>
+        <div class="dropdown-content">
+          <a href="#">LALAKA</a>
+          <a href="#">LOREAL</a>
+          <a href="#">MARIDA</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">HIGH JWELRY</button>
+        <div class="dropdown-content">
+          <a href="#">K'SANTE</a>
+          <a href="#">DELTA</a>
+          <a href="#">MAMAPARA</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">FRAGRANCES</button>
+        <div class="dropdown-content">
+          <a href="#">DECLARATION</a>
+          <a href="#">DE PAUL</a>
+          <a href="#">PUSHI KAR</a>
+          <a href="#">OSHIMEN</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">LAMAISON</button>
+        <div class="dropdown-content">
+          <a href="#">TANK</a>
+          <a href="#">SANTOS</a>
+          <a href="#">PATHERE</a>
+          <a href="#">LOVE</a>
+        </div>
+      </div>
+    </div> 
         <!-- header end -->
         <!-- banner start -->
         <div class="banner">
