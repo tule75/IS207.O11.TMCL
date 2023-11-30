@@ -61,7 +61,7 @@ class AddressController extends Controller
             return back()->with('message', 'Cập nhật địa chỉ thành công');
         }
         catch (Exception $e) {
-            dd($e);
+            return $e->getMessage();
             return back()->with('message: ', $e->getMessage());
         }
     }
@@ -87,7 +87,22 @@ class AddressController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            $address = Address::find($id);
+
+            $address->update([
+                'province' => $request->has('province') ? $request->get('province') : $address->province,
+                'district' => $request->has('district') ? $request->get('district') : $address->district,
+                'ward' => $request->has('ward') ? $request->get('ward') : $address->ward,
+                'phone_number' => $request->has('phone_number') ? $request->get('phone_number') : $address->phone_number,
+                'address' => $request->has('address') ? $request->get('address') : $address->address,
+            ]);
+            return back()->withInput(['message' => 'Cập nhật thành công']);
+        }
+        catch (\Exception $e) { 
+            return $e;
+        }
+
     }
 
     /**
@@ -96,5 +111,23 @@ class AddressController extends Controller
     public function destroy(string $id)
     {
         //
+        try {
+            Address::find($id)->delete();
+            return back()->with(['message' => "Thành công"]);
+        } catch (Exception $e) {
+            return $e;
+        }
+    }
+
+    public function get_provinces() {
+        return Province::all();
+    }
+
+    public function get_districts(Request $request) {
+        return District::where('province_id', $request->province_id)->get();
+    }
+
+    public function get_wards(Request $request) { 
+        return Ward::where('district_id', $request->district_id)->get();
     }
 }

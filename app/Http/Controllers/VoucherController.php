@@ -51,7 +51,7 @@ class VoucherController extends Controller
             return back()->withInput(['message' => 'Tạo voucher thành công']);
             // return $voucher;
         } catch (Exception $e) {
-            dd($e);
+            return $e->getMessage();
         }
     }
 
@@ -64,7 +64,7 @@ class VoucherController extends Controller
     //         }
     //     }
     //     catch (\Exception $e) { 
-    //         dd($e);
+    //         return $e->getMessage();
     //     }  
     // }
 
@@ -94,7 +94,7 @@ class VoucherController extends Controller
             $voucher->delete();
             return back()->withInput(['message' => 'Xóa thành công']);
         } catch (\Exception $e) {
-            dd($e);
+            return $e->getMessage();
         }
        
     }

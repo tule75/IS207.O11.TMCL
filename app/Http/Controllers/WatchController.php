@@ -17,7 +17,9 @@ class WatchController extends Controller
     public static function index()
     {
         // eager loading with pagination
-        $watches = Watch::select('id', 'name', 'discount', 'storage', 'slug', 'description', 'gender', 'img1', 'img2', 'img3', 'brand_id', 'category_id')->with(['brand', 'category'])->paginate('15');
+        $watches = Watch::select('id', 'name', 'discount', 'storage', 'slug', 'description', 'gender', 'img1', 'img2', 'img3', 'brand_id', 'category_id')
+        ->with(['brand', 'category'])
+        ->paginate('15');
         return $watches;
     }
 
@@ -83,7 +85,7 @@ class WatchController extends Controller
             return back()->withInput(['message' => 'Successfully created']);
         } catch (\Exception $e) { 
             echo("error");
-            dd($e);
+            return $e->getMessage();
         }
         
     }
@@ -97,7 +99,7 @@ class WatchController extends Controller
     // render ra trang tìm kiếm sản phẩm query
     public function search(Request $request) {
         // dd($request->query('q'));
-        return view('products.search', Watch::search($request->q)->paginate(15));
+        return view('products.search', ['watches' => Watch::search($request->q)->paginate(15)]);
     }
 
     /**
@@ -108,7 +110,7 @@ class WatchController extends Controller
         //
         // return view('products.watch');
         // Lấy sản phẩm
-        return view('products.watch', [Watch::where('slug', $watch_slug)->first()]);
+        return view('products.watch', ['watch' => Watch::where('slug', $watch_slug)->first()]);
     }
 
     /**
@@ -117,7 +119,7 @@ class WatchController extends Controller
     public function edit(Watch $watch)
     {
         //
-        return view('product.edit', $watch);
+        return view('product.edit', ['watch' => $watch]);
     }
 
     /**
@@ -160,7 +162,7 @@ class WatchController extends Controller
             ])->save();
             return back()->withInput(['message' => 'successfully updated']);
         } catch (Exception $e) {
-            dd($e);
+            return $e->getMessage();
         }
     }
 
@@ -174,7 +176,7 @@ class WatchController extends Controller
             $watch->delete();
             return back()->withInput(['message' => 'Xóa thành công']);
         } catch (\Exception $e) { 
-            dd($e);
+            return $e->getMessage();
         }
     }
 
@@ -189,7 +191,7 @@ class WatchController extends Controller
             Watch::withTrashed()->find($watch)->restore();
             return back()->withInput(['message' => 'Xóa thành công']);
         } catch (\Exception $e) {
-            dd($e);
+            return $e->getMessage();
         }
     }
 

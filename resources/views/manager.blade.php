@@ -18,6 +18,11 @@
     <link rel="stylesheet" href="{{ asset('/css/manager.css') }}">
 </head>
 <body>
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
     <div class="cartier">
          <!-- header start -->
         <div class="header">
@@ -445,6 +450,7 @@
                                                         id="pEmail"
                                                         placeholder="Enter email"
                                                         class="product-input-area"
+                                                        :value="old('name')" required autofocus autocomplete="name"
                                                 />
                                             </div>
 
@@ -456,6 +462,7 @@
                                                         id="pNamePassword"
                                                         placeholder="Enter password"
                                                         class="product-input-area"
+                                                        :value="old('email')" required autocomplete="username"
                                                 />
                                             </div>
                                           
@@ -467,6 +474,7 @@
                                                         id="pPassword"
                                                         placeholder="Enter password"
                                                         class="product-input-area"
+                                                        required autocomplete="new-password"
                                                 />
                                             </div>
 
@@ -478,6 +486,7 @@
                                                         id="pPassword"
                                                         placeholder="Enter password"
                                                         class="product-input-area"
+                                                        required autocomplete="new-password"
                                                 />
                                             </div>
                                         </div>
@@ -487,6 +496,7 @@
                                         <div class="flex justify-center items-center border-solid m-10">
                                             <button class="add-product-btn submit-container">Submit</button>
                                         </div>
+                                        
                                 </form>
 
                                 <!-- list close product -->

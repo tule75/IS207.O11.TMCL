@@ -32,9 +32,9 @@ class DefaultAddressController extends Controller
     {
         //
         try {
-            default_address::create([
-                'user_id' => auth()->user()->id,
-                'address_id' => $request->address_id,
+            default_address::updateOrCreate(
+                ['user_id' => auth()->user()->id],
+                ['address_id' => $request->address_id,
             ]);
             return back()->input('message: ', "Thành công");
         } catch (Exception $e) {

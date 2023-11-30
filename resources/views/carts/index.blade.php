@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    {{$carts}}
     <div class="cartier">
         <div class="header">
             <div class="header-notice">
