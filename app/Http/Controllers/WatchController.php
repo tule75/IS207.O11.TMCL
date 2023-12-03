@@ -17,10 +17,18 @@ class WatchController extends Controller
     public static function index()
     {
         // eager loading with pagination
-        $watches = Watch::select('id', 'name', 'discount', 'storage', 'slug', 'description', 'gender', 'img1', 'img2', 'img3', 'brand_id', 'category_id')
+        $watches = Watch::select('id', 'name', 'discount', 'price', 'storage', 'slug', 'description', 'gender', 'img1', 'img2', 'img3', 'brand_id', 'category_id')
         ->with(['brand', 'category'])
-        ->paginate('15');
+        ->paginate('32');
         return $watches;
+    }
+
+    public function collectionIndex(Request $request) {
+        $watches = $request->has('cate') ? Watch::where('category_id', $request->cate) : new Watch();
+        $watches = $request->has('brand') ? Watch::where('brand_id', $request->brand) : $watches;
+        $watches = $request->has('gender') ? Watch::where('gender', $request->gender) : $watches;
+
+        return view('collection', ['watches' => $watches->paginate(16)]);
     }
 
     public function indexCategory(Request $request)

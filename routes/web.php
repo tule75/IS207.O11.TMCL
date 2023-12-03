@@ -105,12 +105,10 @@ Route::middleware('auth')->group(function () {
     Route::delete("/watch/{id}", [WatchController::class, 'destroy'])->middleware('manager');
     // Hiển thị đơn sản phẩm
     Route::get("/watch/{slug}", [WatchController::class, 'show'])->name('watch.show');
-    // Collection
-    Route::get("/collection", function () {
-        return view('collection');
-    });
 });
-
+    // Collection
+    Route::get("/collection", [WatchController::class, 'collectionIndex']);
+    
 // Voucher Routes
 Route::middleware('auth')->group(function () {
     // Mở trang tạo voucher

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CalShipRequest;
 use App\Models\Orders;
 use App\Http\Requests\StoreOrdersRequest;
 use App\Http\Requests\UpdateOrdersRequest;
@@ -57,9 +58,13 @@ class OrderController extends Controller
             $watch[$index] = Watch::with(['brand' => function ($query) {}, 'category' => function ($query) {}])->find($id); 
             $watch[$index]->quantity = $request->quantity[$index];
         }
+
+        if (!auth()->user()->defaultAddress) {
+            return view('order.create', ['watch' => $watch, 'ship_fee' => -1]);
+        }
         // return về view/order/create.blade.php
         // return $watch;
-        return view('order.create', ['watch' => $watch]);
+        return view('order.create', ['watch' => $watch, 'ship_fee' => (new ShipController)->CalShip(auth()->user()->defaultAddress->id)]);
     }
 
     /**
@@ -80,6 +85,7 @@ class OrderController extends Controller
             $order = Orders::create([
                 'address_id' => $request->address_id,
                 'user_id' => auth()->user()->id,
+                'ship_fee' => $request->ship_fee,
                 'gift' => $request->has('gift') ? true : false,
                 'description' => $request->has('description') ? $request->description : null,
                 'total_prices' => 0,

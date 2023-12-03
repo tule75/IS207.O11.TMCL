@@ -75,12 +75,12 @@ class WatchImport implements  WithHeadingRow, SkipsOnFailure, ToArray, WithChunk
             'discount' => $item['discount'],
             'category_id' => $item['category_id'],
             'brand_id' => $item['brand_id'],
-            'description' => in_array('description',$item) ? $item['description'] : '',
+            'description' => array_key_exists('description',$item) ? $item['description'] : '',
             'gender' => $item['gender'],
             'slug' => $item['slug'],
             'img1' => $item['img1'],
-            'img2' => in_array('img2',$item) ? $item['img2'] : null,
-            'img3' => in_array('img3',$item) ? $item['img3'] : null,
+            'img2' => array_key_exists('img2',$item) ? $item['img2'] : null,
+            'img3' => array_key_exists('img3',$item) ? $item['img3'] : null,
         ]);
     }
 }

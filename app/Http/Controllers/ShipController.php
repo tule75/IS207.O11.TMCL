@@ -43,6 +43,38 @@ class ShipController extends Controller
         return $response['data']['total'];
     }
 
+    public function CalShip($address_id) {
+        $address = Address::find($address_id);
+        $provinceId = $this->getProvince($address->province) ;
+        $districtId = $this->getDistrict($address->district, $provinceId);
+        $wardId = $this->getWard($address->ward, $districtId);
+        [$serviceId, $serviceTypeId] = $this->getService($districtId);
+        $endpoint = 'https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/fee';
+        
+        $data = [
+            'from_district_id' => 3695,
+            'from_ward_code' => '90737',
+            'service_id' => (int)$serviceId,
+            'service_type_id' => (int)$serviceTypeId, 
+            'to_district_id' => (int)$districtId,
+            'to_ward_code' => (string)$wardId,
+            'height' => 18,
+            'length' => 15,
+            'width' => 12,
+            'weight' => 200,
+            'cod_value' => 0
+        ];
+
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json',
+            'Token' => env('Token'),
+            'ShopId' => (int)env('shopID'),
+            'Content-Type' => 'text/plain'
+        ])->get($endpoint, $data);
+
+        return $response['data']['total'];
+    }
+
     private function getProvince($province) {
         $endpoint = 'https://online-gateway.ghn.vn/shiip/public-api/master-data/province';
         $response = Http::withHeaders([

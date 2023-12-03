@@ -17,6 +17,7 @@ class Orders extends Model
         'total_prices',
         'discount',
         'voucher_id',
+        'ship_fee',
         'gift',
         'description',
     ];
