@@ -24,6 +24,7 @@ class OrdersFactory extends Factory
             'address_id' => $user->defaultAddress->address_id,
             'status' => fake()->randomElement(['Pending', 'Shipping', 'Success']),
             'total_prices' => 0,
+            'ship_fee' => fake()->randomElement([30000, 35000, 25000, 40000]),
             'voucher_id' => null, 
         ];
     }

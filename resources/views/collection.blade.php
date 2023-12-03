@@ -155,170 +155,25 @@
                 </div>
                 <div class="products-container">
                     <!-- item -->
-                    <a href="/watch/1" style="text-decoration:underline">
+                    @foreach ($watches as $watch)
+                    <a href="/watch/{{ $watch->slug }}" style="text-decoration:underline">
                         <div class="product-object">
-                            <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
+                            <img class="object-img" src="{{ asset($watch->img1) }}" alt="">
                             <div class="object-section">
                                 <div class="object-section-info">
-                                    <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
+                                    <a class=" has-link object-info  info-name"> {{$watch->name}}</a>
                                 </div>
                                 <div class="object-section-info">
-                                    <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
-                                        leather</a>
-                                    <h3 class="item-price">$7,199,00</h3>
+                                    <a class=" has-link object-info">{{$watch->description}}</a>
+                                    <h3 class="item-price">{{number_format($watch->price * (1 - $watch->discount), 0, ',', '.')}} đ</h3>
                                 </div>
                             </div>
                             <div class="buy-btn">
-                                <a href="" class="discover has-link">Discover</a>
+                                <a class="discover has-link">Add to cart</a>
                             </div>
                         </div>
                     </a>
-                    
-                    <!-- item -->
-                    <a href="/watch/1" style="text-decoration:underline">
-                        <div class="product-object">
-                            <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
-                            <div class="object-section">
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
-                                </div>
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
-                                        leather</a>
-                                    <h3 class="item-price">$199,00</h3>
-                                </div>
-                            </div>
-                            <div class="buy-btn">
-                                <a href="" class="discover has-link">Discover</a>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/watch/1" style="text-decoration:underline">
-                        <div class="product-object">
-                            <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
-                            <div class="object-section">
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
-                                </div>
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
-                                        leather</a>
-                                    <h3 class="item-price">$5,199,00</h3>
-                                </div>
-                            </div>
-                            <div class="buy-btn">
-                                <a href="" class="discover has-link">Discover</a>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/watch/1" style="text-decoration:underline">
-                        <div class="product-object">
-                            <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
-                            <div class="object-section">
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
-                                </div>
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
-                                        leather</a>
-                                    <h3 class="item-price">$1,199,00</h3>
-                                </div>
-                            </div>
-                            <div class="buy-btn">
-                                <a href="" class="discover has-link">Discover</a>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/watch/1" style="text-decoration:underline">
-                        <div class="product-object">
-                            <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
-                            <div class="object-section">
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
-                                </div>
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
-                                        leather</a>
-                                    <h3 class="item-price">$3,199,00</h3>
-                                </div>
-                            </div>
-                            <div class="buy-btn">
-                                <a href="" class="discover has-link">Discover</a>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/watch/1" style="text-decoration:underline">
-                        <div class="product-object">
-                            <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
-                            <div class="object-section">
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
-                                </div>
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
-                                        leather</a>
-                                    <h3 class="item-price">$1,199,00</h3>
-                                </div>
-                            </div>
-                            <div class="buy-btn">
-                                <a href="" class="discover has-link">Discover</a>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/watch/1" style="text-decoration:underline">
-                        <div class="product-object">
-                            <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
-                            <div class="object-section">
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
-                                </div>
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
-                                        leather</a>
-                                    <h3 class="item-price">$199,00</h3>
-                                </div>
-                            </div>
-                            <div class="buy-btn">
-                                <a href="" class="discover has-link">Discover</a>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/watch/1" style="text-decoration:underline">
-                        <div class="product-object">
-                            <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
-                            <div class="object-section">
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
-                                </div>
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
-                                        leather</a>
-                                    <h3 class="item-price">$299,00</h3>
-                                </div>
-                            </div>
-                            <div class="buy-btn">
-                                <a href="" class="discover has-link">Discover</a>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/watch/1" style="text-decoration:underline">
-                        <div class="product-object">
-                            <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
-                            <div class="object-section">
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
-                                </div>
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
-                                        leather</a>
-                                    <h3 class="item-price">$9,00</h3>
-                                </div>
-                            </div>
-                            <div class="buy-btn">
-                                <a href="" class="discover has-link">Discover</a>
-                            </div>
-                        </div>
-                    </a>
+                    @endforeach
                 </div>
             </div>
         </div>
