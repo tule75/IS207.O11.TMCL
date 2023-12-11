@@ -158,7 +158,16 @@
                                 </div>
                             </div>
                             <div class="buy-btn">
-                                <a href="" class="discover has-link">Discover</a>
+                                <div class="btn-list">
+                                    <div class="wishlist">
+                                        <form action="" method="get">
+                                            <input type="button" value=""> <i class="fa fa-heart"></i>
+                                        </form>
+                                    </div>
+                                    <div class="buy-now">
+                                        <a href="/cart" class="discover has-link">Buy Now!</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </a>
@@ -178,17 +187,23 @@
                                 </div>
                             </div>
                             <div class="buy-btn">
-                                <a href="" class="discover has-link">Discover</a>
+                                <div class="btn-list">
+                                    <div class="wishlist">
+                                        <form action="" method="get">
+                                            <input type="button" value=""> <i class="fa fa-heart"></i>
+                                        </form>
+                                    </div>
+                                    <div class="buy-now">
+                                        <a href="/cart" class="discover has-link">Buy Now!</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </a>
                     <a href="/watch/1" style="text-decoration:underline">
                         <div class="product-object">
                             
-                            <div class="wishlist-add">
-                                <button class=""><i class="fa fa-heart"></i></button>
-                            </div>
-                            <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
+                                <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
                             <div class="object-section">
                                 <div class="object-section-info">
                                     <a href="" class=" has-link object-info  info-name"> Bonde Must de Cartier watch</a>
@@ -201,7 +216,16 @@
                             </div>
 
                             <div class="buy-btn">
-                                <a href="" class="discover has-link">Discover</a>
+                                <div class="btn-list">
+                                    <div class="wishlist">
+                                        <form action="" method="get">
+                                            <input type="button" value=""> <i class="fa fa-heart"></i>
+                                        </form>
+                                    </div>
+                                    <div class="buy-now">
+                                        <a href="/cart" class="discover has-link">Buy Now!</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </a>
@@ -291,7 +315,16 @@
                                 </div>
                             </div>
                             <div class="buy-btn">
-                                <a href="" class="discover has-link">Discover</a>
+                                <div class="btn-list">
+                                    <div class="wishlist">
+                                        <form action="" method="get">
+                                            <input type="button" value=""> <i class="fa fa-heart"></i>
+                                        </form>
+                                    </div>
+                                    <div class="buy-now">
+                                        <a href="/cart" class="discover has-link">Buy Now!</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </a>

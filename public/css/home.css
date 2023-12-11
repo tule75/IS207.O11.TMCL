@@ -253,10 +253,10 @@
     width: 250px;
 }
 .object-section {
-    padding-top: 10px;
+    padding-top: 2px;
 }
 .object-section-info {
-    padding: 10px 0;
+    padding: 2px 0;
 }
 .object-info {
    
@@ -265,40 +265,39 @@
     font-weight: 600;
     font-size: 17px;
 }
-.wishlist-add {
-    position: absolute;
-    top: -10px;
-    right: 5px;
-    display: block;
-    background-color: #423f3f;
-}
-.wishlist-add:hover {
-    color:rgb(41, 38, 38);
-}
+
 .buy-btn {
     display: block;
     margin: 0 10px;
-    padding: 10px 0;
     background-color:transparent;
     border: 1px solid transparent;
 }
-
-.object-section:hover ~ .wishlist-add{
-   display: block;
-   opacity: 1;
+.btn-list {
+    display: flex;
+    height: 10%;
+    justify-content: space-between;
+    align-items: center;
 }
-.object-section:hover ~ .buy-btn{
-    width: 100%;
-    margin: 0 0px;
-    padding: 10px 0;
-    background-color: #1d1c1c;
-    opacity: 1;
+.wishlist{
+    width: 50%;
+    background-color: #423f3f;
+    margin: 0 3px;
+    color: white;
 }
-.buy-btn:hover {
-    background-color: #2e2e2e;
-    width: 100%;
-    margin: 0 0px;
-    padding: 10px 0;
+.buy-now {
+    padding: 16px 0;
+    width: 50%;
+    background-color: #423f3f;
+    margin: 0 3px;
+    color: black;
+}
+.wishlist:hover {
+    color: black;
+    background-color: #9a9393;
+}
+.buy-now:hover {
+    color: white;
+    background-color: #8a8888;
 }
 .discover {
     color: white;
