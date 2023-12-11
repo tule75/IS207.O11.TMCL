@@ -9,11 +9,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WatchController;
 use App\Http\Controllers\CartsController;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DefaultAddressController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Manager;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentsController;
+use App\Http\Controllers\ShipController;
 use App\Http\Controllers\VoucherController;
 
 /*
@@ -38,14 +42,22 @@ Route::get('/dashboard', function () {
 Route::get("/test", function () {
     return view('test');
 });
-// Lấy danh sách tỉnh
-Route::post("/api/get/provinces", [AddressController::class, 'get_provinces']);
-// lấy danh sách huyện
-Route::post("/api/get/districts", [AddressController::class, 'get_districts']);
-//lấy danh sách xã
-Route::post("/api/get/wards", [AddressController::class, 'get_wards']);
-// thêm address 
-Route::post("/add/address", [AddressController::class, 'store'])->middleware('auth')->name('store.address');
+
+// Address
+Route::middleware('auth')->group(function () {
+    // Lấy danh sách tỉnh
+    Route::post("/api/get/provinces", [AddressController::class, 'get_provinces']);
+    // lấy danh sách huyện
+    Route::post("/api/get/districts", [AddressController::class, 'get_districts']);
+    //lấy danh sách xã
+    Route::post("/api/get/wards", [AddressController::class, 'get_wards']);
+    // Cập nhật địa chỉ
+    Route::patch('/address/{id}', [AddressController::class, 'update']);
+    // thêm address 
+    Route::post("/address", [AddressController::class, 'store'])->middleware('auth')->name('store.address');
+    // Thay đổi default address
+    Route::patch('/address/update', [DefaultAddressController::class, 'store']);
+});
 
 // test product routes
 Route::get("/product/create", [ProductsController::class, 'create'])->middleware('guest');
@@ -57,6 +69,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
 
 // manager routes
 Route::middleware(['auth'])->group(function () {
@@ -80,8 +93,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/watch/{id}/edit', [WatchController::class, 'edit'])->middleware('manager');
     // Sửa sản phẩm
     Route::put("/watch/{id}/edit", [WatchController::class, 'store'])->middleware('manager')->name('watch.store');
-    // Xóa mềm sản phẩm
-    Route::delete("/watch/{id}", [WatchController::class, 'destroy'])->middleware('manager');
     // Hiển thị các sản phẩm đã xóa mềm
     Route::get("/watch/destroyed", [WatchController::class, 'destroyed'])->middleware('manager');
     // Khôi phục sản phẩm đã xóa mềm
@@ -90,14 +101,14 @@ Route::middleware('auth')->group(function () {
     Route::post("/watch/search", [WatchController::class, 'typeSearch']);
     // Search
     Route::get("/watch/search", [WatchController::class, 'search']);
+    // Xóa mềm sản phẩm
+    Route::delete("/watch/{id}", [WatchController::class, 'destroy'])->middleware('manager');
     // Hiển thị đơn sản phẩm
     Route::get("/watch/{slug}", [WatchController::class, 'show'])->name('watch.show');
-    // Collection
-    Route::get("/collection", function () {
-        return view('collection');
-    });
 });
-
+    // Collection
+    Route::get("/collection", [WatchController::class, 'collectionIndex']);
+    
 // Voucher Routes
 Route::middleware('auth')->group(function () {
     // Mở trang tạo voucher
@@ -107,7 +118,7 @@ Route::middleware('auth')->group(function () {
     // check status
     Route::post('/voucher/{code}/status', [VoucherController::class, 'checkStatus']);
     // Get voucher
-    Route::post('/voucher/{code}/get', [VoucherController::class, 'getVoucher']);
+    Route::get('/voucher/{code}/get', [VoucherController::class, 'getVoucher']);
     // Xóa voucher
     Route::delete('/voucher/{code}', [VoucherController::class, 'deleteVoucher'])->middleware('manager');
 });
@@ -115,15 +126,15 @@ Route::middleware('auth')->group(function () {
 // Order
 Route::middleware('auth')->group(function () {
     // Lấy danh sách các order
-    Route::get('/order/getall', [OrderController::class, 'getAll'])->middleware('manager');
+    Route::get('/order/getall', [OrderController::class, 'getAll'])->middleware('staff');
     // Trang tạo order
     Route::get('/order/buy', [OrderController::class, 'create']);
     // Tạo đơn hàng
     Route::post('/order/buy', [OrderController::class, 'store']);
     // Lấy danh sách order đang chờ xác nhận
-    Route::post('/order/pending', [OrderController::class, 'getPending'])->middleware('manager');
+    Route::post('/order/pending', [OrderController::class, 'getPending'])->middleware('staff');
     // Chuyển từ Pending sang Shipping
-    Route::patch('/order/{order}', [OrderController::class, 'update'])->middleware('manager');
+    Route::patch('/order/{order}', [OrderController::class, 'update'])->middleware('staff');
     // Khách hàng xem các order của mình
     Route::get('/order/{user_id}', [OrderController::class, 'showForUser']);
     // Xóa order
@@ -138,11 +149,33 @@ Route::middleware('auth')->group(function () {
     // Route::get('/order', [OrderController::class, 'showForUser'])->middleware('auth');
 
 // Brand routes
-Route::post("/brand", [BrandController::class, 'store'])->name('brand');
+    // tạo brand
+    Route::post("/brand", [BrandController::class, 'store'])->name('brand');
+    // get all brand
+    Route::GET('/brand/getall', [BrandController::class, 'index']);
+// Category routes
+    // tạo brand
+    Route::post("/category", [CategoryController::class, 'store'])->name('brand');
+    // get all brand
+    Route::GET('/category/getall', [CategoryController::class, 'index']);
+
 
 // cart routes
 Route::middleware(['auth'])->group(function () {
+    // lấy danh sách giỏ hàng
     Route::get('/cart', [CartsController::class, 'index'])->name('cart.index');
+    // Lưu vào giỏ hàng
+    Route::post('/cart', [CartsController::class, 'store']);
+    // Tăng giảm số lượng giỏ hàng
+    Route::put('/cart', [CartsController::class, 'update']);
+    // Xóa sản phẩm trong giỏ hàng
+    Route::delete('/cart', [CartsController::class, 'destroy']);
+});
+
+//Shipment route
+Route::middleware('auth')->group(function () {
+    // Tính giá ship
+    Route::post('/ship/cal', [ShipController::class, 'CalShipFee']);
 });
 
 // Test add img to watch

@@ -12,6 +12,6 @@ class HomeController extends Controller
         $watches = WatchController::index();
         $brand = BrandController::index();
         $category = CategoryController::index();
-        return view('home', [$watches, $brand, $category]);
+        return view('home', ['watches' => $watches,'brand' => $brand, 'category' => $category]);
     }
 }

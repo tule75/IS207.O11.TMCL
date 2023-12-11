@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('category', function (Blueprint $table) {
+        Schema::table('orders', function (Blueprint $table) {
             //
-            $table->id();
-            $table->string('name');
-            $table->string('description', 400);
+            $table->integer('ship_fee');
         });
     }
 
@@ -24,8 +22,5 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('category', function (Blueprint $table) {
-            //
-        });
     }
 };

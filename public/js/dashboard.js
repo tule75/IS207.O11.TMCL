@@ -91,9 +91,9 @@ monthSelected.addEventListener("change", function(event) {
           element.style.display = 'none';
       });
     }
-        monthRevenue.innerHTML = selectedValue;
-        orderCounts.innerHTML =   selectedOrder;
-        productCount.innerHTML =  selectedProduct; 
+        monthRevenue.innerHTML = "Total Revenue: " + selectedValue;
+        orderCounts.innerHTML = "Order Count: " + selectedOrder;
+        productCount.innerHTML = "Product Sell: " + selectedProduct; 
 });
 
 // bar chart
