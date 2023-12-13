@@ -25,6 +25,16 @@
     <script>
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
         $(document).ready(function () {
+            $.ajax({
+                headers: {
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                url: "/brand/getall",
+                type: "GET",
+                success: function (data) {
+                    console.log(data);
+                }
+            })
             $('#dynamicSelect').click(function () {
                 $.ajaxSetup({
                     headers: {
@@ -66,7 +76,7 @@
                         var select = document.getElementById('dynamicSelectDistrict'); // Hiển thị phản hồi trong phần tử HTML có id là 'result'
                         data.forEach(function(item) {
                             var option = document.createElement('option');
-                            option.value = item.gso_id;
+                            option.value = item.id;
                             option.text = item.name;
                             select.appendChild(option);
                         });

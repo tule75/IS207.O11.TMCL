@@ -65,7 +65,7 @@ class OrderIteamsController extends Controller
 
             return $price;
         } catch (\Exception $e) {
-            dd($e);
+            return $e->getMessage();
         }
 
         

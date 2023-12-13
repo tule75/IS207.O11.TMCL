@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>The UITERs - Home </title>
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Logo_UIT_updated.svg/1200px-Logo_UIT_updated.svg.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,57 +20,91 @@
 </head>
 
 <body>
-    <div class="cartier">
-        <!-- header start -->
-            <div class="header">
-                <div class="header-notice">
-                    <p>Enjoy wrap-gift standard shipping. <span class=""><a class="has-link return-link">Click here to learn
-                                more about returns and exchanges.</a></span></p>
-                </div>
+<div class="cartier">
+    <!-- header start -->
+    <div class="header">
+        <div class="header-notice">
+            <p>Enjoy wrap-gift standard shipping. <span class=""><a class="has-link return-link">Click here to learn
+                        more about returns and exchanges.</a></span></p>
+        </div>
 
-                <div class="main-header">
-                    <ul class="nav-left">
-                        <li class="nav-left--item"><a href="" class="has-link nav-hover">Home</a></li>
-                        <li class="nav-left--item">
-                            <a href="" class="has-link nav-hover">Policies</a>
-                            <div class="policy-list">
-                                <div class="policy-item">
-                                    <div class="Returning">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-left--item"><a href="/manager" class="has-link nav-hover">Merchant</a></li>
-                    </ul>
 
-                    <div class="logo">
-                        <a href="/"><img class="logo-img" src="{{ asset('/img/Screenshot_2023-10-16_121457-removebg.png')}}" alt=""></a>
-                    </div>
+        <div class="main-header">
+            <ul class="nav-left">
+                <li class="nav-left--item"><a href="" class="has-link nav-hover">Home</a></li>
+                <li class="nav-left--item"><a href="" class="has-link nav-hover">Contact Us</a></li>
+                <li class="nav-left--item"><a href="" class="has-link nav-hover">Merchant</a></li>
+            </ul>
 
-                    <div class="nav-right">
-                        <div class="nav-right--item"><i class="fa fa-heart"></i></div>
-                        @if (Route::has('login'))
-                            @auth
-                                <a href="{{ url('/profile') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
-                                <a href="{{Route('cart.index')}}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
-                            @else
-                                <a href="{{ url('/login') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
-                                <a href="{{ url('/login') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
-                            @endauth
-                        @endif
-                    </div>
-                </div>
-
-                <div class="sub-navbar">
-                    <div class="watch-collection--item">Colect</div>
-                    <div class="watch-collection--item">Colect</div>
-                    <div class="watch-collection--item">Colect</div>
-                    <div class="watch-collection--item">Colect</div>
-                    <div class="watch-collection--item">Colect</div>
-                </div>
+            <div class="logo">
+                <a href="/"><img class="logo-img" src="{{ asset('/img/Screenshot_2023-10-16_121457-removebg.png')}}" alt=""></a>
             </div>
-        
+
+            <div class="nav-right">
+                <div class="nav-right--item"><i class="fa fa-heart"></i></div>
+                @if (Route::has('login'))
+                    @auth
+                        <a href="{{ url('/profile') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
+                        <a href="{{Route('cart.index')}}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
+                    @else
+                        <a href="{{ url('/login') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
+                        <a href="{{ url('/login') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
+                    @endauth
+                @endif
+            </div>
+        </div>
+    </div>
+    <!-- header end -->
+</div>
+
+   <div class="sub-navbar">
+      <div class="dropdown">
+        <button class="dropbtn">FESTIVE SEASON</button>
+        <div class="dropdown-content">
+          <a href="#">WINTERK</a>
+          <a href="#">SUMMER</a>
+          <a href="#">AKALUNA</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">WATCHES</button>
+        <div class="dropdown-content">
+          <a href="#">LALAKA</a>
+          <a href="#">LOREAL</a>
+          <a href="#">MARIDA</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">HIGH JWELRY</button>
+        <div class="dropdown-content">
+          <a href="#">K'SANTE</a>
+          <a href="#">DELTA</a>
+          <a href="#">MAMAPARA</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">FRAGRANCES</button>
+        <div class="dropdown-content">
+          <a href="#">DECLARATION</a>
+          <a href="#">DE PAUL</a>
+          <a href="#">PUSHI KAR</a>
+          <a href="#">OSHIMEN</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">LAMAISON</button>
+        <div class="dropdown-content">
+          <a href="#">TANK</a>
+          <a href="#">SANTOS</a>
+          <a href="#">PATHERE</a>
+          <a href="#">LOVE</a>
+        </div>
+      </div>
+    </div> 
         <!-- header end -->
         <!-- banner start -->
         <div class="banner">
@@ -144,208 +179,28 @@
                 </div>
                 <div class="products-container">
                     <!-- item -->
-                    <a href="/watch/1" style="text-decoration:underline">
+                    @foreach ($watches as $watch)
+                    <a href="/watch/{{ $watch->slug }}" style="text-decoration:underline">
                         <div class="product-object">
-                            <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
+                            <img class="object-img" src="{{ asset($watch->img1) }}" alt="">
                             <div class="object-section">
                                 <div class="object-section-info">
-                                    <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
+                                    <a class=" has-link object-info  info-name"> {{$watch->name}}</a>
                                 </div>
                                 <div class="object-section-info">
-                                    <a href="" class=" has-link object-info">5mm, automatic movement, rose gold,
-                                        leather</a>
-                                    <h3 class="item-price">$7,199,00</h3>
+                                    <a class=" has-link object-info">{{$watch->description}}</a>
+                                    <h3 class="item-price">{{number_format($watch->price * (1 - $watch->discount), 0, ',', '.')}} đ</h3>
                                 </div>
                             </div>
                             <div class="buy-btn">
-                                <div class="btn-list">
-                                    <div class="wishlist">
-                                        <form action="" method="get">
-                                            <input type="button" value=""> <i class="fa fa-heart"></i>
-                                        </form>
-                                    </div>
-                                    <div class="buy-now">
-                                        <a href="/cart" class="discover has-link">Buy Now!</a>
-                                    </div>
-                                </div>
+                                <a class="discover has-link">Add to cart</a>
                             </div>
                         </div>
                     </a>
-                    
-                    <!-- item -->
-                    <a href="/watch/1" style="text-decoration:underline">
-                        <div class="product-object">
-                            <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
-                            <div class="object-section">
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info  info-name"> Aonde Must de Cartier watch</a>
-                                </div>
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
-                                        leather</a>
-                                    <h3 class="item-price">$199,00</h3>
-                                </div>
-                            </div>
-                            <div class="buy-btn">
-                                <div class="btn-list">
-                                    <div class="wishlist">
-                                        <form action="" method="get">
-                                            <input type="button" value=""> <i class="fa fa-heart"></i>
-                                        </form>
-                                    </div>
-                                    <div class="buy-now">
-                                        <a href="/cart" class="discover has-link">Buy Now!</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/watch/1" style="text-decoration:underline">
-                        <div class="product-object">
-                            
-                                <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
-                            <div class="object-section">
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info  info-name"> Bonde Must de Cartier watch</a>
-                                </div>
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
-                                        leather</a>
-                                    <h3 class="item-price">$5,199,00</h3>
-                                </div>
-                            </div>
+                    @endforeach
 
-                            <div class="buy-btn">
-                                <div class="btn-list">
-                                    <div class="wishlist">
-                                        <form action="" method="get">
-                                            <input type="button" value=""> <i class="fa fa-heart"></i>
-                                        </form>
-                                    </div>
-                                    <div class="buy-now">
-                                        <a href="/cart" class="discover has-link">Buy Now!</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/watch/1" style="text-decoration:underline">
-                        <div class="product-object">
-                            <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
-                            <div class="object-section">
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info  info-name"> Conde Must de Cartier watch</a>
-                                </div>
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
-                                        leather</a>
-                                    <h3 class="item-price">$1,199,00</h3>
-                                </div>
-                            </div>
-                            <div class="buy-btn">
-                                <a href="" class="discover has-link">Discover</a>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/watch/1" style="text-decoration:underline">
-                        <div class="product-object">
-                            <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
-                            <div class="object-section">
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
-                                </div>
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
-                                        leather</a>
-                                    <h3 class="item-price">$3,199,00</h3>
-                                </div>
-                            </div>
-                            <div class="buy-btn">
-                                <a href="" class="discover has-link">Discover</a>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/watch/1" style="text-decoration:underline">
-                        <div class="product-object">
-                            <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
-                            <div class="object-section">
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
-                                </div>
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
-                                        leather</a>
-                                    <h3 class="item-price">$1,199,00</h3>
-                                </div>
-                            </div>
-                            <div class="buy-btn">
-                                <a href="" class="discover has-link">Discover</a>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/watch/1" style="text-decoration:underline">
-                        <div class="product-object">
-                            <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
-                            <div class="object-section">
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
-                                </div>
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
-                                        leather</a>
-                                    <h3 class="item-price">$199,00</h3>
-                                </div>
-                            </div>
-                            <div class="buy-btn">
-                                <a href="" class="discover has-link">Discover</a>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/watch/1" style="text-decoration:underline">
-                        <div class="product-object">
-                            <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
-                            <div class="object-section">
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
-                                </div>
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
-                                        leather</a>
-                                    <h3 class="item-price">$299,00</h3>
-                                </div>
-                            </div>
-                            <div class="buy-btn">
-                                <div class="btn-list">
-                                    <div class="wishlist">
-                                        <form action="" method="get">
-                                            <input type="button" value=""> <i class="fa fa-heart"></i>
-                                        </form>
-                                    </div>
-                                    <div class="buy-now">
-                                        <a href="/cart" class="discover has-link">Buy Now!</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/watch/1" style="text-decoration:underline">
-                        <div class="product-object">
-                            <img class="object-img" src="{{ asset('/img/h2.webp') }}" alt="">
-                            <div class="object-section">
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
-                                </div>
-                                <div class="object-section-info">
-                                    <a href="" class=" has-link object-info">45mm, automatic movement, rose gold,
-                                        leather</a>
-                                    <h3 class="item-price">$9,00</h3>
-                                </div>
-                            </div>
-                            <div class="buy-btn">
-                                <a href="" class="discover has-link">Discover</a>
-                            </div>
-                        </div>
-                    </a>
+                    <!-- {{ $watches->links() }} -->
+                                        
                 </div>
             </div>
         </div>
@@ -521,6 +376,8 @@
 
 <script src="{{ asset('js/home.js')}}"></script>
 
-
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="{{ asset('js/addcart.js') }}"></script>
 
 </html>

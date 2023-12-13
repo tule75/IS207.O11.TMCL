@@ -29,7 +29,7 @@ class ManagerController extends Controller
             return Orders::whereDate('created_at', '>=', $request->start_date)
             ->whereDate('created_at', '<=', $request->end_date)->sum('total_prices');
         } catch (\Exception $e) {
-            dd($e);
+            $e->getMessage();
         }
     }
 
@@ -55,7 +55,7 @@ class ManagerController extends Controller
 
             return back()->withInput(['message' => 'Staff created successfully']);
         } catch (Exception $e) {
-            dd($e);
+            return $e->getMessage();
         }
     }
 }

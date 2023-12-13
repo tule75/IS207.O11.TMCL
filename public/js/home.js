@@ -1,7 +1,7 @@
 const products = document.querySelector('.products-container');
 const product_list = document.querySelectorAll('.product-object');
 let this_page = 1;
-let limit = 6;
+let limit = 16;
 
 
 function loadProduct() {
