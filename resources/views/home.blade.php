@@ -170,12 +170,12 @@
                                     <a href="/watch/{{$watch->slug}} " class=" has-link object-info info-name"> {{$watch->name}}</a>
                                 </div>
                                 <div class="object-section-info">
-                                    <a class=" has-link object-info">{{$watch->description}}</a>
-                                    <h3 class="item-price">{{number_format($watch->price * (1 - $watch->discount), 0, ',', '.')}} đ</h3>
+                                    <h3 class="item-price">{{$watch->price * (1 - $watch->discount)}}</h3> <span>VND</span>
                                 </div>
                             </div>
                             <div class="buy-btn">
                                 <a class="discover has-link">Add to cart</a>
+                                <a class="discover has-link">Buy Now</a>
                             </div>
                         </div>
                     </a>
@@ -353,10 +353,10 @@
     </div>
 </body>
 
-<script src="{{ asset('js/home.js')}}"></script>
+
 
 <!-- Jquery -->
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script src="{{ asset('js/addcart.js') }}"></script>
-
+<script src="{{ asset('js/home.js')}}"></script>
 </html>

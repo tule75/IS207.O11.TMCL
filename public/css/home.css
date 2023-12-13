@@ -300,43 +300,37 @@
 }
 .object-section-info {
     padding: 2px 0;
-}
-.object-info {
-   
+    max-height: 50px;
 }
 .info-name {
     font-weight: 600;
     font-size: 17px;
+    width: 20px;
 }
 
+
 .buy-btn {
-    display: block;
+    display: flex;
+    justify-content: space-evenly;
     margin: 0 10px;
     background-color:transparent;
+    opacity: 0;
     border: 1px solid transparent;
-}
-.btn-list {
-    display: flex;
-    height: 10%;
-    justify-content: space-between;
-    align-items: center;
-}
-.buy-now {
-    padding: 16px 0;
-    width: 50%;
-    background-color: #423f3f;
-    margin: 0 3px;
-    color: black;
-}
-.buy-now:hover {
-    color: white;
-    background-color: #8a8888;
 }
 .discover {
     color: white;
+    /* margin: 0 5px; */
+    /* max-width: 20px; */
+    padding: 10px 8px;
+    background-color: black;
 }
 .discover:hover {
     color: #c9c5c5;
+}
+
+.product-object:hover .buy-btn {
+    opacity: 1;
+    background-color: white;
 }
 .pagination {
     display: flex;
