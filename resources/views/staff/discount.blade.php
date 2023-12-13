@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/Resources/css/staffprofile.css">
+    <link rel="stylesheet" href="staffprofile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/Public/icon/fontawesome-free-6.4.2-web/css/regular.min.css">
 </head>
@@ -35,10 +34,8 @@
                     <label for="percent">Phần trăm giảm giá:</label>
                     <input type="text" id="percent" name="percent">
                     <br>
-                    <label for="startprice">Áp dụng cho sản phẩm từ:</label>
-                    <input type="number" id="startprice" name="startprice">
-                    <label for="endtprice">Đến</label>
-                    <input type="number" id="endprice" name="endprice">
+                    <label for="price">Áp dụng cho sản phẩm :</label>
+                    <input type="number" id="price" name="price">
                     <br>
                     <label for="startDateTime">Ngày bắt đầu:</label>
 
@@ -50,12 +47,13 @@
                 </form>
                 <button class="Save-bt">Save</button>
             </div>
+
             <div class="detaildiscount">
                 <table>
                     <thead>
                         <tr>
                             <th>Tên chương trình khuyến mãi</th>
-                            <th>Áp dung cho sản phẩm từ</th>
+                            <th>Áp dụng cho sản phẩm có giá từ</th>
                             <th>Ngày kết thúc</th>
                             <th>Phầm trăm giảm</th>
                             <th>Thao tác</th>
@@ -64,7 +62,7 @@
                     <tbody>
                         <tr>
                             <td>Chương trình A</td>
-                            <td>100000-2000000000
+                            <td>100000
                             </td>
                             <td>2023-12-31</td>
                             <td>10</td>
@@ -75,6 +73,9 @@
                         </tr>
                     </tbody>
                 </table>
+                <div>
+                    <button class="Save-bt">Save</button>
+                </div>
             </div>
         </div>
     </div>
