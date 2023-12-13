@@ -47,27 +47,23 @@
 
         <div class="product-body">
             <div class="product-img-collect">
-                <img class="product-img" src="{{asset('img/h3.webp')}}" alt="">
+                <img class="product-img" src="{{asset($watch->img1)}}" alt="">
                 <div class="grid-img">
-                    <img class="grid-img-item" src="{{asset('img/h4.webp')}}" alt="">
-                    <img class="grid-img-item" src="{{asset('img//h5.webp')}}" alt="">
-                    <img class="grid-img-item" src="{{asset('img//h5.webp')}}" alt="">
-                    <img class="grid-img-item" src="{{asset('img//h5.webp')}}" alt="">
-                    <img class="grid-img-item" src="{{asset('img//h5.webp')}}" alt="">
+                    <img class="grid-img-item" src="{{asset($watch->img2)}}" alt="">
                 </div>
             </div>
             <div class="product-information">
-                <h2 class="heading-text">SANTOS DE CARTIER WATCH</h2>
+                <h2 class="heading-text">{{$watch->name}}</h2>
                 <div class="texting">
                    <p class="text-box">
-                    Santos de Cartier watch, medium model, mechanical movement with automatic winding 1847 MC. Steel case, 7-sided crown with synthetic faceted blue spinel, graduated green dial, polished steel sword-shaped hands with luminescent material, sapphire crystal. Steel bracelet with SmartLink adjustment system. Second strap in green alligator skin, with interchangeable steel folding buckle. Both are fitted with the QuickSwitch interchangeable system. Case width: 35.1 mm, thickness: 8.83 mm. Water-resistant up to 10 bar (approx. 100 meters/330 feet).
+                   {{$watch->description}}
                    </p>
                   <span class="show less">Show more</span>
 
                 </div>
                 
                 <div class="space"></div>
-                <h4 class="price">$7,400,00</h4>
+                <h4 class="price">{{number_format($watch->price * (1 - $watch->discount), 0, ',', '.')}} đ</h4>
 
                 <div class="btn-selection">
                     <a class="add-cart">Add to cart</a>
@@ -130,51 +126,23 @@
         <div class="space"></div>
         <div class="recommend-list">
             <div class="list-grid">
+                @foreach ($watches as $w)
                 <div class="product-object">
-                    <img class="object-img" src="{{asset('img/h2.webp')}}" alt="">
+                    <img class="object-img" src="{{asset($w->img1)}}" alt="">
                     <div class="object-section">
                         <div class= "object-section-info">
-                            <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
+                            <a href="" class=" has-link object-info  info-name"> {{$w->name}}</a>
                         </div>
                         <div class="object-section-info">
-                            <a href="" class=" has-link object-info">45mm, automatic movement, rose gold, leather</a>
-                            <h3>$7,199,00</h3>
+                            <a href="" class=" has-link object-info">{{$w->description}}</a>
+                            <h3>{{number_format($w->price * (1 - $w->discount), 0, ',', '.')}} đ</h3>
                         </div>
                     </div>
                     <div class="buy-btn">
-                        <a href="" class="discover has-link">Discover</a>
+                        <a href="" class="discover has-link">Add to carts</a>
                     </div>
                 </div>
-                <div class="product-object">
-                    <img class="hover-img object-img" src="{{asset('img/h2.webp')}}" alt="">
-                    <div class="object-section">
-                        <div class= "object-section-info">
-                            <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
-                        </div>
-                        <div class="object-section-info">
-                            <a href="" class=" has-link object-info">45mm, automatic movement, rose gold, leather</a>
-                            <h3>$7,199,00</h3>
-                        </div>
-                    </div>
-                    <div class="buy-btn">
-                        <a href="" class="discover has-link">Discover</a>
-                    </div>
-                </div>
-                <div class="product-object">
-                    <img class="object-img" src="{{asset('img/h2.webp')}}" alt="">
-                    <div class="object-section">
-                        <div class= "object-section-info">
-                            <a href="" class=" has-link object-info  info-name"> Ronde Must de Cartier watch</a>
-                        </div>
-                        <div class="object-section-info">
-                            <a href="" class=" has-link object-info">45mm, automatic movement, rose gold, leather</a>
-                            <h3>$7,199,00</h3>
-                        </div>
-                    </div>
-                    <div class="buy-btn">
-                        <a href="" class="discover has-link">Discover</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
         <div class="pagination-image-product">
@@ -202,6 +170,7 @@
                 <a href="" class="has-link complimentary-text">FREE GIFT WRAPPING</a>
             </div>
         </div>
+        @include('chatbox.chatbox');
         <!-- extra infomation start -->
         <div class="space"></div>
         <!-- footer start -->

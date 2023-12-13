@@ -28,7 +28,7 @@ class WatchController extends Controller
         $watches = $request->has('brand') ? Watch::where('brand_id', $request->brand) : $watches;
         $watches = $request->has('gender') ? Watch::where('gender', $request->gender) : $watches;
 
-        return view('collection', ['watches' => $watches->paginate(16)]);
+        return view('collection', ['watches' => $watches->get()]);
     }
 
     public function indexCategory(Request $request)
@@ -118,7 +118,9 @@ class WatchController extends Controller
         //
         // return view('products.watch');
         // Lấy sản phẩm
-        return view('products.watch', ['watch' => Watch::where('slug', $watch_slug)->first()]);
+        return view('products.watch', 
+        ['watch' => Watch::where('slug', $watch_slug)->first(),
+         'watches' => Watch::where('brand_id', Watch::where('slug', $watch_slug)->first()->brand_id)->take(3)->get()]);
     }
 
     /**

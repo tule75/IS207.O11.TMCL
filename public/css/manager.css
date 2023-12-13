@@ -193,20 +193,6 @@
 .heading-add {
     
 }
-.product-cate-drop {
-    position: relative;
-    margin-top: 50px;
-}
-.dropdownbtn {
-    font-size: 16px;  
-    border: 1px solid #ddd;
-    outline: none;
-    color: rgb(9, 7, 7);
-    padding: 14px 16px;
-    background-color: inherit;
-    font-family: inherit;
-    margin: 0;
-}
 
 .cate-dropdown-content {
     text-align: center;
@@ -231,6 +217,7 @@
     opacity: 1;
     left: 50%;
 }
+
 .pDescription {
     border-bottom: 2px solid gray;
     color: black;
@@ -309,6 +296,7 @@
     padding-top: 5px;
     font-size: 23px;
     font-weight: bolder;
+    text-align: center;
 }
 .OrderResults {
     padding-top: 5px;
@@ -496,4 +484,13 @@ table,tr,td,th {
 .deleted {
     background-color: #e74c3c;
     color: #fff;
+}
+
+.radio-gender {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Female-radio {
+    margin-left: 10px;
 }

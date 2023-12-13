@@ -47,5 +47,5 @@ class Orders extends Model
         return $this->belongsTo(Address::class);
     }
 
-    protected $table = 'Orders';
+    protected $table = 'orders';
 }
