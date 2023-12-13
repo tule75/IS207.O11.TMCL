@@ -6,8 +6,8 @@
     <title>For Staff</title>
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Logo_UIT_updated.svg/1200px-Logo_UIT_updated.svg.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/Resources_FE/css/staff.css">
-    <link rel="stylesheet" href="/Public_FE/icon/fontawesome-free-6.4.2-web/css/all.css">
+    <link rel="stylesheet" href="{{asset('css/staff.css')}}">
+    <link rel="stylesheet" href="{{asset('icon/fontawesome-free-6.4.2-web/css/all.css')}}">
 </head>
 <body>
     <div class="cartier">
@@ -15,11 +15,11 @@
         <div class="header">
             <div class="header-left-wrap">
                 <div class="logo-merchant">
-                    <img class="logo-img" src="/Public/img/Screenshot_2023-10-16_121457-removebg.png" alt="">
+                    <img class="logo-img" src="{{asset('/img/Screenshot_2023-10-16_121457-removebg.png')}}" alt="">
                     <div class="logo-content">FOR STAFF</div>
                 </div>
                 <button class="icon-bars">
-                    <img class="bars-img" src="/Public_FE/img/bars.png" alt="">
+                    <img class="bars-img" src="{{asset('/img/bars.png')}}" alt="">
                 </button>
             </div>
             
@@ -37,7 +37,7 @@
         <div class="main-content">
             <div class="main-left">
                 <div class="input-space">
-                    <div class="img-btn"><img class="span-search" src="/Public_FE/img/search.png" alt=""></div>
+                    <div class="img-btn"><img class="span-search" src="{{asset('/img/search.png')}}" alt=""></div>
                     <input class="input-box" type="text" placeholder="Typing here ....">
                 </div>
                 <div class="selection">
@@ -128,7 +128,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <img src="/./public/img/h2.webp" alt="" width="95px">
+                                            <img src="{{asset('/img/h2.webp')}}" alt="" width="95px">
                                         </td>
                                         <td>
                                             <p>TANK LOUIS CARTIER WATCH </p>
@@ -211,7 +211,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <img src="/./public/img/h2.webp" alt="" width="95px">
+                                            <img src="{{asset('/img/h2.webp')}}" alt="" width="95px">
                                         </td>
                                         <td>
                                             <p>TANK LOUIS CARTIER WATCH </p>
@@ -466,7 +466,7 @@
                             <label for="choose-time">Choose Time: </label>
                             <input type="datetime-local" name="choose-time" id="overview_time">
 
-                            <table border="1" align = "center" cellpadding = "20">
+                            <table border="1" align ="center" cellpadding = "20">
                                 <tr>
                                     <td colspan="2">
                                         <h5>Hỏi - Đáp đã hiển thị</h5>
@@ -572,5 +572,5 @@
     </div>
 </div>
 
-<script src="/Resources_FE/javascript/staff.js"></script>
+<script src="{{asset('js/staff.js')}}"></script>
 </html>

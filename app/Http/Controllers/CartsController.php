@@ -7,6 +7,7 @@ use App\Http\Requests\StoreCartsRequest;
 use App\Http\Requests\UpdateCartsRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Watch;
 use Exception;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -44,7 +45,8 @@ class CartsController extends Controller
             if ($request->has('quantity')) {
                 $quantity = $request->quantity;
             }
-            $cart = Carts::where('user_id', auth()->user()->id)->where('watch_id', $request->watch_id)->first();
+            $watch_id = Watch::where('slug', $request->watch_id)->first()->id;
+            $cart = Carts::where('user_id', auth()->user()->id)->where('watch_id', $watch_id)->first();
             if ($cart) {
                 $cart->quantity += $quantity;
                 $cart->save();
