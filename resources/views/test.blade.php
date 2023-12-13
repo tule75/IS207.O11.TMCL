@@ -8,17 +8,13 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <form action="/watch" method="post">
+    <form action="/api/get/provinces" method="post">
         @csrf 
-        name <input name="name">
-        <br>
-        price <input name="price" type="number">
-        storage <input name="storage" type="number">
-        brand  <input name="brand_id" type="number">
-        category <input name="category_id" type="number">
-
-        <button>Clickk</button>
-    </form>    
+        <button>Click here</button>
+    </form>  
+    <select id="dynamicSelect" style="width:150px"></select>
+    <select id="dynamicSelectDistrict" style="width:150px"></select> 
+    <select id="dynamicSelectWards" style="width:150px"></select> 
    
 
 
@@ -59,34 +55,80 @@
                 });
             });
             // call api district
+            $('#dynamicSelect').click(function () {
+            var provinceId = $(this).val(); // Lấy ID của tỉnh/thành phố được chọn
+            console.log(provinceId);
+            $.ajax({
+                type: 'post',
+                url: '/api/get/districts', // Thay thế bằng URL của bạn
+                data: {
+                    'province_id': provinceId // Truyền ID tỉnh/thành phố cho API
+                },
+                success: function (data, textStatus, xhr) {
+                    var select = document.getElementById('dynamicSelectDistrict');
+                    select.innerHTML = ''; // Xóa tất cả các lựa chọn trước đó
+                    data.forEach(function(item) {
+                        var option = document.createElement('option');
+                        option.value = item.id;
+                        option.text = item.name;
+                        select.appendChild(option);
+                    });
+                },
+                error: function (xhr) {
+                    console.error('Error:', xhr);
+                }
+            });
+            //call api wards
             $('#dynamicSelectDistrict').click(function () {
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': csrfToken
-                    }
-                });
-                
-                $.ajax({
-                    type: 'post',
-                    url: '/api/get/districts', // Thay thế bằng URL của bạn
-                    data: {
-                        'province_id': '02'
-                    },
-                    success: function (data, textStatus, xhr) {
-                        var select = document.getElementById('dynamicSelectDistrict'); // Hiển thị phản hồi trong phần tử HTML có id là 'result'
-                        data.forEach(function(item) {
-                            var option = document.createElement('option');
-                            option.value = item.id;
-                            option.text = item.name;
-                            select.appendChild(option);
-                        });
-                    },
-                    error: function (xhr) {
-                        console.error('Error:', xhr);
-                    }
+            var districtId = $(this).val(); // Lấy ID của tỉnh/thành phố được chọn
+            $.ajax({
+                type: 'post',
+                url: '/api/get/wards', // Thay thế bằng URL của bạn
+                data: {
+                    'district_id': districtId // Truyền ID tỉnh/thành phố cho API
+                },
+                success: function (data, textStatus, xhr) {
+                    var select = document.getElementById('dynamicSelectWards');
+                    select.innerHTML = ''; // Xóa tất cả các lựa chọn trước đó
+                    data.forEach(function(item) {
+                        var option = document.createElement('option');
+                        option.value = item.id;
+                        option.text = item.name;
+                        select.appendChild(option);
+                    });
+                },
+                error: function (xhr) {
+                    console.error('Error:', xhr);
+                }
+            });
+            // call api address
+            $('#dynamicSelectDistrict').click(function () {
+            var districtId = $(this).val(); // Lấy ID của tỉnh/thành phố được chọn
+            $.ajax({
+                type: 'post',
+                url: '/api/get/wards', // Thay thế bằng URL của bạn
+                data: {
+                    'district_id': districtId // Truyền ID tỉnh/thành phố cho API
+                },
+                success: function (data, textStatus, xhr) {
+                    var select = document.getElementById('dynamicSelectWards');
+                    select.innerHTML = ''; // Xóa tất cả các lựa chọn trước đó
+                    data.forEach(function(item) {
+                        var option = document.createElement('option');
+                        option.value = item.id;
+                        option.text = item.name;
+                        select.appendChild(option);
+                    });
+                },
+                error: function (xhr) {
+                    console.error('Error:', xhr);
+                }
                 });
             });
         });
-    </script>
+    });
+});
+
+</script>
 </body>
 </html>

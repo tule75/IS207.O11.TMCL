@@ -103,11 +103,11 @@ body {
     margin: 20px 0;
     justify-content: flex-end;
   }
-  .chatbox .incoming span {
+  .chatbox .incoming span{
     width: 32px;
     height: 32px;
     display: block;
-    position:absolute;
+    position: static;
     color: #fff;
     cursor: default;
     text-align: center;
@@ -127,10 +127,11 @@ body {
     max-width: 75%;
     color: #fff;
     font-size: 0.95rem;
-    background: #724ae8;
+    background: #c10016;
   }
   .chatbox .incoming p {
     border-radius: 10px 10px 10px 0;
+    margin: 0px;
   }
   .chatbox .chat p.error {
     color: #721c24;
@@ -161,7 +162,7 @@ body {
     margin-bottom: 0px;
   }
   .chat-input textarea {
-    height: 30px;
+    height: 60px;
     width: 100%;
     border: 1px solid;
     outline: none;

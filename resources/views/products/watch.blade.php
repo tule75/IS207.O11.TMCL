@@ -170,6 +170,7 @@
                 <a href="" class="has-link complimentary-text">FREE GIFT WRAPPING</a>
             </div>
         </div>
+        @include('chatbox.chatbox');
         <!-- extra infomation start -->
         <div class="space"></div>
         <!-- footer start -->

@@ -35,7 +35,6 @@
                 </ul>
                 <div class="chat-input">
                   <textarea placeholder="Type here" spellcheck="false" required></textarea>
-                  <span id="send-btn" class="material-symbols-rounded"></span>
                 </div>
             </div>
         
