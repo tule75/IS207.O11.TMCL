@@ -14,5 +14,5 @@ class Carts extends Model
         'quantity'
     ];
 
-    protected $table = 'Carts';
+    protected $table = 'carts';
 }
