@@ -122,7 +122,7 @@
                 <div class="bd-content" id="subscription">@include('profile.partials.subcription')</div>
             </div>
         </div>
-
+        @include('chatbox.chatbox');
         <!-- footer start -->
         <div class="footer">
             <ul class="footer-list">

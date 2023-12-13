@@ -33,7 +33,9 @@
             <ul class="nav-left">
                 <li class="nav-left--item"><a href="" class="has-link nav-hover">Home</a></li>
                 <li class="nav-left--item"><a href="" class="has-link nav-hover">Contact Us</a></li>
-                <li class="nav-left--item"><a href="" class="has-link nav-hover">Merchant</a></li>
+                @if (auth()->user() && auth()->user()->role == 'manager')
+                    <li class="nav-left--item"><a href="" class="has-link nav-hover">Merchant</a></li>
+                @endif
             </ul>
 
             <div class="logo">
@@ -85,7 +87,7 @@
         </div>
       </div>
 
-      <div class="dropdown">
+      <!-- <div class="dropdown">
         <button class="dropbtn">FRAGRANCES</button>
         <div class="dropdown-content">
           <a href="#">DECLARATION</a>
@@ -103,7 +105,7 @@
           <a href="#">PATHERE</a>
           <a href="#">LOVE</a>
         </div>
-      </div>
+      </div> -->
     </div> 
         <!-- header end -->
         <!-- banner start -->
@@ -199,7 +201,7 @@
                     </a>
                     @endforeach
 
-                    <!-- {{ $watches->links() }} -->
+                
                                         
                 </div>
             </div>
