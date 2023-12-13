@@ -124,6 +124,8 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     // Lấy danh sách các order
     Route::get('/order/getall', [OrderController::class, 'getAll'])->middleware('staff');
+    // Lấy danh sách order
+    Route::get('/order/get', [OrderController::class, 'get'])->middleware('staff');
     // Trang tạo order
     Route::get('/order/buy', [OrderController::class, 'create']);
     // Tạo đơn hàng
