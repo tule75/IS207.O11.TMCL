@@ -62,6 +62,7 @@ class MomoPayment extends Controller
 
         // /Điều hướng đến payUrl nếu có
         if ($jsonResult['payUrl'] !== null) {
+            // return $jsonResult['payUrl'];
             return redirect()->to($jsonResult['payUrl']);
         }
         return $result;

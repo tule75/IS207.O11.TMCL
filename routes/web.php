@@ -18,6 +18,7 @@ use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ShipController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\VoucherController;
 
 /*
@@ -58,10 +59,6 @@ Route::middleware('auth')->group(function () {
     // Thay đổi default address
     Route::patch('/address/update', [DefaultAddressController::class, 'store']);
 });
-
-// test product routes
-Route::get("/product/create", [ProductsController::class, 'create'])->middleware('guest');
-Route::post("/product/create", [ProductsController::class, 'store'])->middleware('guest')->name('product.store');
 
 //profile user routes
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -170,6 +167,10 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/cart', [CartsController::class, 'update']);
     // Xóa sản phẩm trong giỏ hàng
     Route::delete('/cart', [CartsController::class, 'destroy']);
+});
+
+Route::middleware('staff')->group(function () {
+    Route::get('/staff', [StaffController::class, 'index']);
 });
 
 //Shipment route
