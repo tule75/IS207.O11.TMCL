@@ -1,4 +1,8 @@
 
+var csrfToken = $('meta[name="csrf-token"]').attr('content');
+$(document).ready(function () {
+   $()
+})
 
 var data = {
     "products" : [20,17,20,5,40],
@@ -6,7 +10,6 @@ var data = {
     "prices": [7114.25, 7126.6, 3330.2 , 434.333, 493.93],
     "dates": ["02 Jun 2023", "05 Jun 2023","05 July 2023","15 May 2023" ,"25 May 2023" /* ... */]
 };
-
 
 // Create an object to store monthly averages
 var monthlyAverages = {};

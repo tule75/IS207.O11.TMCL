@@ -80,6 +80,7 @@
             });
             //call api wards
             $('#dynamicSelectDistrict').click(function () {
+
             var districtId = $(this).val(); // Lấy ID của tỉnh/thành phố được chọn
             $.ajax({
                 type: 'post',
