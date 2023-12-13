@@ -72,7 +72,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
 // manager routes
-Route::middleware(['auth','manager'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::post('/manager/staff/getall', [ManagerController::class, 'allStaff']);
     Route::post('/manager/staff/search', [ManagerController::class, 'searchStaff']);
     Route::post('/manager/staff/create', [ManagerController::class, 'createStaff']);
