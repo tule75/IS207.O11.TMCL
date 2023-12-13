@@ -29,7 +29,7 @@ class OrderController extends Controller
                     $query->select('watches.id', 'watches.name', 'watches.img1', 'watches.img2', 'watches.img3');
                 }, 'voucher' => function ($query) {
                     $query->select('id', 'code', 'discount');
-                }])->paginate(20)
+                }])->get()
             ]); 
         } else if ($request->has('start_date') && $request->has('end_date')){
             return view('order.index',['orders' => Orders::whereDate('created_at', '>=', $request->start_date)
@@ -38,10 +38,32 @@ class OrderController extends Controller
                     $query->select('watches.id', 'watches.name', 'watches.img1', 'watches.img2', 'watches.img3');
                 }, 'voucher' => function ($query) {
                     $query->select('id', 'code', 'discount');
-                }])->paginate(20)
+                }])->get()
             ]); 
         }        
     }    
+
+    public function get(Request $request)
+    {
+        if ($request->has('all') && $request->get('all') == true) {
+            return ['orders' => Orders::with(['watches' => 
+                function ($query) {
+                    $query->select('watches.id', 'watches.name', 'watches.img1', 'watches.img2', 'watches.img3');
+                }, 'voucher' => function ($query) {
+                    $query->select('id', 'code', 'discount');
+                }])->get()
+            ]; 
+        } else if ($request->has('start_date') && $request->has('end_date')){
+            return ['orders' => Orders::whereDate('created_at', '>=', $request->start_date)
+            ->whereDate('created_at', '<=', $request->end_date)->with(['watches' => 
+                function ($query) {
+                    $query->select('watches.id', 'watches.name', 'watches.img1', 'watches.img2', 'watches.img3');
+                }, 'voucher' => function ($query) {
+                    $query->select('id', 'code', 'discount');
+                }])->get()
+            ]; 
+        }        
+    } 
 
     public function getPending() 
     {

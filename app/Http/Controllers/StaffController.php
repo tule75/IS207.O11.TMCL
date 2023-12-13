@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Http\Requests\StoreStaffRequest;
 use App\Http\Requests\UpdateStaffRequest;
+use App\Models\Orders;
 
 class StaffController extends Controller
 {
@@ -14,6 +15,7 @@ class StaffController extends Controller
     public function index()
     {
         //
+        Orders::where();
         return view('staff/staff');
     }
 
