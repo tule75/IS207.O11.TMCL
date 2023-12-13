@@ -75,7 +75,7 @@
                     success: function (data, textStatus, xhr) {
                         var select = document.getElementById('dynamicSelectDistrict'); // Hiển thị phản hồi trong phần tử HTML có id là 'result'
                         data.forEach(function(item) {
-                            var option = document.createElement('option');
+                            
                             option.value = item.id;
                             option.text = item.name;
                             select.appendChild(option);

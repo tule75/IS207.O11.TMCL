@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreStaffRequest;
 use App\Models\Orders;
 use App\Models\User;
+use App\Models\Watch;
 use Exception;
 use Illuminate\Validation\Rules;
 use Illuminate\Http\Request;
@@ -14,6 +15,7 @@ class ManagerController extends Controller
 {
     public function index() 
     {
+        $watch = Watch::orderBy('created_at', 'DESC')->get();
         $order = Orders::whereYear('created_at', date('Y'))
         ->whereMonth('created_at', '>=', (int)date('M') - 2)
         ->with(['user' => function ($query) {
@@ -21,7 +23,7 @@ class ManagerController extends Controller
         }, 'watches' => function () {}, 
         'voucher' => function () {}, 
         'payment' => function () {}])->get();
-        return view('manager', ['order' => $order]);
+        return view('manager', ['order' => $order, 'watches' => $watch]);
     }
 
     public function getRevenue($request) {
