@@ -59,7 +59,7 @@
     <!-- header end -->
 </div>
 
-   <div class="sub-navbar">
+    <div class="sub-navbar">
       <div class="dropdown">
         <button class="dropbtn">FESTIVE SEASON</button>
         <div class="dropdown-content">
@@ -86,26 +86,6 @@
           <a href="#">MAMAPARA</a>
         </div>
       </div>
-
-      <!-- <div class="dropdown">
-        <button class="dropbtn">FRAGRANCES</button>
-        <div class="dropdown-content">
-          <a href="#">DECLARATION</a>
-          <a href="#">DE PAUL</a>
-          <a href="#">PUSHI KAR</a>
-          <a href="#">OSHIMEN</a>
-        </div>
-      </div>
-
-      <div class="dropdown">
-        <button class="dropbtn">LAMAISON</button>
-        <div class="dropdown-content">
-          <a href="#">TANK</a>
-          <a href="#">SANTOS</a>
-          <a href="#">PATHERE</a>
-          <a href="#">LOVE</a>
-        </div>
-      </div> -->
     </div> 
         <!-- header end -->
         <!-- banner start -->
@@ -187,7 +167,7 @@
                             <img class="object-img" src="{{ asset($watch->img1) }}" alt="">
                             <div class="object-section">
                                 <div class="object-section-info">
-                                    <a class=" has-link object-info  info-name"> {{$watch->name}}</a>
+                                    <a href="/watch/{{$watch->slug}} " class=" has-link object-info info-name"> {{$watch->name}}</a>
                                 </div>
                                 <div class="object-section-info">
                                     <a class=" has-link object-info">{{$watch->description}}</a>
@@ -199,10 +179,7 @@
                             </div>
                         </div>
                     </a>
-                    @endforeach
-
-
-                                        
+                    @endforeach                
                 </div>
             </div>
         </div>
