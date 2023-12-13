@@ -1,9 +1,24 @@
 
 var csrfToken = $('meta[name="csrf-token"]').attr('content');
 $(document).ready(function () {
-   $()
+    $("#monthSelect").on('change', (event) => {
+      $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': csrfToken
+        }
+      })  
+      let startDate = "1/" + event.target.value;
+      let endDate = "30/" + event.target.value;
+      $.ajax({
+        method: 'get',
+        url: `/order/get?start_date=${startDate}&end_date=${endDate}`,
+        success: function (data, textStatus) {
+            console.log(data);
+        }
+      });
+    })
 })
-
+const monthSelection = document.getElementById()
 var data = {
     "products" : [20,17,20,5,40],
     "orders": [15 ,13, 19, 1 ,30],
@@ -51,19 +66,6 @@ var chartData = Object.keys(monthlyAverages).map(function(key) {
 
 });
 
-// total monthly
-const monthSelected = document.querySelector('#monthSelect');
-chartData.forEach((month, index) => {
-    const optionSelects = document.createElement('option');
-    optionSelects.name = month.monthYear.split(" ")[0];
-    optionSelects.setAttribute("class", "month");
-    optionSelects.innerHTML = month.monthYear.split(" ")[0];
-    optionSelects.value = month.total;
-    optionSelects.setAttribute("data-order", month.orderCount);
-    optionSelects.setAttribute("data-product", month.productCount);
-
-    monthSelected.appendChild(optionSelects);
-})
 //  display revenue result
 monthSelected.addEventListener("change", function(event) {
     // Get the selected value

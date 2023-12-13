@@ -6,8 +6,11 @@
     <title>Product detail</title>
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Logo_UIT_updated.svg/1200px-Logo_UIT_updated.svg.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{asset('css/home.css')}}">
+
     <link rel="stylesheet" href="{{asset('css/product-detail.css')}}">
+    
+    <link rel="stylesheet" href="{{ asset('/icon/fontawesome-free-6.4.2-web/css/regular.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('/css/home.css') }}">
 </head>
 <body>
     <div class="cartier">
@@ -36,11 +39,32 @@
             </div>
 
             <div class="sub-navbar">
-                <div class="watch-collection--item">Colect</div>
-                <div class="watch-collection--item">Colect</div>
-                <div class="watch-collection--item">Colect</div>
-                <div class="watch-collection--item">Colect</div>
-                <div class="watch-collection--item">Colect</div>
+            <div class="dropdown">
+        <button class="dropbtn">FESTIVE SEASON</button>
+        <div class="dropdown-content">
+          <a href="#">WINTERK</a>
+          <a href="#">SUMMER</a>
+          <a href="#">AKALUNA</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">WATCHES</button>
+        <div class="dropdown-content">
+          <a href="#">LALAKA</a>
+          <a href="#">LOREAL</a>
+          <a href="#">MARIDA</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">HIGH JWELRY</button>
+        <div class="dropdown-content">
+          <a href="#">K'SANTE</a>
+          <a href="#">DELTA</a>
+          <a href="#">MAMAPARA</a>
+        </div>
+      </div>
             </div>
         </div>
         <!-- header end -->
@@ -48,26 +72,24 @@
         <div class="product-body">
             <div class="product-img-collect">
                 <img class="product-img" src="{{asset($watch->img1)}}" alt="">
-                <div class="grid-img">
+                <!-- <div class="grid-img">
                     <img class="grid-img-item" src="{{asset($watch->img2)}}" alt="">
-                </div>
+                </div> -->
             </div>
             <div class="product-information">
                 <h2 class="heading-text">{{$watch->name}}</h2>
                 <div class="texting">
                    <p class="text-box">
-                   {{$watch->description}}
+                        {{$watch->description}}
                    </p>
-                  <span class="show less">Show more</span>
+                  <!-- <span class="show less">Show more</span> -->
 
                 </div>
-                
-                <div class="space"></div>
                 <h4 class="price">{{number_format($watch->price * (1 - $watch->discount), 0, ',', '.')}} đ</h4>
 
                 <div class="btn-selection">
                     <a class="add-cart">Add to cart</a>
-                    <a class="wish-list-select"><i class="fa fa-heart-o"></i></a>
+                    <a href="/order/buy?watch_id[]={{$watch->id}}&quantity[]=1" class="buy_now">Mua ngay</a>
                 </div>
                 <div class="space-small"></div>
                 <ul class="list-contact">
@@ -86,7 +108,6 @@
                 </ul>
             </div>
         </div>
-        <div class="space"></div>
         <div class="care">
             <div class="care-left">
                 <h4>UITERs CARE</h4>
@@ -139,7 +160,7 @@
                         </div>
                     </div>
                     <div class="buy-btn">
-                        <a href="" class="discover has-link">Add to carts</a>
+                        <a class="discover has-link">Add to cart</a>
                     </div>
                 </div>
                 @endforeach

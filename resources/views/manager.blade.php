@@ -81,8 +81,13 @@
             <div class="main-right">
                <div class="main-right-content">
                     <div class="select-container active">
-                        <div class="flex items-center justify-center mt-5">
-                            <select id="monthSelect" class="monthSelected"></select>
+                        <div id="monthSelected" class="flex items-center justify-center mt-5">
+                            <select id="monthSelect" class="monthSelected">
+                                <option value="" class="month">Chọn tháng</option>
+                                <option value="{{date('m/y')}}" class="month" id="12">{{date('F')}}</option>
+                                <option value="{{date('m/y', strtotime('-1 month'))}}" class="month">{{date('F', strtotime('-1 month'))}}</option>
+                                <option value="{{date('m/y', strtotime('-2 month'))}}" class="month">{{date('F', strtotime('-2 month'))}}</option>
+                            </select>
                         </div>
 
                         <div class="row">

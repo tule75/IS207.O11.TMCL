@@ -7,11 +7,14 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': csrfToken
             }
         })
+        var sections = document.getElementsByClassName('cate-dropdown-content');
+        if(!sections[0].options.length)
         $.ajax({
             method: 'get',
             url: '/category/getall',
             success: function (data, textStatus) {
-                var sections = document.getElementsByClassName('cate-dropdown-content');
+                
+                
                 let section = sections[0];
                 console.log(data)
                 for (var i = 0; i < data.length; i++) {
