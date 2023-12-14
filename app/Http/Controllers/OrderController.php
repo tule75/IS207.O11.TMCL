@@ -77,16 +77,17 @@ class OrderController extends Controller
     {
         $watch = [];
         foreach ($request->watch_id as $index => $id) {
-            $watch[$index] = Watch::with(['brand' => function ($query) {}, 'category' => function ($query) {}])->find($id); 
+            array_push($watch, Watch::with(['brand' => function ($query) {}, 'category' => function ($query) {}])->find($id)); 
             $watch[$index]->quantity = $request->quantity[$index];
         }
 
+
         if (!auth()->user()->defaultAddress) {
-            return view('order.create', ['watch' => $watch, 'ship_fee' => -1]);
+            return view('order.create', ['watches' => $watch, 'ship_fee' => -1]);
         }
         // return về view/order/create.blade.php
         // return $watch;
-        return view('order.create', ['watch' => $watch, 'ship_fee' => (new ShipController)->CalShip(auth()->user()->defaultAddress->id)]);
+        return view('order.create', ['watches' => $watch, 'ship_fee' => (new ShipController)->CalShip(auth()->user()->defaultAddress->id)]);
     }
 
     /**

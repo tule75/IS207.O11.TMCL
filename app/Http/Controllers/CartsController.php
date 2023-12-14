@@ -19,10 +19,7 @@ class CartsController extends Controller
     public function index()
     {
         //
-        $carts = Carts::where('user_id', auth()->user()->id)->with(['watches' => function ($query) {
-            $query->select('watches.id', 'watches.name', 'watches.img1', 'watches.img2', 'watches.img3');}
-        ])->get();
-        
+        $carts = auth()->user()->cartProducts;
         return view('carts.index', ['carts' => $carts]);
     }
 
@@ -55,7 +52,7 @@ class CartsController extends Controller
                 Carts::create([
                     'user_id' => auth()->user()->id,
                     'quantity' => $quantity,
-                    'watch_id' => $request->watch_id
+                    'watch_id' => $watch_id
                 ]);
             }      
             return response()->noContent();  
@@ -81,13 +78,15 @@ class CartsController extends Controller
     /**
      * update value of the cart
      */
-    public function update(Carts $carts, $status)
+    public function update(Request $request)
     {
         //
-        if ($status == 'plus') {
+        $carts = Carts::where('user_id', auth()->user()->id)
+        ->where('watch_id', $request->watch_id)->first();
+        if ($request->status == 'plus') {
             $carts->quantity++;
             $carts->save();
-        } else if ($status == 'minus') 
+        } else if ($request->status == 'minus') 
         {
             $carts->quantity--;
             if ($carts->quantity == 0) {
@@ -96,7 +95,7 @@ class CartsController extends Controller
                 $carts->save();
             }
         }
-        return response()->noContent();
+        return back()->with($carts->quantity);
     }
 
     /**
