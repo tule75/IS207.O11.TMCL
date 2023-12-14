@@ -61,29 +61,28 @@
 
     <div class="sub-navbar">
       <div class="dropdown">
-        <button class="dropbtn">FESTIVE SEASON</button>
+        <button class="dropbtn">Brand</button>
         <div class="dropdown-content">
-          <a href="#">WINTERK</a>
-          <a href="#">SUMMER</a>
-          <a href="#">AKALUNA</a>
+            @foreach ($brand as $data)
+                <a href="/collection?brand={{$data->id}}">{{$data->name}}</a>
+            @endforeach
         </div>
       </div>
 
       <div class="dropdown">
-        <button class="dropbtn">WATCHES</button>
+        <button class="dropbtn">Category</button>
         <div class="dropdown-content">
-          <a href="#">LALAKA</a>
-          <a href="#">LOREAL</a>
-          <a href="#">MARIDA</a>
+            @foreach ($category as $data)
+                <a href="/collection?brand={{$data->id}}">{{$data->name}}</a>
+            @endforeach
         </div>
       </div>
 
       <div class="dropdown">
-        <button class="dropbtn">HIGH JWELRY</button>
+        <button class="dropbtn">Gender</button>
         <div class="dropdown-content">
-          <a href="#">K'SANTE</a>
-          <a href="#">DELTA</a>
-          <a href="#">MAMAPARA</a>
+          <a href="/collection?gender=male">Male</a>
+          <a href="/collection?gender=female">Female</a>
         </div>
       </div>
     </div> 

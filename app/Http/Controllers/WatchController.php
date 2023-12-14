@@ -25,8 +25,8 @@ class WatchController extends Controller
 
     public function collectionIndex(Request $request) {
         $watches = $request->has('cate') ? Watch::where('category_id', $request->cate) : new Watch();
-        $watches = $request->has('brand') ? Watch::where('brand_id', $request->brand) : $watches;
-        $watches = $request->has('gender') ? Watch::where('gender', $request->gender) : $watches;
+        $watches = $request->has('brand') ? $watches->where('brand_id', $request->brand) : $watches;
+        $watches = $request->has('gender') ? $watches->where('gender', $request->gender) : $watches;
 
         return view('collection', ['watches' => $watches->get()]);
     }

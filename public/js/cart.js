@@ -3,7 +3,7 @@ const result = document.querySelector('.price-result');
 var sum = 0;
 
 prices.forEach(price => {
-    sum += eval( price.value);
+    sum += eval( parseInt(price.value.replace(/\./g, '')));
 });
 
 result.textContent = "$ " + sum;

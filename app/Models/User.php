@@ -67,7 +67,7 @@ class User extends Authenticatable
 
     public function cartProducts():BelongsToMany
     {
-        return $this->belongsToMany(Watch::class, 'Carts', 'user_id', 'watch_id');
+        return $this->belongsToMany(Watch::class, 'Carts', 'user_id', 'watch_id')->withPivot('quantity');
     }
 
     public function defaultAddress():HasOne

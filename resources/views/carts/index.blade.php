@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <title>Cart</title>
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Logo_UIT_updated.svg/1200px-Logo_UIT_updated.svg.png">
     <link rel="stylesheet" href="{{asset('css/home.css')}}">
@@ -13,7 +14,6 @@
 </head>
 
 <body>
-    {{$carts}}
     <div class="cartier">
         <div class="header">
             <div class="header-notice">
@@ -54,7 +54,7 @@
                 <h3 class="heading-left">
                     SHOPPING BAG
                 </h3>
-                <span>(count item)</span>
+                <span>{{count($carts)}}</span>
                 <div class="space"></div>
                 <div class="condition-sale">
                     <p>Complimentary exchange or return within 30 days. Read our <a class="has-link span-link"
@@ -62,20 +62,22 @@
                 </div>
                 <div class="space"></div>
                 <!-- product-cart -->
-
                 <div class="cart-container">
+                    @foreach ($carts as $cart)
                     <div class="cart-item">
-                        <img class="cart-item--img" src="{{asset('img/h2.webp')}}" alt="">
+                        <input type="checkbox" class="choose" name="{{$cart->id}}" id="">
+                        <img class="cart-item--img" src="{{$cart->img1}}" alt="">
                         <div class="cart-item--info">
                             <div class="item-heading-price">
-                                <h3>TANK MUST WATCH</h3>
-                                <input type="number" readonly value="200" class="price-item"></input>
+                                <h3>{{$cart->name}}</h3>
+                                <input type="text" readonly value="{{number_format($cart->price * (1 - $cart->discount), 0, ',', '.')}}" class="price-item"></input> đ
                                 <button class="close"><i class="fa fa-close"></i></button>
                             </div>
-                            <p>Small model, high autonomy quartz movement, steel</p>
+                            <p>{{$cart->description}}</p>
                             <div class="add-list">
-                                <a class="has-link span-link " href="">Add another item</a>
-                                <a class="has-link span-link" href="">Add another item</a>
+                                <button class="" type="button" id="plus" value="{{$cart->id}}">+</button>
+                                <p>{{$cart->pivot->quantity}}</p>
+                                <button class="" type="button" id="minus" value="{{$cart->id}}">-</button>
                             </div>
 
                             <div class="add-options">
@@ -90,33 +92,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="cart-item">
-                        <img class="cart-item--img" src="{{asset('img/h2.webp')}}" alt="">
-                        <div class="cart-item--info">
-                            <div class="item-heading-price">
-                                <h3>TANK MUST WATCH</h3>
-                                <input type="number" readonly value="200" class="price-item"></input>
-
-                                <button class="close"><i class="fa fa-close"></i></button>
-                            </div>
-                            <p>Small model, high autonomy quartz movement, steel</p>
-                            <div class="add-list">
-                                <a class="has-link span-link " href="">Add another item</a>
-                                <a class="has-link span-link" href="">Add another item</a>
-                            </div>
-
-                            <div class="add-options">
-                                <a class="has-link" href="">Add gift message</a>
-                                <a class="has-link" href="">Add engraving</a>
-                                <a class="has-link" href="">Add bracelet adjustment</a>
-                            </div>
-
-                            <div class="wrap-gift">
-                                <input type="checkbox" name="gift-wrap" id=""> <span>Add Gift Wrapping <i
-                                        class="fa fa-angle-down"></i></span>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
 
@@ -126,11 +102,11 @@
                         <h3>SUBTOTAL</h3>
                         <h3 class="price-result"></h3>
                     </div>
-                    <div class="subtotal-wrap">
+                    <!-- <div class="subtotal-wrap">
                         <p>SUBTOTAL</p>
                         <p>$6,700.00</p>
-                    </div>
-                    <a href="" class=" has-link btn-proceed-checkout">PROCEED TO CHECKOUT</a>
+                    </div> -->
+                    <button class=" has-link btn-proceed-checkout">PROCEED TO CHECKOUT</button>
                 </div>
             </div>
         </div>
@@ -179,7 +155,58 @@
     </div>
 </body>
 
-<script src="../../js/cart.js"></script>
+<script src="{{asset('js/cart.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function(){
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': csrfToken
+            }
+        })
+        $('#plus').on('click',function (element) {
+            let value = $(this).val();
+            $.ajax({
+                url: '/cart',
+                method: 'PUT',
+                data: {'status': 'plus', 'watch_id': value},
+                // success: function (data) {
+                //     $(this).siblings('p').text() = data.quantity;
+                // }
+            })
+        });
+        $('#minus').on('click',function (element) {
+            let value = $(this).val();
+            $.ajax({
+                url: '/cart',
+                method: 'PUT',
+                data: {'status': 'minus', 'watch_id': value},
+                // success: function (data) {
+                //     if (data.quantity == 0) {
+                //         $(this).parent().parent().remove;
+                //     } else {
+                //         console.log($(this).siblings('p').text());
+                //         $(this).siblings('p').text() = data.quantity;
+                //     }
+                    
+                // }
+            })
+        });
+        $('button.has-link.btn-proceed-checkout').on('click', function () {
+            let element = $('.choose:checked');
+
+            let url = '/order/buy?';
+            console.log(element);
+            element.each(function () {
+                url = url + 'watch_id[]=' + $(this).attr('name') + '&';
+                url = url + 'quantity[]=' + $(this).siblings('.cart-item--info').first().find('div.add-list').first().find('p').first().text() + '&';
+            })
+            window.location = url;
+        })
+    });
+</script>
 
 
 </html>
