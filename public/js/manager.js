@@ -13,10 +13,8 @@ $(document).ready(function () {
             method: 'get',
             url: '/category/getall',
             success: function (data, textStatus) {
-                
-                
+
                 let section = sections[0];
-                console.log(data)
                 for (var i = 0; i < data.length; i++) {
                     var item = data[i];
                     var option = document.createElement('option');

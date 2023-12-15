@@ -34,7 +34,7 @@
                 <li class="nav-left--item"><a href="" class="has-link nav-hover">Home</a></li>
                 <li class="nav-left--item"><a href="" class="has-link nav-hover">Contact Us</a></li>
                 @if (auth()->user() && auth()->user()->role == 'manager')
-                    <li class="nav-left--item"><a href="" class="has-link nav-hover">Merchant</a></li>
+                    <li class="nav-left--item"><a href="/manager" class="has-link nav-hover">Merchant</a></li>
                 @endif
             </ul>
 

@@ -107,6 +107,9 @@
                                 <h3 class="">Product Orders : </h3>
                                 <p class="no-data">Chưa chọn tháng</p>
                                 <div class="product-result"></div>
+                                @foreach ($order as $order)
+                                    <p>Month: {{ $order->created_at }}, Revenue: {{ $order->total_prices }}</p>
+                                @endforeach
                             </div>
 
                         </div>
@@ -129,104 +132,78 @@
                             <div class="form-container">
                                 <h2 class=" heading-add font-bold text-xl flex items-center justify-center">Add Product Form</h2>                            
 
-                                <form method="POST" action="/watch/create">
-                                 @csrf 
+                                <form method="POST" action="/watch/create" enctype="multipart/form-data">
+                                    @csrf 
                                     <div class="add-product-container">
                                         <div class="add-product-left">
-                                            <div class="product-input-show flex items-center justify-between">
-                                                <label for="pName" class="form-label"> Product Name:  </label>
-                                                <input type="text"   name="pName"    id="pName"    placeholder="Product Name" class="product-input-area"/>
-                                               
+                                            <div class="form-group">
+                                                <label for="pName">Product Name:</label>
+                                                <input type="text" name="pName" id="pName" placeholder="Product Name" class="form-control"/>
                                             </div>
-                                            <div class="product-input-show flex items-center justify-between">
-                                                <label for="pPrice" class="form-label"> Product Price: </label>
-                                                <input type="text"   name="pPrice"    id="pPrice"    placeholder="Product Price" class="product-input-area"/>
-                                               
+
+                                            <div class="form-group">
+                                                <label for="pPrice">Product Price:</label>
+                                                <input type="text" name="pPrice" id="pPrice" placeholder="Product Price" class="form-control"/>
                                             </div>
-                                            <div class="product-input-show flex items-center justify-between ">
-                                                <label for="pGender" class="form-label"> Product Gender: </label>
+
+                                            <div class="form-group">
+                                                <label>Product Gender:</label>
                                                 <div class="radio-gender">
-                                                    <label class="" for="">
-                                                        <input type="radio" name="Male" id="Male"> Male
-                                                    </label>
-                                                    <label class="Female-radio" for="">
-                                                        <input type="radio" name="Female" id="Female"> Female
-                                                    </label>
+                                                    <label><input type="radio" name="gender" value="Male"> Male</label>
+                                                    <label><input type="radio" name="gender" value="Female"> Female</label>
                                                 </div>
                                             </div>
-                                            <div class="product-input-show flex justify-between flex-col">
-                                                <label for="pUpload" class="form-label"> Upload Image: </label>
-                                                <div class=" translate-x-24 ">
-                                                    <input ctype=multipart/form-data class="" type="file" name="pUpload-1" id="pUpload-1">
-
-                                                </div>
-                                                <div class="product-input-show flex items-center justify-between">
-                                                    <label for="pPrice" class="form-label"> Product Price: </label>
-                                                    <input type="text"   name="pPrice"    id="pPrice"    placeholder="Product Price" class="product-input-area"/>
-                                                
-                                                </div>
-                                                <div class="product-input-show flex items-center justify-between ">
-                                                    <label for="pGender" class="form-label"> Product Gender: </label>
-                                                    <input type="text"   name="pGender"    id="pGender"    placeholder="Product Gender" class="product-input-area"/>
-                                                </div>
-
-                                                <div class="product-input-show ">
-                                                    <label for="pUpload" class="form-label"> Upload Image: </label>
-                                                    <div class=" translate-x-24 ">
-                                                        <input ctype=multipart/form-data class="" type="file" name="pUpload-1" id="pUpload-1">
-                                                    </div>
-                                                    <div class=" translate-x-24">
-                                                        <input ctype=multipart/form-data class="" type="file" name="pUpload-2" id="pUpload-2">
-                                                    </div>
-                                                    <div class=" translate-x-24">
-                                                        <input ctype=multipart/form-data class="" type="file" name="pUpload-3" id="pUpload-3">
-                                                    </div>
-                                                </div>
-                                                <div class="product-input-show flex items-center justify-between">
-                                                    <label for="pBrand" class="form-label"> Brand: </label>
-                                                    <input type="text"   name="pBrand"    id="pBrand"    placeholder="Product Brand" class="product-input-area"/>
-                                                
-                                                </div>
-                                            
-                                            
+                                            <div class="form-group">
+                                                <label for="pStorage">Product Storage:</label>
+                                                <input type="text" name="pStorage" id="pStorage" placeholder="Product Storage" class="form-control"/>
                                             </div>
-                                            <div class="add-product-right mt-4">
-                                                <div class="product-input-show flex items-center justify-between">
-                                                    <label for="pDes" class="form-label"> Description: </label>
-                                                    <input type="text"   name="pDes"    id="pDes"    placeholder="Product Description" class="product-input-area"/>
-                                                
-                                                </div>
-                                                <div class="product-input-show flex items-center justify-between">
-                                                    <label for="pCategory" class="form-label"> Category: </label>
-                                                    <input type="text"   name="pCategory"    id="pCategory"    placeholder="Product Category" class="product-input-area"/>
-                                                </div>
-                                                <div class="product-input-show flex items-center justify-between">
-                                                    <label for="pStorage" class="form-label"> Product Storage: </label>
-                                                    <input type="text"   name="pStorage"    id="pStorage"    placeholder="Product Storage" class="product-input-area"/>
-                                                
-                                                </div>
-                                                <div class="product-input-show flex items-center justify-between">
-                                                    <label for="pDiscount" class="form-label"> Discount: </label>
-                                                    <input type="text"   name="pDiscount" readonly   id="pDiscount"    placeholder="Product Storage" class="product-input-area"/>
-                                                
-                                                </div>
-                                                <div class="product-cate-drop">
-                                                    <div class="" id="catebtn">
-                                                        <select class="dropdownbtn cate-dropdown-content" id="pCate" value="">
-                                                            
-                                                        </select>
-                                                    </div>
-                                                    
-                                                    
-                                                </div>
-                                                    
+
+                                            <div class="form-group">
+                                                <label for="pDiscount">Discount:</label>
+                                                <input type="text" name="pDiscount" readonly id="pDiscount" placeholder="Product Storage" class="form-control"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="pBrand">Brand:</label>
+                                                <input type="text" name="pBrand" id="pBrand" placeholder="Product Brand" class="form-control"/>
+                                            </div>
+                                            
+                                        </div>
+
+                                        <div class="add-product-right mt-4">
+                                            <div class="form-group">
+                                                <label for="pDes">Description:</label>
+                                                <input type="text" name="pDes" id="pDes" placeholder="Product Description" class="form-control"/>
+                                            </div>
+                                            
+
+                                            <div class="form-group">
+                                                <label for="pCate">Category:</label>
+                                                <select class="form-control" id="pCate" name="pCate">
+                                                    <option value="" class="form-opt">a</option>
+                                                    <option value="" class="form-opt">a</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="pUpload1">Upload Image 1:</label>
+                                                <input type="file" name="pUpload[]" id="pUpload1" class="form-control-file" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="pUpload2">Upload Image 2:</label>
+                                                <input type="file" name="pUpload[]" id="pUpload2" class="form-control-file" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="pUpload3">Upload Image 3:</label>
+                                                <input type="file" name="pUpload[]" id="pUpload3" class="form-control-file" required>
                                             </div>
                                         </div>
-                                    
+                                    </div>
+
                                     <div class="flex justify-center items-center border-solid m-10">
-                                        <button class="add-product-btn submit-container">Add Now</button>
+                                        <button class="add-product-btn submit-container" type="submit">Thêm Sản Phẩm</button>
                                     </div>
                                 </form>
+
                             </div>
                                 <!-- end-form -->
                                 <!-- list close product -->
@@ -242,7 +219,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($watches as $watch)
+                                    @foreach ($watches->take(10) as $watch)
                                         <tr class="closed-product-item">
                                             <td class="product-name">{{$watch->name}}</td>
                                             <td class="product-price">{{$watch->price}}</td>
@@ -255,12 +232,11 @@
                                 </table>
                             </div>
                             <!-- end list product -->
-                            </div>
                         </div>
                         <div class="subpage-product-container">
                             <!-- modify -->
                             <div class="product-list">
-                                <h2 class="font-bold text-xl flex items-center justify-center">Products List</h2>
+                                <h2 class="heading-list">Products List</h2>
                                 <table class="item-table">
                                     <thead>
                                         <tr>
@@ -304,85 +280,80 @@
                             </div>
 
                             <div class="form-container modify-form">
-                                <h2 class="font-bold text-xl flex items-center justify-center">Modify Product Form</h2>
-                                <form action="GET">
+                                <h2 class=" heading-add font-bold text-xl flex items-center justify-center">Sửa Thông Tin</h2>                            
+
+                                <form method="POST" action="/watch" enctype="multipart/form-data">
+                                    @csrf 
                                     <div class="add-product-container">
                                         <div class="add-product-left">
-                                            <div class="product-input-show flex items-center justify-between">
-                                                <label for="pName" class="form-label"> Product Name:  </label>
-                                                <input type="text"   name="pName"    id="pName"    placeholder="Product Name" class="product-input-area"/>
-                                               
+                                            <div class="form-group">
+                                                <label for="pName">Product Name:</label>
+                                                <input type="text" name="pName" id="pName" placeholder="Product Name" class="form-control"/>
                                             </div>
-                                            <div class="product-input-show flex items-center justify-between">
-                                                <label for="pPrice" class="form-label"> Product Price: </label>
-                                                <input type="text"   name="pPrice"    id="pPrice"    placeholder="Product Price" class="product-input-area"/>
-                                               
+
+                                            <div class="form-group">
+                                                <label for="pPrice">Product Price:</label>
+                                                <input type="text" name="pPrice" id="pPrice" placeholder="Product Price" class="form-control"/>
                                             </div>
-                                            <div class="product-input-show flex items-center justify-between ">
-                                                <label for="pGender" class="form-label"> Product Gender: </label>
-                                                <input type="text"   name="pGender"    id="pGender"    placeholder="Product Gender" class="product-input-area"/>
-                                            </div>
-                                            <div class="product-input-show flex justify-between flex-col">
-                                                <label for="pUpload" class="form-label"> Upload Image: </label>
-                                                <div class=" translate-x-24 ">
-                                                    <input ctype=multipart/form-data class="" type="file" name="pUpload-1" id="pUpload-1">
-                                                </div>
-                                                <div class=" translate-x-24">
-                                                    <input ctype=multipart/form-data class="" type="file" name="pUpload-2" id="pUpload-2">
-                                                </div>
-                                                <div class=" translate-x-24">
-                                                    <input ctype=multipart/form-data class="" type="file" name="pUpload-3" id="pUpload-3">
+
+                                            <div class="form-group">
+                                                <label>Product Gender:</label>
+                                                <div class="radio-gender">
+                                                    <label><input type="radio" name="gender" value="Male"> Male</label>
+                                                    <label><input type="radio" name="gender" value="Female"> Female</label>
                                                 </div>
                                             </div>
-                                            <div class="product-input-show flex items-center justify-between">
-                                                <label for="pBrand" class="form-label"> Brand: </label>
-                                                <input type="text"   name="pBrand"    id="pBrand"    placeholder="Product Brand" class="product-input-area"/>
-                                               
+                                            <div class="form-group">
+                                                <label for="pStorage">Product Storage:</label>
+                                                <input type="text" name="pStorage" id="pStorage" placeholder="Product Storage" class="form-control"/>
                                             </div>
-                                           
-                                           
+
+                                            <div class="form-group">
+                                                <label for="pDiscount">Discount:</label>
+                                                <input type="text" name="pDiscount" readonly id="pDiscount" placeholder="Product Storage" class="form-control"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="pBrand">Brand:</label>
+                                                <input type="text" name="pBrand" id="pBrand" placeholder="Product Brand" class="form-control"/>
+                                            </div>
+                                            
                                         </div>
+
                                         <div class="add-product-right mt-4">
-                                            <div class="product-input-show flex items-center justify-between">
-                                                <label for="pDes" class="form-label"> Description: </label>
-                                                <input type="text"   name="pDes"    id="pDes"    placeholder="Product Description" class="product-input-area"/>
-                                               
+                                            <div class="form-group">
+                                                <label for="pDes">Description:</label>
+                                                <input type="text" name="pDes" id="pDes" placeholder="Product Description" class="form-control"/>
                                             </div>
-                                            <div class="product-input-show flex items-center justify-between">
-                                                <label for="pCategory" class="form-label"> Category: </label>
-                                                <input type="text"   name="pCategory"    id="pCategory"    placeholder="Product Category" class="product-input-area"/>
-                                               
+                                            
+
+                                            <div class="form-group">
+                                                <label for="pCate">Category:</label>
+                                                <select class="form-control" id="pCate" name="pCate">
+                                                    <option value="" class="form-opt">a</option>
+                                                    <option value="" class="form-opt">a</option>
+                                                </select>
                                             </div>
-                                            <div class="product-input-show flex items-center justify-between">
-                                                <label for="pStorage" class="form-label"> Product Storage: </label>
-                                                <input type="text"   name="pStorage"    id="pStorage"    placeholder="Product Storage" class="product-input-area"/>
-                                               
+                                            <div class="form-group">
+                                                <label for="pUpload1">Upload Image 1:</label>
+                                                <input type="file" name="pUpload[]" id="pUpload1" class="form-control-file" required>
                                             </div>
-                                            <div class="product-input-show flex items-center justify-between">
-                                                <label for="pDiscount" class="form-label"> Discount: </label>
-                                                <input type="text"   name="pDiscount" readonly   id="pDiscount"    placeholder="Product Storage" class="product-input-area"/>
-                                               
+
+                                            <div class="form-group">
+                                                <label for="pUpload2">Upload Image 2:</label>
+                                                <input type="file" name="pUpload[]" id="pUpload2" class="form-control-file" required>
                                             </div>
-                                            <div class="product-cate-drop">
-                                                <div class="dropdownbtn">
-                                                     Choose Product Category 
-                                                </div>
-                                                <section class="cate-dropdown-content" id="pCate">
-                                                    <option class="cate-dropdown-content-item" id="" value="vlue">cat</option >
-                                                    <option class="cate-dropdown-content-item" id="" value="cod">dog</option >
-                                                    <option class="cate-dropdown-content-item" id="" value="d" >horse</option >
-                                                    <option class="cate-dropdown-content-item" id="" value="s">cow</option >
-                                                    <option class="cate-dropdown-content-item" id="" value="s">pig</option >
-                                                </section>
+                                            <div class="form-group">
+                                                <label for="pUpload3">Upload Image 3:</label>
+                                                <input type="file" name="pUpload[]" id="pUpload3" class="form-control-file" required>
                                             </div>
-                                                
                                         </div>
                                     </div>
-                                    
+
                                     <div class="flex justify-center items-center border-solid m-10">
-                                        <button class="add-product-btn submit-container">Modify</button>
+                                        <button class="add-product-btn submit-container" type="submit">Thêm Sản Phẩm</button>
                                     </div>
                                 </form>
+
                             </div>
                         </div>
                         <div class="subpage-product-container">
@@ -456,21 +427,9 @@
                                 <h2 class=" heading-add font-bold text-xl flex items-center justify-center">Add Account Form</h2>
                                 <form action="/manager/staff/create" method="POST">
                                     @csrf;
-                                    <div class="add-product-container">
-                                        <div class="add-product-left">
-                                            <div class="product-input-show flex items-center justify-between ">
-                                                <label for="pEmail" class="form-label"> Email: </label>
-                                                <input
-                                                        type="email"
-                                                        name="email"
-                                                        id="pEmail"
-                                                        placeholder="Enter email"
-                                                        class="product-input-area"
-                                                        :value="old('name')" required autofocus autocomplete="name"
-                                                />
-                                            </div>
-
-                                            <div class="product-input-show flex items-center justify-between ">
+                                    <div class="add-staff-container">
+                                        <div class="add-staff-left">
+                                            <div class="staff-input-show flex items-center justify-between ">
                                                 <label for="Name" class="form-label"> Staff's Name: </label>
                                                 <input
                                                         type="text"
@@ -481,8 +440,18 @@
                                                         :value="old('email')" required autocomplete="username"
                                                 />
                                             </div>
-                                          
-                                            <div class="product-input-show flex items-center justify-between ">
+                                            <div class="staff-input-show flex items-center justify-between ">
+                                                <label for="pEmail" class="form-label"> Email: </label>
+                                                <input
+                                                        type="email"
+                                                        name="email"
+                                                        id="pEmail"
+                                                        placeholder="Enter email"
+                                                        class="product-input-area"
+                                                        :value="old('name')" required autofocus autocomplete="name"
+                                                />
+                                            </div>
+                                            <div class="staff-input-show flex items-center justify-between ">
                                                 <label for="password" class="form-label"> Set Password: </label>
                                                 <input
                                                         type="password"
@@ -494,7 +463,7 @@
                                                 />
                                             </div>
 
-                                            <div class="product-input-show flex items-center justify-between ">
+                                            <div class="staff-input-show flex items-center justify-between ">
                                                 <label for="password" class="form-label"> Confirm Password: </label>
                                                 <input
                                                         type="password"
@@ -510,15 +479,15 @@
                                         </div>
                                             <!-- submit -->
                                         <div class="flex justify-center items-center border-solid m-10">
-                                            <button class="add-product-btn submit-container">Submit</button>
+                                            <button class="add-staff-btn submit-container">Submit</button>
                                         </div>
                                         
                                 </form>
 
                                 <!-- list close product -->
-                                <div class="closed-product-list">
+                                <div class="closed-staff-list">
                                     <h2 class="font-bold text-xl flex items-center justify-center">Staff Account recently</h2>
-                                    <table class="closed-item-table">
+                                    <table class="closed-staff-table">
                                         <thead>
                                             <tr>
                                                 <th>Staff's Name</th>
@@ -528,17 +497,18 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="closed-product-item">
-                                                <td class="product-name">Nguyen Van A</td>  
-                                                <td class="product-name">aaaa</td>
-                                                <td class="product-email">as@gmail.com</td>
-                                                <td class="product-price">asd</td>
+                                            <tr class="closed-staff-item">
+                                                <td class="staff-name">Nguyen Van A</td>  
+                                                <td class="staff-name">aaaa</td>
+                                                <td class="staff-email">as@gmail.com</td>
+                                                <td class="staff-password">asd</td>
                                             </tr>
                                             <tr class="closed-product-item">
                                                 <td class="product-name">Nguyen Van B</td>  
                                                 <td class="product-name">as</td>
                                                 <td class="product-email">as@gmail.com</td>
-                                                <td class="product-price">passb</td>
+                                                <td class="staff-password">as@gmail.com</td>
+
                                             </tr>
                                         </tbody>
                                     </table>
@@ -555,11 +525,9 @@
                                     <thead>
                                         <tr>
                                             <th>Staff's Name</th>
-                                            <th>Username</th>
                                             <th>Email</th>
                                             <th>Password</th>
                                             <th>Action</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
