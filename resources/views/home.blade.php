@@ -59,7 +59,7 @@
     <!-- header end -->
 </div>
 
-   <div class="sub-navbar">
+    <div class="sub-navbar">
       <div class="dropdown">
         <button class="dropbtn">Brand</button>
         <div class="dropdown-content">
@@ -85,26 +85,6 @@
           <a href="/collection?gender=female">Female</a>
         </div>
       </div>
-
-      <!-- <div class="dropdown">
-        <button class="dropbtn">FRAGRANCES</button>
-        <div class="dropdown-content">
-          <a href="#">DECLARATION</a>
-          <a href="#">DE PAUL</a>
-          <a href="#">PUSHI KAR</a>
-          <a href="#">OSHIMEN</a>
-        </div>
-      </div>
-
-      <div class="dropdown">
-        <button class="dropbtn">LAMAISON</button>
-        <div class="dropdown-content">
-          <a href="#">TANK</a>
-          <a href="#">SANTOS</a>
-          <a href="#">PATHERE</a>
-          <a href="#">LOVE</a>
-        </div>
-      </div> -->
     </div> 
         <!-- header end -->
         <!-- banner start -->
@@ -186,22 +166,19 @@
                             <img class="object-img" src="{{ asset($watch->img1) }}" alt="">
                             <div class="object-section">
                                 <div class="object-section-info">
-                                    <a class=" has-link object-info  info-name"> {{$watch->name}}</a>
+                                    <a href="/watch/{{$watch->slug}} " class=" has-link object-info info-name"> {{$watch->name}}</a>
                                 </div>
                                 <div class="object-section-info">
-                                    <a class=" has-link object-info">{{$watch->description}}</a>
-                                    <h3 class="item-price">{{number_format($watch->price * (1 - $watch->discount), 0, ',', '.')}} đ</h3>
+                                    <h3 class="item-price">{{$watch->price * (1 - $watch->discount)}}</h3> <span>VND</span>
                                 </div>
                             </div>
                             <div class="buy-btn">
-                                <a class="discover has-link">Add to cart</a>
+                                <a href="" class="discover cart has-link">Add to cart</a>
+                                <a class="discover has-link">Buy Now</a>
                             </div>
                         </div>
                     </a>
-                    @endforeach
-
-                
-                                        
+                    @endforeach                
                 </div>
             </div>
         </div>
@@ -218,7 +195,7 @@
         <div class="space"></div>
         <!-- extra infomation start -->
         <div class="extra-information">
-            <div class="complimentary cursor-pointer" onclick="toggleModalComplimentary()">
+            <div class="complimentary cursor-pointer " onclick="toggleModalComplimentary()">
                 <div class="flex justify-center">
                     <img class="complimentary-img " src="{{ asset('/img/Screenshot_2023-10-16_211957-removebg-preview.png') }}" alt="">
                 </div>
@@ -239,15 +216,16 @@
         </div>
         <!-- extra infomation start -->
         <!-- The Modal - COMPLIMENTARY DELIVERY -->
-        <div id="cd_modal-complimentary" tabindex="-1" aria-hidden="true" class="hidden fixed flex items-center top-0 right-0 left-0 bottom-0  align-middle justify-center" style="z-index: 0;">
+        <!-- Practice coding on Tailwind -->
+        <div id="cd_modal-complimentary" tabindex="-1" aria-hidden="true" class="complimentary-modal" >
             <div class="relative w-full max-w-2xl max-h-full">
                 <div class="relative opacity-100 w-600 h-fit bg-white " style="z-index:2">
                     <div class="h-1.5 bg-red-600 m-0"></div>
 
                     <div class="modal-header text-center relative">
                         <h3 class=" font-bold text-2xl tracking-widest py-5">COMPLIMENTARY DELIVERY</h3>
-                        <div class="absolute right-6 top-0" onclick="toggleModalComplimentary()">
-                                <button class="closetag">close</button>
+                        <div class="absolute right-6 top-0">
+                                <button class="closetag"  onclick="toggleModalComplimentary()">close</button>
                         </div>
                     </div>
                     <div class="flex mx-2 align-middle h-0.5 bg-slate-700"></div>
@@ -273,7 +251,7 @@
             </div>
         </div>
         <!-- The Modal - RETURN DELIVERY -->
-        <div id="cd_modal-return" tabindex="-1" aria-hidden="true" class="hidden fixed flex items-center top-0 right-0 left-0 bottom-0  align-middle justify-center" style="z-index: 0;">
+        <div id="cd_modal-return" tabindex="-1" aria-hidden="true" class="return-modal " >
             <div class="relative w-full max-w-2xl max-h-full">
                 <div class="relative opacity-100 w-600 h-fit bg-white " style="z-index:2">
                     <div class="h-1.5 bg-red-600 m-0"></div>
@@ -298,7 +276,7 @@
         </div>
         <!-- end modal -->
          <!-- The Modal - GIFT WRAPPING -->
-         <div id="cd_modal-gift" tabindex="-1" aria-hidden="true" class="hidden fixed flex items-center top-0 right-0 left-0 bottom-0  align-middle justify-center" style="z-index: 0;">
+         <div id="cd_modal-gift" tabindex="-1" aria-hidden="true"   class="gift-modal " >
             <div class="relative w-full max-w-2xl max-h-full">
                 <div class="relative opacity-100 w-600 h-fit bg-white " style="z-index:2">
                     <div class="h-1.5 bg-red-600 m-0"></div>
@@ -375,10 +353,10 @@
     </div>
 </body>
 
-<script src="{{ asset('js/home.js')}}"></script>
+
 
 <!-- Jquery -->
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script src="{{ asset('js/addcart.js') }}"></script>
-
+<script src="{{ asset('js/home.js')}}"></script>
 </html>

@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var csrfToken = $('meta[name="csrf-token"]').attr('content');
-    $(".buy-btn").click(function(){
+    $(".cart").click(function(){
         let id = $(this).parent('.product-object').children('a').attr('href');
         $.ajaxSetup({
             headers: {

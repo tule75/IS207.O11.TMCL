@@ -19,7 +19,6 @@ class WatchController extends Controller
         // eager loading with pagination
         $watches = Watch::select('id', 'name', 'discount', 'price', 'storage', 'slug', 'description', 'gender', 'img1', 'img2', 'img3', 'brand_id', 'category_id')
         ->with(['brand', 'category'])
-        // ->paginate('16');
         ->get();
         return $watches;
     }

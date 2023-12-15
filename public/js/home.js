@@ -68,15 +68,22 @@ feed.addEventListener("click", () => {
     })
    
 })
+// modal
+const complimentary = document.querySelector(".complimentary-modal");
 
 function toggleModalComplimentary() {
-    document.getElementById('cd_modal-complimentary').classList.toggle('hidden');
+   complimentary.addEventListener('click', () => {
+    if(complimentary.classList.contains('open')) {
+        complimentary.classList.remove('open');
+    } else {
+        complimentary.classList.add('open')
+    }
+   })
+
 }
 function toggleModalReturning() {
-    document.getElementById('cd_modal-return').classList.toggle('hidden');
 }
 function toggleModalGift() {
-    document.getElementById('cd_modal-gift').classList.toggle('hidden');
 }
 
 // filter section
@@ -99,6 +106,12 @@ ratioButtons.forEach((ratioButton, index) => {
     })
 })
 
+let price = document.querySelectorAll(".item-price");
+price.forEach((item) => {
+    item.innerHTML = item.innerHTML.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  
+})
+
 // Sort product elements based on price from high to low
 function sortProductsByPriceH2L() {
     const container = document.querySelector('.products-container');
@@ -108,14 +121,16 @@ function sortProductsByPriceH2L() {
         const priceAElement = a.querySelector('.item-price');
         const priceBElement = b.querySelector('.item-price');
         // Check if not null or undefined
-        const priceA = priceAElement ? parseFloat(priceAElement.textContent.replace(/[^\d.]/g, '')) : 0;
-        const priceB = priceBElement ? parseFloat(priceBElement.textContent.replace(/[^\d.]/g, '')) : 0;
-
+        const priceA = priceAElement ? parseFloat(priceAElement.textContent.replace(/\./g, '')) : 0;
+        const priceB = priceBElement ? parseFloat(priceBElement.textContent.replace(/\./g, '')) : 0;
+       
         return priceB - priceA;
     });
-
     productElements.forEach(element => container.removeChild(element));
-    sortedProductElements.forEach(element => container.appendChild(element));
+
+    sortedProductElements.forEach(element => 
+        container.appendChild(element)
+    );
 }
 
 // Sort product elements based on price from low to high
@@ -127,8 +142,8 @@ function sortProductsByPriceL2H() {
         const priceAElement = a.querySelector('.item-price');
         const priceBElement = b.querySelector('.item-price');
         // Check 
-        const priceA = priceAElement ? parseFloat(priceAElement.textContent.replace(/[^\d.]/g, '')) : 0;
-        const priceB = priceBElement ? parseFloat(priceBElement.textContent.replace(/[^\d.]/g, '')) : 0;
+        const priceA = priceAElement ? parseFloat(priceAElement.textContent.replace(/\./g, '')) : 0;
+        const priceB = priceBElement ? parseFloat(priceBElement.textContent.replace(/\./g, '')) : 0;
 
         return priceA - priceB;
     });
@@ -177,3 +192,4 @@ function getFirstLetterFromName(element) {
         return ''; 
     }
 }
+
