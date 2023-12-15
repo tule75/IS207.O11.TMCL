@@ -70,7 +70,7 @@
                             
                             <div class="item-heading-price">
                                 <h3>{{$cart->name}}</h3>
-                                <input type="text" readonly value="{{number_format($cart->price * (1 - $cart->discount), 0, ',', '.')}}" class="price-item"></input> 
+                                <h3 class="price-item">{{number_format($cart->price * (1 - $cart->discount), 0, ',', '.')}}</h3> 
                                
                                 <p>{{$cart->description}}</p>
                             </div>
@@ -170,15 +170,6 @@
                 url: '/cart',
                 method: 'PUT',
                 data: {'status': 'minus', 'watch_id': value},
-                // success: function (data) {
-                //     if (data.quantity == 0) {
-                //         $(this).parent().parent().remove;
-                //     } else {
-                //         console.log($(this).siblings('p').text());
-                //         $(this).siblings('p').text() = data.quantity;
-                //     }
-                    
-                // }
             })
         });
         $('button.has-link.btn-proceed-checkout').on('click', function () {

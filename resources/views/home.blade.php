@@ -195,7 +195,7 @@
         <div class="space"></div>
         <!-- extra infomation start -->
         <div class="extra-information">
-            <div class="complimentary cursor-pointer" onclick="toggleModalComplimentary()">
+            <div class="complimentary cursor-pointer " onclick="toggleModalComplimentary()">
                 <div class="flex justify-center">
                     <img class="complimentary-img " src="{{ asset('/img/Screenshot_2023-10-16_211957-removebg-preview.png') }}" alt="">
                 </div>
@@ -216,15 +216,16 @@
         </div>
         <!-- extra infomation start -->
         <!-- The Modal - COMPLIMENTARY DELIVERY -->
-        <div id="cd_modal-complimentary" tabindex="-1" aria-hidden="true" class="hidden fixed flex items-center top-0 right-0 left-0 bottom-0  align-middle justify-center" style="z-index: 0;">
+        <!-- Practice coding on Tailwind -->
+        <div id="cd_modal-complimentary" tabindex="-1" aria-hidden="true" class="complimentary-modal" >
             <div class="relative w-full max-w-2xl max-h-full">
                 <div class="relative opacity-100 w-600 h-fit bg-white " style="z-index:2">
                     <div class="h-1.5 bg-red-600 m-0"></div>
 
                     <div class="modal-header text-center relative">
                         <h3 class=" font-bold text-2xl tracking-widest py-5">COMPLIMENTARY DELIVERY</h3>
-                        <div class="absolute right-6 top-0" onclick="toggleModalComplimentary()">
-                                <button class="closetag">close</button>
+                        <div class="absolute right-6 top-0">
+                                <button class="closetag"  onclick="toggleModalComplimentary()">close</button>
                         </div>
                     </div>
                     <div class="flex mx-2 align-middle h-0.5 bg-slate-700"></div>
@@ -250,7 +251,7 @@
             </div>
         </div>
         <!-- The Modal - RETURN DELIVERY -->
-        <div id="cd_modal-return" tabindex="-1" aria-hidden="true" class="hidden fixed flex items-center top-0 right-0 left-0 bottom-0  align-middle justify-center" style="z-index: 0;">
+        <div id="cd_modal-return" tabindex="-1" aria-hidden="true" class="return-modal " >
             <div class="relative w-full max-w-2xl max-h-full">
                 <div class="relative opacity-100 w-600 h-fit bg-white " style="z-index:2">
                     <div class="h-1.5 bg-red-600 m-0"></div>
@@ -275,7 +276,7 @@
         </div>
         <!-- end modal -->
          <!-- The Modal - GIFT WRAPPING -->
-         <div id="cd_modal-gift" tabindex="-1" aria-hidden="true" class="hidden fixed flex items-center top-0 right-0 left-0 bottom-0  align-middle justify-center" style="z-index: 0;">
+         <div id="cd_modal-gift" tabindex="-1" aria-hidden="true"   class="gift-modal " >
             <div class="relative w-full max-w-2xl max-h-full">
                 <div class="relative opacity-100 w-600 h-fit bg-white " style="z-index:2">
                     <div class="h-1.5 bg-red-600 m-0"></div>

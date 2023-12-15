@@ -68,15 +68,22 @@ feed.addEventListener("click", () => {
     })
    
 })
+// modal
+const complimentary = document.querySelector(".complimentary-modal");
 
 function toggleModalComplimentary() {
-    document.getElementById('cd_modal-complimentary').classList.toggle('hidden');
+   complimentary.addEventListener('click', () => {
+    if(complimentary.classList.contains('open')) {
+        complimentary.classList.remove('open');
+    } else {
+        complimentary.classList.add('open')
+    }
+   })
+
 }
 function toggleModalReturning() {
-    document.getElementById('cd_modal-return').classList.toggle('hidden');
 }
 function toggleModalGift() {
-    document.getElementById('cd_modal-gift').classList.toggle('hidden');
 }
 
 // filter section
