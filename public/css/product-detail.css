@@ -5,7 +5,11 @@
 
 .product-img-collect {
     margin-left: 20px;
+
+    overflow-y: scroll;
+
     max-height: 300px;    
+
 }
 /* .product-img-collect::-webkit-scrollbar {
     display: none;

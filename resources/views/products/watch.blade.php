@@ -108,6 +108,10 @@
                 </ul>
             </div>
         </div>
+
+        @include('products.comment');
+        <div class="space"></div>
+
         <div class="care">
             <div class="care-left">
                 <h4>UITERs CARE</h4>
