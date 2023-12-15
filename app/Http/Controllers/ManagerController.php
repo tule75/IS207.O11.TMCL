@@ -15,7 +15,7 @@ class ManagerController extends Controller
 {
     public function index() 
     {
-        $watch = Watch::orderBy('created_at', 'DESC')->get();
+        $watch = Watch::orderBy('created_at', 'DESC')->take(10)->get();
         $order = Orders::whereYear('created_at', date('Y'))
         ->whereMonth('created_at', '>=', (int)date('M') - 2)
         ->with(['user' => function ($query) {
