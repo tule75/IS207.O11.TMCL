@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/resources/css/comment.css">
+    <link rel="stylesheet" href="/css/comment.css">
     <script src="https://kit.fontawesome.com/9e1c1de695.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>The UITERs - Home </title>
 </head>
 
 <body>
@@ -55,7 +56,7 @@
             <div class="box-top">
                 <div class="profile">
                     <div class="profile-img">
-                        <img src="/public/img/OIP.jpeg">
+                        <img src="/img/OIP.jpeg">
                     </div>
 
                     <div class="name-user">
@@ -87,7 +88,7 @@
             <div class="box-top">
                 <div class="profile">
                     <div class="profile-img">
-                        <img src="/public/img/OIP.jpeg">
+                        <img src="/img/OIP.jpeg">
                     </div>
 
                     <div class="name-user">
@@ -118,7 +119,7 @@
             <div class="box-top">
                 <div class="profile">
                     <div class="profile-img">
-                        <img src="/public/img/OIP.jpeg">
+                        <img src="/img/OIP.jpeg">
                     </div>
 
                     <div class="name-user">

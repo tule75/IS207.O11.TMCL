@@ -86,6 +86,7 @@
                 </ul>
             </div>
         </div>
+        @include('products.comment');
         <div class="space"></div>
         <div class="care">
             <div class="care-left">

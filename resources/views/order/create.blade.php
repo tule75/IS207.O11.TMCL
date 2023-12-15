@@ -24,6 +24,9 @@
                     <div class="address_subheader"><h4>SHIPPING ADDRESS</h4></div>
     
                     <div class="address_change">
+                        <label for="address-option">Phone Number</label><br>
+                        <input type="text" name="address-option" value="{{auth()->user()->defaultAddress->address->getPhone()}}">
+                        <br>
                         <label for="address-option">Shipping To</label><br>
                         <select name="address-option" id="address-choose">
                             <option value="{{auth()->user()->defaultAddress->address_id}}">{{auth()->user()->defaultAddress->address->getAddress()}}</option>

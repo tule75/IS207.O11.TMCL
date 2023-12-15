@@ -36,5 +36,9 @@ class Address extends Model
     {
         return $this->ward . ', ' . $this->district . ', ' . $this->province; 
     }
+
+    public function getPhone() {
+        return $this->phone_number;
+    }
     protected $table='address';
 }
