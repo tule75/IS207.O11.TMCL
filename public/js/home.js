@@ -185,3 +185,4 @@ function getFirstLetterFromName(element) {
         return ''; 
     }
 }
+
