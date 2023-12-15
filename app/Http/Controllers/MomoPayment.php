@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Response;
+
+use function Laravel\Prompts\error;
 
 class MomoPayment extends Controller
 {
@@ -61,10 +64,14 @@ class MomoPayment extends Controller
         $jsonResult = json_decode($result, true);
 
         // /Điều hướng đến payUrl nếu có
-        if ($jsonResult['payUrl'] !== null) {
+        if ($jsonResult['resultCode'] == 0) {
             // return $jsonResult['payUrl'];
-            return redirect()->to($jsonResult['payUrl']);
+            return $jsonResult['payUrl'];
+            // return $jsonResult;
         }
-        return $result;
+        return Response::json(array(
+            'code'      =>  401,
+            'message'   =>  $jsonResult['message']
+        ), 401);
     }
 }

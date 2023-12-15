@@ -60,11 +60,6 @@ class User extends Authenticatable
         return $this->hasMany(Orders::class);
     }
 
-    public function address():HasMany
-    {
-        return $this->hasMany(Address::class);
-    }
-
     public function cartProducts():BelongsToMany
     {
         return $this->belongsToMany(Watch::class, 'Carts', 'user_id', 'watch_id')->withPivot('quantity');
@@ -73,6 +68,11 @@ class User extends Authenticatable
     public function defaultAddress():HasOne
     {
         return $this->hasOne(default_address::class);
+    }
+
+        public function address():HasMany
+    {
+        return $this->hasMany(Address::class)->where('id', '!=', $this->defaultAddress->address_id);
     }
 
     // search

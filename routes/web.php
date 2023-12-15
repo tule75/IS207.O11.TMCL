@@ -15,6 +15,7 @@ use App\Http\Controllers\DefaultAddressController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Manager;
 use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\MomoPayment;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ShipController;
@@ -139,7 +140,7 @@ Route::middleware('auth')->group(function () {
     // Xóa order
     Route::delete('/order/{order}', [OrderController::class, 'destroy'])->middleware('manager');
     // Chuyển đến trang thanh toán momo
-    Route::post('/payment/momo', [PaymentsController::class, 'send']);
+    Route::post('/payment/momo', [MomoPayment::class, 'send']);
 });
     
 

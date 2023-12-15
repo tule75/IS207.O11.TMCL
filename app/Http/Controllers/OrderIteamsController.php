@@ -60,7 +60,7 @@ class OrderIteamsController extends Controller
                     $watch->save();
                 }
                 Order_items::create(['order_id' => $order_id, 'watch_id' => $watch_id, 'quantity' => $quantity[$i], 'price' => $watch->price * (1 - $watch->discount)]);
-                Carts::minusAfterBuy($watch_id, $quantity, auth()->user()->id);
+                CartsController::minusAfterBuy($watch_id, $quantity, auth()->user()->id);
             }
 
             return $price;

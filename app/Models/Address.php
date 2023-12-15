@@ -31,5 +31,10 @@ class Address extends Model
         }
         return true;
     }
+
+    public function getAddress()
+    {
+        return $this->ward . ', ' . $this->district . ', ' . $this->province; 
+    }
     protected $table='address';
 }

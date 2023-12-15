@@ -14,6 +14,11 @@ $(document).ready(function(){
             data: {'watch_id': id.replace('/watch/', '')},
             success: function (data) {
                 console.log(data);
+            },
+            error: function (xhr, status, error) { 
+                if(error == 'Unauthorized') {
+                    window.location = '/login';
+                }
             }
         })
     });

@@ -80,7 +80,7 @@ class OrderController extends Controller
             array_push($watch, Watch::with(['brand' => function ($query) {}, 'category' => function ($query) {}])->find($id)); 
             $watch[$index]->quantity = $request->quantity[$index];
         }
-
+        
 
         if (!auth()->user()->defaultAddress) {
             return view('order.create', ['watches' => $watch, 'ship_fee' => -1]);
