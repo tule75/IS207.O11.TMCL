@@ -173,7 +173,7 @@
                                 </div>
                             </div>
                             <div class="buy-btn">
-                                <a class="discover has-link">Add to cart</a>
+                                <a href="" class="discover cart has-link">Add to cart</a>
                                 <a class="discover has-link">Buy Now</a>
                             </div>
                         </div>
