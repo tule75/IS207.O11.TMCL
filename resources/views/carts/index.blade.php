@@ -23,9 +23,8 @@
 
             <div class="main-header">
                 <ul class="nav-left">
-                    <li class="nav-left--item"><a href="" class="has-link nav-hover">Home</a></li>
+                    <li class="nav-left--item"><a href="/" class="has-link nav-hover">Home</a></li>
                     <li class="nav-left--item"><a href="" class="has-link nav-hover">Contact Us</a></li>
-                    <li class="nav-left--item"><a href="" class="has-link nav-hover">Services</a></li>
                 </ul>
 
                 <div class="logo">
@@ -33,18 +32,17 @@
                 </div>
 
                 <div class="nav-right">
-                    <div class="nav-right--item"><i class="fa fa-heart"></i></div>
-                    <div class="nav-right--item"><i class="fa fa-user"></i></div>
-                    <div class="nav-right--item"><i class="fa fa-cart-plus"></i></div>
-                </div>
+                <div class="nav-right--item"><i class="fa fa-heart"></i></div>
+                    @if (Route::has('login'))
+                        @auth
+                            <a href="{{ url('/profile') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
+                            <a href="{{Route('cart.index')}}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
+                        @else
+                            <a href="{{ url('/login') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
+                            <a href="{{ url('/login') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
+                        @endauth
+                    @endif
             </div>
-
-            <div class="sub-navbar">
-                <div class="watch-collection--item">Colect</div>
-                <div class="watch-collection--item">Colect</div>
-                <div class="watch-collection--item">Colect</div>
-                <div class="watch-collection--item">Colect</div>
-                <div class="watch-collection--item">Colect</div>
             </div>
         </div>
         <div class="line"></div>
@@ -54,43 +52,36 @@
                 <h3 class="heading-left">
                     SHOPPING BAG
                 </h3>
-                <span>{{count($carts)}}</span>
-                <div class="space"></div>
+                <div class="count-cart">
+                    <p>Cart item : <span>{{count($carts)}}</span></p>
+                </div>
                 <div class="condition-sale">
                     <p>Complimentary exchange or return within 30 days. Read our <a class="has-link span-link"
                             href="">conditions of sales.</a></p>
                 </div>
-                <div class="space"></div>
                 <!-- product-cart -->
                 <div class="cart-container">
                     @foreach ($carts as $cart)
                     <div class="cart-item">
                         <input type="checkbox" class="choose" name="{{$cart->id}}" id="">
                         <img class="cart-item--img" src="{{$cart->img1}}" alt="">
+                        
                         <div class="cart-item--info">
+                            
                             <div class="item-heading-price">
                                 <h3>{{$cart->name}}</h3>
-                                <input type="text" readonly value="{{number_format($cart->price * (1 - $cart->discount), 0, ',', '.')}}" class="price-item"></input> đ
-                                <button class="close"><i class="fa fa-close"></i></button>
+                                <input type="text" readonly value="{{number_format($cart->price * (1 - $cart->discount), 0, ',', '.')}}" class="price-item"></input> 
+                               
+                                <p>{{$cart->description}}</p>
                             </div>
-                            <p>{{$cart->description}}</p>
+                          
                             <div class="add-list">
                                 <button class="" type="button" id="plus" value="{{$cart->id}}">+</button>
                                 <p>{{$cart->pivot->quantity}}</p>
                                 <button class="" type="button" id="minus" value="{{$cart->id}}">-</button>
                             </div>
-
-                            <div class="add-options">
-                                <a class="has-link" href="">Add gift message</a>
-                                <a class="has-link" href="">Add engraving</a>
-                                <a class="has-link" href="">Add bracelet adjustment</a>
-                            </div>
-
-                            <div class="wrap-gift">
-                                <input type="checkbox" name="gift-wrap" id=""> <span>Add Gift Wrapping <i
-                                        class="fa fa-angle-down"></i></span>
-                            </div>
                         </div>
+                        <button class="close"><i class="fa fa-close"></i></button>
                     </div>
                     @endforeach
                 </div>
@@ -102,10 +93,6 @@
                         <h3>SUBTOTAL</h3>
                         <h3 class="price-result"></h3>
                     </div>
-                    <!-- <div class="subtotal-wrap">
-                        <p>SUBTOTAL</p>
-                        <p>$6,700.00</p>
-                    </div> -->
                     <button class=" has-link btn-proceed-checkout">PROCEED TO CHECKOUT</button>
                 </div>
             </div>
