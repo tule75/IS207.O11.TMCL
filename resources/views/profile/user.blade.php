@@ -272,4 +272,32 @@
     });
 </script>
 
+<script>
+const statuses = document.querySelectorAll('.orders-status');
+const orders = document.querySelectorAll('.orders__list');
+
+statuses.forEach((status, i) => {
+    const order = orders[i];
+
+    status.onclick = function () {
+        // Xóa lớp 'next' khỏi tất cả các phần tử có class '.orders-status'
+        document.querySelectorAll('.orders-status.next').forEach(el => {
+            el.classList.remove('next');
+        });
+
+        // Xóa lớp 'nextto' khỏi tất cả các phần tử có class '.orders__list'
+        document.querySelectorAll('.orders__list.nextto').forEach(el => {
+            el.classList.remove('nextto');
+        });
+
+        // Thêm lớp 'next' cho phần tử đang được click có class '.orders-status'
+        this.classList.add('next');
+
+        // Thêm lớp 'nextto' cho phần tử tương ứng có class '.orders__list'
+        order.classList.add('nextto');
+    };
+});
+
+</script>
+
 </html>
