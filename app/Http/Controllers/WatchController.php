@@ -117,12 +117,14 @@ class WatchController extends Controller
      */
     public function show($watch_slug)
     {
-        //
         // return view('products.watch');
         // Lấy sản phẩm
+        $brand = BrandController::index();
+        $category = CategoryController::index();
         return view('products.watch', 
         ['watch' => Watch::where('slug', $watch_slug)->first(),
-         'watches' => Watch::where('brand_id', Watch::where('slug', $watch_slug)->first()->brand_id)->take(3)->get()]);
+         'watches' => Watch::where('brand_id', Watch::where('slug', $watch_slug)->first()->brand_id)->take(3)->get(),
+         'brand' => $brand, 'category' => $category]);
     }
 
     /**

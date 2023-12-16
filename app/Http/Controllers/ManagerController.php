@@ -16,14 +16,15 @@ class ManagerController extends Controller
     public function index() 
     {
         $watch = Watch::orderBy('created_at', 'DESC')->take(10)->get();
-        $order = Orders::whereYear('created_at', date('Y'))
-        ->whereMonth('created_at', '>=', (int)date('M') - 2)
+        $orders = Orders::whereYear('created_at', date('Y'))
+        ->whereMonth('created_at', (int)date('M') )
         ->with(['user' => function ($query) {
             return $query->select('name', 'email', 'score');
         }, 'watches' => function () {}, 
         'voucher' => function () {}, 
         'payment' => function () {}])->get();
-        return view('manager', ['order' => $order, 'watches' => $watch]);
+
+        return view('manager', ['order' => $orders, 'watches' => $watch]);
     }
 
     public function getRevenue($request) {
@@ -59,5 +60,12 @@ class ManagerController extends Controller
         } catch (Exception $e) {
             return $e->getMessage();
         }
+    }
+
+    public function chart() {
+        $month1 = Orders::whereMonth('created_at', date('m'))->where('status', 'Success')->sum('total_prices');
+        $month2 = Orders::whereMonth('created_at', date('m', strtotime('-1 month')))->where('status', 'Success')->sum('total_prices');
+        $month3 = Orders::whereMonth('created_at', date('m', strtotime('-2 month')))->where('status', 'Success')->sum('total_prices');
+        return ['month1' => $month1, 'month2' => $month2, 'month3' => $month3];
     }
 }

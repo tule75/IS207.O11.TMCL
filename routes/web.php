@@ -76,6 +76,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/manager/staff/create', [ManagerController::class, 'createStaff']);
     Route::post('/manager/revenue', [ManagerController::class, 'getRevenue']);
     Route::get('/manager', [ManagerController::class, 'index']);
+    Route::get('/chart', [ManagerController::class, 'chart']);
 });
 
 // Watch routes
@@ -142,7 +143,7 @@ Route::middleware('auth')->group(function () {
     // Chuyển đến trang thanh toán momo
     Route::post('/payment/momo', [MomoPayment::class, 'send']);
 });
-    
+
 
 // Order
     //test thôi này phải xóa
