@@ -16,8 +16,12 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        $brand = BrandController::index();
+        $category = CategoryController::index();
         return view('profile.user', [
             'user' => $request->user(),
+            'category' => $category,
+            'brand' => $brand
         ]);
     }
 

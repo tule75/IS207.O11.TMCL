@@ -70,9 +70,14 @@ class User extends Authenticatable
         return $this->hasOne(default_address::class);
     }
 
-        public function address():HasMany
+    public function address():HasMany
     {
         return $this->hasMany(Address::class)->where('id', '!=', $this->defaultAddress->address_id);
+    }
+
+    public function post():HasMany
+    {
+        return $this->hasMany(Post::class);
     }
 
     // search
