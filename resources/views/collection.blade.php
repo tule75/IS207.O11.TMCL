@@ -51,58 +51,37 @@
                 @endif
             </div>
         </div>
+        <div class="sub-navbar">
+            <div class="dropdown">
+                <button class="dropbtn">Brand</button>
+                <div class="dropdown-content">
+                    @foreach ($brand as $data)
+                        <a href="/collection?brand={{$data->id}}">{{$data->name}}</a>
+                    @endforeach
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">Category</button>
+                <div class="dropdown-content">
+                    @foreach ($category as $data)
+                        <a href="/collection?brand={{$data->id}}">{{$data->name}}</a>
+                    @endforeach
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">Gender</button>
+                <div class="dropdown-content">
+                <a href="/collection?gender=male">Male</a>
+                <a href="/collection?gender=female">Female</a>
+                </div>
+            </div>
+        </div> 
     </div>
     <!-- header end -->
 </div>
 
-   <div class="sub-navbar">
-      <div class="dropdown">
-        <button class="dropbtn">FESTIVE SEASON</button>
-        <div class="dropdown-content">
-          <a href="#">WINTERK</a>
-          <a href="#">SUMMER</a>
-          <a href="#">AKALUNA</a>
-        </div>
-      </div>
-
-      <div class="dropdown">
-        <button class="dropbtn">WATCHES</button>
-        <div class="dropdown-content">
-          <a href="#">LALAKA</a>
-          <a href="#">LOREAL</a>
-          <a href="#">MARIDA</a>
-        </div>
-      </div>
-
-      <div class="dropdown">
-        <button class="dropbtn">HIGH JWELRY</button>
-        <div class="dropdown-content">
-          <a href="#">K'SANTE</a>
-          <a href="#">DELTA</a>
-          <a href="#">MAMAPARA</a>
-        </div>
-      </div>
-
-      <div class="dropdown">
-        <button class="dropbtn">FRAGRANCES</button>
-        <div class="dropdown-content">
-          <a href="#">DECLARATION</a>
-          <a href="#">DE PAUL</a>
-          <a href="#">PUSHI KAR</a>
-          <a href="#">OSHIMEN</a>
-        </div>
-      </div>
-
-      <div class="dropdown">
-        <button class="dropbtn">LAMAISON</button>
-        <div class="dropdown-content">
-          <a href="#">TANK</a>
-          <a href="#">SANTOS</a>
-          <a href="#">PATHERE</a>
-          <a href="#">LOVE</a>
-        </div>
-      </div>
-    </div> 
         <!-- header end -->
         <!-- banner start -->
         <div class="banner">
