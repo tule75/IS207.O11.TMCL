@@ -233,8 +233,8 @@
                         <!-- <h1 class="font-bold text-lg">RETURN & EXCHANGE POLICY</h1> -->
                             <i class="w-90 py-5">Cartier offers you 2 delivery options: </i>
                             
-                            <p>Standard Delivery: </p>
-                            <p>
+                        <p>Standard Delivery: </p>
+                        <p>
                                 2 to 3 business days.  Complimentary with all your orders.
                             </p>
                             <br>
