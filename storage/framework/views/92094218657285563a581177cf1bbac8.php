@@ -164,6 +164,26 @@
         </div>
         <!-- footer end -->
     </div>
+
+    <div class="evaluate-modal">
+        <div class="evaluate-modal_container">
+            <div class="evaluate-modal_header">
+                <h3>EVALUATE</h3>
+                <i class="fa-solid fa-xmark modal_close"></i>
+            </div>
+        
+            <div class="evaluate-modal_body">
+                <form action="" class="body_form">
+                    <label for="evluate-cnt">Your evaluation</label><br>
+                    <input type="text" name="evluate-cnt" id="evluate-cnt" autofocus style="word-wrap:break-word" size="50"><br>
+                    <label for="evaluate-number">From worst to best</label><br>
+                    <input type="number" name="evaluate-number" id="evaluate-number" min="1" max="5">
+                </form>
+            </div>
+        
+            <div class="add_modal_btn"><button class="evaluate-modal_btn">ADD</button></div>
+        </div>
+    </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -298,6 +318,33 @@ statuses.forEach((status, i) => {
     };
 });
 
+</script>
+
+<script>
+        const modal = document.querySelector('.evaluate-modal');
+        const modalContainer = document.querySelector('.evaluate-modal_container');
+        const modalClose = document.querySelector('.modal_close');
+        const modalAddBtns = document.querySelectorAll('.evaluate_btn');
+
+        function showQuickForm() {
+            modal.classList.add('modal_show')
+        }
+
+        function hideQuickForm() {
+            modal.classList.remove('modal_show')
+        }
+
+        modalAddBtns.forEach(modalAddBtn => {
+            modalAddBtn.addEventListener('click', showQuickForm)
+        });
+
+        modalClose.addEventListener('click', hideQuickForm)
+
+        modal.addEventListener('click',  hideQuickForm)
+
+        modalContainer.addEventListener('click', function(event) {
+            event.stopPropagation()
+        })
 </script>
 
 </html><?php /**PATH D:\UIT\WEB\New\resources\views/profile/user.blade.php ENDPATH**/ ?>

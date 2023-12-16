@@ -19,7 +19,6 @@
             </div>
 
             <div class="orders__list nextto">
-                <!-- <div class="order"> -->
                     <div class="order__info">
                         <img class="order--img" src="{{asset('/img/h3.webp')}}" alt="">
 
@@ -40,9 +39,6 @@
                             <button class="order__info--btn">Mua lại</button>
                         </div> --}}
                     </div>
-                <!-- </div> -->
-
-
             </div>
 
             <div class="orders__list">
@@ -139,7 +135,7 @@
                     <div class="right">
                         <li class="order__info--price">$6.200</li>
                         <div class="right-bottom">
-                            <button class="order__info--btn">Evaluate</button>
+                            <button class="order__info--btn evaluate_btn">Evaluate</button>
                             <button class="order__info--btn">Buy Back</button>
                         </div>
                     </div>
@@ -164,7 +160,7 @@
                     <div class="right">
                         <li class="order__info--price">$6.200</li>
                         <div class="right-bottom">
-                            <button class="order__info--btn">Evaluate</button>
+                            <button class="order__info--btn evaluate_btn">Evaluate</button>
                             <button class="order__info--btn">Buy Back</button>
                         </div>
                     </div>
@@ -189,7 +185,7 @@
                     <div class="right">
                         <li class="order__info--price">$6.200</li>
                         <div class="right-bottom">
-                            <button class="order__info--btn">Evaluate</button>
+                            <button class="order__info--btn evaluate_btn">Evaluate</button>
                             <button class="order__info--btn">Buy Back</button>
                         </div>
                     </div>

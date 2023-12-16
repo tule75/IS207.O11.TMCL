@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My account - Login </title>
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Logo_UIT_updated.svg/1200px-Logo_UIT_updated.svg.png">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/sign.css">
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/sign.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/home.css')); ?>">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -49,7 +51,7 @@
                 <form action="<?php echo e(route('login')); ?>" method="POST">
                     <?php echo csrf_field(); ?>
                     <div class="login-box">
-                        <h3 class="note">If you are already registered with Cartier, login here:</h3>
+                        <h3 class="note">If you are already registered with The UITers, login here:</h3>
                         
                         <div class="content-item">
                             <p class="request-notice">Required field*</p>
@@ -72,7 +74,6 @@
 <?php endif; ?>
                         <div class="content-item">
                             <input type="password" value="" placeholder="Password*" name="password" required class="js-input-login login-input has-password">
-                            <button class="show-pass">Show</button>
                         </div>
                         <?php if (isset($component)) { $__componentOriginal71c6471fa76ce19017edc287b6f4508c = $component; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.input-error','data' => ['messages' => $errors->get('password'),'class' => 'mt-2']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
@@ -111,6 +112,9 @@
 <?php $component = $__componentOriginal71c6471fa76ce19017edc287b6f4508c; ?>
 <?php unset($__componentOriginal71c6471fa76ce19017edc287b6f4508c); ?>
 <?php endif; ?>
+                        <a href="/" class="backtohome">
+                            I don't want to log in
+                        </a>
                     </div>
                 </form>
             </div>

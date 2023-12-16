@@ -46,7 +46,19 @@
                 <div class="nav-right--item"><i class="fa fa-heart"></i></div>
                 <?php if(Route::has('login')): ?>
                     <?php if(auth()->guard()->check()): ?>
-                        <a href="<?php echo e(url('/profile')); ?>" style="margin: 0"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
+                        
+                            <div class="nav-right--item isUser">
+                                <a href="<?php echo e(url('/profile')); ?>" style="margin: 0">
+                                    <i class="fa fa-user"></i>
+                                </a>
+                                <div class="logout">
+                                    <form action="<?php echo e(Route('logout')); ?>" method="POST">
+                                        <?php echo csrf_field(); ?>
+                                        <a class="watch-collection--item"><button class="menu-bt">LOG OUT</button></a>
+                                    </form>
+                                </div>
+                            </div>
+                        
                         <a href="<?php echo e(Route('cart.index')); ?>" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
                     <?php else: ?>
                         <a href="<?php echo e(url('/login')); ?>" style="margin: 0"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
@@ -173,8 +185,8 @@
                                 </div>
                             </div>
                             <div class="buy-btn">
-                                <a href="" class="discover cart has-link">Add to cart</a>
-                                <a class="discover has-link">Buy Now</a>
+                                <a id='<?php echo e($watch->id); ?>' class="discover cart">Add to cart</a>
+                                <a href="/order/buy?watch_id[]=<?php echo e($watch->id); ?>&quantity[]=1" class="discover has-link">Buy Now</a>
                             </div>
                         </div>
                     </a>
@@ -233,8 +245,8 @@
                         <!-- <h1 class="font-bold text-lg">RETURN & EXCHANGE POLICY</h1> -->
                             <i class="w-90 py-5">Cartier offers you 2 delivery options: </i>
                             
-                            <p>Standard Delivery: </p>
-                            <p>
+                        <p>Standard Delivery: </p>
+                        <p>
                                 2 to 3 business days.  Complimentary with all your orders.
                             </p>
                             <br>
