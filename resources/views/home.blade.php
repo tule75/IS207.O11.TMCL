@@ -46,18 +46,17 @@
                 <div class="nav-right--item"><i class="fa fa-heart"></i></div>
                 @if (Route::has('login'))
                     @auth
-                        
-                            <div class="nav-right--item isUser">
-                                <a href="{{ url('/profile') }}" style="margin: 0">
+                        <div class="nav-right--item isUser">
+                            <a href="{{ url('/profile') }}" style="margin: 0">
                                     <i class="fa fa-user"></i>
-                                </a>
-                                <div class="logout">
-                                    <form action="{{ Route('logout')}}" method="POST">
+                            </a>
+                            <div class="logout">
+                                <form action="{{ Route('logout')}}" method="POST">
                                         @csrf
-                                        <a class="watch-collection--item"><button class="menu-bt">LOG OUT</button></a>
-                                    </form>
-                                </div>
+                                    <a class="watch-collection--item"><button class="menu-bt">LOG OUT</button></a>
+                                </form>
                             </div>
+                        </div>
                         
                         <a href="{{Route('cart.index')}}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
                     @else

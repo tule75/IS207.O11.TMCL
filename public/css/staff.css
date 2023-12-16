@@ -64,6 +64,9 @@
 .email-contact span {
     padding: 0 10px;
 }
+.name {
+    font-size: 15px;
+}
 
 /* ============================BODY======================== */
 .main-content {
@@ -116,6 +119,7 @@
 .select-click {
     padding: 30px 30px;
     cursor: pointer;
+    margin: 5px 0;
 }
 .select-click.active { 
     background-color: #ddd ;
@@ -745,6 +749,7 @@ table {
 }
 
 /* ==========modal================== */
+
 .quick-modal {
     position: fixed;
     top: 0;
@@ -833,4 +838,70 @@ table {
 
 .modal_show {
     display: flex;
+}
+
+/* modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    max-width: 80%; 
+    max-height: 80%; 
+    overflow-y: auto; 
+    transition: all 0.3s ease-in-out;
+}
+
+
+.modal-table { 
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+.modal-heading { 
+    text-align: center;
+    font-weight: 700;
+}
+.modal-table th, .modal-table td {
+    border: 1px solid #ddd;
+    padding: 12px; 
+    text-align: left;
+}
+
+.modal-table th {
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+.close-modal {
+    display: block;
+    margin-top: 20px;
+    padding: 12px 20px; 
+    background-color: #4285f4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.close-modal:hover {
+    background-color: #357ae8;
+}
+.smaller {
+    width: 8%;
+}
+.img-tag { 
+    width: 20%;
+}
+.img-sp {
+    max-width: 40%;
+    height: 45%;
+    display: block; 
+    margin: 0 auto;
 }
