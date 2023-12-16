@@ -84,9 +84,9 @@
                         <div id="monthSelected" class="flex items-center justify-center mt-5">
                             <select id="monthSelect" class="monthSelected">
                                 <option value="" class="month">Chọn tháng</option>
-                                <option value="{{date('m/y')}}" class="month" id="12">{{date('F')}}</option>
-                                <option value="{{date('m/y', strtotime('-1 month'))}}" class="month">{{date('F', strtotime('-1 month'))}}</option>
-                                <option value="{{date('m/y', strtotime('-2 month'))}}" class="month">{{date('F', strtotime('-2 month'))}}</option>
+                                <option value="{{date('y/m')}}" class="month" id="12">{{date('F')}}</option>
+                                <option value="{{date('y/m', strtotime('-1 month'))}}" class="month">{{date('F', strtotime('-1 month'))}}</option>
+                                <option value="{{date('y/m', strtotime('-2 month'))}}" class="month">{{date('F', strtotime('-2 month'))}}</option>
                             </select>
                         </div>
 
@@ -97,7 +97,7 @@
                                 <div class="rev-result"></div>
                             </div>
 
-                            <div class="col ">
+                            <div class="col " id="totalOrder">
                                 <h3 class="">Total Orders : </h3>
                                 <p class="no-data">Chưa chọn tháng</p>
                                 <div class="order-result"></div>
@@ -138,33 +138,35 @@
                                         <div class="add-product-left">
                                             <div class="form-group">
                                                 <label for="pName">Product Name:</label>
-                                                <input type="text" name="pName" id="pName" placeholder="Product Name" class="form-control"/>
+                                                <input type="text" name="name" id="pName" placeholder="Product Name" class="form-control"/>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="pPrice">Product Price:</label>
-                                                <input type="text" name="pPrice" id="pPrice" placeholder="Product Price" class="form-control"/>
+                                                <input type="text" name="price" id="pPrice" placeholder="Product Price" class="form-control"/>
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Product Gender:</label>
                                                 <div class="radio-gender">
-                                                    <label><input type="radio" name="gender" value="Male"> Male</label>
-                                                    <label><input type="radio" name="gender" value="Female"> Female</label>
+                                                    <label><input type="radio" name="gender" value="male"> Male</label>
+                                                    <label><input type="radio" name="gender" value="female"> Female</label>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="pStorage">Product Storage:</label>
-                                                <input type="text" name="pStorage" id="pStorage" placeholder="Product Storage" class="form-control"/>
+                                                <input type="text" name="storage" id="pStorage" placeholder="Product Storage" class="form-control"/>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="pDiscount">Discount:</label>
-                                                <input type="text" name="pDiscount" readonly id="pDiscount" placeholder="Product Storage" class="form-control"/>
+                                                <input type="text" name="discount" id="pDiscount" placeholder="Product Storage" class="form-control"/>
                                             </div>
+
                                             <div class="form-group">
                                                 <label for="pBrand">Brand:</label>
-                                                <input type="text" name="pBrand" id="pBrand" placeholder="Product Brand" class="form-control"/>
+                                                <select name="brand_id" id="brand" placeholder="Product Brand" class="form-control">
+                                                </select>
                                             </div>
                                             
                                         </div>
@@ -172,29 +174,27 @@
                                         <div class="add-product-right mt-4">
                                             <div class="form-group">
                                                 <label for="pDes">Description:</label>
-                                                <input type="text" name="pDes" id="pDes" placeholder="Product Description" class="form-control"/>
+                                                <input type="text" name="description" id="pDes" placeholder="Product Description" class="form-control"/>
                                             </div>
                                             
 
                                             <div class="form-group">
                                                 <label for="pCate">Category:</label>
-                                                <select class="form-control" id="pCate" name="pCate">
-                                                    <option value="" class="form-opt">a</option>
-                                                    <option value="" class="form-opt">a</option>
+                                                <select class="form-control" id="category" name="category_id">
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="pUpload1">Upload Image 1:</label>
-                                                <input type="file" name="pUpload[]" id="pUpload1" class="form-control-file" required>
+                                                <input type="file" name="img1" id="pUpload1" class="form-control-file" required>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="pUpload2">Upload Image 2:</label>
-                                                <input type="file" name="pUpload[]" id="pUpload2" class="form-control-file" required>
+                                                <input type="file" name="img2" id="pUpload2" class="form-control-file" >
                                             </div>
                                             <div class="form-group">
                                                 <label for="pUpload3">Upload Image 3:</label>
-                                                <input type="file" name="pUpload[]" id="pUpload3" class="form-control-file" required>
+                                                <input type="file" name="img3" id="pUpload3" class="form-control-file" >
                                             </div>
                                         </div>
                                     </div>
@@ -288,12 +288,12 @@
                                         <div class="add-product-left">
                                             <div class="form-group">
                                                 <label for="pName">Product Name:</label>
-                                                <input type="text" name="pName" id="pName" placeholder="Product Name" class="form-control"/>
+                                                <input type="text" name="pName" id="pmName" placeholder="Product Name" class="form-control"/>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="pPrice">Product Price:</label>
-                                                <input type="text" name="pPrice" id="pPrice" placeholder="Product Price" class="form-control"/>
+                                                <input type="text" name="pPrice" id="pmPrice" placeholder="Product Price" class="form-control"/>
                                             </div>
 
                                             <div class="form-group">
@@ -305,16 +305,16 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="pStorage">Product Storage:</label>
-                                                <input type="text" name="pStorage" id="pStorage" placeholder="Product Storage" class="form-control"/>
+                                                <input type="text" name="pStorage" id="pmStorage" placeholder="Product Storage" class="form-control"/>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="pDiscount">Discount:</label>
-                                                <input type="text" name="pDiscount" readonly id="pDiscount" placeholder="Product Storage" class="form-control"/>
+                                                <input type="text" name="pDiscount" readonly id="pmDiscount" placeholder="Product Storage" class="form-control"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="pBrand">Brand:</label>
-                                                <input type="text" name="pBrand" id="pBrand" placeholder="Product Brand" class="form-control"/>
+                                                <input type="text" name="pBrand" id="pmBrand" placeholder="Product Brand" class="form-control"/>
                                             </div>
                                             
                                         </div>
@@ -322,29 +322,29 @@
                                         <div class="add-product-right mt-4">
                                             <div class="form-group">
                                                 <label for="pDes">Description:</label>
-                                                <input type="text" name="pDes" id="pDes" placeholder="Product Description" class="form-control"/>
+                                                <input type="text" name="pDes" id="pmDes" placeholder="Product Description" class="form-control"/>
                                             </div>
                                             
 
                                             <div class="form-group">
                                                 <label for="pCate">Category:</label>
-                                                <select class="form-control" id="pCate" name="pCate">
+                                                <select class="form-control" id="pmCate" name="pCate">
                                                     <option value="" class="form-opt">a</option>
                                                     <option value="" class="form-opt">a</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="pUpload1">Upload Image 1:</label>
-                                                <input type="file" name="pUpload[]" id="pUpload1" class="form-control-file" required>
+                                                <input type="file" name="pUpload[]" id="pmUpload1" class="form-control-file" required>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="pUpload2">Upload Image 2:</label>
-                                                <input type="file" name="pUpload[]" id="pUpload2" class="form-control-file" required>
+                                                <input type="file" name="pUpload[]" id="pmUpload2" class="form-control-file" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="pUpload3">Upload Image 3:</label>
-                                                <input type="file" name="pUpload[]" id="pUpload3" class="form-control-file" required>
+                                                <input type="file" name="pUpload[]" id="pmUpload3" class="form-control-file" required>
                                             </div>
                                         </div>
                                     </div>
@@ -468,7 +468,7 @@
                                                 <input
                                                         type="password"
                                                         name="password_confirmation"
-                                                        id="pPassword"
+                                                        id="cPassword"
                                                         placeholder="Enter password"
                                                         class="product-input-area"
                                                         required autocomplete="new-password"

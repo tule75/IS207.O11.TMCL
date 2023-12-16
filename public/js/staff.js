@@ -142,3 +142,19 @@ $(document).ready(function() {
         })
     })
 })
+
+
+const gridItems = document.querySelectorAll('.grid-item-count')
+const modals  = document.querySelectorAll('.modal');
+const closeModals = document.querySelectorAll('.close-modal');
+gridItems.forEach((item, index) => {
+    
+    item.addEventListener('click', () => {
+        modals[index].style.display = 'block';
+    });
+    closeModals[index].addEventListener('click', () => {
+        modals[index].style.display = 'none';
+
+    })
+   
+})

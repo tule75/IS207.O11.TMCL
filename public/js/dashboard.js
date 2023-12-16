@@ -8,28 +8,30 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': csrfToken
         }
       })  
-      let startDate = "1/" + event.target.value;
-      let endDate = "30/" + event.target.value;
+      let startDate = '20' + event.target.value + "/1";
+      let endDate = '20' + event.target.value + "/30";
       let sum = 0;
       $.ajax({
         method: 'get',
         url: `/order/get?start_date=${startDate}&end_date=${endDate}`,
         success: function (orderdata, textStatus) {
-          // const monthRevenue = document.createElement('span');
-          // monthRevenue.setAttribute("class", "RevenueResults");
-          // for (var i = 0; i < orderdata.length; i++) {
-          //           var item = orderdata[i];
-          //           sum = sum + item.total_prices;
-          //   console.log(i)
-          // }
-          // console.log(sum);
-          // monthRevenue.textContent = sum;
-          // document.querySelector('.rev-result').appendChild(monthRevenue);
-          console.log(orderdata[0].total_prices)
+          const monthRevenue = document.createElement('span');
+          monthRevenue.setAttribute("class", "RevenueResults");
+          for (var i = 0; i < orderdata.orders.length; i++) {
+            var item = orderdata.orders[i];
+            if (item.status = "Success") {
+              sum = sum + item.total_prices;
+            }
+          }
+          monthRevenue.textContent = sum;
+          $('div#monthRevenue').find('p').text('');
+          document.querySelector('.rev-result').innerHTML = '';
+          document.querySelector('.rev-result').appendChild(monthRevenue);
+          // console.log(orderdata[0].order)
+          $('div#totalOrder').find('p').text('');
+          document.querySelector('.order-result').innerHTML = orderdata.orders.length;
         }
       });
-     
-      
     })
 })
 // const monthSelection = document.getElementById()

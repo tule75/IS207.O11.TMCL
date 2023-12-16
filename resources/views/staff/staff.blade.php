@@ -27,8 +27,11 @@
             <div class="header-right-wrap">
                <p class="email-contact">
                     <i class="fa fa-phone"></i>
-                    <span>Email for assistance : 
+                    <span class="name">Email for assistance : 
                         <strong>theuitersmerchant@gmail.com</strong>
+                    </span>
+                    <span class="name">Staff's name: 
+                        <strong>{{auth()->user()->name}}</strong>
                     </span>
                </p>
             </div>
@@ -37,10 +40,6 @@
 
         <div class="main-content">
             <div class="main-left">
-                <div class="input-space">
-                    <div class="img-btn"><img class="span-search" src="{{asset('/img/search.png')}}" alt=""></div>
-                    <input class="input-box" type="text" placeholder="Typing here ....">
-                </div>
                 <div class="selection">
                     <div class="select-click active">Trang chủ</div>
                     <div class="select-click">Quản lí đơn hàng</div>
@@ -51,34 +50,37 @@
             </div>
 
             <div class="main-right">
+                <div class="overlay"></div>
                 <!--Trang chủ-->
                 <div class="select-container active">
                     <div content-todo>
                         <h2>Danh sách cần làm</h2>
                         <p class="content-text">Những việc bạn sẽ phải làm.</p>
                         <div class="grid-container">
-                            <div class="grid-item-count">0
+                            <div class="grid-item-count add-modal">
+                                0
                                 <div class="grid-item-text">Chờ xác nhận</div>
                             </div>
-                            <div class="grid-item-count">{{ count($pOrders) }}
+                            <div class="grid-item-count add-modal">
+                                {{ count($pOrders) }}
                                 <div class="grid-item-text">Chờ lấy hàng</div>
                             </div>
-                            <div class="grid-item-count">{{ count($sOrders) + count($successOrders) }}
+                            <div class="grid-item-count add-modal" >{{ count($sOrders) + count($successOrders) }}
                                 <div class="grid-item-text">Đã xử lí</div>
                             </div>
-                            <div class="grid-item-count">0
+                            <div class="grid-item-count add-modal">0
                                 <div class="grid-item-text">Đơn hủy</div>
                             </div>
-                            <div class="grid-item-count">0
+                            <div class="grid-item-count add-modal" >0
                                 <div class="grid-item-text">Trả hàng/Hoàn tiền chờ xử lý</div>
                             </div>
-                            <div class="grid-item-count"> {{ count($trashed) }}
+                            <div class="grid-item-count add-modal"> {{ count($trashed) }}
                                 <div class="grid-item-text">Sản phẩm bị tạm khóa</div>
                             </div>
-                            <div class="grid-item-count">0
+                            <div class="grid-item-count add-modal" >0
                                 <div class="grid-item-text">Khiếu nại</div>
                             </div>
-                            <div class="grid-item-count">{{count($activeVoucher)}}
+                            <div class="grid-item-count add-modal" >{{count($activeVoucher)}}
                                 <div class="grid-item-text">Chương trình khuyến mãi chờ xử lí</div>
                             </div>
                         </div>
@@ -107,21 +109,7 @@
                         
                         <div class="table-field">
                             <table>
-                                <!-- <tbody>
-                                    <tr>
-                                        <td width="350px">Sản Phẩm</td>
-                                        <td></td>
-                                        <td width="140px">Tổng tiền</td>
-                                        <td width="120px">Trạng thái</td>
-                                        <td width="130px">Ngày đặt hàng</td>
-                                        <td width="180px">Mã đơn hàng</td>
-                                        <td width="120">Cập nhập</td>
-                                    </tr>
-                                </tbody>
-                            </table> -->
-            
                                 <table>
-                                     
                                     <tr>
                                         <th>Mã Đơn hàng</td>
                                         <th>Tổng tiền</th>
@@ -328,12 +316,6 @@
                         </div>
 
                         <div class="chat-assist_auto-content">
-                            <!-- <div class="auto-content_note">
-                                <p>Trả lời tự động mặc định sẽ chỉ được kích hoạt 24 giờ một lần cho mỗi người mua.</p>
-                                <p>Trả lời tự động mặc định sẽ chỉ được kích hoạt 24 giờ một lần cho mỗi người mua.</p>
-                            </div> -->
-
-                            <!-- <br> -->
 
                             <div class="auto-content_standard">
                                 <h4 class="standard_header">Standard automation chat</h4>
@@ -556,6 +538,365 @@
         </div>
     </div>
 </body>
+<!-- Modal  -->
+<!-- cho xac nhan -->
+<div id="confirm-modal" class="modal">
+    <h3 class="modal-heading">Chờ xác nhận</h3>
+    <table class="modal-table">
+        <thead>
+            <tr >
+                <th>Mã sản phẩm</th>
+                <th>Hình Ảnh</th>
+                <th>Tên SP</th>
+                <th>Số lượng</th>
+                <th>Tổng tiền</th>
+                <th>Giảm giá</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="smaller">001</td>
+                <td class="img-tag">
+                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                </td>
+                <td>Sản phẩm A</td>
+                <td class="smaller">10</td>
+                <td>$100.00</td>
+                <td class="smaller">$10.00</td>
+            </tr>
+            <tr>
+                <td class="msp">002</td>
+                <td>
+                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                </td>
+                <td>Sản phẩm B</td>
+                <td class="smaller">5</td>
+                <td>$50.00</td>
+                <td class="smaller">$5.00</td>
+            </tr>
+            <tr>
+                <td>002</td>
+                <td>
+                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                </td>
+                <td>Sản phẩm B</td>
+                <td>5</td>
+                <td>$50.00</td>
+                <td>$5.00</td>
+            </tr>
+        </tbody>
+    </table>
+   <button class="close-modal">close</button>
+</div>
+<!-- Chờ lấy hàng -->
+<div id="pickup-modal" class="modal">
+    <h3 class="modal-heading">Chờ lấy hàng</h3>
+    <table class="modal-table">
+        <thead>
+            <tr >
+                <th>Mã sản phẩm</th>
+                <th>Hình Ảnh</th>
+                <th>Tên SP</th>
+                <th>Số lượng</th>
+                <th>Tổng tiền</th>
+                <th>Giảm giá</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="smaller">001</td>
+                <td class="img-tag">
+                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                </td>
+                <td>Sản phẩm A</td>
+                <td class="smaller">10</td>
+                <td>$100.00</td>
+                <td class="smaller">$10.00</td>
+            </tr>
+            <tr>
+                <td class="msp">002</td>
+                <td>
+                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                </td>
+                <td>Sản phẩm B</td>
+                <td class="smaller">5</td>
+                <td>$50.00</td>
+                <td class="smaller">$5.00</td>
+            </tr>
+            <tr>
+                <td>002</td>
+                <td>
+                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                </td>
+                <td>Sản phẩm B</td>
+                <td>5</td>
+                <td>$50.00</td>
+                <td>$5.00</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="close-modal">close</button>
+
+</div>
+<!-- da xu ly -->
+<div id="processed-modal" class="modal">
+    <h3 class="modal-heading">Đã xử lý</h3>
+    <table class="modal-table">
+        <thead>
+            <tr >
+                <th>Mã sản phẩm</th>
+                <th>Hình Ảnh</th>
+                <th>Tên SP</th>
+                <th>Số lượng</th>
+                <th>Tổng tiền</th>
+                <th>Giảm giá</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="smaller">001</td>
+                <td class="img-tag">
+                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                </td>
+                <td>Sản phẩm A</td>
+                <td class="smaller">10</td>
+                <td>$100.00</td>
+                <td class="smaller">$10.00</td>
+            </tr>
+            <tr>
+                <td class="msp">002</td>
+                <td>
+                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                </td>
+                <td>Sản phẩm B</td>
+                <td class="smaller">5</td>
+                <td>$50.00</td>
+                <td class="smaller">$5.00</td>
+            </tr>
+            <tr>
+                <td>002</td>
+                <td>
+                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                </td>
+                <td>Sản phẩm B</td>
+                <td>5</td>
+                <td>$50.00</td>
+                <td>$5.00</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="close-modal">close</button>
+
+</div>
+<!-- don huy -->
+<div id="cancel-modal" class="modal">
+    <h3 class="modal-heading">Đơn hủy</h3>
+    <table class="modal-table">
+        <thead>
+            <tr >
+                <th>Mã sản phẩm</th>
+                <th>Hình Ảnh</th>
+                <th>Tên SP</th>
+                <th>Số lượng</th>
+                <th>Tổng tiền</th>
+                <th>Giảm giá</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="smaller">001</td>
+                <td class="img-tag">
+                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                </td>
+                <td>Sản phẩm A</td>
+                <td class="smaller">10</td>
+                <td>$100.00</td>
+                <td class="smaller">$10.00</td>
+            </tr>
+            <tr>
+                <td class="msp">002</td>
+                <td>
+                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                </td>
+                <td>Sản phẩm B</td>
+                <td class="smaller">5</td>
+                <td>$50.00</td>
+                <td class="smaller">$5.00</td>
+            </tr>
+            <tr>
+                <td>002</td>
+                <td>
+                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                </td>
+                <td>Sản phẩm B</td>
+                <td>5</td>
+                <td>$50.00</td>
+                <td>$5.00</td>
+            </tr>
+            <!-- Thêm các hàng dữ liệu khác nếu cần -->
+        </tbody>
+    </table>
+    <button class="close-modal">close</button>
+</div>
+<!-- hoan tra -->
+<div id="return-modal" class="modal">
+    <h3 class="modal-heading">Đơn trả hàng/Hoàn tiền chờ xử lý </h3>
+    <table class="modal-table">
+        <thead>
+            <tr >
+                <th>Mã sản phẩm</th>
+                <th>Hình Ảnh</th>
+                <th>Tên SP</th>
+                <th>Số lượng</th>
+                <th>Tổng tiền</th>
+                <th>Giảm giá</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="smaller">001</td>
+                <td class="img-tag">
+                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                </td>
+                <td>Sản phẩm A</td>
+                <td class="smaller">10</td>
+                <td>$100.00</td>
+                <td class="smaller">$10.00</td>
+            </tr>
+            <tr>
+                <td class="msp">002</td>
+                <td>
+                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                </td>
+                <td>Sản phẩm B</td>
+                <td class="smaller">5</td>
+                <td>$50.00</td>
+                <td class="smaller">$5.00</td>
+            </tr>
+            <tr>
+                <td>002</td>
+                <td>
+                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                </td>
+                <td>Sản phẩm B</td>
+                <td>5</td>
+                <td>$50.00</td>
+                <td>$5.00</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="close-modal">close</button>
+</div>
+
+<!-- tạm khóa  -->
+<div id="locked-modal" class="modal">
+    <h3 class="modal-heading">Sản phẩm bị tạm khóa </h3>
+    <table class="modal-table">
+        <thead>
+            <tr >
+                <th>Mã sản phẩm</th>
+                <th>Hình Ảnh</th>
+                <th>Tên SP</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="smaller">001</td>
+                <td class="img-tag">
+                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                </td>
+                <td>Sản phẩm A</td>
+              
+            </tr>
+            <tr>
+                <td class="msp">002</td>
+                <td>
+                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                </td>
+                <td>Sản phẩm B</td>
+               
+            <tr>
+                <td>003</td>
+                <td>
+                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                </td>
+                <td>Sản phẩm C</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="close-modal">close</button>
+</div>
+
+<!-- Khiếu nại  -->
+<div id="complain-modal" class="modal">
+    <h3 class="modal-heading">Khiếu nại</h3>
+    <table class="modal-table">
+        <thead>
+            <tr>
+                <th>Mã khiếu nại</th>
+                <th>Tên khách hàng</th>
+                <th>Loại khiếu nại</th>
+                <th>Nội dung</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>MKN01</td>
+                <td>Nguyễn Dương Tùng</td>
+                <td>Giao Hàng</td>
+                <td>Giao hàng 1 tuần mới nhận hàng là sao mấy ní ?</td>
+
+            </tr>
+        </tbody>
+    </table>
+    <button class="close-modal">close</button>
+</div>
+<!--  Chương trình khuyến mãi chờ xử lí -->
+<div id="discount-modal" class="modal">
+    <h3 class="modal-heading">Chương trình khuyến mãi chờ xử lí</h3>
+    <table class="modal-table">
+        <thead>
+            <tr >
+                <th>Mã giảm giá</th>
+                <th>Gía trị</th>
+                <th>Số lượng</th>
+                <th>Ngày bắt đầu</th>
+                <th>Ngày kết thúc</th>
+                <th>Yêu cầu</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>MAGG1</td>
+                <td>100.000</td>
+                <td>10</td>
+                <td>10-12-2023</td>
+                <td>10-01-2024</td>
+                <td>Áp dụng hóa đơn từ triệu</td>
+            </tr>
+            <tr>
+                <td>MAGG1</td>
+                <td>100.000</td>
+                <td>10</td>
+                <td>10-12-2023</td>
+                <td>10-01-2024</td>
+                <td>Áp dụng hóa đơn từ triệu</td>
+            </tr>
+            <tr>
+                <td>MAGG1</td>
+                <td>100.000</td>
+                <td>10</td>
+                <td>10-12-2023</td>
+                <td>10-01-2024</td>
+                <td>Áp dụng hóa đơn từ triệu</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="close-modal">close</button>
+</div>
+
+
 
 <div class="quick-modal">
     <div class="quick-modal_container">
