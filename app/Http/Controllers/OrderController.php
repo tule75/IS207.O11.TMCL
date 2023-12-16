@@ -77,6 +77,7 @@ class OrderController extends Controller
     public function create(Request $request)
     {
         $watch = [];
+        // dd($request);
         foreach ($request->watch_id as $index => $id) {
             array_push($watch, Watch::with(['brand' => function ($query) {}, 'category' => function ($query) {}])->find($id)); 
             $watch[$index]->quantity = $request->quantity[$index];
