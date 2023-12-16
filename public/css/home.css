@@ -79,6 +79,35 @@
     padding: 10px 20px;
 
 }
+.isUser {
+    position: relative;
+    display: inline-block;
+    /* margin: 0; */
+}
+.isUser:hover .logout {
+    display: block;
+}
+.logout {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: -12px;
+    width: 150px;
+    background-color: #F2F2F2; 
+    padding: 10px;
+    z-index: 1;
+}
+.logout:hover {
+    background-color: #4f4d4d;
+    color: white;
+    
+}
+.logout a {
+    padding-left: 20px;
+}
+
+
+
 .nav-right--item .fa {
     outline-color: #1d1c1c;
     cursor: pointer;
