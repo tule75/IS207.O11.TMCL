@@ -1,20 +1,18 @@
 
 var csrfToken = $('meta[name="csrf-token"]').attr('content');
 $(document).ready(function () {
-    $('#catebtn').click(function () {
+    $('#pcate').click(function () {
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': csrfToken
             }
         })
-        var sections = document.getElementsByClassName('cate-dropdown-content');
+        
         if(!sections[0].options.length)
         $.ajax({
             method: 'get',
             url: '/category/getall',
             success: function (data, textStatus) {
-
-                let section = sections[0];
                 for (var i = 0; i < data.length; i++) {
                     var item = data[i];
                     var option = document.createElement('option');
@@ -22,12 +20,11 @@ $(document).ready(function () {
                     option.setAttribute("class", "cate-dropdown-content-item");
                     option.text = item.name;
                 
-                    section.appendChild(option);
+                    $(this).appendChild(option);
                 }
             }
         });
     })
-
 })
 const bar = document.querySelector('.icon-bars');
 const inputSearch = document.querySelector('.input-box');

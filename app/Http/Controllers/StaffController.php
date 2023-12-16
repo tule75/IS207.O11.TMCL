@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Http\Requests\StoreStaffRequest;
 use App\Http\Requests\UpdateStaffRequest;
 use App\Models\Orders;
+use App\Models\Voucher;
+use App\Models\Watch;
 
 class StaffController extends Controller
 {
@@ -15,8 +17,26 @@ class StaffController extends Controller
     public function index()
     {
         //
-        Orders::where();
-        return view('staff/staff');
+        $pOrders = Orders::where('status', 'Pending')->with([
+            'watches' => function ($query) { return $query->select('watches.id', 'watches.name', 'watches.img1', 'watches.price', 'watches.storage'); },
+            'address',
+            'user'
+        ])->get();
+        $sOrders = Orders::where('status', 'Shipping')->with([
+            'watches' => function ($query) { $query->select('watches.id', 'watches.name', 'watches.img1', 'watches.price', 'watches.storage'); } ,
+            'address',
+            'user',
+        ])->get();
+        $successOrders = Orders::where('status', 'Success')->with([
+            'watches' => function ($query) { $query->select('watches.id', 'watches.name', 'watches.img1', 'watches.price', 'watches.storage'); } ,
+            'address',
+            'user',
+        ])->get();
+
+        $awaitVoucher = Voucher::where('status', 'await')->get();
+        $activeVoucher = Orders::where('status', 'Active')->get();
+        $trashProduct = Watch::onlyTrashed()->get();
+        return view('staff/staff', ['pOrders' => $pOrders, 'sOrders' => $sOrders, 'successOrders' => $successOrders, 'awaitVoucher' => $awaitVoucher, 'activeVoucher' => $activeVoucher, 'trashed' => $trashProduct]);
     }
 
     /**

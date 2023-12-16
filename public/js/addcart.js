@@ -1,7 +1,7 @@
 $(document).ready(function(){
     var csrfToken = $('meta[name="csrf-token"]').attr('content');
     $(".cart").click(function(){
-        let id = $(this).parent('.product-object').children('a').attr('href');
+        let id = $(this).attr('id');
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': csrfToken
@@ -11,7 +11,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/cart",
             method: 'POST',
-            data: {'watch_id': id.replace('/watch/', '')},
+            data: {'watch_id': id},
             success: function (data) {
                 console.log(data);
             },

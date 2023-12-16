@@ -121,3 +121,24 @@ const addBtn = document.querySelector('.quick-head-btn');
         modalContainer.addEventListener('click', function(event) {
             event.stopPropagation()
         })
+
+$(document).ready(function() {
+    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+    console.log(1);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': csrfToken
+        }
+    })
+    $('.update').click(function () {
+        let id = $(this).parent().parent().find('.oID').text().replace('HD','');
+        console.log(id);
+        $.ajax({
+            url: `/order/${id}`,
+            method: 'patch',
+            success: function (data) {
+                $(this).parent().find('.status').text('Đang giao hàng');
+            }
+        })
+    })
+})
