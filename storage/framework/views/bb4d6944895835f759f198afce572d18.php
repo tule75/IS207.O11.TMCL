@@ -17,6 +17,7 @@
     <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
     <link rel="stylesheet" href="<?php echo e(asset('/icon/fontawesome-free-6.4.2-web/css/regular.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('/css/home.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/home-responsive.css')); ?>">
 </head>
 
 <body>
@@ -46,18 +47,17 @@
                 <div class="nav-right--item"><i class="fa fa-heart"></i></div>
                 <?php if(Route::has('login')): ?>
                     <?php if(auth()->guard()->check()): ?>
-                        
-                            <div class="nav-right--item isUser">
-                                <a href="<?php echo e(url('/profile')); ?>" style="margin: 0">
+                        <div class="nav-right--item isUser">
+                            <a href="<?php echo e(url('/profile')); ?>" style="margin: 0">
                                     <i class="fa fa-user"></i>
-                                </a>
-                                <div class="logout">
-                                    <form action="<?php echo e(Route('logout')); ?>" method="POST">
+                            </a>
+                            <div class="logout">
+                                <form action="<?php echo e(Route('logout')); ?>" method="POST">
                                         <?php echo csrf_field(); ?>
-                                        <a class="watch-collection--item"><button class="menu-bt">LOG OUT</button></a>
-                                    </form>
-                                </div>
+                                    <a class="watch-collection--item"><button class="menu-bt">LOG OUT</button></a>
+                                </form>
                             </div>
+                        </div>
                         
                         <a href="<?php echo e(Route('cart.index')); ?>" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
                     <?php else: ?>
