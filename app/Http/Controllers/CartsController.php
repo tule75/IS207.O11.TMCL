@@ -42,7 +42,7 @@ class CartsController extends Controller
             if ($request->has('quantity')) {
                 $quantity = $request->quantity;
             }
-            $watch_id = Watch::where('slug', $request->watch_id)->first()->id;
+            $watch_id = $request->watch_id;
             $cart = Carts::where('user_id', auth()->user()->id)->where('watch_id', $watch_id)->first();
             if ($cart) {
                 $cart->quantity += $quantity;

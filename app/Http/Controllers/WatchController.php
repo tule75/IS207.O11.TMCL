@@ -24,11 +24,13 @@ class WatchController extends Controller
     }
 
     public function collectionIndex(Request $request) {
+        $brand = BrandController::index();
+        $category = CategoryController::index();
         $watches = $request->has('cate') ? Watch::where('category_id', $request->cate) : new Watch();
         $watches = $request->has('brand') ? $watches->where('brand_id', $request->brand) : $watches;
         $watches = $request->has('gender') ? $watches->where('gender', $request->gender) : $watches;
 
-        return view('collection', ['watches' => $watches->get()]);
+        return view('collection', ['watches' => $watches->get(),'brand' => $brand, 'category' => $category]);
     }
 
     public function indexCategory(Request $request)
