@@ -1,30 +1,40 @@
 
 var csrfToken = $('meta[name="csrf-token"]').attr('content');
 $(document).ready(function () {
-    $('#pcate').click(function () {
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': csrfToken
             }
         })
-        
-        if(!sections[0].options.length)
-        $.ajax({
-            method: 'get',
-            url: '/category/getall',
-            success: function (data, textStatus) {
-                for (var i = 0; i < data.length; i++) {
-                    var item = data[i];
-                    var option = document.createElement('option');
-                    option.value = item.id;
-                    option.setAttribute("class", "cate-dropdown-content-item");
-                    option.text = item.name;
-                
-                    $(this).appendChild(option);
-                }
+        $('#category').click(function () {
+            if ($(this).find('option').length == 0) {
+                $.ajax({
+                    method: 'get',
+                    url: '/category/getall',
+                    success: function (data, textStatus, xhr) {
+                        for (var i = 0; i < data.length; i++) {
+                            var item = data[i];                    
+                            $('select#category').append(`<option value=${item.id}>${item.name}</option>`);
+                        }
+                    }
+                });
             }
-        });
-    })
+            
+        })
+        $('#brand').click(function () {
+            if ($(this).find('option').length == 0) {
+                $.ajax({
+                    method: 'get',
+                    url: '/brand/getall',
+                    success: function (data, textStatus, xhr) {
+                        for (var i = 0; i < data.length; i++) {
+                            var item = data[i];                    
+                            $('select#brand').append(`<option value=${item.id}>${item.name}</option>`);
+                        }
+                    }
+                });
+            }
+        })
 })
 const bar = document.querySelector('.icon-bars');
 const inputSearch = document.querySelector('.input-box');
