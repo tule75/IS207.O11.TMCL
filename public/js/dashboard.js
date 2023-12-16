@@ -1,4 +1,5 @@
 
+
 var csrfToken = $('meta[name="csrf-token"]').attr('content');
 $(document).ready(function () {
     $("#monthSelect").on('change', (event) => {
@@ -9,23 +10,25 @@ $(document).ready(function () {
       })  
       let startDate = "1/" + event.target.value;
       let endDate = "30/" + event.target.value;
-      
+      let sum = 0;
       $.ajax({
         method: 'get',
         url: `/order/get?start_date=${startDate}&end_date=${endDate}`,
         success: function (orderdata, textStatus) {
-
-          // $.ajax({
-          //   method: 'POST',
-          //   url: '/manager/revenue',
-          //   data: {'start_date': startDate, 'end-date': endDate},
-          //   success: function (response, textStatus) {
-          //     // 
-          //     console.log(response)
-          //   }
-          // });
+          // const monthRevenue = document.createElement('span');
+          // monthRevenue.setAttribute("class", "RevenueResults");
+          // for (var i = 0; i < orderdata.length; i++) {
+          //           var item = orderdata[i];
+          //           sum = sum + item.total_prices;
+          //   console.log(i)
+          // }
+          // console.log(sum);
+          // monthRevenue.textContent = sum;
+          // document.querySelector('.rev-result').appendChild(monthRevenue);
+          console.log(orderdata[0].total_prices)
         }
       });
+     
       
     })
 })
@@ -89,7 +92,13 @@ $(document).ready(function () {
 //     let monthRevenue = document.querySelector('.RevenueResults');
 //     let orderCounts = document.querySelector('.OrderResults');
 //     let productCount = document.querySelector('.ProductResults');
-
+//     let monthRevenue = document.querySelector('.RevenueResults');
+//         monthRevenue = document.createElement('span');
+//         monthRevenue.setAttribute("class", "RevenueResults");
+//         document.querySelector('.rev-result').appendChild(monthRevenue);
+// document.querySelectorAll('.no-data').forEach(element => {
+  //           element.style.display = 'none';
+  //       });
 //     if (!monthRevenue && !orderCounts && !productCount) {
 //         monthRevenue = document.createElement('span');
 //         orderCounts = document.createElement('p');

@@ -29,7 +29,7 @@ class Orders extends Model
 
     public function watches(): BelongsToMany
     {
-        return $this->belongsToMany(Watch::class, 'Order_items', 'order_id', 'watch_id')->withPivot('price')->withTrashed();
+        return $this->belongsToMany(Watch::class, 'Order_items', 'order_id', 'watch_id')->withPivot(['quantity', 'price'])->withTrashed();
     }
 
     public function voucher(): BelongsTo

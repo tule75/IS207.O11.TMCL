@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For Staff</title>
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Logo_UIT_updated.svg/1200px-Logo_UIT_updated.svg.png">
@@ -59,10 +60,10 @@
                             <div class="grid-item-count">0
                                 <div class="grid-item-text">Chờ xác nhận</div>
                             </div>
-                            <div class="grid-item-count">0
+                            <div class="grid-item-count">{{ count($pOrders) }}
                                 <div class="grid-item-text">Chờ lấy hàng</div>
                             </div>
-                            <div class="grid-item-count">0
+                            <div class="grid-item-count">{{ count($sOrders) + count($successOrders) }}
                                 <div class="grid-item-text">Đã xử lí</div>
                             </div>
                             <div class="grid-item-count">0
@@ -71,13 +72,13 @@
                             <div class="grid-item-count">0
                                 <div class="grid-item-text">Trả hàng/Hoàn tiền chờ xử lý</div>
                             </div>
-                            <div class="grid-item-count">0
+                            <div class="grid-item-count"> {{ count($trashed) }}
                                 <div class="grid-item-text">Sản phẩm bị tạm khóa</div>
                             </div>
                             <div class="grid-item-count">0
-                                <div class="grid-item-text">Sản phẩm bị tạm khóa</div>
+                                <div class="grid-item-text">Khiếu nại</div>
                             </div>
-                            <div class="grid-item-count">0
+                            <div class="grid-item-count">{{count($activeVoucher)}}
                                 <div class="grid-item-text">Chương trình khuyến mãi chờ xử lí</div>
                             </div>
                         </div>
@@ -100,6 +101,10 @@
                             <input type="text" class="search-bar" placeholder="Nhập id đơn hàng">
                             <div class="search-icon">&#128269;</div>
                         </div>
+                        @php 
+                            $orders = $pOrders->merge($sOrders)->merge($successOrders);
+                        @endphp
+                        
                         <div class="table-field">
                             <table>
                                 <!-- <tbody>
@@ -116,58 +121,63 @@
                             </table> -->
             
                                 <table>
+                                     
                                     <tr>
-                                        <th>Sản Phẩm</td>
-                                        <th></th>
-                                        <th></th>
+                                        <th>Mã Đơn hàng</td>
                                         <th>Tổng tiền</th>
                                         <th>Trạng thái</th>
                                         <th>Ngày đặt hàng</th>
-                                        <th>Mã đơn hàng</th>
+                                        <th>Tên khách hàng</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Địa chỉ</th>
                                         <th>Cập nhập</th>
                                     </tr>
+                                    @foreach ($orders as $order)
                                     <tr>
                                         <td>
-                                            <img src="{{asset('/img/h2.webp')}}" alt="" width="95px">
+                                            <p class="oID">HD{{$order->id}}</p>
                                         </td>
                                         <td>
-                                            <p>TANK LOUIS CARTIER WATCH </p>
+                                            <p>{{$order->total_prices}}</p>
+                                        </td>
+                                        <td class="status">
+                                            @if ($order->status == 'Pending') 
+                                                Chờ xác nhận
+                                            @elseif ($order->status == 'Shipping')
+                                                Đang giao hàng
+                                            @elseif ($order->status == 'Success')
+                                                Thành công
+                                            @endif
                                         </td>
                                         <td>
-                                            x1
-                                        </td>
-                                        <td>
-                                            <p>$10,200.00 </p>
+                                            <p>{{ $order->created_at }}</p>
                                             <p>Đã thanh toán </p>
                                         </td>
                                         <td>
-                                            <p>Đang giao cho đơn vị vận chuyển</p>
+                                            <p> {{$order->user->name}}</p>
                                         </td>
                                         <td>
                                             <p>
-                                                1/10/2023
+                                                {{$order->address->phone_number}}
                                             </p>
                                         </td>
                                         <td>
-                                            <p>123456789</p>
+                                            <p>{{ $order->address->address . ', '. $order->address->ward . ", " . $order->address->district . ", " . $order->address->province }}</p>
                                         </td>
                                         <td>
-                                            <select name="update" id="update">
-                                                <option value="Het hang">Hết hàng</option>
-                                                <option value="Xac nhan">Xác nhận</option>
-                                                <option value="Dong Goi">Đã đóng gói</option>
-                                                <option value="Da giao">Đã giao</option>
-                                                <option value="Huy don">Hủy đơn</option>
-                                            </select>
+                                            @if ($order->status == 'Pending')
+                                            <button name="update" class="update">
+                                                Đã gửi hàng
+                                            <buttonn>
+                                            @endif
                                         </td>
                                     </tr>
-            
+                                    @endforeach
                                     </tbody>
+                                    
                                 </table>
-                                <div>
-                                    <button class="Save-bt">Save</button>
-                                </div>
                         </div>
+                        
                     </div>
                 </div>
 
@@ -571,6 +581,6 @@
         <button class="quick-modal_btn"><i class="fa-solid fa-plus"></i> Add New Chat</button>
     </div>
 </div>
-
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script src="{{asset('js/staff.js')}}"></script>
 </html>

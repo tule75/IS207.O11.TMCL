@@ -154,6 +154,41 @@
     font-weight: 600;
     cursor: pointer;
 }
+/* 
+.custom-form {
+    max-width: 400px;
+    margin: auto;
+}
 
+.form-group {
+    margin-bottom: 1.5rem;
+}
 
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
 
+.form-control:focus {
+    border-color: #3490dc;
+}
+
+.error-message {
+    color: #e53e3e;
+    margin-top: 0.5rem;
+}
+
+.text-link {
+    color: #3490dc;
+    text-decoration: underline;
+}
+
+.text-link:hover {
+    color: #2779bd;
+}
+
+ */

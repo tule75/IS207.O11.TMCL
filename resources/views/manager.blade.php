@@ -107,9 +107,9 @@
                                 <h3 class="">Product Orders : </h3>
                                 <p class="no-data">Chưa chọn tháng</p>
                                 <div class="product-result"></div>
-                                @foreach ($order as $order)
+                                <!-- @foreach ($order as $order)
                                     <p>Month: {{ $order->created_at }}, Revenue: {{ $order->total_prices }}</p>
-                                @endforeach
+                                @endforeach -->
                             </div>
 
                         </div>
