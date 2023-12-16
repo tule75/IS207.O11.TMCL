@@ -173,8 +173,8 @@
                                 </div>
                             </div>
                             <div class="buy-btn">
-                                <a href="" class="discover cart has-link">Add to cart</a>
-                                <a class="discover has-link">Buy Now</a>
+                                <a id='{{$watch->id}}' class="discover cart">Add to cart</a>
+                                <a href="/order/buy?watch_id[]={{$watch->id}}&quantity[]=1" class="discover has-link">Buy Now</a>
                             </div>
                         </div>
                     </a>

@@ -14,6 +14,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response as FacadesResponse;
 
 class OrderController extends Controller
 {
@@ -215,8 +216,7 @@ class OrderController extends Controller
                 $order->status = "Shipping";
             }
             $order->save();
-            dd($order);
-            return back()->withInput(['message' => 'Order updated successfully']);
+            return FacadesResponse::json(['message' => "Success"],200);
         } catch(Exception $e) {
             return back()->withErrors(['message' => $e->getMessage()]);
         }
