@@ -545,64 +545,52 @@
     <table class="modal-table">
         <thead>
             <tr >
-                <th>Mã sản phẩm</th>
-                <th>Hình Ảnh</th>
-                <th>Tên SP</th>
+
+                <th>Mã đơn hàng</th>
                 <th>Số lượng</th>
                 <th>Tổng tiền</th>
                 <th>Giảm giá</th>
+                <th>Ngày đặt hàng</th>
+                <th>Tên khách hàng</th>
+                <th>SĐT</th>
+                <th>
+                   Chi tiết đơn hàng
+                </th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td class="smaller">001</td>
-                <td class="img-tag">
-                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
-                </td>
-                <td>Sản phẩm A</td>
-                <td class="smaller">10</td>
-                <td>$100.00</td>
-                <td class="smaller">$10.00</td>
-            </tr>
-            <tr>
-                <td class="msp">002</td>
+                <td>MDH01</td>
+                <td>2</td>
+                <td>100000</td>
+                <td>10%</td>
+                <td>10-12-2023</td>
+                <td>Nguyễn Dương Tùng</td>
+                <td>012348374</td>
                 <td>
-                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                    <button class="viewdetail">Xem</button>
                 </td>
-                <td>Sản phẩm B</td>
-                <td class="smaller">5</td>
-                <td>$50.00</td>
-                <td class="smaller">$5.00</td>
-            </tr>
-            <tr>
-                <td>002</td>
-                <td>
-                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
-                </td>
-                <td>Sản phẩm B</td>
-                <td>5</td>
-                <td>$50.00</td>
-                <td>$5.00</td>
             </tr>
         </tbody>
     </table>
    <button class="close-modal">close</button>
 </div>
-<!-- Chờ lấy hàng -->
-<div id="pickup-modal" class="modal">
-    <h3 class="modal-heading">Chờ lấy hàng</h3>
-    <table class="modal-table">
-        <thead>
-            <tr >
-                <th>Mã sản phẩm</th>
-                <th>Hình Ảnh</th>
-                <th>Tên SP</th>
-                <th>Số lượng</th>
-                <th>Tổng tiền</th>
-                <th>Giảm giá</th>
-            </tr>
-        </thead>
-        <tbody>
+
+<!-- submodal -->
+<div id="sub-confirm-modal" class="sub-modal">
+  <div class="modal-content">
+    <table class="sub-modal-table">
+      <thead>
+        <tr>
+            <th>Mã sản phẩm</th>
+            <th>Hình Ảnh</th>
+            <th>Tên SP</th>
+            <th>Số lượng</th>
+            <th>Tổng tiền</th>
+            <th>Giảm giá</th>
+        </tr>
+      </thead>
+      <tbody>
             <tr>
                 <td class="smaller">001</td>
                 <td class="img-tag">
@@ -613,30 +601,91 @@
                 <td>$100.00</td>
                 <td class="smaller">$10.00</td>
             </tr>
+      </tbody>
+    </table>
+    <button class="close-sub-modal">Trở lại</button>
+  </div>
+</div>
+
+<!-- Chờ lấy hàng -->
+<div id="pickup-modal" class="modal">
+    <h3 class="modal-heading">Chờ lấy hàng</h3>
+    <table class="modal-table">
+        <thead>
             <tr>
-                <td class="msp">002</td>
+                <th>Mã đơn hàng</th>
+                <th>Số lượng</th>
+                <th>Tổng tiền</th>
+                <th>Giảm giá</th>
+                <th>Ngày đặt hàng</th>
+                <th>Tên khách hàng</th>
+                <th>SĐT</th>
+                <th>
+                   Chi tiết đơn hàng
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>MDH01</td>
+                <td>2</td>
+                <td>100000</td>
+                <td>10%</td>
+                <td>10-12-2023</td>
+                <td>Nguyễn Dương Tùng</td>
+                <td>012348374</td>
                 <td>
-                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                    <button class="viewdetail">Xem</button>
                 </td>
-                <td>Sản phẩm B</td>
-                <td class="smaller">5</td>
-                <td>$50.00</td>
-                <td class="smaller">$5.00</td>
             </tr>
             <tr>
-                <td>002</td>
+                <td>MDH01</td>
+                <td>2</td>
+                <td>100000</td>
+                <td>10%</td>
+                <td>10-12-2023</td>
+                <td>Nguyễn Dương Tùng</td>
+                <td>012348374</td>
                 <td>
-                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                    <button class="viewdetail">Xem</button>
                 </td>
-                <td>Sản phẩm B</td>
-                <td>5</td>
-                <td>$50.00</td>
-                <td>$5.00</td>
             </tr>
+           
         </tbody>
     </table>
     <button class="close-modal">close</button>
 
+</div>
+
+<!-- submodal -->
+<div id="sub-pickup-modal" class="sub-modal">
+  <div class="modal-content">
+    <table class="sub-modal-table">
+      <thead>
+        <tr>
+            <th>Mã sản phẩm</th>
+            <th>Hình Ảnh</th>
+            <th>Tên SP</th>
+            <th>Số lượng</th>
+            <th>Tổng tiền</th>
+            <th>Giảm giá</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr>
+                <td class="smaller">001</td>
+                <td class="img-tag">
+                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                </td>
+                <td>Sản phẩm A</td>
+                <td class="smaller">10</td>
+                <td>$100.00</td>
+                <td class="smaller">$10.00</td>
+            </tr>
+      </tbody>
+    </table>
+    <button class="close-sub-modal">Trở lại</button>
+  </div>
 </div>
 <!-- da xu ly -->
 <div id="processed-modal" class="modal">
@@ -644,15 +693,65 @@
     <table class="modal-table">
         <thead>
             <tr >
-                <th>Mã sản phẩm</th>
-                <th>Hình Ảnh</th>
-                <th>Tên SP</th>
+                <th>Mã đơn hàng</th>
                 <th>Số lượng</th>
                 <th>Tổng tiền</th>
                 <th>Giảm giá</th>
+                <th>Ngày đặt hàng</th>
+                <th>Tên khách hàng</th>
+                <th>SĐT</th>
+                <th>
+                   Chi tiết đơn hàng
+                </th>
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <td>MDH01</td>
+                <td>2</td>
+                <td>100000</td>
+                <td>10%</td>
+                <td>10-12-2023</td>
+                <td>Nguyễn Dương Tùng</td>
+                <td>012348374</td>
+                <td>
+                    <button class="viewdetail">Xem</button>
+                </td>
+            </tr>
+            <tr>
+                <td>MDH01</td>
+                <td>2</td>
+                <td>100000</td>
+                <td>10%</td>
+                <td>10-12-2023</td>
+                <td>Nguyễn Dương Tùng</td>
+                <td>012348374</td>
+                <td>
+                    <button class="viewdetail">Xem</button>
+                </td>
+            </tr>
+          
+        </tbody>
+    </table>
+    <button class="close-modal">close</button>
+
+</div>
+
+<!-- processed submodal -->
+<div id="sub-processed-modal" class="sub-modal">
+  <div class="modal-content">
+    <table class="sub-modal-table">
+      <thead>
+        <tr>
+            <th>Mã sản phẩm</th>
+            <th>Hình Ảnh</th>
+            <th>Tên SP</th>
+            <th>Số lượng</th>
+            <th>Tổng tiền</th>
+            <th>Giảm giá</th>
+        </tr>
+      </thead>
+      <tbody>
             <tr>
                 <td class="smaller">001</td>
                 <td class="img-tag">
@@ -663,30 +762,10 @@
                 <td>$100.00</td>
                 <td class="smaller">$10.00</td>
             </tr>
-            <tr>
-                <td class="msp">002</td>
-                <td>
-                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
-                </td>
-                <td>Sản phẩm B</td>
-                <td class="smaller">5</td>
-                <td>$50.00</td>
-                <td class="smaller">$5.00</td>
-            </tr>
-            <tr>
-                <td>002</td>
-                <td>
-                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
-                </td>
-                <td>Sản phẩm B</td>
-                <td>5</td>
-                <td>$50.00</td>
-                <td>$5.00</td>
-            </tr>
-        </tbody>
+      </tbody>
     </table>
-    <button class="close-modal">close</button>
-
+    <button class="close-sub-modal">Trở lại</button>
+  </div>
 </div>
 <!-- don huy -->
 <div id="cancel-modal" class="modal">
@@ -694,15 +773,52 @@
     <table class="modal-table">
         <thead>
             <tr >
-                <th>Mã sản phẩm</th>
-                <th>Hình Ảnh</th>
-                <th>Tên SP</th>
+                <th>Mã đơn hàng</th>
                 <th>Số lượng</th>
                 <th>Tổng tiền</th>
                 <th>Giảm giá</th>
+                <th>Ngày đặt hàng</th>
+                <th>Tên khách hàng</th>
+                <th>SĐT</th>
+                <th>
+                   Chi tiết đơn hàng
+                </th>
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <td>MDH01</td>
+                <td>2</td>
+                <td>100000</td>
+                <td>10%</td>
+                <td>10-12-2023</td>
+                <td>Nguyễn Dương Tùng</td>
+                <td>012348374</td>
+                <td>
+                    <button class="viewdetail">Xem</button>
+                </td>
+            </tr>
+           
+        </tbody>
+    </table>
+    <button class="close-modal">close</button>
+</div>
+
+<!-- cancel submodal -->
+<div id="sub-cancel-modal" class="sub-modal">
+  <div class="modal-content">
+    <table class="sub-modal-table">
+      <thead>
+        <tr>
+            <th>Mã sản phẩm</th>
+            <th>Hình Ảnh</th>
+            <th>Tên SP</th>
+            <th>Số lượng</th>
+            <th>Tổng tiền</th>
+            <th>Giảm giá</th>
+        </tr>
+      </thead>
+      <tbody>
             <tr>
                 <td class="smaller">001</td>
                 <td class="img-tag">
@@ -713,30 +829,10 @@
                 <td>$100.00</td>
                 <td class="smaller">$10.00</td>
             </tr>
-            <tr>
-                <td class="msp">002</td>
-                <td>
-                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
-                </td>
-                <td>Sản phẩm B</td>
-                <td class="smaller">5</td>
-                <td>$50.00</td>
-                <td class="smaller">$5.00</td>
-            </tr>
-            <tr>
-                <td>002</td>
-                <td>
-                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
-                </td>
-                <td>Sản phẩm B</td>
-                <td>5</td>
-                <td>$50.00</td>
-                <td>$5.00</td>
-            </tr>
-            <!-- Thêm các hàng dữ liệu khác nếu cần -->
-        </tbody>
+      </tbody>
     </table>
-    <button class="close-modal">close</button>
+    <button class="close-sub-modal">Trở lại</button>
+  </div>
 </div>
 <!-- hoan tra -->
 <div id="return-modal" class="modal">
@@ -744,15 +840,51 @@
     <table class="modal-table">
         <thead>
             <tr >
-                <th>Mã sản phẩm</th>
-                <th>Hình Ảnh</th>
-                <th>Tên SP</th>
+                
+                <th>Mã đơn hàng</th>
                 <th>Số lượng</th>
                 <th>Tổng tiền</th>
                 <th>Giảm giá</th>
+                <th>Ngày đặt hàng</th>
+                <th>Tên khách hàng</th>
+                <th>SĐT</th>
+                <th>
+                   Chi tiết đơn hàng
+                </th>
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <td>MDH01</td>
+                <td>2</td>
+                <td>100000</td>
+                <td>10%</td>
+                <td>10-12-2023</td>
+                <td>Nguyễn Dương Tùng</td>
+                <td>012348374</td>
+                <td>
+                    <button class="viewdetail">Xem</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="close-modal">close</button>
+</div>
+<!-- return submodal -->
+<div id="sub-return-modal" class="sub-modal">
+  <div class="modal-content">
+    <table class="sub-modal-table">
+      <thead>
+        <tr>
+            <th>Mã sản phẩm</th>
+            <th>Hình Ảnh</th>
+            <th>Tên SP</th>
+            <th>Số lượng</th>
+            <th>Tổng tiền</th>
+            <th>Giảm giá</th>
+        </tr>
+      </thead>
+      <tbody>
             <tr>
                 <td class="smaller">001</td>
                 <td class="img-tag">
@@ -763,31 +895,11 @@
                 <td>$100.00</td>
                 <td class="smaller">$10.00</td>
             </tr>
-            <tr>
-                <td class="msp">002</td>
-                <td>
-                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
-                </td>
-                <td>Sản phẩm B</td>
-                <td class="smaller">5</td>
-                <td>$50.00</td>
-                <td class="smaller">$5.00</td>
-            </tr>
-            <tr>
-                <td>002</td>
-                <td>
-                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
-                </td>
-                <td>Sản phẩm B</td>
-                <td>5</td>
-                <td>$50.00</td>
-                <td>$5.00</td>
-            </tr>
-        </tbody>
+      </tbody>
     </table>
-    <button class="close-modal">close</button>
+    <button class="close-sub-modal">Trở lại</button>
+  </div>
 </div>
-
 <!-- tạm khóa  -->
 <div id="locked-modal" class="modal">
     <h3 class="modal-heading">Sản phẩm bị tạm khóa </h3>

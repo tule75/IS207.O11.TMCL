@@ -16,71 +16,86 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('/icon/fontawesome-free-6.4.2-web/css/regular.min.css')}}">
     <link rel="stylesheet" href="{{ asset('/css/collection.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/home.css') }}">
+
 </head>
 
 <body>
-<div class="cartier">
-    <!-- header start -->
-    <div class="header">
-        <div class="header-notice">
-            <p>Enjoy wrap-gift standard shipping. <span class=""><a class="has-link return-link">Click here to learn
-                        more about returns and exchanges.</a></span></p>
+    <div class="cartier">
+        <!-- header start -->
+        <div class="header">
+            <div class="header-notice">
+                <p>Enjoy wrap-gift standard shipping. <span class=""><a class="has-link return-link">Click here to learn
+                            more about returns and exchanges.</a></span></p>
+            </div>
+
+            <div class="main-header">
+                <ul class="nav-left">
+                    <li class="nav-left--item"><a href="" class="has-link nav-hover">Home</a></li>
+                    <li class="nav-left--item"><a href="" class="has-link nav-hover">Contact Us</a></li>
+                    @if (auth()->user() && auth()->user()->role == 'manager')
+                        <li class="nav-left--item"><a href="/manager" class="has-link nav-hover">Merchant</a></li>
+                    @endif
+                </ul>
+
+                <div class="logo">
+                    <a href="/"><img class="logo-img" src="{{ asset('/img/Screenshot_2023-10-16_121457-removebg.png')}}" alt=""></a>
+                </div>
+
+                <div class="nav-right">
+                    <div class="nav-right--item"><i class="fa fa-heart"></i></div>
+                    @if (Route::has('login'))
+                        @auth
+                            <div class="nav-right--item isUser">
+                                <a href="{{ url('/profile') }}" style="margin: 0">
+                                        <i class="fa fa-user"></i>
+                                </a>
+                                <div class="logout">
+                                    <form action="{{ Route('logout')}}" method="POST">
+                                            @csrf
+                                        <a class="watch-collection--item"><button class="menu-bt">LOG OUT</button></a>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            <a href="{{Route('cart.index')}}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
+                        @else
+                            <a href="{{ url('/login') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
+                            <a href="{{ url('/login') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
+                        @endauth
+                    @endif
+                </div>
+            </div>
+        </div>
+        <!-- header end -->
+
+    <div class="sub-navbar">
+        <div class="dropdown">
+            <button class="dropbtn">Brand</button>
+            <div class="dropdown-content">
+                @foreach ($brand as $data)
+                    <a href="/collection?brand={{$data->id}}">{{$data->name}}</a>
+                @endforeach
+            </div>
         </div>
 
-        <div class="main-header">
-            <ul class="nav-left">
-                <li class="nav-left--item"><a href="" class="has-link nav-hover">Home</a></li>
-                <li class="nav-left--item"><a href="" class="has-link nav-hover">Contact Us</a></li>
-                <li class="nav-left--item"><a href="" class="has-link nav-hover">Merchant</a></li>
-            </ul>
-
-            <div class="logo">
-                <a href="/"><img class="logo-img" src="{{ asset('/img/Screenshot_2023-10-16_121457-removebg.png')}}" alt=""></a>
-            </div>
-
-            <div class="nav-right">
-                <div class="nav-right--item"><i class="fa fa-heart"></i></div>
-                @if (Route::has('login'))
-                    @auth
-                        <a href="{{ url('/profile') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
-                        <a href="{{Route('cart.index')}}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
-                    @else
-                        <a href="{{ url('/login') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
-                        <a href="{{ url('/login') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
-                    @endauth
-                @endif
+        <div class="dropdown">
+            <button class="dropbtn">Category</button>
+            <div class="dropdown-content">
+                @foreach ($category as $data)
+                    <a href="/collection?brand={{$data->id}}">{{$data->name}}</a>
+                @endforeach
             </div>
         </div>
-        <div class="sub-navbar">
-            <div class="dropdown">
-                <button class="dropbtn">Brand</button>
-                <div class="dropdown-content">
-                    @foreach ($brand as $data)
-                        <a href="/collection?brand={{$data->id}}">{{$data->name}}</a>
-                    @endforeach
-                </div>
-            </div>
 
-            <div class="dropdown">
-                <button class="dropbtn">Category</button>
-                <div class="dropdown-content">
-                    @foreach ($category as $data)
-                        <a href="/collection?brand={{$data->id}}">{{$data->name}}</a>
-                    @endforeach
-                </div>
+        <div class="dropdown">
+            <button class="dropbtn">Gender</button>
+            <div class="dropdown-content">
+            <a href="/collection?gender=male">Male</a>
+            <a href="/collection?gender=female">Female</a>
             </div>
-
-            <div class="dropdown">
-                <button class="dropbtn">Gender</button>
-                <div class="dropdown-content">
-                <a href="/collection?gender=male">Male</a>
-                <a href="/collection?gender=female">Female</a>
-                </div>
-            </div>
-        </div> 
-    </div>
-    <!-- header end -->
-</div>
+        </div>
+    </div> 
 
         <!-- header end -->
         <!-- banner start -->
@@ -101,15 +116,33 @@
         <!-- banner end -->
         <!-- main start -->
         <div class="main-content">
-            <div class="filter-sort">
-                <h4 class="soft-heading">Sort By</h4>
-                <div class="radio-check-container">
-                    <label class="check-label check-soft-price" for="price">
-                        <input class="ratio-btn" type="radio" value="low-to-high" name="price" id="">PRICE LOW TO HIGH
-                    </label>
-                    <label class="check-label check-soft-price" for="price">
-                        <input class="ratio-btn" type="radio" value="high-to-low" name="price" id="">PRICE HIGH TO LOW
-                    </label>
+        <div class="filter-sort">
+                <div class="search-space">
+                    <input class="input-box" type="text" placeholder="Typing here ....">
+                </div>
+                <div class="sort-item">
+                    <h4 class="sort-heading">By Price</h4>
+                    <div class="radio-check-container">
+                        <label class="check-label check-soft-price" for="price">
+                            <input class="ratio-btn" type="radio" value="low-to-high" name="price" id="">PRICE LOW TO HIGH
+                        </label>
+                        <label class="check-label check-soft-price" for="price">
+                            <input class="ratio-btn" type="radio" value="high-to-low" name="price" id="">PRICE HIGH TO LOW
+                        </label>
+                    </div>
+                </div>
+                <div class="sort-item">
+                    <h4 class="sort-heading">By Name</h4>
+                    <div class="btn-sort-name">
+                        <button class="fromaz az-item" data-sort-type="az">
+                            <p>Sort name by </p> 
+                            <img class="az" src="{{asset('/img/3682482.png')}}" alt="">
+                        </button>
+                        <button class="fromza az-item" data-sort-type="za">
+                            <p>Sort name by </p> 
+                            <img class="za" src="{{asset('/img/59372.png')}}" alt="">
+                        </button>
+                    </div>
                 </div>
             </div>
             <!-- item-container -->
@@ -140,19 +173,19 @@
                             <img class="object-img" src="{{ asset($watch->img1) }}" alt="">
                             <div class="object-section">
                                 <div class="object-section-info">
-                                    <a class=" has-link object-info  info-name"> {{$watch->name}}</a>
+                                    <a href="/watch/{{$watch->slug}} " class=" has-link object-info info-name"> {{$watch->name}}</a>
                                 </div>
                                 <div class="object-section-info">
-                                    <a class=" has-link object-info">{{$watch->description}}</a>
-                                    <h3 class="item-price">{{number_format($watch->price * (1 - $watch->discount), 0, ',', '.')}} đ</h3>
+                                    <h3 class="item-price">{{$watch->price * (1 - $watch->discount)}}</h3> <span>VND</span>
                                 </div>
                             </div>
                             <div class="buy-btn">
-                                <a class="discover has-link">Add to cart</a>
+                                <a id='{{$watch->id}}' class="discover cart">Add to cart</a>
+                                <a href="/order/buy?watch_id[]={{$watch->id}}&quantity[]=1" class="discover has-link">Buy Now</a>
                             </div>
                         </div>
                     </a>
-                    @endforeach
+                    @endforeach                
                 </div>
             </div>
         </div>
@@ -189,29 +222,6 @@
             </div>
         </div>
         <!-- extra infomation start -->
-        <!-- The Modal - COMPLIMENTARY DELIVERY -->
-        <div id="cd_modal" tabindex="-1" aria-hidden="true" class="hidden fixed flex items-center top-0 right-0 left-0 bottom-0  align-middle justify-center" style="z-index: 0;">
-            <div class="relative w-full max-w-2xl max-h-full">
-                <div class="relative opacity-100 w-600 h-fit bg-white " style="z-index:2">
-                    <div class="h-1.5 bg-red-600 m-0"></div>
-
-                    <div class="modal-header text-center relative">
-                        <h3 class=" font-bold text-2xl tracking-widest py-5">COMPLIMENTARY DELIVERY</h3>
-                        <div class="absolute right-6 top-0" onclick="toggleModal()">
-                                <button class="">close</button>
-                        </div>
-                    </div>
-                    <div class="flex mx-2 align-middle h-0.5 bg-slate-700"></div>
-                    <div class="modal-body flex flex-col justify-center px-20 py-10">
-                        <h1 class="font-bold text-lg">RETURN & EXCHANGE POLICY</h1>
-                        <p class="w-90 py-5">You can request a return or exchange of your items within 30 days by contacting Cartier Client Relations Centre.</p>
-                        <p>For more information please visit the section <u>Delivery & Returns Exchange Policy</u>.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end modal -->
-        <div class="space"></div>
         <!-- footer start -->
         <div class="footer">
             <ul class="footer-list">
@@ -257,7 +267,6 @@
 </body>
 
 <script src="{{ asset('js/home.js')}}"></script>
-
-
-
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="{{ asset('js/addcart.js') }}"></script>
 </html>
