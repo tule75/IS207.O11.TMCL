@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Watch;
 use App\Http\Requests\StoreWatchRequest;
 use App\Http\Requests\UpdateWatchRequest;
+use App\Models\Post;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -118,13 +119,17 @@ class WatchController extends Controller
     public function show($watch_slug)
     {
         // return view('products.watch');
+        $watch = Watch::where('slug', $watch_slug)->first();
+        $post = Post::where('watch_id', $watch->id)->get();
         // Lấy sản phẩm
         $brand = BrandController::index();
         $category = CategoryController::index();
         return view('products.watch', 
-        ['watch' => Watch::where('slug', $watch_slug)->first(),
+        ['watch' => $watch,
          'watches' => Watch::where('brand_id', Watch::where('slug', $watch_slug)->first()->brand_id)->take(3)->get(),
-         'brand' => $brand, 'category' => $category]);
+         'brand' => $brand, 'category' => $category,
+         'post' => $post
+        ]);
     }
 
     /**
