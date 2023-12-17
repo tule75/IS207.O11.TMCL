@@ -118,7 +118,8 @@
                                         <th>Tên khách hàng</th>
                                         <th>Số điện thoại</th>
                                         <th>Địa chỉ</th>
-                                        <th>Cập nhập</th>
+                                        <th>Cập nhật</th>
+                                        <th>Chi tiết đơn hàng</th>
                                     </tr>
                                     @foreach ($orders as $order)
                                     <tr>
@@ -159,6 +160,9 @@
                                             <buttonn>
                                             @endif
                                         </td>
+                                        <td>
+                                            <button class="viewdetail">Xem</button>
+                                        </td>
                                     </tr>
                                     @endforeach
                                     </tbody>
@@ -182,20 +186,7 @@
                             <div class="search-icon">&#128269;</div>
                         </div>
                         <div class="table-field">
-                            <table>
-                                <!-- <tbody>
-                                    <tr>
-                                        <td width="350px">Sản Phẩm</td>
-                                        <td></td>
-                                        <td width="140px">Tổng tiền</td>
-                                        <td width="120px">Trạng thái</td>
-                                        <td width="130px">Ngày đặt hàng</td>
-                                        <td width="180px">Mã đơn hàng</td>
-                                        <td width="120">Cập nhập</td>
-                                    </tr>
-                                </tbody>
-                            </table> -->
-            
+                          
                                 <table>
                                     <tr>
                                         <th>Sản Phẩm</td>
@@ -205,7 +196,8 @@
                                         <th>Trạng thái</th>
                                         <th>Ngày đặt hàng</th>
                                         <th>Mã đơn hàng</th>
-                                        <th>Cập nhập</th>
+                                        <th>Cập nhật</th>
+                                      
                                     </tr>
                                     <tr>
                                         <td>
