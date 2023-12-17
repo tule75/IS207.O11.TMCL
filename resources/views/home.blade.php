@@ -358,7 +358,6 @@
                     <a href="" class="footer-list--item icon-link-item"><i class="fa fa-youtube-play"></i></a>
                     <a href="" class="footer-list--item icon-link-item"><i class="fa fa-instagram"></i></a>
                     <a href="" class="footer-list--item icon-link-item"><i class="fa fa-twitter"></i></a>
-
                 </div>
             </div>
         </div>

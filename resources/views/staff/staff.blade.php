@@ -101,15 +101,14 @@
                         </div>
                         <div class="search-container">
                             <input type="text" class="search-bar" placeholder="Nhập id đơn hàng">
-                            <div class="search-icon">&#128269;</div>
                         </div>
                         @php 
                             $orders = $pOrders->merge($sOrders)->merge($successOrders);
                         @endphp
                         
                         <div class="table-field">
+                           
                             <table>
-                                <table>
                                     <tr>
                                         <th>Mã Đơn hàng</td>
                                         <th>Tổng tiền</th>
@@ -119,9 +118,10 @@
                                         <th>Số điện thoại</th>
                                         <th>Địa chỉ</th>
                                         <th>Cập nhật</th>
-                                        <th>Chi tiết đơn hàng</th>
+                                        <th>Chi tiết</th>
+
                                     </tr>
-                                    @foreach ($orders as $order)
+                                @foreach ($orders as $order)
                                     <tr>
                                         <td>
                                             <p class="oID">HD{{$order->id}}</p>
@@ -161,47 +161,46 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <button data-id='{{$order->id}}' class="viewdetailwatch">Xem</button>
+                                            <button data-id='{{$order->id}}' class="viewdetail" onclick='openSub(this)'>Xem</button>
                                         </td>
-                                        <div id="sub-processed-modal-{{$order->id}}" class="sub-modal-w" style="display:none;">
+                                    </tr>     
+                                    @foreach($order->watches as $watch)
+                                        <div id="sub-processed-modal-{{$order->id}}" class="sub-modal">
                                             <div class="modal-content">
                                                 <table class="sub-modal-table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Mã sản phẩm</th>
-                                                        <th>Hình Ảnh</th>
-                                                        <th>Tên SP</th>
-                                                        <th>Số lượng</th>
-                                                        <th>Tổng tiền</th>
-                                                        <th>Giảm giá</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach($order->watches as $watch)
+                                                    <thead>
                                                         <tr>
-                                                            <td class="smaller">{{$watch->id}}</td>
-                                                            <td class="img-tag">
-                                                                <img class="img-sp" src="{{ $watch->img1 }}" alt="">
-                                                            </td>
-                                                            <td>{{$watch->name}}</td>
-                                                            <td class="smaller">{{$watch->pivot->quantity}}</td>
-                                                            <td>{{$watch->pivot->price * $watch->pivot->quantity}}</td>
-                                                            <td class="smaller">0</td>
+                                                            <th>Mã sản phẩm</th>
+                                                            <th>Hình Ảnh</th>
+                                                            <th>Tên SP</th>
+                                                            <th>Số lượng</th>
+                                                            <th>Tổng tiền</th>
+                                                            <th>Giảm giá</th>
                                                         </tr>
-                                                    @endforeach
-                                                </tbody>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach($order->watches as $watch)
+                                                            <tr>
+                                                                <td class="smaller">{{$watch->id}}</td>
+                                                                <td class="img-tag"><img class="img-sp" src="{{ $watch->img1 }}" alt=""></td>
+                                                                <td>{{$watch->name}}</td>
+                                                                <td class="smaller">{{$watch->pivot->quantity}}</td>
+                                                                <td>{{$watch->pivot->price * $watch->pivot->quantity}}</td>
+                                                                <td class="smaller">0</td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
                                                 </table>
                                                 <button class="close-sub-modal">Trở lại</button>
                                             </div>
-                                            </div>
-                                    </tr>
-                                    @endforeach
-                                    </tbody>
-                                    
-                                </table>
+                                        </div>
+                                    @endforeach                        
+                                @endforeach 
+                            </table>
                         </div>
-                        
+                     
                     </div>
+                    
                 </div>
 
                 <!-- Quản lí sản phẩm -->
@@ -217,7 +216,20 @@
                             <div class="search-icon">&#128269;</div>
                         </div>
                         <div class="table-field">
-                          
+                            <table>
+                                <!-- <tbody>
+                                    <tr>
+                                        <td width="350px">Sản Phẩm</td>
+                                        <td></td>
+                                        <td width="140px">Tổng tiền</td>
+                                        <td width="120px">Trạng thái</td>
+                                        <td width="130px">Ngày đặt hàng</td>
+                                        <td width="180px">Mã đơn hàng</td>
+                                        <td width="120">Cập nhập</td>
+                                    </tr>
+                                </tbody>
+                            </table> -->
+            
                                 <table>
                                     <tr>
                                         <th>Sản Phẩm</td>
@@ -227,8 +239,7 @@
                                         <th>Trạng thái</th>
                                         <th>Ngày đặt hàng</th>
                                         <th>Mã đơn hàng</th>
-                                        <th>Cập nhật</th>
-                                      
+                                        <th>Cập nhập</th>
                                     </tr>
                                     <tr>
                                         <td>
@@ -577,6 +588,9 @@
                 <th>Ngày đặt hàng</th>
                 <th>Tên khách hàng</th>
                 <th>SĐT</th>
+                <th>
+                   Chi tiết đơn hàng
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -588,43 +602,15 @@
                 <td>10-12-2023</td>
                 <td>Nguyễn Dương Tùng</td>
                 <td>012348374</td>
+                <td>
+                    <button class="viewdetail">Xem</button>
+                </td>
             </tr>
         </tbody>
     </table>
    <button class="close-modal">close</button>
 </div>
 
-
-<!-- submodal -->
-<div id="sub-confirm-modal" class="sub-modal">
-  <div class="modal-content">
-    <table class="sub-modal-table">
-      <thead>
-        <tr>
-            <th>Mã sản phẩm</th>
-            <th>Hình Ảnh</th>
-            <th>Tên SP</th>
-            <th>Số lượng</th>
-            <th>Tổng tiền</th>
-            <th>Giảm giá</th>
-        </tr>
-      </thead>
-      <tbody>
-            <tr>
-                <td class="smaller">001</td>
-                <td class="img-tag">
-                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
-                </td>
-                <td>Sản phẩm A</td>
-                <td class="smaller">10</td>
-                <td>$100.00</td>
-                <td class="smaller">$10.00</td>
-            </tr>
-      </tbody>
-    </table>
-    <button class="close-sub-modal">Trở lại</button>
-  </div>
-</div>
 
 <!-- Chờ lấy hàng -->
 
@@ -639,6 +625,9 @@
                 <th>Tên khách hàng</th>
                 <th>Địa chỉ</th>
                 <th>SĐT</th>
+                <th>
+                   Chi tiết đơn hàng
+                </th>
             </tr>
         </thead>
         
@@ -660,37 +649,6 @@
 
 </div>
 
-<!-- submodal -->
-<div id="sub-pickup-modal" class="sub-modal">
-  <div class="modal-content">
-    <table class="sub-modal-table">
-      <thead>
-        <tr>
-            <th>Mã sản phẩm</th>
-            <th>Hình Ảnh</th>
-            <th>Tên SP</th>
-            <th>Số lượng</th>
-            <th>Tổng tiền</th>
-            <th>Giảm giá</th>
-        </tr>
-      </thead>
-      <tbody>
-            <tr>
-                <td class="smaller">001</td>
-                <td class="img-tag">
-                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
-                </td>
-                <td>Sản phẩm Q</td>
-                <td class="smaller">10</td>
-                <td>$100.00</td>
-                <td class="smaller">$10.00</td>
-            </tr>
-      </tbody>
-    </table>
-    <button class="close-sub-modal">Trở lại</button>
-  </div>
-</div>
-
 <!-- da xu ly -->
 <div id="processed-modal" class="modal">
     <h3 class="modal-heading">Đã xử lý</h3>
@@ -704,6 +662,9 @@
                 <th>Ngày đặt hàng</th>
                 <th>Tên khách hàng</th>
                 <th>SĐT</th>
+                <th>
+                   Chi tiết đơn hàng
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -724,36 +685,6 @@
 
 </div>
 
-<!-- processed submodal -->
-<div id="sub-processed-modal" class="sub-modal">
-  <div class="modal-content">
-    <table class="sub-modal-table">
-      <thead>
-        <tr>
-            <th>Mã sản phẩm</th>
-            <th>Hình Ảnh</th>
-            <th>Tên SP</th>
-            <th>Số lượng</th>
-            <th>Tổng tiền</th>
-            <th>Giảm giá</th>
-        </tr>
-      </thead>
-      <tbody>
-            <tr>
-                <td class="smaller">001</td>
-                <td class="img-tag">
-                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
-                </td>
-                <td>Sản phẩm A</td>
-                <td class="smaller">10</td>
-                <td>$100.00</td>
-                <td class="smaller">$10.00</td>
-            </tr>
-      </tbody>
-    </table>
-    <button class="close-sub-modal">Trở lại</button>
-  </div>
-</div>
 <!-- don huy -->
 <div id="cancel-modal" class="modal">
     <h3 class="modal-heading">Đơn hủy</h3>
@@ -767,7 +698,9 @@
                 <th>Ngày đặt hàng</th>
                 <th>Tên khách hàng</th>
                 <th>SĐT</th>
-                
+                <th>
+                   Chi tiết đơn hàng
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -779,6 +712,9 @@
                 <td>10-12-2023</td>
                 <td>Nguyễn Dương Tùng</td>
                 <td>012348374</td>
+                <td>
+                    <button class="viewdetail">Xem</button>
+                </td>
             </tr>
            
         </tbody>
@@ -786,36 +722,6 @@
     <button class="close-modal">close</button>
 </div>
 
-<!-- cancel submodal -->
-<div id="sub-cancel-modal" class="sub-modal">
-  <div class="modal-content">
-    <table class="sub-modal-table">
-      <thead>
-        <tr>
-            <th>Mã sản phẩm</th>
-            <th>Hình Ảnh</th>
-            <th>Tên SP</th>
-            <th>Số lượng</th>
-            <th>Tổng tiền</th>
-            <th>Giảm giá</th>
-        </tr>
-      </thead>
-      <tbody>
-            <tr>
-                <td class="smaller">001</td>
-                <td class="img-tag">
-                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
-                </td>
-                <td>Sản phẩm A</td>
-                <td class="smaller">10</td>
-                <td>$100.00</td>
-                <td class="smaller">$10.00</td>
-            </tr>
-      </tbody>
-    </table>
-    <button class="close-sub-modal">Trở lại</button>
-  </div>
-</div>
 <!-- hoan tra -->
 <div id="return-modal" class="modal">
     <h3 class="modal-heading">Đơn trả hàng/Hoàn tiền chờ xử lý </h3>
@@ -830,6 +736,9 @@
                 <th>Ngày đặt hàng</th>
                 <th>Tên khách hàng</th>
                 <th>SĐT</th>
+                <th>
+                   Chi tiết đơn hàng
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -841,41 +750,15 @@
                 <td>10-12-2023</td>
                 <td>Nguyễn Dương Tùng</td>
                 <td>012348374</td>
+                <td>
+                    <button class="viewdetail">Xem</button>
+                </td>
             </tr>
         </tbody>
     </table>
     <button class="close-modal">close</button>
 </div>
-<!-- return submodal -->
-<div id="sub-return-modal" class="sub-modal">
-  <div class="modal-content">
-    <table class="sub-modal-table">
-      <thead>
-        <tr>
-            <th>Mã sản phẩm</th>
-            <th>Hình Ảnh</th>
-            <th>Tên SP</th>
-            <th>Số lượng</th>
-            <th>Tổng tiền</th>
-            <th>Giảm giá</th>
-        </tr>
-      </thead>
-      <tbody>
-            <tr>
-                <td class="smaller">001</td>
-                <td class="img-tag">
-                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
-                </td>
-                <td>Sản phẩm A</td>
-                <td class="smaller">10</td>
-                <td>$100.00</td>
-                <td class="smaller">$10.00</td>
-            </tr>
-      </tbody>
-    </table>
-    <button class="close-sub-modal">Trở lại</button>
-  </div>
-</div>
+
 <!-- tạm khóa  -->
 <div id="locked-modal" class="modal">
     <h3 class="modal-heading">Sản phẩm bị tạm khóa </h3>
@@ -903,8 +786,6 @@
     <button class="close-modal">close</button>
 </div>
 
-<!-- locked submodal -->
-<div id="sub-locked-modal" class="sub-modal"></div>
 <!-- Khiếu nại  -->
 <div id="complain-modal" class="modal">
     <h3 class="modal-heading">Khiếu nại</h3>
@@ -929,8 +810,6 @@
     </table>
     <button class="close-modal">close</button>
 </div>
-<!-- locked submodal -->
-<div id="sub-complain-modal" class="sub-modal"></div>
 <!--  Chương trình khuyến mãi chờ xử lí -->
 <div id="discount-modal" class="modal">
     <h3 class="modal-heading">Chương trình khuyến mãi chờ xử lí</h3>
@@ -972,8 +851,7 @@
     <button class="close-modal">close</button>
 </div>
 
-<!-- locked submodal -->
-<div id="sub-discount-modal" class="sub-modal"></div>
+
 
 <div class="quick-modal">
     <div class="quick-modal_container">

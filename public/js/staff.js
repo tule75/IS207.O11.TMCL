@@ -148,35 +148,45 @@ const gridItems = document.querySelectorAll('.grid-item-count')
 const modals  = document.querySelectorAll('.modal');
 const closeModals = document.querySelectorAll('.close-modal');
 let activeModal = null;
+const closeSubModal = document.querySelectorAll('.close-sub-modal');
+const submodalBtns = document.querySelectorAll('.viewdetail');
+const subModal = document.querySelector('.sub-modal')
+const modalContent = document.querySelector('.modal-content');
 gridItems.forEach((item, index) => {
     item.addEventListener('click', () => {
         modals[index].style.display = 'block';
-        if (activeModal) {
-            activeModal.style.display = 'none';
-        }
+
         activeModal = modals[index];
 
     });
     closeModals[index].addEventListener('click', () => {
         modals[index].style.display = 'none';
-    })
-    
-    activeModal = null;
-})
-const closeSubModals = document.querySelectorAll('.close-sub-modal');
-const submodalBtns = document.querySelectorAll('.viewdetail');
-const subModals = document.querySelectorAll('.sub-modal')
-submodalBtns.forEach((subBtn,index) => {
-    subBtn.addEventListener('click', () => {
-        subModals[index].style.display = 'block';
-    });
-    closeSubModals[index].addEventListener('click', () => {
-        subModals[index].style.display = 'none';
-    
-        
+        activeModal = null;
     })
 })
+function openSub(btn) {
+    const orderId = btn.getAttribute('data-id');
+    console.log(orderId);
+    const subModal = document.querySelector(`#sub-processed-modal-${orderId}`);
+    if (subModal) {
+        subModal.style.display = 'block';
+        console.log(subModal);
+    }
+    console.log(subModal);
+}
 
-$(document).ready(function () {
-    $('.sub-model-w').attr('style') = 'display: none;';
-})
+
+// function closeSub(orderId) {
+//     const subModal = document.getElementById(`sub-processed-modal-${orderId}`);
+//     if (subModal) {
+//         subModal.style.display = 'none';
+//     }
+// }
+
+function hideAllSubModals() {
+    const subModals = document.querySelectorAll('.sub-modal');
+    subModals.forEach(function (subModal) {
+        subModal.style.display = 'none';
+    });
+
+}
