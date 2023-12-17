@@ -95,10 +95,6 @@ Route::middleware('auth')->group(function () {
     Route::get("/watch/destroyed", [WatchController::class, 'destroyed'])->middleware('manager');
     // Khôi phục sản phẩm đã xóa mềm
     Route::put("/watch/{id}/restore", [WatchController::class, 'restore'])->middleware('manager');
-    // Gợi ý search
-    Route::post("/watch/search", [WatchController::class, 'typeSearch']);
-    // Search
-    Route::get("/watch/search", [WatchController::class, 'search']);
     // Xóa mềm sản phẩm
     Route::delete("/watch/{watch}", [WatchController::class, 'destroy'])->middleware('manager');
     // Lấy toàn bộ sản phẩm
@@ -109,7 +105,10 @@ Route::middleware('auth')->group(function () {
 });
     // Collection
     Route::get("/collection", [WatchController::class, 'collectionIndex']);
-    
+    // Gợi ý search
+    Route::post("/watch/search", [WatchController::class, 'typeSearch']);
+    // Search
+    Route::get("/watch/search", [WatchController::class, 'search']);   
 // Voucher Routes
 Route::middleware('auth')->group(function () {
     // Mở trang tạo voucher
