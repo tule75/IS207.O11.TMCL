@@ -1,0 +1,51 @@
+@media only screen and (min-width: 960px) and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 959px) { 
+    .header {
+        width: 100%;
+    }
+
+    .header-notice{
+        font-size: 12px;
+    }
+
+    .nav-left--item {
+        font-size: 14px;
+        padding: 10px 8px;
+    }
+
+    .logo {
+        margin-right: 5%;
+    }
+
+    .nav-right {
+    }
+
+    .nav-right--item {
+        padding: 10px 8px;
+        transform: translateX(-120%);
+    }
+
+    .total {
+        /* height: 10%; */
+    }
+
+    .subtotal-wrap {
+        font-size: 14px;
+    }
+
+    .btn-proceed-checkout {
+        font-size: 12px;
+        margin-top: -8px;
+    }
+
+    .footer {
+        flex-wrap: wrap;
+    }
+
+    .footer-list {
+        margin-left: 36px;
+    }
+}

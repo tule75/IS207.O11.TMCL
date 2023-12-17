@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('/css/sign.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/register.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/register-responsive.css') }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
