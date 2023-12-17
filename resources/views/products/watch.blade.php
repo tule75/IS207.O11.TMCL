@@ -33,8 +33,8 @@
 
                 <div class="nav-right">
                     <div class="nav-right--item"><i class="fa fa-heart"></i></div>
-                    <div class="nav-right--item"><i class="fa fa-user"></i></div>
-                    <div class="nav-right--item"><i class="fa fa-cart-plus"></i></div>
+                    <a href="{{ url('/profile') }}" style="margin: 0"><i class="fa fa-user"></i></a>
+                    <a href="{{Route('cart.index')}}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
                 </div>
             </div>
 

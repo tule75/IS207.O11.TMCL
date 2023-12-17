@@ -120,7 +120,7 @@ class WatchController extends Controller
     {
         // return view('products.watch');
         $watch = Watch::where('slug', $watch_slug)->first();
-        $post = Post::where('watch_id', $watch->id)->get();
+        $post = Post::where('watch_id', $watch->id)->with('user')->get();
         // Lấy sản phẩm
         $brand = BrandController::index();
         $category = CategoryController::index();

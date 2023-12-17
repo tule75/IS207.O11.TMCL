@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Orders;
+use App\Models\Payments;
+use App\Models\Voucher;
 use Brick\Math\BigInteger;
 use Brick\Math\BigNumber;
 use Illuminate\Http\Request;
@@ -17,18 +20,25 @@ class MomoPayment extends Controller
     //
     public function send(Request $request)
     {
+        $address_id = $request->address_id;
+        $amount = $request->amount;
+        $watches_id = $request->watches_id;
+        $quantity = $request->quantity;
+        $ship_fee = $request->ship_fee;
+        $user_id = $request->user_id;
+
         $endpoint = 'https://test-payment.momo.vn/v2/gateway/api/create';
         $accessKey = 'F8BBA842ECF85';
         $secretKey = 'K951B6PE1waDMi640xX08PD3vg6EkVlz';
-        $orderInfo = 'payWithMethod';
+        $orderInfo = ['address_id' => $address_id, 'amount' => $amount, 'watches_id' => $watches_id, 'quantity' => $quantity, 'ship_fee' => $ship_fee, 'user_id' => $user_id];
         $partnerCode = 'MOMO';
-        $redirectUrl = 'localhost:8000/momo';
-        $ipnUrl = 'localhost:8000/momo/callback';
+        $redirectUrl = 'www.donghouiters.id.vn';
+        $ipnUrl = 'www.donghouiters.id.vn/momo/callback';
         $amount = (string)$request->amount;
-        $orderId = $partnerCode . time();
+        $orderId = $partnerCode . date('Y-m-d H:i:s');
         $requestId = $orderId;
         $requestType = 'captureWallet';
-        $extraData = '';
+        $extraData = base64_encode('{"address_id": ' . $address_id . ', "amount": ' . $amount . ', "quantity":' . $quantity . ', "ship_fee": ' . $ship_fee . '}');
         $orderGroupId = '';
         $autoCapture = true;
         $lang = 'vi';
@@ -74,4 +84,6 @@ class MomoPayment extends Controller
             'message'   =>  $jsonResult['message']
         ), 401);
     }
+
+
 }
