@@ -35,6 +35,70 @@ $(document).ready(function () {
                 });
             }
         })
+
+        $('#mcategory').click(function () {
+            if ($(this).find('option').length == 0) {
+                console.log(1);
+                $.ajax({
+                    method: 'get',
+                    url: '/category/getall',
+                    success: function (data, textStatus, xhr) {
+                        for (var i = 0; i < data.length; i++) {
+                            var item = data[i];                    
+                            $('select#mcategory').append(`<option value=${item.id}>${item.name}</option>`);
+                        }
+                    }
+                });
+            }
+        })
+        $('#mbrand').click(function () {
+            if ($(this).find('option').length == 0) {
+                $.ajax({
+                    method: 'get',
+                    url: '/brand/getall',
+                    success: function (data, textStatus, xhr) {
+                        for (var i = 0; i < data.length; i++) {
+                            var item = data[i];                    
+                            $('select#mbrand').append(`<option value=${item.id}>${item.name}</option>`);
+                        }
+                    }
+                });
+            }
+        })
+
+        $('button.showAll').click(function () {
+            var t = $(this);
+            $.ajax({
+                url: '/watch/all',
+                method: 'get',
+                success: function (data) {
+                    for (let i = 0; i < data.length; i++) {
+                        let tr = 
+                        `<tr class="product-item">
+                            <td class="product-name">${data[i].name}</td>
+                            <td class="product-price">${data[i].price} đ</td>
+                            <td class="product-discount">${data[i].discount * 100} %</td>
+                            <td class="product-brand">${data[i].brand.name}</td>
+                            <td class="product-category">${data[i].category.name}</td>
+                            <td class="product-gender">${data[i].gender}</td>
+                            <td class="product-description">${data[i].description}</td>
+                            <td class="product-actions">
+                                <button class="modify-product-btn">Modify</button>
+                            </td>
+                        </tr>
+                        `                        
+
+                        t.parent().parent().parent().append(tr);
+                        
+                    }
+                }
+            });
+        })
+
+        $('button.modify-product-btn').click(function() {
+            let slug = $(this).attr('data-id');
+            $('form.sua').attr('action','/watch/' + slug + '/edit');
+        })
 })
 const bar = document.querySelector('.icon-bars');
 const inputSearch = document.querySelector('.input-box');

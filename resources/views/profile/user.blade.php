@@ -371,5 +371,5 @@ statuses.forEach((status, i) => {
             event.stopPropagation()
         })
 </script>
-
+<script src="{{asset('/js/user')}}"></script>
 </html>

@@ -250,50 +250,45 @@
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
+                                    
                                     <tbody>
+                                        @foreach ($watches as $watch)
                                         <tr class="product-item">
-                                            <td class="product-name">Product 1</td>
-                                            <td class="product-price">$100</td>
-                                            <td class="product-discount">10%</td>
-                                            <td class="product-brand">Brand</td>
-                                            <td class="product-category">Category 1</td>
-                                            <td class="product-gender">Gender 1</td>
-                                            <td class="product-description">Lorem ipsum...</td>
+                                            <td class="product-name">{{$watch->name}}</td>
+                                            <td class="product-price">{{$watch->price}} đ</td>
+                                            <td class="product-discount">{{$watch->discount * 100}} %</td>
+                                            <td class="product-brand">{{$watch->brand->name}}</td>
+                                            <td class="product-category">{{$watch->category->name}}</td>
+                                            <td class="product-gender">{{$watch->gender}}</td>
+                                            <td class="product-description">{{$watch->description}}</td>
                                             <td class="product-actions">
-                                                <button class="modify-product-btn">Modify</button>
+                                                <button data-id='{{$watch->id}}' class="modify-product-btn">Modify</button>
                                             </td>
                                         </tr>
-                                        <tr class="product-item">
-                                            <td class="product-name">Product 1</td>
-                                            <td class="product-price">$100</td>
-                                            <td class="product-discount">10%</td>
-                                            <td class="product-brand">Brand</td>
-                                            <td class="product-category">Category 1</td>
-                                            <td class="product-gender">Gender 1</td>
-                                            <td class="product-description">Lorem ipsum...</td>
-                                            <td class="product-actions">
-                                                <button class="modify-product-btn">Modify</button>
-                                            </td>
-                                        </tr>
+                                        @endforeach
+                                        <tr> <td colspan="9" style="text-align: center;"><button class="showAll">show all</button></td></tr>
+                                        
                                     </tbody>
+                                    
                                 </table>
                             </div>
 
                             <div class="form-container modify-form">
                                 <h2 class=" heading-add font-bold text-xl flex items-center justify-center">Sửa Thông Tin</h2>                            
 
-                                <form method="POST" action="/watch" enctype="multipart/form-data">
+                                <form method="POST" class="sua" action="/watch" enctype="multipart/form-data">
                                     @csrf 
+                                    @method("PUT")
                                     <div class="add-product-container">
                                         <div class="add-product-left">
                                             <div class="form-group">
                                                 <label for="pName">Product Name:</label>
-                                                <input type="text" name="pName" id="pmName" placeholder="Product Name" class="form-control"/>
+                                                <input type="text" name="name" id="pmName" placeholder="Product Name" class="form-control"/>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="pPrice">Product Price:</label>
-                                                <input type="text" name="pPrice" id="pmPrice" placeholder="Product Price" class="form-control"/>
+                                                <input type="text" name="price" id="pmPrice" placeholder="Product Price" class="form-control"/>
                                             </div>
 
                                             <div class="form-group">
@@ -305,16 +300,17 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="pStorage">Product Storage:</label>
-                                                <input type="text" name="pStorage" id="pmStorage" placeholder="Product Storage" class="form-control"/>
+                                                <input type="text" name="storage" id="pmStorage" placeholder="Product Storage" class="form-control"/>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="pDiscount">Discount:</label>
-                                                <input type="text" name="pDiscount" readonly id="pmDiscount" placeholder="Product Storage" class="form-control"/>
+                                                <input type="text" name="discount" readonly id="pmDiscount" placeholder="Product Storage" class="form-control"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="pBrand">Brand:</label>
-                                                <input type="text" name="pBrand" id="pmBrand" placeholder="Product Brand" class="form-control"/>
+                                                <select name="brand_id" id="mbrand" placeholder="Product Brand" class="form-control">
+                                                </select>
                                             </div>
                                             
                                         </div>
@@ -322,35 +318,32 @@
                                         <div class="add-product-right mt-4">
                                             <div class="form-group">
                                                 <label for="pDes">Description:</label>
-                                                <input type="text" name="pDes" id="pmDes" placeholder="Product Description" class="form-control"/>
+                                                <input type="text" name="description" id="pmDes" placeholder="Product Description" class="form-control"/>
                                             </div>
                                             
-
                                             <div class="form-group">
                                                 <label for="pCate">Category:</label>
-                                                <select class="form-control" id="pmCate" name="pCate">
-                                                    <option value="" class="form-opt">a</option>
-                                                    <option value="" class="form-opt">a</option>
+                                                <select class="form-control" id="mcategory" name="pCate">
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="pUpload1">Upload Image 1:</label>
-                                                <input type="file" name="pUpload[]" id="pmUpload1" class="form-control-file" required>
+                                                <input type="file" name="img1" id="pmUpload1" class="form-control-file" >
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="pUpload2">Upload Image 2:</label>
-                                                <input type="file" name="pUpload[]" id="pmUpload2" class="form-control-file" required>
+                                                <input type="file" name="imt2" id="pmUpload2" class="form-control-file" >
                                             </div>
                                             <div class="form-group">
                                                 <label for="pUpload3">Upload Image 3:</label>
-                                                <input type="file" name="pUpload[]" id="pmUpload3" class="form-control-file" required>
+                                                <input type="file" name="img3" id="pmUpload3" class="form-control-file" >
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="flex justify-center items-center border-solid m-10">
-                                        <button class="add-product-btn submit-container" type="submit">Thêm Sản Phẩm</button>
+                                        <button class="add-product-btn submit-container" type="submit">Sửa Sản Phẩm</button>
                                     </div>
                                 </form>
 
@@ -374,30 +367,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach ($watches as $watch)
                                         <tr class="product-item">
-                                            <td class="product-name">Product 1</td>
-                                            <td class="product-price">$100</td>
-                                            <td class="product-discount">10%</td>
-                                            <td class="product-brand">Brand</td>
-                                            <td class="product-category">Category 1</td>
-                                            <td class="product-gender">Gender 1</td>
-                                            <td class="product-description">Lorem ipsum...</td>
+                                            <td class="product-name">{{$watch->name}}</td>
+                                            <td class="product-price">{{$watch->price}} đ</td>
+                                            <td class="product-discount">{{$watch->discount * 100}} %</td>
+                                            <td class="product-brand">{{$watch->brand->name}}</td>
+                                            <td class="product-category">{{$watch->category->name}}</td>
+                                            <td class="product-gender">{{$watch->gender}}</td>
+                                            <td class="product-description">{{$watch->description}}</td>
                                             <td class="product-actions">
-                                                <button class="del-product-btn" onclick="toggleModal()">Del</button>
+                                                <form action="/watch/{{$watch->id}}" method="POST">
+                                                    @csrf
+                                                    @method('Delete')
+                                                    <button style="background-color: #ef4444;" class="modify-product-btn">Delete</button>
+                                                </form>
+                                                
                                             </td>
                                         </tr>
-                                        <tr class="product-item">
-                                            <td class="product-name">Product 1</td>
-                                            <td class="product-price">$100</td>
-                                            <td class="product-discount">10%</td>
-                                            <td class="product-brand">Brand</td>
-                                            <td class="product-category">Category 1</td>
-                                            <td class="product-gender">Gender 1</td>
-                                            <td class="product-description">Lorem ipsum...</td>
-                                            <td class="product-actions">
-                                                <button class="del-product-btn" onclick="toggleModal()">Del</button>
-                                            </td>
-                                        </tr>
+                                        @endforeach
+                                        <tr> <td colspan="9" style="text-align: center;"><button class="showAll">show all</button></td></tr>
                                     </tbody>
                                 </table>
                                 <div class="modal-container">

@@ -193,3 +193,45 @@ function getFirstLetterFromName(element) {
     }
 }
 
+
+// search
+
+$(document).ready(function(){
+    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': csrfToken
+        }
+    });
+   $('#watch_search').keyup(function(){ 
+    var input_watch_name = $(this).val(); 
+    const suggestion = document.querySelector('#search-suggestions');
+
+    if(input_watch_name!="") {
+        // const suggestion = document.querySelector('#search-suggestions');
+        // suggestion.style.display = 'flex';
+        $.ajax({
+            url: '/watch/search',
+            method : 'post' ,
+            data : {'q':input_watch_name},
+            success: function (data) {
+                // alert(data.data[0].name);
+                for(var i =0; i< data.data.length; ++i) {
+                    var watch = data.data[i];
+                    const containwrapper = document.createElement('div');
+                    const contain = document.createElement('a');
+                    contain.setAttribute('class','suggestions-item');
+                    contain.setAttribute('href','/watch/' + watch.slug);
+                    contain.innerHTML = watch.name;
+
+                    suggestion.appendChild(containwrapper);
+                    containwrapper.appendChild(contain)
+                }
+            },
+        })
+    }
+    else {
+        suggestion.style.display = 'none';
+    }
+ });
+})

@@ -110,7 +110,9 @@ class WatchController extends Controller
     // render ra trang tìm kiếm sản phẩm query
     public function search(Request $request) {
         // dd($request->query('q'));
-        return view('products.search', ['watches' => Watch::search($request->q)->paginate(15)]);
+        $brand = BrandController::index();
+        $category = CategoryController::index();
+        return view('collection', ['watches' => Watch::search($request->q)->get(), 'brand' => $brand, 'category' => $category]);
     }
 
     /**
@@ -120,7 +122,7 @@ class WatchController extends Controller
     {
         // return view('products.watch');
         $watch = Watch::where('slug', $watch_slug)->first();
-        $post = Post::where('watch_id', $watch->id)->get();
+        $post = Post::where('watch_id', $watch->id)->with('user')->get();
         // Lấy sản phẩm
         $brand = BrandController::index();
         $category = CategoryController::index();
@@ -168,17 +170,19 @@ class WatchController extends Controller
             {
                 $img3 = null;
             }
+
             $watch->fill([
                 'name' => $request->has('name') ? $request->name : $watch->name,
-                'price' => $request->has('price') ? $request->price : $watch->price,
-                'storage' => $request->has('storage') ? $request->storage : $watch->storage,
-                'discount' => ($request->has('discount') ? $request->discount : 0),
-                'description' => $request->has('description') ? $request->description : $watch->description,
-                'gender' => $request->has('gender') ? $request->gender : $watch->gender,
+                'price' => $request->price ? $request->price : $watch->price,
+                'storage' => $request->storage ? $request->storage : $watch->storage,
+                'discount' => ($request->discount ? $request->discount : 0),
+                'description' => $request->description ? $request->description : $watch->description,
+                'gender' => $request->gender ? $request->gender : $watch->gender,
                 'img1' => $img1 != null ? $img1 : $watch->img1,
                 'img2' => $img2 != null ? $img2 : $watch->img2,
                 'img3' => $img3 != null ? $img3 : $watch->img3
             ])->save();
+
             return back()->withInput(['message' => 'successfully updated']);
         } catch (Exception $e) {
             return $e->getMessage();

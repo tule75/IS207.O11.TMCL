@@ -68,7 +68,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
 // manager routes
 Route::middleware(['auth'])->group(function () {
     Route::post('/manager/staff/getall', [ManagerController::class, 'allStaff']);
@@ -91,23 +90,25 @@ Route::middleware('auth')->group(function () {
     // Hiển thị trang sửa sản phẩm
     Route::get('/watch/{id}/edit', [WatchController::class, 'edit'])->middleware('manager');
     // Sửa sản phẩm
-    Route::put("/watch/{id}/edit", [WatchController::class, 'store'])->middleware('manager')->name('watch.store');
+    Route::put("/watch/{watch}/edit", [WatchController::class, 'update'])->middleware('manager')->name('watch.store');
     // Hiển thị các sản phẩm đã xóa mềm
     Route::get("/watch/destroyed", [WatchController::class, 'destroyed'])->middleware('manager');
     // Khôi phục sản phẩm đã xóa mềm
     Route::put("/watch/{id}/restore", [WatchController::class, 'restore'])->middleware('manager');
-    // Gợi ý search
-    Route::post("/watch/search", [WatchController::class, 'typeSearch']);
-    // Search
-    Route::get("/watch/search", [WatchController::class, 'search']);
     // Xóa mềm sản phẩm
-    Route::delete("/watch/{id}", [WatchController::class, 'destroy'])->middleware('manager');
+    Route::delete("/watch/{watch}", [WatchController::class, 'destroy'])->middleware('manager');
+    // Lấy toàn bộ sản phẩm
+    Route::get('/watch/all', [ManagerController::class, 'getAllWatch'])->middleware('manager');
     // Hiển thị đơn sản phẩm
     Route::get("/watch/{slug}", [WatchController::class, 'show'])->name('watch.show');
+    
 });
     // Collection
     Route::get("/collection", [WatchController::class, 'collectionIndex']);
-    
+    // Gợi ý search
+    Route::post("/watch/search", [WatchController::class, 'typeSearch']);
+    // Search
+    Route::get("/watch/search", [WatchController::class, 'search']);   
 // Voucher Routes
 Route::middleware('auth')->group(function () {
     // Mở trang tạo voucher
@@ -160,7 +161,7 @@ Route::middleware('auth')->group(function () {
     // get all brand
     Route::GET('/category/getall', [CategoryController::class, 'index']);
 
-
+Route::post('/momo/callback', [OrderController::class, 'callbackMoMo'])->middleware('guest');
 // cart routes
 Route::middleware(['auth'])->group(function () {
     // lấy danh sách giỏ hàng

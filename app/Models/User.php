@@ -80,6 +80,20 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    public function pOrders(): HasMany
+    {
+        return $this->hasMany(Orders::class)->where('status', 'Pending');
+    }
+
+    public function shOrders(): HasMany
+    {
+        return $this->hasMany(Orders::class)->where('status', 'Shipping');
+    }
+
+    public function suOrders(): HasMany
+    {
+        return $this->hasMany(Orders::class)->where('status', 'Success');
+    }
     // search
     public function toSearchableArray()
     {

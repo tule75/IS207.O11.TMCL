@@ -8,6 +8,7 @@ use App\Http\Requests\StoreOrdersRequest;
 use App\Http\Requests\UpdateOrdersRequest;
 use App\Models\Carts;
 use App\Models\Order_items;
+use App\Models\Payments;
 use App\Models\Voucher;
 use App\Models\Watch;
 use Exception;
@@ -138,6 +139,33 @@ class OrderController extends Controller
         } catch (Exception $e) {
             return $e->getMessage();
             return back()->withErrors(['message'=> $e->getMessage()]);
+        }
+    }
+
+    public function callbackMoMo(Request $request) {
+        if ((int)$request->resultCode < 300) {
+            $order = Orders::create([
+                'address_id' => $request->orderInfo['address_id'],
+                'user_id' => $request->orderInfo['user_id'],
+                'ship_fee' => $request->orderInfo['ship_fee'],
+                'gift' => $request->has('gift') ? true : false,
+                'description' => $request->has('description') ? $request->description : null,
+                'total_prices' => $request->orderInfo['amount'],
+            ]);
+            $price = OrderIteamsController::store([
+                'order_id' => $order->id,
+                'watches_id' => $request->orderInfo['watches_id'],
+                'quantity' => $request->orderInfo['quantity']
+            ]);
+            if ($price == -1) {
+                $order->delete();
+                return back()->withErrors(['message' => 'Lỗi hết hàng']);
+            }
+            
+            Payments::create([
+                'order_id' => $order->id,
+                'transaction_id' => $request->transId,
+            ]);
         }
     }
 

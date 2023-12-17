@@ -68,4 +68,12 @@ class ManagerController extends Controller
         $month3 = Orders::whereMonth('created_at', date('m', strtotime('-2 month')))->where('status', 'Success')->sum('total_prices');
         return ['month1' => $month1, 'month2' => $month2, 'month3' => $month3];
     }
+
+    public function getAllWatch() {
+        // dd(1);
+        $count = Watch::count();
+        $skip = 10;
+        $limit = $count - $skip;
+        return Watch::with(['brand', 'category'])->skip(10)->take($limit)->get();
+    }
 }

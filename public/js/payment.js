@@ -137,7 +137,7 @@ $(document).ready(function() {
                 method: 'POST',
                 data: {
                     address_id: address_id,
-                    watch_id: watch_id,
+                    watches_id: watch_id,
                     amount: parseInt($('.total-price').text().replace(/\./g, '')),
                     quantity: quantity,
                     ship_fee: ship_fee,
@@ -152,5 +152,61 @@ $(document).ready(function() {
                 }
             })
         }
+    })
+    $('select#province').click(function () {
+        $province = $(this);
+        if ($province.find('option').length == 0) {
+            $.ajax({
+                url: '/api/get/provinces',
+                method: 'POST',
+                success: function (data) {
+                    for (let i = 0; i < data.length; i++) {
+                        $province.append(`<option value="${data[i].id}">${data[i].name}</option>`)
+                    }
+                }
+            })
+        }
+    })
+    $('select#province').on('change', function () {
+        $('select#district').empty();
+        $('select#ward').empty();
+    })
+    $('select#district').on('change', function () {
+        $('select#ward').empty();
+    })
+    $('select#district').click(function () {
+        $district = $(this);
+        if ($district.find('option').length == 0) {
+            $.ajax({
+                url: '/api/get/districts',
+                method: 'POST',
+                data: {'province_id': $('select#province').val()},
+                success: function (data) {
+                    for (let i = 0; i < data.length; i++) {
+                        $district.append(`<option value="${data[i].id}">${data[i].name}</option>`)
+                        $('select#ward').empty();
+                    }
+                }
+            })
+        }
+    })
+    $('select#ward').click(function () {
+        $ward = $(this);
+        if ($ward.find('option').length == 0) {
+            $.ajax({
+                url: '/api/get/wards',
+                method: 'POST',
+                data: {'district_id': $('select#district').val()},
+                success: function (data) {
+                    for (let i = 0; i < data.length; i++) {
+                        $ward.append(`<option value="${data[i].id}">${data[i].name}</option>`)
+                    }
+                }
+            })
+        }
+    })
+
+    $('select#address-choose').on('change', function (event) {
+        $('p[name="phoneNumber"]').text($(this).find(':selected').attr('phone-number'));
     })
 });
