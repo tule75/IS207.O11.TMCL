@@ -148,32 +148,44 @@ const gridItems = document.querySelectorAll('.grid-item-count')
 const modals  = document.querySelectorAll('.modal');
 const closeModals = document.querySelectorAll('.close-modal');
 let activeModal = null;
+const closeSubModal = document.querySelectorAll('.close-sub-modal');
+const submodalBtns = document.querySelectorAll('.viewdetail');
+const subModal = document.querySelectorAll('.sub-modal')
+const modalContent = document.querySelector('.modal-content');
 gridItems.forEach((item, index) => {
     
     item.addEventListener('click', () => {
         modals[index].style.display = 'block';
-        if (activeModal) {
-            activeModal.style.display = 'none';
-        }
+
         activeModal = modals[index];
 
     });
     closeModals[index].addEventListener('click', () => {
         modals[index].style.display = 'none';
+        activeModal = null;
     })
-    
-    activeModal = null;
 })
-const closeSubModals = document.querySelectorAll('.close-sub-modal');
-const submodalBtns = document.querySelectorAll('.viewdetail');
-const subModals = document.querySelectorAll('.sub-modal')
-submodalBtns.forEach((subBtn,index) => {
-    subBtn.addEventListener('click', () => {
-        subModals[index].style.display = 'block';
+
+submodalBtns.forEach((button) => {
+    button.addEventListener('click', function () {
+        const orderId = this.getAttribute('data-order-id');
+        showOrderDetail(orderId);
     });
-    closeSubModals[index].addEventListener('click', () => {
-        subModals[index].style.display = 'none';
-    
-        
-    })
-})
+});
+
+closeSubModal.addEventListener('click', function () {
+    subModal.style.display = 'none';
+});
+
+window.addEventListener('click', function (event) {
+    if (event.target == subModal) {
+        subModal.style.display = 'none';
+    }
+});
+
+function showOrderDetail(orderId) {
+    // Gửi request Ajax hoặc sử dụng các phương pháp khác để lấy chi tiết đơn hàng theo orderId
+    const orderDetailContent = '<p>Chi tiết đơn hàng của mã ' + orderId + '</p>';
+    modalContent.innerHTML = orderDetailContent;
+    subModal.style.display = 'block';
+}
