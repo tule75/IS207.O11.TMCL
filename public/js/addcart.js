@@ -14,6 +14,7 @@ $(document).ready(function(){
             data: {'watch_id': id},
             success: function (data) {
                 console.log(data);
+                alert('Bạn đã thêm sản phẩm vào giỏ hàng');
             },
             error: function (xhr, status, error) { 
                 if(error == 'Unauthorized') {
