@@ -147,25 +147,40 @@ const indexNow = 0 ;
 const gridItems = document.querySelectorAll('.grid-item-count')
 const modals  = document.querySelectorAll('.modal');
 const closeModals = document.querySelectorAll('.close-modal');
+let activeModal = null;
 gridItems.forEach((item, index) => {
     
     item.addEventListener('click', () => {
         modals[index].style.display = 'block';
-        
+        if (activeModal) {
+            activeModal.style.display = 'none';
+        }
+        activeModal = modals[index];
+
     });
     closeModals[index].addEventListener('click', () => {
         modals[index].style.display = 'none';
     })
+    
+    activeModal = null;
 })
 const closeSubModals = document.querySelectorAll('.close-sub-modal');
 const submodalBtns = document.querySelectorAll('.viewdetail');
 const subModals = document.querySelectorAll('.sub-modal')
 submodalBtns.forEach((subBtn,index) => {
     subBtn.addEventListener('click', () => {
+        if (activeModal) {
+            activeModal.style.display = 'none';
+        }
         
         subModals[index].style.display = 'block';
     });
     closeSubModals[index].addEventListener('click', () => {
         subModals[index].style.display = 'none';
+        if (activeModal) {
+            activeModal.style.display = 'block';
+        }
+        
     })
+    activeModal = null;
 })

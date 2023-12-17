@@ -939,6 +939,8 @@
     <button class="close-modal">close</button>
 </div>
 
+<!-- locked submodal -->
+<div id="sub-locked-modal" class="sub-modal"></div>
 <!-- Khiếu nại  -->
 <div id="complain-modal" class="modal">
     <h3 class="modal-heading">Khiếu nại</h3>
@@ -963,6 +965,8 @@
     </table>
     <button class="close-modal">close</button>
 </div>
+<!-- locked submodal -->
+<div id="sub-complain-modal" class="sub-modal"></div>
 <!--  Chương trình khuyến mãi chờ xử lí -->
 <div id="discount-modal" class="modal">
     <h3 class="modal-heading">Chương trình khuyến mãi chờ xử lí</h3>
@@ -1008,7 +1012,8 @@
     <button class="close-modal">close</button>
 </div>
 
-
+<!-- locked submodal -->
+<div id="sub-discount-modal" class="sub-modal"></div>
 
 <div class="quick-modal">
     <div class="quick-modal_container">
