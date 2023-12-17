@@ -545,9 +545,6 @@
                 <th>Ngày đặt hàng</th>
                 <th>Tên khách hàng</th>
                 <th>SĐT</th>
-                <th>
-                   Chi tiết đơn hàng
-                </th>
             </tr>
         </thead>
         <tbody>
@@ -559,9 +556,6 @@
                 <td>10-12-2023</td>
                 <td>Nguyễn Dương Tùng</td>
                 <td>012348374</td>
-                <td>
-                    <button class="viewdetail">Xem</button>
-                </td>
             </tr>
         </tbody>
     </table>
@@ -612,9 +606,6 @@
                 <th>Ngày đặt hàng</th>
                 <th>Tên khách hàng</th>
                 <th>SĐT</th>
-                <th>
-                   Chi tiết đơn hàng
-                </th>
             </tr>
         </thead>
         <tbody>
@@ -626,9 +617,6 @@
                 <td>10-12-2023</td>
                 <td>Nguyễn Dương Tùng</td>
                 <td>012348374</td>
-                <td>
-                    <button class="viewdetail">Xem</button>
-                </td>
             </tr>
             <tr>
                 <td>MDH01</td>
@@ -638,9 +626,6 @@
                 <td>10-12-2023</td>
                 <td>Nguyễn Dương Tùng</td>
                 <td>012348374</td>
-                <td>
-                    <button class="viewdetail">Xem</button>
-                </td>
             </tr>
            
         </tbody>
@@ -692,9 +677,6 @@
                 <th>Ngày đặt hàng</th>
                 <th>Tên khách hàng</th>
                 <th>SĐT</th>
-                <th>
-                   Chi tiết đơn hàng
-                </th>
             </tr>
         </thead>
         <tbody>
@@ -706,9 +688,6 @@
                 <td>10-12-2023</td>
                 <td>Nguyễn Dương Tùng</td>
                 <td>012348374</td>
-                <td>
-                    <button class="viewdetail">Xem</button>
-                </td>
             </tr>
             <tr>
                 <td>MDH01</td>
@@ -718,9 +697,6 @@
                 <td>10-12-2023</td>
                 <td>Nguyễn Dương Tùng</td>
                 <td>012348374</td>
-                <td>
-                    <button class="viewdetail">Xem</button>
-                </td>
             </tr>
           
         </tbody>
@@ -772,9 +748,7 @@
                 <th>Ngày đặt hàng</th>
                 <th>Tên khách hàng</th>
                 <th>SĐT</th>
-                <th>
-                   Chi tiết đơn hàng
-                </th>
+                
             </tr>
         </thead>
         <tbody>
@@ -786,9 +760,6 @@
                 <td>10-12-2023</td>
                 <td>Nguyễn Dương Tùng</td>
                 <td>012348374</td>
-                <td>
-                    <button class="viewdetail">Xem</button>
-                </td>
             </tr>
            
         </tbody>
@@ -840,9 +811,6 @@
                 <th>Ngày đặt hàng</th>
                 <th>Tên khách hàng</th>
                 <th>SĐT</th>
-                <th>
-                   Chi tiết đơn hàng
-                </th>
             </tr>
         </thead>
         <tbody>
@@ -854,9 +822,6 @@
                 <td>10-12-2023</td>
                 <td>Nguyễn Dương Tùng</td>
                 <td>012348374</td>
-                <td>
-                    <button class="viewdetail">Xem</button>
-                </td>
             </tr>
         </tbody>
     </table>
