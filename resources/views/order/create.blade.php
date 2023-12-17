@@ -25,14 +25,18 @@
     
                     <div class="address_change">
                         <label for="address-option">Phone Number</label><br>
+                        @if (auth()->user()->defaultAddress)
                         <input type="text" name="address-option" value="{{auth()->user()->defaultAddress->address->getPhone()}}">
+                        @endif
                         <br>
                         <label for="address-option">Shipping To</label><br>
                         <select name="address-option" id="address-choose">
+                            @if (auth()->user()->defaultAddress)
                             <option value="{{auth()->user()->defaultAddress->address_id}}">{{auth()->user()->defaultAddress->address->getAddress()}}</option>
                             @foreach(auth()->user()->address as $address)
                             <option value="{{$address->id}}">{{$address->getAddress()}}</option>
                             @endforeach 
+                            @endif
                         </select>
                         
                         <div class="address_change-opt">

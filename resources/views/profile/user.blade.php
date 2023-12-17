@@ -36,26 +36,55 @@
                 <div class="nav-right">
                     <div class="nav-right--item"><i class="fa fa-heart"></i></div>
                     @if (Route::has('login'))
-                        @auth
-                            <a href="{{ url('/profile') }}" style="margin: 0; text-decoration: inherit; color: inherit;"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
-                            <a href="{{Route('cart.index')}}" style="margin: 0; text-decoration: inherit; color: inherit;"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
-                        @else
-                            <a href="{{ url('/login') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
-                            <a href="{{ url('/login') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
-                        @endauth
-                    @endif
+                    @auth
+                        <div class="nav-right--item isUser">
+                            <a href="{{ url('/profile') }}" style="margin: 0">
+                                    <i class="fa fa-user"></i>
+                            </a>
+                            <div class="logout">
+                                <form action="{{ Route('logout')}}" method="POST">
+                                        @csrf
+                                    <a class="watch-collection--item"><button class="menu-bt">LOG OUT</button></a>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <a href="{{Route('cart.index')}}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
+                    @else
+                        <a href="{{ url('/login') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
+                        <a href="{{ url('/login') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
+                    @endauth
+                @endif
                 </div>
             </div>
-
-            <div class="sub-navbar">
-                <div class="watch-collection--item">Colect</div>
-                <div class="watch-collection--item">Colect</div>
-                <div class="watch-collection--item">Colect</div>
-                <div class="watch-collection--item">Colect</div>
-                <div class="watch-collection--item">Colect</div>
-            </div>
-
         </div>
+        <div class="sub-navbar">
+             <div class="dropdown">
+                <button class="dropbtn">Brand</button>
+                <div class="dropdown-content">
+                @foreach ($brand as $data)
+                    <a href="/collection?brand={{$data->id}}">{{$data->name}}</a>
+                @endforeach
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Category</button>
+            <div class="dropdown-content">
+                @foreach ($category as $data)
+                    <a href="/collection?brand={{$data->id}}">{{$data->name}}</a>
+                @endforeach
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Gender</button>
+            <div class="dropdown-content">
+                <a href="/collection?gender=male">Male</a>
+                <a href="/collection?gender=female">Female</a>
+            </div>
+        </div>
+    </div> 
         <!-- header end -->
         <!--welcom-->
         <div class="banner">
