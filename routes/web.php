@@ -68,7 +68,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
 // manager routes
 Route::middleware(['auth'])->group(function () {
     Route::post('/manager/staff/getall', [ManagerController::class, 'allStaff']);
@@ -160,7 +159,7 @@ Route::middleware('auth')->group(function () {
     // get all brand
     Route::GET('/category/getall', [CategoryController::class, 'index']);
 
-
+Route::post('/momo/callback', [OrderController::class, 'callbackMoMo'])->middleware('guest');
 // cart routes
 Route::middleware(['auth'])->group(function () {
     // lấy danh sách giỏ hàng

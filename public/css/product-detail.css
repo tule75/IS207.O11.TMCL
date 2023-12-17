@@ -8,7 +8,7 @@
 
     overflow-y: scroll;
 
-    max-height: 300px;    
+    max-height: auto;    
 
 }
 /* .product-img-collect::-webkit-scrollbar {

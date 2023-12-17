@@ -137,7 +137,7 @@ $(document).ready(function() {
                 method: 'POST',
                 data: {
                     address_id: address_id,
-                    watch_id: watch_id,
+                    watches_id: watch_id,
                     amount: parseInt($('.total-price').text().replace(/\./g, '')),
                     quantity: quantity,
                     ship_fee: ship_fee,
