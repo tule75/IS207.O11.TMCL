@@ -41,19 +41,6 @@
             </div>
             <div class="table-field">
                 <table>
-                    <!-- <tbody>
-                        <tr>
-                            <td width="350px">Sản Phẩm</td>
-                            <td></td>
-                            <td width="140px">Tổng tiền</td>
-                            <td width="120px">Trạng thái</td>
-                            <td width="130px">Ngày đặt hàng</td>
-                            <td width="180px">Mã đơn hàng</td>
-                            <td width="120">Cập nhập</td>
-                        </tr>
-                    </tbody>
-                </table> -->
-
                     <table>
                         <tr>
                             <th>Sản Phẩm</td>

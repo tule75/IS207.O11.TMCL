@@ -107,8 +107,8 @@
                         @endphp
                         
                         <div class="table-field">
+                           
                             <table>
-                                <table>
                                     <tr>
                                         <th>Mã Đơn hàng</td>
                                         <th>Tổng tiền</th>
@@ -121,7 +121,7 @@
                                         <th>Chi tiết</th>
 
                                     </tr>
-                                    @foreach ($orders as $order)
+                                @foreach ($orders as $order)
                                     <tr>
                                         <td>
                                             <p class="oID">HD{{$order->id}}</p>
@@ -161,47 +161,48 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <button class="viewdetail" data-order-id="{{$order->id}}">Xem</button>
+                                            <button data-id='{{$order->id}}' class="viewdetail" onclick='openSub(this)'>Xem</button>
                                         </td>
-                                    </tr>
-                                    @endforeach
-                                    </tbody>
-                                    
-                                </table>
-                        </div>
-                        <!-- submodal -->
-                        <div id="sub-confirm-modal" class="sub-modal">
-                        <div class="modal-content">
-                            <table class="sub-modal-table">
-                            <thead>
-                                <tr>
-                                    <th>Mã sản phẩm</th>
-                                    <th>Hình Ảnh</th>
-                                    <th>Tên SP</th>
-                                    <th>Số lượng</th>
-                                    <th>Tổng tiền</th>
-                                    <th>Giảm giá</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                    <tr>
-                                        <td class="smaller">001</td>
-                                        <td class="img-tag">
-                                            <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
-                                        </td>
-                                        <td>Sản phẩm A</td>
-                                        <td class="smaller">10</td>
-                                        <td>$100.00</td>
-                                        <td class="smaller">$10.00</td>
-                                    </tr>
-                            </tbody>
+                                    </tr>     
+                                    @foreach($order->watches as $watch)
+                                        <div id="sub-processed-modal-{{$order->id}}" class="sub-modal">
+                                            <div class="modal-content">
+                                                <table class="sub-modal-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Mã sản phẩm</th>
+                                                            <th>Hình Ảnh</th>
+                                                            <th>Tên SP</th>
+                                                            <th>Số lượng</th>
+                                                            <th>Tổng tiền</th>
+                                                            <th>Giảm giá</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach($order->watches as $watch)
+                                                            <tr>
+                                                                <td class="smaller">{{$watch->id}}</td>
+                                                                <td class="img-tag"><img class="img-sp" src="{{ $watch->img1 }}" alt=""></td>
+                                                                <td>{{$watch->name}}</td>
+                                                                <td class="smaller">{{$watch->pivot->quantity}}</td>
+                                                                <td>{{$watch->pivot->price * $watch->pivot->quantity}}</td>
+                                                                <td class="smaller">0</td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                                <button class="close-sub-modal">Trở lại</button>
+                                            </div>
+                                        </div>
+                                    @endforeach                        
+                                @endforeach 
                             </table>
-                            <button class="close-sub-modal">Trở lại</button>
                         </div>
-                        </div>
+                     
                     </div>
+                    
                 </div>
-
+\
                 <!-- Quản lí sản phẩm -->
                 <div class="select-container">
                     <div class="content">
