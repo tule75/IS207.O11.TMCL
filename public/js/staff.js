@@ -153,7 +153,6 @@ const submodalBtns = document.querySelectorAll('.viewdetail');
 const subModal = document.querySelector('.sub-modal')
 const modalContent = document.querySelector('.modal-content');
 gridItems.forEach((item, index) => {
-    
     item.addEventListener('click', () => {
         modals[index].style.display = 'block';
 
@@ -189,4 +188,5 @@ function hideAllSubModals() {
     subModals.forEach(function (subModal) {
         subModal.style.display = 'none';
     });
+
 }
