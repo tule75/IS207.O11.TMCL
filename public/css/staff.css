@@ -905,3 +905,61 @@ table {
     display: block; 
     margin: 0 auto;
 }
+
+.viewdetail {
+    padding: 10px 15px;
+    background-color: #4CAF50; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+.viewdetail:hover {
+    background-color: #45a049; 
+}
+
+.sub-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    max-width: 80%; 
+    max-height: 80%; 
+    overflow-y: auto; 
+    transition: all 0.3s ease-in-out;
+    z-index: 10000;
+}
+.sub-modal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .sub-modal-table th,
+  .sub-modal-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .sub-modal-table th {
+    background-color: #f2f2f2;
+  }
+
+.close-sub-modal {
+    display: block;
+    margin-top: 20px;
+    padding: 12px 20px; 
+    background-color: #4285f4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

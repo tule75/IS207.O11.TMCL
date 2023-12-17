@@ -143,7 +143,7 @@ $(document).ready(function() {
     })
 })
 
-
+const indexNow = 0 ;
 const gridItems = document.querySelectorAll('.grid-item-count')
 const modals  = document.querySelectorAll('.modal');
 const closeModals = document.querySelectorAll('.close-modal');
@@ -151,10 +151,21 @@ gridItems.forEach((item, index) => {
     
     item.addEventListener('click', () => {
         modals[index].style.display = 'block';
+        
     });
     closeModals[index].addEventListener('click', () => {
         modals[index].style.display = 'none';
-
     })
-   
+})
+const closeSubModals = document.querySelectorAll('.close-sub-modal');
+const submodalBtns = document.querySelectorAll('.viewdetail');
+const subModals = document.querySelectorAll('.sub-modal')
+submodalBtns.forEach((subBtn,index) => {
+    subBtn.addEventListener('click', () => {
+        
+        subModals[index].style.display = 'block';
+    });
+    closeSubModals[index].addEventListener('click', () => {
+        subModals[index].style.display = 'none';
+    })
 })
