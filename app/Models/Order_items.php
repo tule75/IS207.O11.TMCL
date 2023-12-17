@@ -22,7 +22,7 @@ class Order_items extends Model
 
     public function watches(): BelongsTo
     {
-        return $this->belongsTo(Products::class);
+        return $this->belongsTo(Watch::class);
     }
 
     public function voucher(): BelongsTo
