@@ -150,7 +150,7 @@ const closeModals = document.querySelectorAll('.close-modal');
 let activeModal = null;
 const closeSubModal = document.querySelectorAll('.close-sub-modal');
 const submodalBtns = document.querySelectorAll('.viewdetail');
-const subModal = document.querySelectorAll('.sub-modal')
+const subModal = document.querySelector('.sub-modal')
 const modalContent = document.querySelector('.modal-content');
 gridItems.forEach((item, index) => {
     
@@ -165,27 +165,28 @@ gridItems.forEach((item, index) => {
         activeModal = null;
     })
 })
-
-submodalBtns.forEach((button) => {
-    button.addEventListener('click', function () {
-        const orderId = this.getAttribute('data-order-id');
-        showOrderDetail(orderId);
-    });
-});
-
-closeSubModal.addEventListener('click', function () {
-    subModal.style.display = 'none';
-});
-
-window.addEventListener('click', function (event) {
-    if (event.target == subModal) {
-        subModal.style.display = 'none';
+function openSub(btn) {
+    const orderId = btn.getAttribute('data-id');
+    console.log(orderId);
+    const subModal = document.querySelector(`#sub-processed-modal-${orderId}`);
+    if (subModal) {
+        subModal.style.display = 'block';
+        console.log(subModal);
     }
-});
+    console.log(subModal);
+}
 
-function showOrderDetail(orderId) {
-    // Gửi request Ajax hoặc sử dụng các phương pháp khác để lấy chi tiết đơn hàng theo orderId
-    const orderDetailContent = '<p>Chi tiết đơn hàng của mã ' + orderId + '</p>';
-    modalContent.innerHTML = orderDetailContent;
-    subModal.style.display = 'block';
+
+// function closeSub(orderId) {
+//     const subModal = document.getElementById(`sub-processed-modal-${orderId}`);
+//     if (subModal) {
+//         subModal.style.display = 'none';
+//     }
+// }
+
+function hideAllSubModals() {
+    const subModals = document.querySelectorAll('.sub-modal');
+    subModals.forEach(function (subModal) {
+        subModal.style.display = 'none';
+    });
 }
