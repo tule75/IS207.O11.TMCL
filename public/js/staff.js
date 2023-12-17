@@ -169,18 +169,11 @@ const submodalBtns = document.querySelectorAll('.viewdetail');
 const subModals = document.querySelectorAll('.sub-modal')
 submodalBtns.forEach((subBtn,index) => {
     subBtn.addEventListener('click', () => {
-        if (activeModal) {
-            activeModal.style.display = 'none';
-        }
-        
         subModals[index].style.display = 'block';
     });
     closeSubModals[index].addEventListener('click', () => {
         subModals[index].style.display = 'none';
-        if (activeModal) {
-            activeModal.style.display = 'block';
-        }
+    
         
     })
-    activeModal = null;
 })
