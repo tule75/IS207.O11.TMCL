@@ -34,7 +34,7 @@ class Address extends Model
 
     public function getAddress()
     {
-        return $this->ward . ', ' . $this->district . ', ' . $this->province; 
+        return $this->address . ', ' . $this->ward . ', ' . $this->district . ', ' . $this->province; 
     }
 
     public function getPhone() {

@@ -26,15 +26,15 @@
                     <div class="address_change">
                         <label for="address-option">Phone Number</label><br>
                         @if (auth()->user()->defaultAddress)
-                        <input type="text" name="address-option" value="{{auth()->user()->defaultAddress->address->getPhone()}}">
+                        <p type="text" name="phoneNumber">{{auth()->user()->defaultAddress->address->getPhone()}}</p>
                         @endif
                         <br>
                         <label for="address-option">Shipping To</label><br>
                         <select name="address-option" id="address-choose">
                             @if (auth()->user()->defaultAddress)
-                            <option value="{{auth()->user()->defaultAddress->address_id}}">{{auth()->user()->defaultAddress->address->getAddress()}}</option>
+                            <option phone-number="{{auth()->user()->defaultAddress->address->getPhone()}}" value="{{auth()->user()->defaultAddress->address_id}}">{{auth()->user()->defaultAddress->address->getAddress()}}</option>
                             @foreach(auth()->user()->address as $address)
-                            <option value="{{$address->id}}">{{$address->getAddress()}}</option>
+                            <option phone-number="{{$address->getPhone()}}" value="{{$address->id}}">{{$address->getAddress()}}</option>
                             @endforeach 
                             @endif
                         </select>
@@ -48,28 +48,19 @@
 
                 <div class="ship_info js-form">
                     <label for="ship_form" id="form-label">Required field *</label>
-                    <form action="" name="address-info" id="ship_form">
-                        <label for="ship_gender" id="gender-label">Title *</label> <br>
-                        <form name="genders" id="ship_gender">
-                            <input type="radio" value="Mr" name="gender" id="mr">
-                            <label for="mr">Mr</label>
-                            <input type="radio" value="Mrs" name="gender" id="mrs">
-                            <label for="mrs">Mrs</label>
-                            <input type="radio" value="Miss" name="gender" id="miss">
-                            <label for="miss">Miss</label>
-                            <input type="radio" value="Mx" name="gender" id="mx">
-                            <label for="mx">Mx</label>
-                        </form>
-    
-                        <input type="text" value="" placeholder="First Name *" id="information"> <br>
-                        <input type="text"  value="" placeholder="Last Name *" id="information"> <br>
-                        <input type="text" value="" placeholder="Address *" id="information"> <br>
+                    <form action="/address" name="address-info" id="ship_form" method="POST">
+                        @csrf
+                        <input type="text" value="" name="address" placeholder="Address *" id="information"> <br>
                         <select name="" id="ship_country">
                             <option value="">Viet Nam</option>
                         </select><br>
-                        <input type="text" placeholder="City *" id="information"> <br>
-                        <input type="text" placeholder="State *" id="information"> <br>
-                        <input type="number" placeholder="Phone Number *" id="information"> <br>
+                        <select placeholder="Province *" id="province" name="province" style="width: 400px">
+                        </select> <br>
+                        <select placeholder="District *" id="district" name="district" style="width: 400px">
+                        </select> <br>
+                        <select name="ward" id="ward" placeholder="Ward *" style="width: 400px"></select> <br>
+                        <input type="text" placeholder="Phone Number *" name="phone" id="information"> <br>
+                        <input type="submit" value="Thêm">
                     </form>
                 </div>
 
