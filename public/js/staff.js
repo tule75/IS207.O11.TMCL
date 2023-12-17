@@ -149,7 +149,6 @@ const modals  = document.querySelectorAll('.modal');
 const closeModals = document.querySelectorAll('.close-modal');
 let activeModal = null;
 gridItems.forEach((item, index) => {
-    
     item.addEventListener('click', () => {
         modals[index].style.display = 'block';
         if (activeModal) {
@@ -176,4 +175,8 @@ submodalBtns.forEach((subBtn,index) => {
     
         
     })
+})
+
+$(document).ready(function () {
+    $('.sub-model-w').attr('style') = 'display: none;';
 })

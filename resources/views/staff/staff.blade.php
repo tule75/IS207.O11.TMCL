@@ -161,8 +161,39 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <button class="viewdetail">Xem</button>
+                                            <button data-id='{{$order->id}}' class="viewdetailwatch">Xem</button>
                                         </td>
+                                        <div id="sub-processed-modal-{{$order->id}}" class="sub-modal-w" style="display:none;">
+                                            <div class="modal-content">
+                                                <table class="sub-modal-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Mã sản phẩm</th>
+                                                        <th>Hình Ảnh</th>
+                                                        <th>Tên SP</th>
+                                                        <th>Số lượng</th>
+                                                        <th>Tổng tiền</th>
+                                                        <th>Giảm giá</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach($order->watches as $watch)
+                                                        <tr>
+                                                            <td class="smaller">{{$watch->id}}</td>
+                                                            <td class="img-tag">
+                                                                <img class="img-sp" src="{{ $watch->img1 }}" alt="">
+                                                            </td>
+                                                            <td>{{$watch->name}}</td>
+                                                            <td class="smaller">{{$watch->pivot->quantity}}</td>
+                                                            <td>{{$watch->pivot->price * $watch->pivot->quantity}}</td>
+                                                            <td class="smaller">0</td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                                </table>
+                                                <button class="close-sub-modal">Trở lại</button>
+                                            </div>
+                                            </div>
                                     </tr>
                                     @endforeach
                                     </tbody>
@@ -532,6 +563,7 @@
 </body>
 <!-- Modal  -->
 <!-- cho xac nhan -->
+
 <div id="confirm-modal" class="modal">
     <h3 class="modal-heading">Chờ xác nhận</h3>
     <table class="modal-table">
@@ -561,6 +593,7 @@
     </table>
    <button class="close-modal">close</button>
 </div>
+
 
 <!-- submodal -->
 <div id="sub-confirm-modal" class="sub-modal">
@@ -594,41 +627,34 @@
 </div>
 
 <!-- Chờ lấy hàng -->
+
 <div id="pickup-modal" class="modal">
     <h3 class="modal-heading">Chờ lấy hàng</h3>
     <table class="modal-table">
         <thead>
             <tr>
                 <th>Mã đơn hàng</th>
-                <th>Số lượng</th>
                 <th>Tổng tiền</th>
-                <th>Giảm giá</th>
                 <th>Ngày đặt hàng</th>
                 <th>Tên khách hàng</th>
+                <th>Địa chỉ</th>
                 <th>SĐT</th>
             </tr>
         </thead>
+        
         <tbody>
+        @foreach ($pOrders as $porder)
             <tr>
-                <td>MDH01</td>
-                <td>2</td>
-                <td>100000</td>
-                <td>10%</td>
-                <td>10-12-2023</td>
-                <td>Nguyễn Dương Tùng</td>
-                <td>012348374</td>
+                <td>HĐ{{$porder->id}}</td>
+                <td>{{$porder->total_prices}}</td>
+                <td>{{$porder->created_at}}</td>
+                <td>{{$porder->user->name}}</td>
+                <td>{{$porder->address->getAddress()}}</td>
+                <td>{{$porder->address->getPhone()}}</td>
             </tr>
-            <tr>
-                <td>MDH01</td>
-                <td>2</td>
-                <td>100000</td>
-                <td>10%</td>
-                <td>10-12-2023</td>
-                <td>Nguyễn Dương Tùng</td>
-                <td>012348374</td>
-            </tr>
-           
+        @endforeach
         </tbody>
+        
     </table>
     <button class="close-modal">close</button>
 
@@ -654,7 +680,7 @@
                 <td class="img-tag">
                     <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
                 </td>
-                <td>Sản phẩm A</td>
+                <td>Sản phẩm Q</td>
                 <td class="smaller">10</td>
                 <td>$100.00</td>
                 <td class="smaller">$10.00</td>
@@ -664,6 +690,7 @@
     <button class="close-sub-modal">Trở lại</button>
   </div>
 </div>
+
 <!-- da xu ly -->
 <div id="processed-modal" class="modal">
     <h3 class="modal-heading">Đã xử lý</h3>
@@ -680,24 +707,16 @@
             </tr>
         </thead>
         <tbody>
+        @foreach ($sOrders as $sorder)
             <tr>
-                <td>MDH01</td>
-                <td>2</td>
-                <td>100000</td>
-                <td>10%</td>
-                <td>10-12-2023</td>
-                <td>Nguyễn Dương Tùng</td>
-                <td>012348374</td>
+                <td>HĐ{{$sorder->id}}</td>
+                <td>{{$sorder->total_prices}}</td>
+                <td>{{$sorder->created_at}}</td>
+                <td>{{$sorder->user->name}}</td>
+                <td>{{$sorder->address->getAddress()}}</td>
+                <td>{{$sorder->address->getPhone()}}</td>
             </tr>
-            <tr>
-                <td>MDH01</td>
-                <td>2</td>
-                <td>100000</td>
-                <td>10%</td>
-                <td>10-12-2023</td>
-                <td>Nguyễn Dương Tùng</td>
-                <td>012348374</td>
-            </tr>
+        @endforeach
           
         </tbody>
     </table>
@@ -869,28 +888,16 @@
             </tr>
         </thead>
         <tbody>
+            @foreach ($trashed as $trash)
             <tr>
-                <td class="smaller">001</td>
+                <td class="smaller">{{$trash->id}}</td>
                 <td class="img-tag">
-                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
+                    <img class="img-sp" src="{{ $trash->img1 }}" alt="">
                 </td>
-                <td>Sản phẩm A</td>
+                <td>{{ $trash->name }}</td>
               
             </tr>
-            <tr>
-                <td class="msp">002</td>
-                <td>
-                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
-                </td>
-                <td>Sản phẩm B</td>
-               
-            <tr>
-                <td>003</td>
-                <td>
-                    <img class="img-sp" src="{{ asset('/img/h1.webp') }}" alt="">
-                </td>
-                <td>Sản phẩm C</td>
-            </tr>
+            @endforeach
         </tbody>
     </table>
     <button class="close-modal">close</button>
@@ -940,30 +947,26 @@
             </tr>
         </thead>
         <tbody>
+            @foreach ($activeVoucher as $aV)
             <tr>
-                <td>MAGG1</td>
-                <td>100.000</td>
-                <td>10</td>
-                <td>10-12-2023</td>
-                <td>10-01-2024</td>
-                <td>Áp dụng hóa đơn từ triệu</td>
+                <td>{{$aV->code}}</td>
+                <td>{{$aV->discount}}</td>
+                <td>{{$aV->quantity}}</td>
+                <td>{{$aV->start_date}}</td>
+                <td>{{$aV->start_date}}</td>
+                <td>{{$aV->minimum}}</td>
             </tr>
+            @endforeach
+            @foreach ($awaitVoucher as $aV)
             <tr>
-                <td>MAGG1</td>
-                <td>100.000</td>
-                <td>10</td>
-                <td>10-12-2023</td>
-                <td>10-01-2024</td>
-                <td>Áp dụng hóa đơn từ triệu</td>
+                <td>{{$aV->code}}</td>
+                <td>{{$aV->discount}}</td>
+                <td>{{$aV->quantity}}</td>
+                <td>{{$aV->start_date}}</td>
+                <td>{{$aV->start_date}}</td>
+                <td>{{$aV->minimum}}</td>
             </tr>
-            <tr>
-                <td>MAGG1</td>
-                <td>100.000</td>
-                <td>10</td>
-                <td>10-12-2023</td>
-                <td>10-01-2024</td>
-                <td>Áp dụng hóa đơn từ triệu</td>
-            </tr>
+            @endforeach
         </tbody>
     </table>
     <button class="close-modal">close</button>
