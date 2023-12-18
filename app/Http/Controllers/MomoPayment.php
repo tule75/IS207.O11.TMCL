@@ -20,25 +20,19 @@ class MomoPayment extends Controller
     //
     public function send(Request $request)
     {
-        $address_id = $request->address_id;
-        $amount = $request->amount;
-        $watches_id = $request->watches_id;
-        $quantity = $request->quantity;
-        $ship_fee = $request->ship_fee;
-        $user_id = $request->user_id;
 
         $endpoint = 'https://test-payment.momo.vn/v2/gateway/api/create';
         $accessKey = 'F8BBA842ECF85';
         $secretKey = 'K951B6PE1waDMi640xX08PD3vg6EkVlz';
-        $orderInfo = ['address_id' => $address_id, 'amount' => $amount, 'watches_id' => $watches_id, 'quantity' => $quantity, 'ship_fee' => $ship_fee, 'user_id' => $user_id];
+        $orderInfo = 'payWithMethod';
         $partnerCode = 'MOMO';
         $redirectUrl = 'www.donghouiters.id.vn';
         $ipnUrl = 'www.donghouiters.id.vn/momo/callback';
         $amount = (string)$request->amount;
-        $orderId = $partnerCode . date('Y-m-d H:i:s');
+        $orderId = $partnerCode . time();
         $requestId = $orderId;
         $requestType = 'captureWallet';
-        $extraData = base64_encode('{"address_id": ' . $address_id . ', "amount": ' . $amount . ', "quantity":' . $quantity . ', "ship_fee": ' . $ship_fee . '}');
+        $extraData = '';
         $orderGroupId = '';
         $autoCapture = true;
         $lang = 'vi';
@@ -68,9 +62,7 @@ class MomoPayment extends Controller
             'Content-Type: application/json',
         ])->post($endpoint, $data);
 
-
         $result = $response->body();
-
         $jsonResult = json_decode($result, true);
 
         // /Điều hướng đến payUrl nếu có
