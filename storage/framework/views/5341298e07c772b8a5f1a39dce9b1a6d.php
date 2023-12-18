@@ -124,8 +124,12 @@
         <div class="main-content">
             <div class="filter-sort">
                 <div class="search-space">
-                    <input class="input-box" type="text" placeholder="Typing here ....">
+                    <input id="watch_search" class="input-box" type="text" placeholder="Typing here ....">
+                    <div id="search-suggestions" class="search-suggestions">
+                        
+                    </div>
                 </div>
+                
                 <div class="sort-item">
                     <h4 class="sort-heading">By Price</h4>
                     <div class="radio-check-container">
@@ -228,7 +232,6 @@
             </div>
         </div>
         <!-- extra infomation start -->
-        <!-- The Modal - COMPLIMENTARY DELIVERY -->
         <!-- Practice coding on Tailwind -->
         <div id="cd_modal-complimentary" tabindex="-1" aria-hidden="true" class="complimentary-modal" >
             <div class="relative w-full max-w-2xl max-h-full">

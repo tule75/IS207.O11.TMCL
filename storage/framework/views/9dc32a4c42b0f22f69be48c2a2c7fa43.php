@@ -17,6 +17,7 @@
         </div>
     </section>
     <!------>
+    <?php $__currentLoopData = $post; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="comment-box-comment">
         <!------>
         <div class="comment-box">
@@ -28,119 +29,28 @@
                     </div>
 
                     <div class="name-user">
-                        <strong>User1</strong>
-                        <span>@User1</span>
+                        <strong><?php echo e($p->user->name); ?></strong>
+                        <span><?php echo e("@" . $p->user->id); ?></span>
                     </div>
                 </div>
                 <div class="review">
+                    <?php for($i = 0; $i < $p->star; $i++): ?>
                     <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
+                    <?php endfor; ?>
                 </div>
             </div>
             <div class="client-comment">
-                <p>Việc đánh giá Shop chính xác sẽ cung cấp thông tin hữu ích cho những Người mua sau và cả nhữn
+                <p><?php echo e($p->message); ?>
+
                 </p>
             </div>
         </div>
     </div>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
 
-    <div class="comment-box-comment">
-        <!------>
-        <div class="comment-box">
-
-            <div class="box-top">
-                <div class="profile">
-                    <div class="profile-img">
-                        <img src="/img/OIP.jpeg">
-                    </div>
-
-                    <div class="name-user">
-                        <strong>User1</strong>
-                        <span>@User1</span>
-                    </div>
-                </div>
-                <div class="review">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-            </div>
-            <div class="client-comment">
-                <p>Việc đánh giá Shop chính xác sẽ cung cấp thông tin hữu ích cho những Người mua sau và cả nhữn
-                </p>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="comment-box-comment">
-        <!------>
-        <div class="comment-box">
-
-            <div class="box-top">
-                <div class="profile">
-                    <div class="profile-img">
-                        <img src="/img/OIP.jpeg">
-                    </div>
-
-                    <div class="name-user">
-                        <strong>User1</strong>
-                        <span>@User1</span>
-                    </div>
-                </div>
-                <div class="review">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-            </div>
-            <div class="client-comment">
-                <p>Việc đánh giá Shop chính xác sẽ cung cấp thông tin hữu ích cho những Người mua sau và cả nhữn
-                </p>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="comment-box-comment">
-        <!------>
-        <div class="comment-box">
-
-            <div class="box-top">
-                <div class="profile">
-                    <div class="profile-img">
-                        <img src="/img/OIP.jpeg">
-                    </div>
-
-                    <div class="name-user">
-                        <strong>User1</strong>
-                        <span>@User1</span>
-                    </div>
-                </div>
-                <div class="review">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-            </div>
-            <div class="client-comment">
-                <p>Việc đánh giá Shop chính xác sẽ cung cấp thông tin hữu ích cho những Người mua sau và cả nhữn
-                </p>
-            </div>
-        </div>
-    </div>
+    
 </body>
 
 </html><?php /**PATH D:\UIT\WEB\IS207.O11.TMCL\resources\views/products/comment.blade.php ENDPATH**/ ?>

@@ -371,5 +371,5 @@ statuses.forEach((status, i) => {
             event.stopPropagation()
         })
 </script>
-
+<script src="<?php echo e(asset('/js/user')); ?>"></script>
 </html><?php /**PATH D:\UIT\WEB\IS207.O11.TMCL\resources\views/profile/user.blade.php ENDPATH**/ ?>

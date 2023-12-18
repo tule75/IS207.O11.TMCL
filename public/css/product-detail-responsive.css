@@ -1,0 +1,55 @@
+@media only screen and (min-width: 960px) and (max-width: 1024px) {
+    
+}
+
+@media only screen and (max-width: 959px) { 
+    .header {
+        width: 100%;
+    }
+
+    .header-notice{
+        font-size: 12px;
+    }
+
+    .nav-left--item {
+        font-size: 14px;
+        padding: 10px 8px;
+    }
+
+    .logo {
+        margin-right: 5%;
+    }
+
+    .nav-right {
+    }
+
+    .nav-right--item {
+        padding: 10px 8px;
+        transform: translateX(-120%);
+    }
+    
+    .product-body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .product-information {
+        margin-left: 20px;
+    }
+
+    .pagination {
+        transform: translateX(0);
+    }
+
+    .pagination-image{
+        transform: translateX(0);
+    }
+
+    .footer {
+        flex-wrap: wrap;
+    }
+
+    .footer-list {
+        margin-left: 36px;
+    }
+}

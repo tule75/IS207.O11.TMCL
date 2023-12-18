@@ -1,6 +1,87 @@
+.cartier {
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+}
+.has-link {
+    color: #1d1c1c;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.header {
+}
+.header-notice{
+    text-align: center;
+    margin: 40px 0;
+}
+.return-link {
+    color: #1d1c1c;
+    text-decoration: underline;
+}
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+}
+.nav-left {
+    display: flex;
+    padding-left: 0;
+    justify-content: center;
+}   
+.nav-left--item{ 
+    padding: 10px 20px;
+    list-style: none;
+    font-size: 20px;
+    position: relative;
+    text-align: center;
+}
+.nav-hover {
+    color: black;
+}
+.nav-hover:hover {
+    color: rgb(78, 75, 75);
+     
+}
+.nav-left--item::after {
+    content: '';
+    width: 1%;
+    height: 2px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform-origin: bottom right;
+    transition: width 1s;
+}
+.nav-left--item:hover::after {
+    content: '';
+    width: 100%;
+    background-color: #1d1c1c;
+}
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10%;
+    margin-bottom: 40px;
+}
+.logo-img {
+    max-height: 50px;
+}
+.nav-right {
+    display: flex;
+    width: 14%;
+}
+.nav-right--item {
+    padding: 10px 20px;
+    color: #1d1c1c;
+}
+
+
+
 .product-body {
     display: flex;
     justify-content: space-evenly;
+    margin-top: 40px;
 }
 
 .product-img-collect {
@@ -53,7 +134,7 @@
 }
 .btn-selection {
     cursor: pointer;
-    margin-top: 10px;
+    margin: 20px 0;
 }
 .add-cart, .buy_now {
     margin: 0 5px;
@@ -234,4 +315,49 @@
 .buy-now:hover {
     color: white;
     background-color: #8a8888;
+}
+
+.complimentary-img-container {
+    margin-bottom: 12px;
+}
+
+
+.footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    background-color: #F2F2F2;
+}
+.footer-list {
+    width: 25%;
+    padding: 10px 10px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 80px;
+}
+.footer::before {
+    content: '';
+    width: 80%;
+    height: 1px;
+    top: -10px;
+    background-color: #F2F2F2;
+    position: absolute;
+}
+.hasnt-flex {
+    display: inline-flex;
+}
+.footer-list--item {
+    cursor: pointer;
+}
+.hasnt-flex .footer-list--item {
+    transform: translateY(-26px);
+}
+.icon-link {
+    padding-top: 20px;
+}
+.icon-link-item .fa {
+    font-size: 26px;
+    padding: 10px 10px;
 }

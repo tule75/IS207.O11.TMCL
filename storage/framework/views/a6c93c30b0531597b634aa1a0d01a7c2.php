@@ -18,23 +18,40 @@
             </div>
 
             <div class="orders__list nextto">
+                <?php $__currentLoopData = auth()->user()->orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <div>
                     <div class="order__info">
-                        <img class="order--img" src="<?php echo e(asset('/img/h3.webp')); ?>" alt="">
-
-                        <div class="left">
-                            <div class="left-top">    
-                                <h3 class="order__info--name">BALLON BLEU DE CATIER WATCH</h3>                                
-                            </div>
-                            <p>33 mm, mechanical movement with automatic winding, steel</p>
+                        <div class="left"> 
+                            <p><?php echo e("HĐ" . $order->id); ?></p>
                             
                             <button class="order__info--detail"><i class="fa-solid fa-angle-down"></i></i>Detail</button>
+                            <div class='detail' style="display: none;">
+                                <?php $__currentLoopData = $order->watches; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $watch): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <img class="order--img" src="<?php echo e($watch->img1); ?>" alt="" style='display: inline;'>
+                                <div style="display: inline;">
+                                    <p><?php echo e($watch->name); ?></p>
+                                    <p><?php echo e($watch->description); ?></p>
+                                    <p><?php echo e($watch->pivot->price); ?> x <?php echo e($watch->pivot->quantity); ?></p>
+                                </div>
+
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="right">
-                        <li class="order__info--price">$6.200</li>
+                        <div class="right">
+                            <li class="order__info--price"><?php echo e($order->total_prices); ?> đ</li>
+                            <?php if($order->status == 'Success'): ?>
+                            <div class="right-bottom">
+                                <button class="order__info--btn">Đánh giá</button>
+                                <button class="order__info--btn">Mua lại</button>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                </div>
                         
-                    </div>
+                   
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
 
             <div class="orders__list">

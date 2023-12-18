@@ -11,6 +11,7 @@
     
     <link rel="stylesheet" href="{{ asset('/icon/fontawesome-free-6.4.2-web/css/regular.min.css')}}">
     <link rel="stylesheet" href="{{ asset('/css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/product-detail-responsive.css') }}">
 </head>
 <body>
     <div class="cartier">
@@ -33,7 +34,7 @@
 
                 <div class="nav-right">
                     <div class="nav-right--item"><i class="fa fa-heart"></i></div>
-                    <a href="{{ url('/profile') }}" style="margin: 0"><i class="fa fa-user"></i></a>
+                    <a href="{{ url('/profile') }}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
                     <a href="{{Route('cart.index')}}" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
                 </div>
             </div>

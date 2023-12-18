@@ -11,6 +11,7 @@
     
     <link rel="stylesheet" href="<?php echo e(asset('/icon/fontawesome-free-6.4.2-web/css/regular.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('/css/home.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('/css/product-detail-responsive.css')); ?>">
 </head>
 <body>
     <div class="cartier">
@@ -33,8 +34,8 @@
 
                 <div class="nav-right">
                     <div class="nav-right--item"><i class="fa fa-heart"></i></div>
-                    <div class="nav-right--item"><i class="fa fa-user"></i></div>
-                    <div class="nav-right--item"><i class="fa fa-cart-plus"></i></div>
+                    <a href="<?php echo e(url('/profile')); ?>" style="margin: 0"><div class="nav-right--item"><i class="fa fa-user"></i></div></a>
+                    <a href="<?php echo e(Route('cart.index')); ?>" style="margin: 0"><div class="nav-right--item"><i class="fa fa-cart-plus"></i></div></a>
                 </div>
             </div>
 
