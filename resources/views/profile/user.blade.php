@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/profile.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/home.css')}}">
+
 
 <body>
     <div class="cartier">
@@ -26,7 +28,6 @@
                 <ul class="nav-left">
                     <li class="nav-left--item"><a href="" class="has-link nav-hover">Home</a></li>
                     <li class="nav-left--item"><a href="" class="has-link nav-hover">Contact Us</a></li>
-                    <li class="nav-left--item"><a href="" class="has-link nav-hover">Services</a></li>
                 </ul>
 
                 <div class="logo">

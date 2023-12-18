@@ -178,23 +178,23 @@
                 <div class="products-container">
                     <!-- item -->
                     @foreach ($watches as $watch)
-                    <a href="/watch/{{ $watch->slug }}" style="text-decoration:underline">
-                        <div class="product-object">
-                            <img class="object-img" src="{{ asset($watch->img1) }}" alt="">
-                            <div class="object-section">
-                                <div class="object-section-info">
-                                    <a href="/watch/{{$watch->slug}} " class=" has-link object-info info-name"> {{$watch->name}}</a>
+                        <a href="/watch/{{ $watch->slug }}" style="text-decoration:underline">
+                            <div class="product-object">
+                                <img class="object-img" src="{{ asset($watch->img1) }}" alt="">
+                                <div class="object-section">
+                                    <div class="object-section-info">
+                                        <a href="/watch/{{$watch->slug}} " class=" has-link object-info info-name"> {{$watch->name}}</a>
+                                    </div>
+                                    <div class="object-section-info">
+                                        <h3 class="item-price">{{$watch->price * (1 - $watch->discount)}}</h3> <span>VND</span>
+                                    </div>
                                 </div>
-                                <div class="object-section-info">
-                                    <h3 class="item-price">{{$watch->price * (1 - $watch->discount)}}</h3> <span>VND</span>
+                                <div class="buy-btn">
+                                    <a id='{{$watch->id}}' class="discover cart">Add to cart</a>
+                                    <a href="/order/buy?watch_id[]={{$watch->id}}&quantity[]=1" class="discover has-link">Buy Now</a>
                                 </div>
                             </div>
-                            <div class="buy-btn">
-                                <a id='{{$watch->id}}' class="discover cart">Add to cart</a>
-                                <a href="/order/buy?watch_id[]={{$watch->id}}&quantity[]=1" class="discover has-link">Buy Now</a>
-                            </div>
-                        </div>
-                    </a>
+                        </a>
                     @endforeach                
                 </div>
             </div>
