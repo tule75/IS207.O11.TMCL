@@ -183,7 +183,7 @@
                                 <img class="object-img" src="{{ asset($watch->img1) }}" alt="">
                                 <div class="object-section">
                                     <div class="object-section-info">
-                                        <a href="/watch/{{$watch->slug}} " class=" has-link object-info info-name"> {{$watch->name}}</a>
+                                        <a href="/watch/{{$watch->slug}} " class=" has-link object-info info-name">Đồng hồ {{$watch->name}}</a>
                                     </div>
                                     <div class="object-section-info">
                                         <h3 class="item-price">{{$watch->price * (1 - $watch->discount)}}</h3> <span>VND</span>
