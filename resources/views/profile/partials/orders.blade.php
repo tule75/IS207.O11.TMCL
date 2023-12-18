@@ -1,3 +1,4 @@
+
 <div class="bd-content-field">
     <div class="bd-choose">
         <p class="tags">Show orders</p>
@@ -18,40 +19,26 @@
             </div>
 
             <div class="orders__list nextto">
-                @foreach(auth()->user()->orders as $order)
-                <div>
                     <div class="order__info">
-                        <div class="left"> 
-                            <p>{{"HĐ" . $order->id}}</p>
+                        <img class="order--img" src="{{asset('/img/h3.webp')}}" alt="">
+
+                        <div class="left">
+                            <div class="left-top">    
+                                <h3 class="order__info--name">BALLON BLEU DE CATIER WATCH</h3>                                
+                            </div>
+                            <p>33 mm, mechanical movement with automatic winding, steel</p>
                             {{-- <li class="order__info--status">Đã giao</li> --}}
                             <button class="order__info--detail"><i class="fa-solid fa-angle-down"></i></i>Detail</button>
-                            <div class='detail' style="display: none;">
-                                @foreach($order->watches as $watch)
-                                <img class="order--img" src="{{$watch->img1}}" alt="" style='display: inline;'>
-                                <div style="display: inline;">
-                                    <p>{{$watch->name}}</p>
-                                    <p>{{$watch->description}}</p>
-                                    <p>{{$watch->pivot->price}} x {{$watch->pivot->quantity}}</p>
-                                </div>
-
-                                @endforeach
-                            </div>
                         </div>
                     </div>
 
-                        <div class="right">
-                            <li class="order__info--price">{{$order->total_prices}} đ</li>
-                            @if ($order->status == 'Success')
-                            <div class="right-bottom">
-                                <button class="order__info--btn">Đánh giá</button>
-                                <button class="order__info--btn">Mua lại</button>
-                            </div>
-                            @endif
-                        </div>
-                </div>
-                        
-                   
-                @endforeach
+                    <div class="right">
+                        <li class="order__info--price">$6.200</li>
+                        {{-- <div class="right-bottom">
+                            <button class="order__info--btn">Đánh giá</button>
+                            <button class="order__info--btn">Mua lại</button>
+                        </div> --}}
+                    </div>
             </div>
 
             <div class="orders__list">
@@ -202,9 +189,14 @@
                             <button class="order__info--btn">Buy Back</button>
                         </div>
                     </div>
+                <!-- </div> -->
             </div>
 
             </div>
         </div>
     </div>
 </div>
+
+
+
+  
