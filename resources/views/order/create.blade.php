@@ -7,6 +7,8 @@
     <title>The UITERs</title>
     <link rel="stylesheet" href="{{ asset('/icon/fontawesome-free-6.4.2-web/css/regular.min.css')}}">
     <link rel="stylesheet" href="{{ asset('/css/payment.css')}}">
+    <link rel="stylesheet" href="{{ asset('/css/home.css')}}">
+
 </head>
 <body>
     <div class="container">

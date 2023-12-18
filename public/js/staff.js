@@ -138,6 +138,7 @@ $(document).ready(function() {
             method: 'patch',
             success: function (data) {
                 $(this).parent().find('.status').text('Đang giao hàng');
+                alert(`Đơn hàng ${data.id} đã chuyển trạng thái`)
             }
         })
     })
@@ -147,7 +148,7 @@ const indexNow = 0 ;
 const gridItems = document.querySelectorAll('.grid-item-count')
 const modals  = document.querySelectorAll('.modal');
 const closeModals = document.querySelectorAll('.close-modal');
-let activeModal = null;
+
 const closeSubModal = document.querySelectorAll('.close-sub-modal');
 const submodalBtns = document.querySelectorAll('.viewdetail');
 const subModal = document.querySelector('.sub-modal')
@@ -155,14 +156,15 @@ const modalContent = document.querySelector('.modal-content');
 gridItems.forEach((item, index) => {
     item.addEventListener('click', () => {
         modals[index].style.display = 'block';
-
-        activeModal = modals[index];
-
     });
     closeModals[index].addEventListener('click', () => {
         modals[index].style.display = 'none';
-        activeModal = null;
     })
+    window.addEventListener("click", function (event) {
+        if (event.target == modals[index]) {
+            modals[index].style.display = "none";
+        }
+    });
 })
 function openSub(btn) {
     const orderId = btn.getAttribute('data-id');
@@ -175,18 +177,13 @@ function openSub(btn) {
     console.log(subModal);
 }
 
-
-// function closeSub(orderId) {
-//     const subModal = document.getElementById(`sub-processed-modal-${orderId}`);
-//     if (subModal) {
-//         subModal.style.display = 'none';
-//     }
-// }
-
-function hideAllSubModals() {
-    const subModals = document.querySelectorAll('.sub-modal');
-    subModals.forEach(function (subModal) {
+function hideSub(btn) {
+    const orderId = btn.getAttribute('data-id');
+    console.log(orderId);
+    const subModal = document.querySelector(`#sub-processed-modal-${orderId}`);
+    if (subModal) {
         subModal.style.display = 'none';
-    });
-
+        console.log(subModal);
+    }
+    console.log(subModal);
 }

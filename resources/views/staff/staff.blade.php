@@ -107,10 +107,10 @@
                         @endphp
                         
                         <div class="table-field">
-                           
                             <table>
+                                <thead>
                                     <tr>
-                                        <th>Mã Đơn hàng</td>
+                                        <th>Mã Đơn hàng</th>
                                         <th>Tổng tiền</th>
                                         <th>Trạng thái</th>
                                         <th>Ngày đặt hàng</th>
@@ -119,9 +119,10 @@
                                         <th>Địa chỉ</th>
                                         <th>Cập nhật</th>
                                         <th>Chi tiết</th>
-
                                     </tr>
-                                @foreach ($orders as $order)
+                                </thead>
+                                <tbody>
+                                    @foreach ($orders as $order)
                                     <tr>
                                         <td>
                                             <p class="oID">HD{{$order->id}}</p>
@@ -131,16 +132,16 @@
                                         </td>
                                         <td class="status">
                                             @if ($order->status == 'Pending') 
-                                                Chờ xác nhận
+                                            Chờ xác nhận
                                             @elseif ($order->status == 'Shipping')
-                                                Đang giao hàng
+                                            Đang giao hàng
                                             @elseif ($order->status == 'Success')
-                                                Thành công
+                                            Thành công
                                             @endif
                                         </td>
                                         <td>
                                             <p>{{ $order->created_at }}</p>
-                                            <p>Đã thanh toán </p>
+                                            <p>Đã thanh toán</p>
                                         </td>
                                         <td>
                                             <p> {{$order->user->name}}</p>
@@ -157,29 +158,30 @@
                                             @if ($order->status == 'Pending')
                                             <button name="update" class="update">
                                                 Đã gửi hàng
-                                            <buttonn>
+                                            </button>
                                             @endif
                                         </td>
                                         <td>
                                             <button data-id='{{$order->id}}' class="viewdetail" onclick='openSub(this)'>Xem</button>
                                         </td>
-                                    </tr>     
-                                    @foreach($order->watches as $watch)
-                                        <div id="sub-processed-modal-{{$order->id}}" class="sub-modal">
-                                            <div class="modal-content">
-                                                <table class="sub-modal-table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Mã sản phẩm</th>
-                                                            <th>Hình Ảnh</th>
-                                                            <th>Tên SP</th>
-                                                            <th>Số lượng</th>
-                                                            <th>Tổng tiền</th>
-                                                            <th>Giảm giá</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach($order->watches as $watch)
+                                    </tr>
+                                    <tr>
+                                        <td colspan="9">
+                                            <div id="sub-processed-modal-{{$order->id}}" class="sub-modal">
+                                                <div class="modal-content">
+                                                    <table class="sub-modal-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Mã sản phẩm</th>
+                                                                <th>Hình Ảnh</th>
+                                                                <th>Tên SP</th>
+                                                                <th>Số lượng</th>
+                                                                <th>Tổng tiền</th>
+                                                                <th>Giảm giá</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach($order->watches as $watch)
                                                             <tr>
                                                                 <td class="smaller">{{$watch->id}}</td>
                                                                 <td class="img-tag"><img class="img-sp" src="{{ $watch->img1 }}" alt=""></td>
@@ -188,16 +190,21 @@
                                                                 <td>{{$watch->pivot->price * $watch->pivot->quantity}}</td>
                                                                 <td class="smaller">0</td>
                                                             </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
-                                                <button class="close-sub-modal">Trở lại</button>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                    <button data-id='{{$order->id}}' class="close-sub-modal" onclick='hideSub(this)'>Trở lại</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                    @endforeach                        
-                                @endforeach 
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
                         </div>
+        
+</div>
+
                      
                     </div>
                     
@@ -588,9 +595,6 @@
                 <th>Ngày đặt hàng</th>
                 <th>Tên khách hàng</th>
                 <th>SĐT</th>
-                <th>
-                   Chi tiết đơn hàng
-                </th>
             </tr>
         </thead>
         <tbody>
@@ -602,9 +606,6 @@
                 <td>10-12-2023</td>
                 <td>Nguyễn Dương Tùng</td>
                 <td>012348374</td>
-                <td>
-                    <button class="viewdetail">Xem</button>
-                </td>
             </tr>
         </tbody>
     </table>
@@ -625,9 +626,6 @@
                 <th>Tên khách hàng</th>
                 <th>Địa chỉ</th>
                 <th>SĐT</th>
-                <th>
-                   Chi tiết đơn hàng
-                </th>
             </tr>
         </thead>
         
@@ -656,15 +654,11 @@
         <thead>
             <tr >
                 <th>Mã đơn hàng</th>
-                <th>Số lượng</th>
                 <th>Tổng tiền</th>
-                <th>Giảm giá</th>
                 <th>Ngày đặt hàng</th>
                 <th>Tên khách hàng</th>
+                <th>Địa chỉ đặt hàng</th>
                 <th>SĐT</th>
-                <th>
-                   Chi tiết đơn hàng
-                </th>
             </tr>
         </thead>
         <tbody>
@@ -698,9 +692,6 @@
                 <th>Ngày đặt hàng</th>
                 <th>Tên khách hàng</th>
                 <th>SĐT</th>
-                <th>
-                   Chi tiết đơn hàng
-                </th>
             </tr>
         </thead>
         <tbody>
@@ -712,9 +703,6 @@
                 <td>10-12-2023</td>
                 <td>Nguyễn Dương Tùng</td>
                 <td>012348374</td>
-                <td>
-                    <button class="viewdetail">Xem</button>
-                </td>
             </tr>
            
         </tbody>
@@ -736,9 +724,6 @@
                 <th>Ngày đặt hàng</th>
                 <th>Tên khách hàng</th>
                 <th>SĐT</th>
-                <th>
-                   Chi tiết đơn hàng
-                </th>
             </tr>
         </thead>
         <tbody>
@@ -750,9 +735,6 @@
                 <td>10-12-2023</td>
                 <td>Nguyễn Dương Tùng</td>
                 <td>012348374</td>
-                <td>
-                    <button class="viewdetail">Xem</button>
-                </td>
             </tr>
         </tbody>
     </table>
