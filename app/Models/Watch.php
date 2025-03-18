@@ -42,7 +42,7 @@ class Watch extends Model
 
     public function carts(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'Carts', 'watch_id', 'user_id');
+        return $this->belongsToMany(User::class, 'carts', 'watch_id', 'user_id');
     }
 
     public function brand(): BelongsTo
